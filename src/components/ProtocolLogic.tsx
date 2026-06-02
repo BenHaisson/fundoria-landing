@@ -44,7 +44,7 @@ export default function ProtocolLogic() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-protocol-border bg-protocol-accent-bg">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-protocol-border bg-protocol-accent-bg">
           {properties.map((prop, i) => (
             <motion.div 
               key={i}
@@ -102,7 +102,8 @@ export default function ProtocolLogic() {
               <p className="text-[11px] text-protocol-text-dim/60 uppercase tracking-widest font-mono max-w-sm">Verifiable on-chain routing from capital container to execution venue.</p>
             </div>
             
-            <div className="flex-2 w-full lg:w-auto overflow-x-auto scrollbar-none -mx-4 px-4">
+            <div className="flex-2 w-full lg:w-auto overflow-x-auto scrollbar-none -mx-4 px-4 relative">
+              <div className="absolute right-0 inset-y-0 w-10 bg-gradient-to-l from-black/80 to-transparent pointer-events-none lg:hidden z-10" />
               <div className="flex items-center gap-4 min-w-[560px] py-4">
                 <FlowStep label="CAPITAL" sub="Vaults" active />
                 <FlowLine />

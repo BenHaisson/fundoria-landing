@@ -165,9 +165,9 @@ export default function Navbar({ onShowWhitepaper, onOpenWhitelist }: NavbarProp
 
       {/* Ticker */}
       <div className="absolute top-[72px] left-0 w-full h-[30px] bg-protocol-bg/85 backdrop-blur-md border-b border-protocol-border overflow-hidden flex items-center transition-colors">
-        <div className="flex gap-12 whitespace-nowrap animate-ticker-pausable">
+        <div className="flex gap-6 md:gap-12 whitespace-nowrap animate-ticker-pausable">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex gap-12">
+            <div key={i} className="flex gap-6 md:gap-12">
               <TickerItem text="PROTOCOL STATUS: PRE-LAUNCH" dotColor="text-blue" />
               <TickerItem text="PHASE 1: CORE INFRASTRUCTURE" dotColor="text-blue" isHex />
               <TickerItem text="IDENTITY LAYER: COMPLETE" dotColor="text-blue" isHex />

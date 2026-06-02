@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Mail, ArrowRight, CheckCircle2, Zap, Shield } from 'lucide-react';
+import { X, Mail, ArrowRight, CheckCircle2, Zap, Shield, Loader2 } from 'lucide-react';
 
 interface WhitelistModalProps {
   isOpen: boolean;
@@ -90,7 +90,7 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                     />
                     <CheckCircle2 className="w-9 h-9 text-green relative z-10" />
                   </motion.div>
-                  <h3 id="modal-title" className="font-display text-5xl uppercase mb-3 tracking-tight text-protocol-text">
+                  <h3 id="modal-title" className="font-display text-[clamp(36px,8vw,54px)] uppercase mb-3 tracking-tight text-protocol-text">
                     You're In.
                   </h3>
                   <p className="font-mono text-[11px] text-protocol-text-dim uppercase tracking-widest leading-relaxed px-6 mb-8">
@@ -166,7 +166,7 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="protocol@access.link"
-                          className="w-full bg-protocol-accent-bg border border-protocol-border px-12 py-4 font-mono text-sm text-protocol-text placeholder:text-protocol-text-dim/20 focus:outline-none focus:border-blue/60 focus:shadow-[0_0_0_1px_rgba(59,130,246,0.2)] transition-all"
+                          className="w-full bg-protocol-accent-bg border border-protocol-border px-12 py-4 font-mono text-sm text-protocol-text placeholder:text-protocol-text-dim/40 focus:outline-none focus:border-blue focus:shadow-[0_0_0_2px_rgba(59,130,246,0.25)] transition-all"
                         />
                       </div>
                     </div>
@@ -174,13 +174,20 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                     <button
                       type="submit"
                       disabled={status === 'submitting'}
-                      className="group w-full bg-blue hover:bg-green text-black font-mono text-[11px] font-black uppercase tracking-[0.2em] py-5 flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-50 shadow-[0_4px_24px_rgba(59,130,246,0.3)] hover:shadow-[0_4px_32px_rgba(16,185,129,0.4)] relative overflow-hidden"
+                      className="group w-full bg-blue hover:bg-green text-black font-mono text-[11px] font-black uppercase tracking-[0.2em] py-5 flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_24px_rgba(59,130,246,0.3)] hover:shadow-[0_4px_32px_rgba(16,185,129,0.4)] relative overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-white/15 -translate-x-full group-hover:translate-x-full transition-transform duration-500 pointer-events-none" />
-                      <span className="relative">
-                        {status === 'submitting' ? 'Registering...' : 'fnd::whitelist.register'}
-                      </span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative" />
+                      {status === 'submitting' ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin relative" />
+                          <span className="relative">Registering...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="relative">fnd::whitelist.register</span>
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative" />
+                        </>
+                      )}
                     </button>
                   </form>
 

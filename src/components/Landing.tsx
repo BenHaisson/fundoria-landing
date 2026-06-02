@@ -25,8 +25,6 @@ export default function Landing({ onShowWhitepaper }: LandingProps) {
 
   return (
     <div className="relative min-h-screen bg-protocol-bg text-protocol-text transition-colors duration-300">
-      <div className="noise-grain" />
-      
       {/* Background Orbs */}
       <div className="fixed top-[-5%] sm:top-[-10%] right-[-10%] w-[80vw] sm:w-[50vw] h-[80vw] sm:h-[50vw] bg-blue/10 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none z-0" />
       <div className="fixed bottom-[-5%] sm:bottom-[-10%] left-[-10%] w-[70vw] sm:w-[40vw] h-[70vw] sm:h-[40vw] bg-green/10 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none z-0" />

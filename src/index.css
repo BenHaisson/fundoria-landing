@@ -60,7 +60,7 @@
   /* Scanlines effect - Hidden in light mode */
   body::after {
     content: '';
-    @apply fixed inset-0 z-[1000] pointer-events-none opacity-[0.03] dark:block hidden;
+    @apply fixed inset-0 z-[1000] pointer-events-none hidden dark:block opacity-[0.03];
     background: linear-gradient(
       rgba(18, 16, 16, 0) 50%,
       rgba(0, 0, 0, 0.25) 50%
@@ -73,12 +73,6 @@
     background-size: 100% 2px, 3px 100%;
   }
 
-  /* Noise grain layer - Hidden in light mode */
-  .noise-grain {
-    @apply fixed inset-0 z-[1001] pointer-events-none opacity-10 dark:block hidden;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  }
-
   ::-webkit-scrollbar {
     @apply w-1;
   }
@@ -89,6 +83,12 @@
 
   ::-webkit-scrollbar-thumb {
     @apply bg-blue rounded-lg;
+  }
+
+  /* Firefox scrollbar */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-blue) var(--color-protocol-bg);
   }
 }
 

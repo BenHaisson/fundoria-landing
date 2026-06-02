@@ -9,6 +9,15 @@ interface FloatingCTAProps {
 export default function FloatingCTA({ onOpenWhitelist }: FloatingCTAProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,11 +47,13 @@ export default function FloatingCTA({ onOpenWhitelist }: FloatingCTAProps) {
           className="fixed bottom-8 right-8 z-[100] hidden md:block"
         >
           {/* Outer pulse ring */}
-          <motion.div
-            animate={{ scale: [1, 1.15], opacity: [0.4, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
-            className="absolute inset-0 bg-blue/30 pointer-events-none"
-          />
+          {!reducedMotion && (
+            <motion.div
+              animate={{ scale: [1, 1.1], opacity: [0.4, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
+              className="absolute inset-0 bg-blue/30 pointer-events-none"
+            />
+          )}
 
           <button
             onClick={onOpenWhitelist}

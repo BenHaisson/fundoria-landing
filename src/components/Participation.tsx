@@ -112,7 +112,7 @@ export default function Participation({ onOpenWhitelist }: ParticipationProps) {
 
               {/* Scan beam */}
               <motion.div
-                className="absolute inset-x-0 h-[1px] z-20 pointer-events-none opacity-0 group-hover:opacity-100"
+                className="absolute inset-x-0 h-[1px] z-20 pointer-events-none opacity-0 group-hover:opacity-100 will-change-transform"
                 style={{ background: `linear-gradient(to right, transparent, ${card.glow}, transparent)` }}
                 animate={{ y: [-20, 700] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
@@ -174,7 +174,7 @@ export default function Participation({ onOpenWhitelist }: ParticipationProps) {
                 {/* CTA */}
                 <button
                   onClick={onOpenWhitelist}
-                  className="relative w-full py-4 bg-protocol-bg border border-protocol-border overflow-hidden font-mono text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 group/btn"
+                  className="relative w-full py-4 bg-protocol-bg border border-protocol-border overflow-hidden font-mono text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-current"
                 >
                   <div className={`absolute inset-0 ${card.btnBg} translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300`} />
                   <span className="relative z-10 group-hover/btn:text-black transition-colors duration-300 flex items-center justify-center gap-3">
