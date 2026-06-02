@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Mail, ArrowRight, CheckCircle2, Zap, Shield, Loader2 } from 'lucide-react';
 
@@ -17,6 +17,13 @@ const perks = [
 export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
+  useEffect(() => {
+    if (!isOpen) {
+      const t = setTimeout(() => { setEmail(''); setStatus('idle'); }, 400);
+      return () => clearTimeout(t);
+    }
+  }, [isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
