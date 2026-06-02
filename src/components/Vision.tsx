@@ -69,6 +69,7 @@ export default function Vision({ onOpenWhitelist }: VisionProps) {
       id: 'vault',
       title: 'Programmatic Vaults',
       subtitle: 'capital_allocation_v2',
+      color: 'blue' as const,
       icon: <Database className="w-5 h-5" />,
       content: (
         <div className="space-y-5">
