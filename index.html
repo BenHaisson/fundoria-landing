@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundoria Protocol | HyperEVM Yield Infrastructure</title>
+    <script>
+      // Shim global if missing
+      if (typeof global === 'undefined') {
+        window.global = window;
+      }
+      
+      // Attempt to make fetch resilient in sandboxed environments (where it might be a read-only getter)
+      (function() {
+        try {
+          const desc = Object.getOwnPropertyDescriptor(window, 'fetch');
+          if (desc && (!desc.writable || !desc.set) && desc.configurable) {
+            const originalFetch = window.fetch;
+            Object.defineProperty(window, 'fetch', {
+              get: function() { return originalFetch; },
+              set: function(v) { console.warn('Silenced attempt to overwrite window.fetch'); },
+              configurable: true,
+              enumerable: true
+            });
+          }
+        } catch (e) {
+          console.error('Failed to shim fetch:', e);
+        }
+      })();
+
+      // Minimal Buffer shim
+      if (typeof Buffer === 'undefined') {
+        window.Buffer = {
+          isBuffer: () => false,
+          from: () => ({}),
+          alloc: () => ({}),
+          concat: (arr) => arr[0] || {}
+        };
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
