@@ -29,9 +29,49 @@ export default function TokenEconomics() {
               <TokenItem index={2} title="Governed Parameters" desc="Vote on global risk limits, fee structures, and protocol-level coordination hooks." />
             </div>
 
-            <div className="mt-12 p-5 border border-blue/10 bg-blue/5 rounded-sm">
+            {/* Token Allocation */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.35 }}
+              className="mt-10 border border-protocol-border bg-protocol-accent-bg"
+            >
+              <div className="px-5 py-3 border-b border-protocol-border flex items-center justify-between">
+                <div className="font-mono text-[9px] uppercase tracking-widest text-blue font-bold">Token Allocation</div>
+                <div className="font-mono text-[8px] text-protocol-text-dim/40 uppercase tracking-widest">Supply: 100,000,000 $FND</div>
+              </div>
+              {[
+                { label: 'Community & Ecosystem', pct: 40, color: 'bg-blue', note: '' },
+                { label: 'Protocol Treasury', pct: 25, color: 'bg-cyan', note: '' },
+                { label: 'Team & Contributors', pct: 20, color: 'bg-green', note: '24-mo vest · 6-mo cliff' },
+                { label: 'Early Backers', pct: 10, color: 'bg-blue/60', note: '12-mo vest' },
+                { label: 'Liquidity Provision', pct: 5, color: 'bg-cyan/50', note: '' },
+              ].map((row, i) => (
+                <div key={i} className="px-5 py-3 border-b border-protocol-border/40 last:border-b-0 flex items-center gap-4 group hover:bg-protocol-bg/50 transition-colors">
+                  <div className="font-mono text-[9px] text-blue font-bold w-8 shrink-0">{row.pct}%</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-protocol-text">{row.label}</span>
+                      {row.note && <span className="font-mono text-[7px] text-protocol-text-dim/40 uppercase tracking-tighter">{row.note}</span>}
+                    </div>
+                    <div className="h-[3px] bg-protocol-border/50 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${row.pct * 2.5}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: i * 0.08 + 0.4, ease: 'easeOut' }}
+                        className={`h-full ${row.color} rounded-full`}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+
+            <div className="mt-4 p-5 border border-blue/10 bg-blue/5 rounded-sm">
               <p className="text-[10px] font-mono leading-relaxed text-protocol-text-dim/60 uppercase tracking-tight">
-                <span className="text-blue font-bold opacity-80">[ GLOBAL_DISCLOSURE ]</span> :: $FND is a coordination utility token. It is not an investment contract, security, or claim on protocol revenue or trader performance. Participation is subject to protocol eligibility.
+                <span className="text-blue font-bold opacity-80">[ GLOBAL_DISCLOSURE ]</span> :: $FND is a coordination utility token. It is not an investment contract, security, or claim on protocol revenue or trader performance. Allocation figures are illustrative and subject to change. Participation is subject to protocol eligibility.
               </p>
             </div>
           </motion.div>

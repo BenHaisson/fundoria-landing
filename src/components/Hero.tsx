@@ -11,7 +11,7 @@ const stats = [
   { icon: <Activity className="w-3 h-3" />, label: 'Network', value: 'HyperEVM', color: 'text-blue' },
   { icon: <Shield className="w-3 h-3" />, label: 'Custody', value: '0%', color: 'text-green' },
   { icon: <Cpu className="w-3 h-3" />, label: 'Risk Engine', value: 'On-Chain', color: 'text-cyan' },
-  { icon: <Layers className="w-3 h-3" />, label: 'Phase', value: '01 / Active', color: 'text-blue' },
+  { icon: <Layers className="w-3 h-3" />, label: 'Status', value: 'Live Alpha', color: 'text-blue' },
 ];
 
 export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
@@ -91,9 +91,9 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
           variants={itemVariants}
           className="max-w-[620px] mx-auto text-protocol-text-dim text-[16px] md:text-lg leading-relaxed mb-14 italic"
         >
-          Fundoria is a protocol-controlled capital allocation and trading infrastructure
-          where <span className="text-protocol-text">trader skill is verifiable</span> on-chain and risk is{' '}
-          <span className="text-protocol-text">enforced by logic</span>.
+          Fundoria is a non-custodial capital markets protocol on HyperEVM — where{' '}
+          <span className="text-protocol-text">trader skill is verified on-chain</span>, risk is enforced by{' '}
+          <span className="text-protocol-text">smart contracts</span>, and capital allocation is fully programmable.
         </motion.p>
 
         {/* CTAs */}

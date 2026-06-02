@@ -1,10 +1,10 @@
 import { motion } from 'motion/react';
 
 export default function Roadmap() {
-  const items = [
-    { phase: '01', meta: 'Foundation', title: 'Core Trading & Verification', desc: 'Deployment of protocol interface and simulated environments. Implementation of on-chain identity logic and Hyperliquid integration.', active: true },
-    { phase: '02', meta: 'Scaling', title: 'Vault Markets & Capital', desc: 'Expansion of vault configurations and mandate-specific allocation strategies. Enhanced institutional reporting and capital scaling mechanisms.' },
-    { phase: '03', meta: 'Decentralization', title: 'Governance & Ecosystem', desc: 'Progressive decentralization of protocol parameters via DAO. Expansion of third-party integrations and composable financial products.' }
+  const items: { phase: string; meta: string; title: string; desc: string; active?: boolean; timeline: string }[] = [
+    { phase: '01', meta: 'Foundation', title: 'Core Trading & Verification', desc: 'Deployment of protocol interface and simulated environments. Implementation of on-chain identity logic and Hyperliquid integration.', active: true, timeline: 'Q1–Q2 2026' },
+    { phase: '02', meta: 'Scaling', title: 'Vault Markets & Capital', desc: 'Expansion of vault configurations and mandate-specific allocation strategies. Enhanced institutional reporting and capital scaling mechanisms.', timeline: 'Q3 2026' },
+    { phase: '03', meta: 'Decentralization', title: 'Governance & Ecosystem', desc: 'Progressive decentralization of protocol parameters via DAO. Expansion of third-party integrations and composable financial products.', timeline: 'Q4 2026 – Q1 2027' }
   ];
 
   return (
@@ -118,6 +118,9 @@ export default function Roadmap() {
                           Process: Pending
                         </div>
                       )}
+                      <div className="px-3 py-1 border border-protocol-border rounded-sm font-mono text-[8px] text-protocol-text/30 uppercase tracking-widest group-hover:text-protocol-text/60 transition-colors">
+                        {item.timeline}
+                      </div>
                       {item.active && (
                         <div className="px-3 py-1 border border-protocol-border rounded-sm font-mono text-[8px] text-protocol-text/30 uppercase tracking-widest group-hover:text-protocol-text/60 transition-colors">
                           Stability: 99.98%

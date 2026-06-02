@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, ExternalLink, ChevronUp } from 'lucide-react';
+import { ArrowRight, ExternalLink, ChevronUp, Twitter, MessageCircle, Send } from 'lucide-react';
 import Logo from './Logo';
 
 interface FooterProps {
@@ -51,9 +51,9 @@ export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProp
             transition={{ delay: 0.05 }}
             className="font-display text-[clamp(48px,9vw,110px)] uppercase leading-[0.9] mb-6 tracking-tight text-protocol-text"
           >
-            Ready to trade <br />
+            Ready to Trade <br />
             <span className="bg-gradient-to-r from-green via-cyan to-blue bg-clip-text text-transparent">
-              with Protocol.
+              on the Protocol.
             </span>
           </motion.h2>
 
@@ -116,6 +116,18 @@ export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProp
       <footer className="border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 py-10 flex flex-wrap items-center justify-between gap-6">
           <Logo size={28} showText={true} />
+
+          <div className="flex items-center gap-4">
+            <a href="#" aria-label="Twitter / X" className="w-7 h-7 border border-protocol-border flex items-center justify-center text-protocol-text-dim hover:text-protocol-text hover:border-protocol-text/40 transition-all">
+              <Twitter className="w-3 h-3" />
+            </a>
+            <a href="#" aria-label="Discord" className="w-7 h-7 border border-protocol-border flex items-center justify-center text-protocol-text-dim hover:text-protocol-text hover:border-protocol-text/40 transition-all">
+              <MessageCircle className="w-3 h-3" />
+            </a>
+            <a href="#" aria-label="Telegram" className="w-7 h-7 border border-protocol-border flex items-center justify-center text-protocol-text-dim hover:text-protocol-text hover:border-protocol-text/40 transition-all">
+              <Send className="w-3 h-3" />
+            </a>
+          </div>
 
           <nav className="flex flex-wrap gap-8">
             <button

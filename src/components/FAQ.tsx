@@ -35,6 +35,22 @@ export default function FAQ() {
     {
       q: 'How do investors allocate to traders?',
       a: 'Capital providers deposit into strategy-specific vaults. Allocation is governed by on-chain parameters — minimum capital requirements, lockup schedules, and performance-based fee structures. Withdrawals are processed at epoch boundaries defined in the vault contract.'
+    },
+    {
+      q: 'What is the $FND token and what is it used for?',
+      a: '$FND is a coordination utility token with three functions: access and tier progression for traders, governance voting on risk parameters and fee structures, and ecosystem incentive distribution tied to protocol activity. $FND is not an investment contract, security, or claim on protocol revenue.'
+    },
+    {
+      q: 'When is the mainnet launch expected?',
+      a: 'Phase 01 is currently active — core infrastructure, simulated environments, and on-chain identity logic are live. Vault markets and live capital allocation launch in Phase 02. There is no fixed calendar date; deployment is milestone-gated to ensure each layer passes independent security review before going live.'
+    },
+    {
+      q: 'What is the minimum deposit for capital providers?',
+      a: 'Minimums are defined at the vault level via on-chain parameters set by vault configurators, not by Fundoria centrally. Each strategy vault publishes its own minimum capital requirement, lockup schedule, and fee structure on-chain before accepting deposits.'
+    },
+    {
+      q: 'How does Fundoria differ from traditional prop trading firms?',
+      a: 'Traditional prop firms rely on discretionary approval, internal reporting, and manual risk oversight. Fundoria has no discretionary gatekeeping — trader evaluation is automated against on-chain thresholds, performance is publicly verifiable, capital is non-custodial, and risk constraints are enforced by smart contracts with no manual override path.'
     }
   ];
 

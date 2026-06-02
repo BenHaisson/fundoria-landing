@@ -105,7 +105,7 @@ export default function Partnerships() {
                   className="group/btn inline-flex items-center gap-3 bg-cyan text-black px-10 py-5 font-mono text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:bg-white hover:shadow-[0_0_40px_rgba(6,182,212,0.4)] active:scale-95"
                 >
                   <Mail className="w-4 h-4" />
-                  Contact Desk
+                  Request Institutional Access
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                 </a>
 
