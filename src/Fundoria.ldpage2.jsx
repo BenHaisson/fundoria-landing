@@ -764,98 +764,249 @@ function Rewards() {
   );
 }
 
-/* ─── TOKEN ──────────────────────────────────────────────── */
-function Token() {
-  const [hovered, setHovered] = useState(null);
+/* ─── TOKEN COIN (large SVG) ─────────────────────────────── */
+function TokenCoin({ hovered, setHovered }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, 0.1);
+  const [angle, setAngle] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setAngle(a => (a + 0.25) % 360), 16);
+    return () => clearInterval(id);
+  }, []);
+
+  const R = 180, IR = 118, cx = 200, cy = 200;
   let cum = 0;
   const segs = TOKEN_ALLOC.map(t => {
-    const s = (cum / 100) * 2 * Math.PI - Math.PI / 2;
+    const startA = (cum / 100) * 2 * Math.PI - Math.PI / 2;
     cum += t.pct;
-    const e = (cum / 100) * 2 * Math.PI - Math.PI / 2;
-    const r = 80, cx = 100, cy = 100;
-    const x1 = cx + r * Math.cos(s), y1 = cy + r * Math.sin(s);
-    const x2 = cx + r * Math.cos(e), y2 = cy + r * Math.sin(e);
-    return { ...t, d:`M${cx},${cy} L${x1.toFixed(2)},${y1.toFixed(2)} A${r},${r} 0 ${e - s > Math.PI ? 1 : 0},1 ${x2.toFixed(2)},${y2.toFixed(2)} Z` };
+    const endA = (cum / 100) * 2 * Math.PI - Math.PI / 2;
+    const x1 = cx + R * Math.cos(startA), y1 = cy + R * Math.sin(startA);
+    const x2 = cx + R * Math.cos(endA),   y2 = cy + R * Math.sin(endA);
+    const ix1 = cx + IR * Math.cos(startA), iy1 = cy + IR * Math.sin(startA);
+    const ix2 = cx + IR * Math.cos(endA),   iy2 = cy + IR * Math.sin(endA);
+    const large = endA - startA > Math.PI ? 1 : 0;
+    const d = `M${ix1.toFixed(2)},${iy1.toFixed(2)} A${IR},${IR} 0 ${large},1 ${ix2.toFixed(2)},${iy2.toFixed(2)} L${x2.toFixed(2)},${y2.toFixed(2)} A${R},${R} 0 ${large},0 ${x1.toFixed(2)},${y1.toFixed(2)} Z`;
+    return { ...t, d, midA: startA + (endA - startA) / 2 };
   });
 
   return (
-    <section id="token-section" style={{ padding:"120px 24px", maxWidth:1100, margin:"0 auto" }}>
-      <Fade>
-        <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>TOKEN ARCHITECTURE</Mono>
-        <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#dce8ff", margin:"0 0 12px", lineHeight:0.92 }}>
-          THE $FND<br /><GT>COORDINATION UTILITY LAYER.</GT>
-        </h2>
-        <p style={{ fontSize:14, color:"#4a6484", maxWidth:520, lineHeight:1.75, marginTop:16 }}>
-          $FND aligns traders, capital providers, and contributors through native coordination mechanisms and verifiable access rules.
-        </p>
-      </Fade>
+    <div ref={ref} style={{ position:"relative", width:400, height:400, flexShrink:0 }}>
+      {/* Outer ambient glow */}
+      <div style={{ position:"absolute", inset:-40, borderRadius:"50%", background:`radial-gradient(circle, ${BLUE}12 0%, transparent 70%)`, pointerEvents:"none" }} />
 
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:16, marginTop:56 }}>
-        {TOKEN_CARDS.map((c, i) => (
-          <Fade key={i} delay={i * 0.08}>
-            <GradientCard accent={i === 1 ? GREEN : BLUE}>
-              <div style={{ padding:"28px" }}>
-                <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.12em", display:"block", marginBottom:10 }}>{c.label}</Mono>
-                <p style={{ fontSize:13, color:"#4a6484", lineHeight:1.65, margin:0 }}>{c.desc}</p>
-              </div>
-            </GradientCard>
-          </Fade>
+      <svg width={400} height={400} viewBox="0 0 400 400" style={{ overflow:"visible" }}>
+        <defs>
+          <radialGradient id="coinGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor="#0e1a2e" />
+            <stop offset="100%" stopColor="#04080f" />
+          </radialGradient>
+          <filter id="segGlow">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="ringGlow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        {/* Ambient orbit rings */}
+        {[220, 240, 260].map((r, i) => (
+          <circle key={i} cx={cx} cy={cy} r={r} fill="none"
+            stroke={BLUE} strokeWidth={0.5}
+            opacity={0.06 + i * 0.04}
+            style={{ animation:`pulseRing ${3 + i}s ease-in-out infinite`, animationDelay:`${i * 0.8}s` }} />
         ))}
-      </div>
 
-      <Fade delay={0.2}>
-        <div style={{ marginTop:40, padding:"36px", border:"1px solid #0e1a2e" }}>
-          <Mono style={{ fontSize:10, color:"#3a5070", letterSpacing:"0.14em", display:"block", marginBottom:28 }}>TOKEN ALLOCATION — SUPPLY: 1,000,000,000 $FND</Mono>
-          <div style={{ display:"flex", alignItems:"center", gap:48, flexWrap:"wrap" }}>
-            <svg width={200} height={200} viewBox="0 0 200 200" style={{ flexShrink:0 }}>
-              {segs.map((s, i) => (
-                <path key={i} d={s.d} fill={s.color}
-                  opacity={hovered === null ? 0.9 : hovered === i ? 1 : 0.3}
-                  style={{ transition:"opacity .3s, transform .3s", transformOrigin:"100px 100px", transform:hovered===i?"scale(1.04)":"scale(1)", cursor:"pointer" }}
-                  onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)} />
-              ))}
-              <circle cx="100" cy="100" r="52" fill="#04080f" />
-              <text x="100" y="96" textAnchor="middle" fontFamily="'Bebas Neue',sans-serif" fontSize="16" fill="#dce8ff">$FND</text>
-              <text x="100" y="111" textAnchor="middle" fontFamily="'Space Mono',monospace" fontSize="8" fill="#3a5070">1B SUPPLY</text>
-            </svg>
-            <div style={{ flex:1, minWidth:200 }}>
+        {/* Rotating dashed ring */}
+        <circle cx={cx} cy={cy} r={195} fill="none"
+          stroke={BLUE} strokeWidth={1} opacity={0.2}
+          strokeDasharray="4 12"
+          style={{ transformOrigin:`${cx}px ${cy}px`, transform:`rotate(${angle}deg)` }} />
+        <circle cx={cx} cy={cy} r={195} fill="none"
+          stroke={GREEN} strokeWidth={1} opacity={0.15}
+          strokeDasharray="2 20"
+          style={{ transformOrigin:`${cx}px ${cy}px`, transform:`rotate(${-angle * 0.6}deg)` }} />
+
+        {/* Donut segments */}
+        {segs.map((s, i) => {
+          const isHov = hovered === i;
+          const scale = inView ? (isHov ? 1.04 : 1) : 0.85;
+          return (
+            <path key={i} d={s.d}
+              fill={s.color}
+              opacity={inView ? (hovered === null ? 0.9 : isHov ? 1 : 0.35) : 0}
+              filter={isHov ? "url(#segGlow)" : undefined}
+              style={{
+                transformOrigin:`${cx}px ${cy}px`,
+                transform:`scale(${scale})`,
+                transition:"opacity .8s ease, transform .35s ease",
+                cursor:"pointer",
+              }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+            />
+          );
+        })}
+
+        {/* Segment label lines on hover */}
+        {hovered !== null && segs[hovered] && (() => {
+          const s = segs[hovered];
+          const lx = cx + 210 * Math.cos(s.midA);
+          const ly = cy + 210 * Math.sin(s.midA);
+          const lx2 = cx + 230 * Math.cos(s.midA);
+          const ly2 = cy + 230 * Math.sin(s.midA);
+          return (
+            <g>
+              <line x1={lx} y1={ly} x2={lx2} y2={ly2} stroke={s.color} strokeWidth={1} opacity={0.8} />
+              <text x={lx2 + (lx2 > cx ? 6 : -6)} y={ly2 + 4}
+                textAnchor={lx2 > cx ? "start" : "end"}
+                fill={s.color} fontSize="10" fontFamily="'Space Mono',monospace"
+                letterSpacing="1">{s.pct}%</text>
+            </g>
+          );
+        })()}
+
+        {/* Inner circle */}
+        <circle cx={cx} cy={cy} r={IR - 2} fill="url(#coinGrad)"
+          stroke={`${BLUE}60`} strokeWidth={1.5} />
+
+        {/* Inner glow ring */}
+        <circle cx={cx} cy={cy} r={IR - 2} fill="none"
+          stroke={BLUE} strokeWidth={8} opacity={0.06}
+          filter="url(#ringGlow)" />
+
+        {/* $FND text */}
+        <text x={cx} y={cy - 12} textAnchor="middle"
+          fontFamily="'Bebas Neue',sans-serif" fontSize="38" fill="#dce8ff"
+          letterSpacing="3">$FND</text>
+        <text x={cx} y={cy + 10} textAnchor="middle"
+          fontFamily="'Space Mono',monospace" fontSize="8" fill="#3a5070"
+          letterSpacing="2">COORDINATION TOKEN</text>
+        <text x={cx} y={cy + 26} textAnchor="middle"
+          fontFamily="'Space Mono',monospace" fontSize="8" fill="#2a3f58"
+          letterSpacing="1">1,000,000,000 SUPPLY</text>
+
+        {/* Live dot */}
+        <circle cx={cx + 46} cy={cy - 20} r={3} fill={GREEN}
+          style={{ animation:"pulse 2s infinite" }} />
+      </svg>
+    </div>
+  );
+}
+
+/* ─── TOKEN ──────────────────────────────────────────────── */
+function Token() {
+  const [hovered, setHovered] = useState(null);
+
+  return (
+    <section id="token-section" style={{ padding:"120px 24px", position:"relative", overflow:"hidden" }}>
+      {/* Section background grid */}
+      <div style={{ position:"absolute", inset:0, backgroundImage:`linear-gradient(${BLUE}06 1px, transparent 1px), linear-gradient(90deg, ${BLUE}06 1px, transparent 1px)`, backgroundSize:"60px 60px", pointerEvents:"none" }} />
+      <div style={{ position:"absolute", inset:0, background:`radial-gradient(ellipse 80% 60% at 50% 50%, ${BLUE}08 0%, transparent 70%)`, pointerEvents:"none" }} />
+
+      <div style={{ maxWidth:1200, margin:"0 auto", position:"relative", zIndex:1 }}>
+        <Fade>
+          <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>TOKEN ARCHITECTURE</Mono>
+          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#dce8ff", margin:"0 0 12px", lineHeight:0.92 }}>
+            THE $FND<br /><GT>COORDINATION UTILITY LAYER.</GT>
+          </h2>
+          <p style={{ fontSize:14, color:"#4a6484", maxWidth:520, lineHeight:1.75, marginTop:16 }}>
+            $FND aligns traders, capital providers, and contributors through native coordination mechanisms and verifiable access rules.
+          </p>
+        </Fade>
+
+        {/* ── Main chart + allocation row ── */}
+        <Fade delay={0.15}>
+          <div style={{ display:"flex", gap:64, alignItems:"center", marginTop:64, flexWrap:"wrap", justifyContent:"center" }}>
+            <TokenCoin hovered={hovered} setHovered={setHovered} />
+
+            {/* Allocation breakdown */}
+            <div style={{ flex:1, minWidth:300 }}>
+              <Mono style={{ fontSize:10, color:"#3a5070", letterSpacing:"0.14em", display:"block", marginBottom:24 }}>
+                TOKEN ALLOCATION — SUPPLY: 1,000,000,000 $FND
+              </Mono>
               {TOKEN_ALLOC.map((t, i) => (
-                <div key={i} style={{ marginBottom:16 }}
+                <div key={i} style={{ marginBottom:18 }}
                   onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)}>
-                  <div style={{ display:"flex", justifyContent:"space-between", alignItems:"baseline", marginBottom:6 }}>
-                    <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                      <div style={{ width:8, height:8, borderRadius:"50%", background:t.color, boxShadow:hovered===i?`0 0 8px ${t.color}`:"none", transition:"box-shadow .3s" }} />
-                      <Mono style={{ fontSize:11, color:hovered===i?"#dce8ff":"#6080a0", transition:"color .2s" }}>{t.label}</Mono>
+                  <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:7 }}>
+                    <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+                      <div style={{
+                        width:10, height:10, borderRadius:"50%", background:t.color, flexShrink:0,
+                        boxShadow:hovered===i?`0 0 12px ${t.color}, 0 0 24px ${t.color}40`:"none",
+                        transition:"box-shadow .3s",
+                      }} />
+                      <Mono style={{ fontSize:12, color:hovered===i?"#dce8ff":"#6080a0", transition:"color .2s" }}>{t.label}</Mono>
                     </div>
-                    <Mono style={{ fontSize:14, color:"#dce8ff", fontWeight:"bold" }}>{t.pct}%</Mono>
+                    <Mono style={{ fontSize:16, color:"#dce8ff", fontWeight:"bold", letterSpacing:"0.04em" }}>{t.pct}%</Mono>
                   </div>
-                  <AnimatedBar pct={t.pct} color={t.color} delay={i * 0.08} />
+                  <AnimatedBar pct={t.pct} color={t.color} delay={i * 0.1} />
                 </div>
               ))}
+
+              {/* Token stats row */}
+              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:1, marginTop:32, background:"#0a1220" }}>
+                {[["1B","TOTAL SUPPLY"],["40%","COMMUNITY"],["PHASE 1","ACTIVE"]].map(([v, l], i) => (
+                  <div key={i} style={{ background:"#04080f", padding:"16px", textAlign:"center", position:"relative", overflow:"hidden" }}>
+                    <div style={{ position:"absolute", bottom:0, left:0, right:0, height:1, background:GRAD, opacity:0.3 }} />
+                    <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, color:"#dce8ff", margin:"0 0 3px", letterSpacing:"0.06em" }}>{v}</p>
+                    <Mono style={{ fontSize:8, color:"#2a3f58", letterSpacing:"0.12em", display:"block" }}>{l}</Mono>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </Fade>
+        </Fade>
 
-      <Fade delay={0.3}>
-        <div style={{ marginTop:32, display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, background:"#0a1220" }}>
-          {[["VERIFICATION","VAULT ISOLATION"],["GOVERNANCE","DAO GOVERNED"],["INCENTIVES","ECOSYSTEM REWARDS"],["RISK ENGINE","HARD BOUNDS ACTIVE"]].map(([l, v], i) => (
-            <div key={i} style={{ background:"#04080f", padding:"20px 24px" }}>
-              <Mono style={{ fontSize:9, color:BLUE, letterSpacing:"0.12em", display:"block", marginBottom:6 }}>$FND</Mono>
-              <Mono style={{ fontSize:10, color:"#dce8ff", letterSpacing:"0.08em", display:"block", marginBottom:4 }}>{l}</Mono>
-              <Mono style={{ fontSize:9, color:GREEN, letterSpacing:"0.08em", display:"block" }}>{v}</Mono>
-            </div>
+        {/* ── Utility cards ── */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:16, marginTop:48 }}>
+          {TOKEN_CARDS.map((c, i) => (
+            <Fade key={i} delay={i * 0.08}>
+              <GradientCard accent={i === 1 ? GREEN : BLUE}>
+                <div style={{ padding:"28px" }}>
+                  <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:14 }}>
+                    <div style={{ width:32, height:32, borderRadius:"50%", border:`1px solid ${i===1?GREEN:BLUE}40`, display:"flex", alignItems:"center", justifyContent:"center", background:`${i===1?GREEN:BLUE}10` }}>
+                      <Icon name={i===0?"vault":i===1?"chart":"dao"} size={14} color={i===1?GREEN:BLUE} />
+                    </div>
+                    <Mono style={{ fontSize:10, color:i===1?GREEN:BLUE, letterSpacing:"0.12em" }}>{c.label}</Mono>
+                  </div>
+                  <p style={{ fontSize:13, color:"#4a6484", lineHeight:1.65, margin:0 }}>{c.desc}</p>
+                </div>
+              </GradientCard>
+            </Fade>
           ))}
         </div>
-      </Fade>
 
-      <Fade delay={0.1}>
-        <div style={{ marginTop:32, padding:"20px 28px", border:"1px solid #0a1220" }}>
-          <Mono style={{ fontSize:9, color:"#2a3f58", letterSpacing:"0.08em", lineHeight:1.7, display:"block" }}>
-            [ GLOBAL_DISCLOSURE ] — $FND IS A COORDINATION UTILITY TOKEN. IT IS NOT AN INVESTMENT CONTRACT, SECURITY, OR CLAIM ON PROTOCOL REVENUE OR TRADER PERFORMANCE. ALLOCATION FIGURES ARE ILLUSTRATIVE AND SUBJECT TO CHANGE.
-          </Mono>
-        </div>
-      </Fade>
+        {/* ── Feature grid ── */}
+        <Fade delay={0.3}>
+          <div style={{ marginTop:16, display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, background:"#0a1220" }}>
+            {[
+              { label:"VERIFICATION", sub:"VAULT ISOLATION",    color:BLUE  },
+              { label:"GOVERNANCE",   sub:"DAO GOVERNED",       color:GREEN },
+              { label:"INCENTIVES",   sub:"ECOSYSTEM REWARDS",  color:BLUE  },
+              { label:"RISK ENGINE",  sub:"HARD BOUNDS ACTIVE", color:GREEN },
+            ].map((f, i) => (
+              <div key={i} style={{ background:"#04080f", padding:"20px 24px", transition:"background .2s", position:"relative", overflow:"hidden" }}
+                onMouseEnter={e => e.currentTarget.style.background="#081428"}
+                onMouseLeave={e => e.currentTarget.style.background="#04080f"}>
+                <div style={{ position:"absolute", top:0, left:0, right:0, height:1, background:f.color, opacity:0.4 }} />
+                <Mono style={{ fontSize:9, color:BLUE, letterSpacing:"0.12em", display:"block", marginBottom:6 }}>$FND</Mono>
+                <Mono style={{ fontSize:11, color:"#dce8ff", letterSpacing:"0.08em", display:"block", marginBottom:4 }}>{f.label}</Mono>
+                <Mono style={{ fontSize:9, color:f.color, letterSpacing:"0.08em", display:"block" }}>{f.sub}</Mono>
+              </div>
+            ))}
+          </div>
+        </Fade>
+
+        {/* Disclosure */}
+        <Fade delay={0.1}>
+          <div style={{ marginTop:32, padding:"20px 28px", border:"1px solid #0a1220" }}>
+            <Mono style={{ fontSize:9, color:"#2a3f58", letterSpacing:"0.08em", lineHeight:1.7, display:"block" }}>
+              [ GLOBAL_DISCLOSURE ] — $FND IS A COORDINATION UTILITY TOKEN. IT IS NOT AN INVESTMENT CONTRACT, SECURITY, OR CLAIM ON PROTOCOL REVENUE OR TRADER PERFORMANCE. ALLOCATION FIGURES ARE ILLUSTRATIVE AND SUBJECT TO CHANGE.
+            </Mono>
+          </div>
+        </Fade>
+      </div>
     </section>
   );
 }
@@ -1220,6 +1371,8 @@ export default function FundoriaV2() {
         @keyframes scanLine    { 0%{top:-2px} 100%{top:100%} }
         @keyframes fadeSlideIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
         @keyframes glowPulse   { 0%,100%{box-shadow:0 0 12px #2F80ED20} 50%{box-shadow:0 0 28px #2F80ED50} }
+        @keyframes coinRotate  { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        @keyframes segEntrance { from{opacity:0;transform:scale(0.8)} to{opacity:0.9;transform:scale(1)} }
 
         ::-webkit-scrollbar      { width:3px }
         ::-webkit-scrollbar-track{ background:#02050c }
