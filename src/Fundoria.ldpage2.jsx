@@ -386,33 +386,21 @@ function Nav() {
   return (
     <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, height:58, display:"flex", alignItems:"center", padding:"0 32px", justifyContent:"space-between", background:scrolled?"rgba(2,5,12,0.96)":"transparent", backdropFilter:scrolled?"blur(14px)":"none", borderBottom:scrolled?"1px solid #0e1a2e":"1px solid transparent", transition:"all .3s" }}>
       <div style={{ display:"flex", alignItems:"center", gap:9 }}>
-        {/* Coded SVG icon — same height as WHITELIST button (31px) */}
-        <svg width="36" height="31" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg"
-          style={{ animation:"logoFloat 4s ease-in-out infinite", flexShrink:0 }}>
+        {/* SVG icon — boomerang, blue→green gradient */}
+        <svg width="36" height="31" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink:0 }}>
           <defs>
             <linearGradient id="logoGradNav" x1="2" y1="30" x2="34" y2="2" gradientUnits="userSpaceOnUse">
               <stop stopColor="#2F80ED"/>
               <stop offset="1" stopColor="#00C896"/>
             </linearGradient>
           </defs>
-          {/* Lower arm */}
           <path d="M5 26C5 17 10 13 20 13H32" stroke="url(#logoGradNav)" strokeWidth="8.5" strokeLinecap="round" opacity="0.72"/>
-          {/* Upper arm */}
           <path d="M5 18C5 8 10 3 21 3H32" stroke="url(#logoGradNav)" strokeWidth="8.5" strokeLinecap="round"/>
         </svg>
-        {/* Wordmark — Bebas Neue matching site heading style */}
-        <span style={{
-          fontFamily:"'Bebas Neue',sans-serif",
-          fontSize:20,
-          letterSpacing:"0.14em",
-          lineHeight:1,
-          userSelect:"none",
-          background:"linear-gradient(90deg,#eaf2ff 20%,#00C896 60%,#eaf2ff 80%)",
-          backgroundSize:"250% auto",
-          WebkitBackgroundClip:"text",
-          WebkitTextFillColor:"transparent",
-          animation:"logoShimmer 5s linear infinite"
-        }}>FUNDORIA</span>
+        {/* Wordmark — white, no animation */}
+        <span style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:20, letterSpacing:"0.14em", lineHeight:1, color:"#eaf2ff", userSelect:"none" }}>FUNDORIA</span>
+        {/* Animated dot only */}
+        <span style={{ width:5, height:5, borderRadius:"50%", background:"#00C896", animation:"pulse 2s ease-in-out infinite", flexShrink:0, display:"block" }} />
       </div>
       <div style={{ display:"flex", gap:32, alignItems:"center" }}>
         {[["vision","VISION"],["protocol-section","PROTOCOL"],["rewards-section","REWARDS"],["token-section","TOKEN"],["faq-section","FAQ"]].map(([id, label]) => (
@@ -1346,8 +1334,7 @@ function Footer() {
       <div style={{ maxWidth:1100, margin:"0 auto" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:24, marginBottom:24 }}>
           <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-            <svg width="30" height="26" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg"
-              style={{ animation:"logoFloat 4s ease-in-out infinite", flexShrink:0 }}>
+            <svg width="30" height="26" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink:0 }}>
               <defs>
                 <linearGradient id="logoGradFooter" x1="2" y1="30" x2="34" y2="2" gradientUnits="userSpaceOnUse">
                   <stop stopColor="#2F80ED"/>
@@ -1357,18 +1344,8 @@ function Footer() {
               <path d="M5 26C5 17 10 13 20 13H32" stroke="url(#logoGradFooter)" strokeWidth="8.5" strokeLinecap="round" opacity="0.72"/>
               <path d="M5 18C5 8 10 3 21 3H32" stroke="url(#logoGradFooter)" strokeWidth="8.5" strokeLinecap="round"/>
             </svg>
-            <span style={{
-              fontFamily:"'Bebas Neue',sans-serif",
-              fontSize:17,
-              letterSpacing:"0.14em",
-              lineHeight:1,
-              userSelect:"none",
-              background:"linear-gradient(90deg,#eaf2ff 20%,#00C896 60%,#eaf2ff 80%)",
-              backgroundSize:"250% auto",
-              WebkitBackgroundClip:"text",
-              WebkitTextFillColor:"transparent",
-              animation:"logoShimmer 5s linear infinite"
-            }}>FUNDORIA</span>
+            <span style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:17, letterSpacing:"0.14em", lineHeight:1, color:"#eaf2ff", userSelect:"none" }}>FUNDORIA</span>
+            <span style={{ width:5, height:5, borderRadius:"50%", background:"#00C896", animation:"pulse 2s ease-in-out infinite", flexShrink:0, display:"block" }} />
           </div>
           <div style={{ display:"flex", gap:8 }}>
             {[["◻","X"],["○","TG"],["◁","DC"]].map(([icon, label], i) => (
