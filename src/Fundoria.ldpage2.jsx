@@ -276,7 +276,7 @@ function RiskGauge({ pct, color, label }) {
           style={{ transition:"stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1)" }} />
         <text x={cx} y={cy - 4} textAnchor="middle" fill={color} fontSize="11" fontFamily="'Bebas Neue',sans-serif" letterSpacing="1">{pct}%</text>
       </svg>
-      <Mono style={{ fontSize:8, color:"#3a5070", letterSpacing:"0.1em", display:"block", marginTop:-6 }}>{label}</Mono>
+      <Mono style={{ fontSize:8, color:"#607a94", letterSpacing:"0.1em", display:"block", marginTop:-6 }}>{label}</Mono>
     </div>
   );
 }
@@ -312,7 +312,7 @@ function FlowDiagram() {
 
   return (
     <div style={{ padding:"36px 40px", border:"1px solid #0e1a2e" }}>
-      <Mono style={{ fontSize:10, color:"#3a5070", letterSpacing:"0.14em", display:"block", marginBottom:28 }}>
+      <Mono style={{ fontSize:10, color:"#607a94", letterSpacing:"0.14em", display:"block", marginBottom:28 }}>
         PROTOCOL SIGNAL FLOW — VERIFIABLE ON-CHAIN ROUTING FROM CAPITAL CONTAINER TO EXECUTION VENUE.
       </Mono>
       <svg width="100%" viewBox="0 0 640 140" style={{ overflow:"visible" }}>
@@ -327,7 +327,7 @@ function FlowDiagram() {
           const x1 = n.x + R, x2 = NODES[i + 1].x - R;
           return (
             <g key={i}>
-              <line x1={x1} y1={Y} x2={x2} y2={Y} stroke="#1a2d46" strokeWidth={1} />
+              <line x1={x1} y1={Y} x2={x2} y2={Y} stroke="#304a64" strokeWidth={1} />
               <line x1={x1} y1={Y} x2={x2} y2={Y}
                 stroke="url(#lineGrad)" strokeWidth={1.5}
                 strokeDasharray="5 18"
@@ -345,8 +345,8 @@ function FlowDiagram() {
                 <Icon name={n.icon} size={16} color={n.color} />
               </div>
             </foreignObject>
-            <text x={n.x} y={Y + R + 14} textAnchor="middle" fill="#dce8ff" fontSize="9" fontFamily="'Space Mono',monospace" letterSpacing="1">{n.label}</text>
-            <text x={n.x} y={Y + R + 24} textAnchor="middle" fill="#2a3f58" fontSize="7" fontFamily="'Space Mono',monospace">{n.sub}</text>
+            <text x={n.x} y={Y + R + 14} textAnchor="middle" fill="#eaf2ff" fontSize="9" fontFamily="'Space Mono',monospace" letterSpacing="1">{n.label}</text>
+            <text x={n.x} y={Y + R + 24} textAnchor="middle" fill="#4a6480" fontSize="7" fontFamily="'Space Mono',monospace">{n.sub}</text>
             {i === 0 && (
               <circle cx={n.x} cy={Y} r={R + 10} fill="none" stroke={BLUE} strokeWidth={1}
                 style={{ animation:"pulseRing 2.5s ease-out infinite" }} />
@@ -365,7 +365,7 @@ function Ticker() {
     <div style={{ background:"#04080f", borderBottom:"1px solid #0e1a2e", overflow:"hidden", height:34, position:"relative" }}>
       <div style={{ display:"flex", gap:48, position:"absolute", top:0, left:0, height:"100%", alignItems:"center", animation:"ticker 30s linear infinite", whiteSpace:"nowrap" }}>
         {items.map((t, i) => (
-          <Mono key={i} style={{ fontSize:10, letterSpacing:"0.12em", color:"#3a5070" }}>
+          <Mono key={i} style={{ fontSize:10, letterSpacing:"0.12em", color:"#607a94" }}>
             <span style={{ color:BLUE, marginRight:10 }}>◦</span>{t}
           </Mono>
         ))}
@@ -387,14 +387,14 @@ function Nav() {
     <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, height:58, display:"flex", alignItems:"center", padding:"0 32px", justifyContent:"space-between", background:scrolled?"rgba(2,5,12,0.96)":"transparent", backdropFilter:scrolled?"blur(14px)":"none", borderBottom:scrolled?"1px solid #0e1a2e":"1px solid transparent", transition:"all .3s" }}>
       <div style={{ display:"flex", alignItems:"center", gap:10 }}>
         <div style={{ width:24, height:24, borderRadius:4, background:GRAD }} />
-        <Mono style={{ fontSize:20, color:"#dce8ff", letterSpacing:"0.08em", fontFamily:"'Bebas Neue',sans-serif" }}>Fundoria</Mono>
+        <Mono style={{ fontSize:20, color:"#eaf2ff", letterSpacing:"0.08em", fontFamily:"'Bebas Neue',sans-serif" }}>Fundoria</Mono>
         <span style={{ width:6, height:6, borderRadius:"50%", background:GREEN, animation:"pulse 2s infinite" }} />
       </div>
       <div style={{ display:"flex", gap:32, alignItems:"center" }}>
         {[["vision","VISION"],["protocol-section","PROTOCOL"],["rewards-section","REWARDS"],["token-section","TOKEN"],["faq-section","FAQ"]].map(([id, label]) => (
-          <button key={id} onClick={() => go(id)} style={{ background:"transparent", border:"none", color:"#3a5070", fontSize:10, fontFamily:"'Space Mono',monospace", letterSpacing:"0.12em", cursor:"pointer", transition:"color .2s" }}
-            onMouseEnter={e => e.target.style.color = "#dce8ff"}
-            onMouseLeave={e => e.target.style.color = "#3a5070"}>{label}</button>
+          <button key={id} onClick={() => go(id)} style={{ background:"transparent", border:"none", color:"#607a94", fontSize:10, fontFamily:"'Space Mono',monospace", letterSpacing:"0.12em", cursor:"pointer", transition:"color .2s" }}
+            onMouseEnter={e => e.target.style.color = "#eaf2ff"}
+            onMouseLeave={e => e.target.style.color = "#607a94"}>{label}</button>
         ))}
         <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.12em", cursor:"pointer" }}>WHITEPAPER</Mono>
       </div>
@@ -430,19 +430,19 @@ function Hero() {
           <div style={{ display:"flex", gap:10, justifyContent:"center", marginBottom:32, flexWrap:"wrap" }}>
             <Tag color={BLUE}>PRE-LAUNCH</Tag>
             <Tag color={GREEN}>HYPEREVM NATIVE</Tag>
-            <Tag color="#3a5070">PHASE 01: ACTIVE</Tag>
+            <Tag color="#607a94">PHASE 01: ACTIVE</Tag>
           </div>
         </Fade>
         <Fade delay={0.1}>
           <Mono style={{ fontSize:11, color:BLUE, letterSpacing:"0.2em", display:"block", marginBottom:14 }}>[ SYSTEM_INIT ]</Mono>
-          <h1 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(56px,10vw,116px)", lineHeight:0.88, margin:0, color:"#dce8ff", letterSpacing:"0.02em" }}>
+          <h1 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(56px,10vw,116px)", lineHeight:0.88, margin:0, color:"#eaf2ff", letterSpacing:"0.02em" }}>
             {scramble("PROTOCOL-NATIVE", Math.min(15, tick - 5))}
             <br />
             <GT>{scramble("CAPITAL MARKETS", Math.min(15, tick - 20))}</GT>
           </h1>
         </Fade>
         <Fade delay={0.25}>
-          <p style={{ fontSize:16, color:"#4a6484", maxWidth:560, margin:"28px auto 0", lineHeight:1.8, fontStyle:"italic" }}>
+          <p style={{ fontSize:16, color:"#8aaccc", maxWidth:560, margin:"28px auto 0", lineHeight:1.8, fontStyle:"italic" }}>
             Fundoria is a non-custodial capital markets protocol on HyperEVM — where trader skill is verified on-chain, risk is enforced by smart contracts, and capital allocation is fully programmable.
           </p>
         </Fade>
@@ -455,9 +455,9 @@ function Hero() {
               WHITELIST NOW
             </button>
             <button onClick={() => document.getElementById("protocol-section").scrollIntoView({ behavior:"smooth" })}
-              style={{ background:"transparent", border:"1px solid #1a2d46", padding:"14px 36px", borderRadius:4, color:"#6080a0", fontSize:12, fontFamily:"'Space Mono',monospace", letterSpacing:"0.1em", cursor:"pointer", transition:"all .25s" }}
-              onMouseEnter={e => { e.target.style.borderColor="#3a5070"; e.target.style.color="#dce8ff"; }}
-              onMouseLeave={e => { e.target.style.borderColor="#1a2d46"; e.target.style.color="#6080a0"; }}>
+              style={{ background:"transparent", border:"1px solid #1a2d46", padding:"14px 36px", borderRadius:4, color:"#9ab4cc", fontSize:12, fontFamily:"'Space Mono',monospace", letterSpacing:"0.1em", cursor:"pointer", transition:"all .25s" }}
+              onMouseEnter={e => { e.target.style.borderColor="#607a94"; e.target.style.color="#eaf2ff"; }}
+              onMouseLeave={e => { e.target.style.borderColor="#304a64"; e.target.style.color="#9ab4cc"; }}>
               READ DOCUMENTATION
             </button>
           </div>
@@ -469,14 +469,14 @@ function Hero() {
             {stats.map(([v, l], i) => (
               <div key={i} style={{ background:"#04080f", padding:"18px 8px", textAlign:"center", position:"relative", overflow:"hidden" }}>
                 <div style={{ position:"absolute", bottom:0, left:0, right:0, height:1, background:GRAD, opacity:0.4 }} />
-                <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:20, color:"#dce8ff", margin:"0 0 4px", letterSpacing:"0.06em" }}>{v}</p>
-                <p style={{ fontSize:9, color:"#2a3f58", fontFamily:"'Space Mono',monospace", letterSpacing:"0.12em", margin:0 }}>{l}</p>
+                <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:20, color:"#eaf2ff", margin:"0 0 4px", letterSpacing:"0.06em" }}>{v}</p>
+                <p style={{ fontSize:9, color:"#4a6480", fontFamily:"'Space Mono',monospace", letterSpacing:"0.12em", margin:0 }}>{l}</p>
               </div>
             ))}
           </div>
         </Fade>
         <Fade delay={0.65}>
-          <Mono style={{ fontSize:11, color:"#2a3f58", display:"block", marginTop:32, letterSpacing:"0.08em", animation:"bounce 2s ease-in-out infinite" }}>SCROLL ↓</Mono>
+          <Mono style={{ fontSize:11, color:"#4a6480", display:"block", marginTop:32, letterSpacing:"0.08em", animation:"bounce 2s ease-in-out infinite" }}>SCROLL ↓</Mono>
         </Fade>
       </div>
     </section>
@@ -490,10 +490,10 @@ function ProtocolLogic() {
     <section id="protocol-section" style={{ padding:"120px 24px", maxWidth:1100, margin:"0 auto" }}>
       <Fade>
         <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>PROTOCOL LOGIC</Mono>
-        <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(42px,6vw,76px)", color:"#dce8ff", margin:"0 0 16px", lineHeight:0.9 }}>
+        <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(42px,6vw,76px)", color:"#eaf2ff", margin:"0 0 16px", lineHeight:0.9 }}>
           NON-CUSTODIAL.<br /><GT>NOT DISCRETIONARY.</GT>
         </h2>
-        <p style={{ fontSize:14, color:"#4a6484", maxWidth:460, lineHeight:1.75 }}>
+        <p style={{ fontSize:14, color:"#8aaccc", maxWidth:460, lineHeight:1.75 }}>
           Every constraint and settlement is enforced by code — not human gatekeepers. Fundoria coordinates capital with zero intermediary trust.
         </p>
       </Fade>
@@ -501,18 +501,18 @@ function ProtocolLogic() {
       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:1, marginTop:56, background:"#0a1220" }}>
         {MODULES.map((m, i) => (
           <Fade key={i} delay={i * 0.06}>
-            <GradientCard accent={active === i ? BLUE : "#1a2d46"} onClick={() => setActive(active === i ? null : i)}
+            <GradientCard accent={active === i ? BLUE : "#304a64"} onClick={() => setActive(active === i ? null : i)}
               style={{ borderRadius:0, border:"none", background: active===i
                 ? `linear-gradient(#081428,#081428) padding-box, linear-gradient(135deg,${BLUE},${GREEN}) border-box`
                 : `linear-gradient(#04080f,#04080f) padding-box, linear-gradient(135deg,#1a2d4630,#0a122060) border-box`,
               }}>
               <div style={{ padding:"28px 30px" }}>
-                <Mono style={{ fontSize:9, color:active===i?GREEN:"#2a3f58", letterSpacing:"0.14em", display:"block", marginBottom:6 }}>LOGIC_MODULE::{m.id}</Mono>
-                <p style={{ fontSize:13, color:active===i?"#dce8ff":"#6080a0", fontFamily:"'Space Mono',monospace", letterSpacing:"0.06em", margin:"0 0 10px", fontWeight:"bold" }}>[{active===i?"−":"+"}] {m.label}</p>
+                <Mono style={{ fontSize:9, color:active===i?GREEN:"#4a6480", letterSpacing:"0.14em", display:"block", marginBottom:6 }}>LOGIC_MODULE::{m.id}</Mono>
+                <p style={{ fontSize:13, color:active===i?"#eaf2ff":"#9ab4cc", fontFamily:"'Space Mono',monospace", letterSpacing:"0.06em", margin:"0 0 10px", fontWeight:"bold" }}>[{active===i?"−":"+"}] {m.label}</p>
                 <div style={{ maxHeight:active===i?200:0, opacity:active===i?1:0, overflow:"hidden", transition:"all .35s ease" }}>
-                  <p style={{ fontSize:13, color:"#4a6484", lineHeight:1.65, margin:0 }}>{m.desc}</p>
+                  <p style={{ fontSize:13, color:"#8aaccc", lineHeight:1.65, margin:0 }}>{m.desc}</p>
                 </div>
-                {active!==i && <p style={{ fontSize:13, color:"#2a3f58", margin:0, lineHeight:1.5 }}>{m.desc.slice(0, 60)}…</p>}
+                {active!==i && <p style={{ fontSize:13, color:"#4a6480", margin:0, lineHeight:1.5 }}>{m.desc.slice(0, 60)}…</p>}
               </div>
             </GradientCard>
           </Fade>
@@ -529,10 +529,10 @@ function ProtocolLogic() {
         <div style={{ marginTop:80, display:"grid", gridTemplateColumns:"1fr 1fr", gap:40, alignItems:"center" }}>
           <div>
             <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:16 }}>PROTOCOL VISION</Mono>
-            <h3 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(32px,4vw,52px)", color:"#dce8ff", margin:"0 0 16px", lineHeight:0.95 }}>
+            <h3 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(32px,4vw,52px)", color:"#eaf2ff", margin:"0 0 16px", lineHeight:0.95 }}>
               PROTOCOL-NATIVE<br /><GT>capital markets.</GT>
             </h3>
-            <p style={{ fontSize:14, color:"#4a6484", lineHeight:1.75 }}>
+            <p style={{ fontSize:14, color:"#8aaccc", lineHeight:1.75 }}>
               Fundoria establishes a protocol-controlled infrastructure that coordinates traders and capital within a unified, rule-enforced system. Trading skill becomes a verifiable on-chain primitive, independent of custody.
             </p>
           </div>
@@ -548,7 +548,7 @@ function ProtocolLogic() {
                   onMouseEnter={e => e.currentTarget.style.borderColor = `${BLUE}80`}
                   onMouseLeave={e => e.currentTarget.style.borderColor = `${BLUE}20`}>
                   <Mono style={{ fontSize:9, color:GREEN, letterSpacing:"0.1em", paddingTop:2, minWidth:44 }}>{code}</Mono>
-                  <span style={{ fontSize:13, color:"#6080a0", lineHeight:1.55 }}>{text}</span>
+                  <span style={{ fontSize:13, color:"#9ab4cc", lineHeight:1.55 }}>{text}</span>
                 </div>
               </Fade>
             ))}
@@ -570,10 +570,10 @@ function Architecture() {
       <div style={{ maxWidth:1100, margin:"0 auto" }}>
         <Fade>
           <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>ARCHITECTURE</Mono>
-          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5.5vw,68px)", color:"#dce8ff", margin:"0 0 12px", lineHeight:0.92 }}>
+          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5.5vw,68px)", color:"#eaf2ff", margin:"0 0 12px", lineHeight:0.92 }}>
             PROTOCOL COMPONENTS &<br /><GT>EXECUTION FLOW.</GT>
           </h2>
-          <p style={{ fontSize:14, color:"#4a6484", maxWidth:480, lineHeight:1.75 }}>
+          <p style={{ fontSize:14, color:"#8aaccc", maxWidth:480, lineHeight:1.75 }}>
             Fundoria separates capital custody, execution, and risk enforcement into verifiable, auditable components.
           </p>
         </Fade>
@@ -583,12 +583,12 @@ function Architecture() {
             {ARCH_STAGES.map((s, i) => (
               <div key={i} onClick={() => setActive(i)}
                 style={{ padding:"24px", background:active===i?"#081428":"#04080f", borderTop:`2px solid ${active===i?BLUE:"transparent"}`, cursor:"pointer", transition:"all .25s" }}>
-                <div style={{ width:36, height:36, borderRadius:"50%", border:`1px solid ${active===i?BLUE:"#1a2d46"}`, display:"flex", alignItems:"center", justifyContent:"center", marginBottom:12, transition:"all .25s", background:active===i?`${BLUE}15`:"transparent" }}>
-                  <Icon name={s.icon} size={16} color={active===i?BLUE:"#3a5070"} />
+                <div style={{ width:36, height:36, borderRadius:"50%", border:`1px solid ${active===i?BLUE:"#304a64"}`, display:"flex", alignItems:"center", justifyContent:"center", marginBottom:12, transition:"all .25s", background:active===i?`${BLUE}15`:"transparent" }}>
+                  <Icon name={s.icon} size={16} color={active===i?BLUE:"#607a94"} />
                 </div>
-                <Mono style={{ fontSize:9, color:active===i?GREEN:"#2a3f58", letterSpacing:"0.12em", display:"block", marginBottom:6 }}>STAGE::{s.id} / {s.layer}</Mono>
-                <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:18, color:active===i?"#dce8ff":"#6080a0", letterSpacing:"0.06em", margin:"0 0 4px", transition:"color .25s" }}>{s.title}</p>
-                <Mono style={{ fontSize:10, color:"#3a5070", letterSpacing:"0.08em", display:"block" }}>{s.sub}</Mono>
+                <Mono style={{ fontSize:9, color:active===i?GREEN:"#4a6480", letterSpacing:"0.12em", display:"block", marginBottom:6 }}>STAGE::{s.id} / {s.layer}</Mono>
+                <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:18, color:active===i?"#eaf2ff":"#9ab4cc", letterSpacing:"0.06em", margin:"0 0 4px", transition:"color .25s" }}>{s.title}</p>
+                <Mono style={{ fontSize:10, color:"#607a94", letterSpacing:"0.08em", display:"block" }}>{s.sub}</Mono>
               </div>
             ))}
           </div>
@@ -598,7 +598,7 @@ function Architecture() {
           <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, background:"#0e1a2e" }}>
             {["↑ CAPITAL_IN","↑ ORACLE_VALIDATED","↑ SETTLEMENT","↑ HYPERLIQUID_EXEC"].map((l, i) => (
               <div key={i} style={{ padding:"8px 24px", background:"#04080f" }}>
-                <Mono style={{ fontSize:9, color:i===active?BLUE:"#2a3f58", letterSpacing:"0.08em", transition:"color .25s" }}>{l}</Mono>
+                <Mono style={{ fontSize:9, color:i===active?BLUE:"#4a6480", letterSpacing:"0.08em", transition:"color .25s" }}>{l}</Mono>
               </div>
             ))}
           </div>
@@ -611,8 +611,8 @@ function Architecture() {
             </div>
             <div>
               <Mono style={{ fontSize:9, color:GREEN, letterSpacing:"0.12em", display:"block", marginBottom:6 }}>STAGE::{ARCH_STAGES[active].id} / {ARCH_STAGES[active].layer}</Mono>
-              <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, color:"#dce8ff", letterSpacing:"0.06em", margin:"0 0 8px" }}>{ARCH_STAGES[active].title}</p>
-              <p style={{ fontSize:13, color:"#4a6484", lineHeight:1.7, margin:0, maxWidth:640 }}>{ARCH_STAGES[active].desc}</p>
+              <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, color:"#eaf2ff", letterSpacing:"0.06em", margin:"0 0 8px" }}>{ARCH_STAGES[active].title}</p>
+              <p style={{ fontSize:13, color:"#8aaccc", lineHeight:1.7, margin:0, maxWidth:640 }}>{ARCH_STAGES[active].desc}</p>
             </div>
           </div>
         </Fade>
@@ -620,7 +620,7 @@ function Architecture() {
         <Fade delay={0.25}>
           <div style={{ marginTop:40, padding:"28px 32px", background:"#030810", border:"1px solid #0e1a2e" }}>
             <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:20 }}>
-              <Mono style={{ fontSize:10, color:"#3a5070", letterSpacing:"0.12em" }}>TRACE_LOG :: STAGE_0{active + 1}</Mono>
+              <Mono style={{ fontSize:10, color:"#607a94", letterSpacing:"0.12em" }}>TRACE_LOG :: STAGE_0{active + 1}</Mono>
               <div style={{ display:"flex", alignItems:"center", gap:6 }}>
                 <span style={{ width:6, height:6, borderRadius:"50%", background:GREEN, display:"inline-block", animation:"pulse 1.5s infinite" }} />
                 <Mono style={{ fontSize:9, color:GREEN, letterSpacing:"0.1em" }}>LIVE</Mono>
@@ -628,8 +628,8 @@ function Architecture() {
             </div>
             {TRACE_LINES.map(([comment, code], i) => (
               <div key={i} style={{ marginBottom:10, opacity:i <= traceTick ? 1 : 0.15, transition:"opacity .5s" }}>
-                <Mono style={{ fontSize:11, color:"#2a3f58", display:"block" }}>{comment}</Mono>
-                <Mono style={{ fontSize:12, color:i === traceTick ? GREEN : "#4a6484", display:"block" }}>{code}{i === traceTick ? " █" : ""}</Mono>
+                <Mono style={{ fontSize:11, color:"#4a6480", display:"block" }}>{comment}</Mono>
+                <Mono style={{ fontSize:12, color:i === traceTick ? GREEN : "#8aaccc", display:"block" }}>{code}{i === traceTick ? " █" : ""}</Mono>
               </div>
             ))}
           </div>
@@ -649,10 +649,10 @@ function RiskSection() {
       <div style={{ maxWidth:1100, margin:"0 auto", display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center" }}>
         <Fade>
           <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>RISK CONTROLS</Mono>
-          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#dce8ff", margin:"0 0 20px", lineHeight:0.92 }}>
+          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#eaf2ff", margin:"0 0 20px", lineHeight:0.92 }}>
             RISK AS CODE.<br /><GT>NOT POLICY.</GT>
           </h2>
-          <p style={{ fontSize:14, color:"#4a6484", lineHeight:1.75, marginBottom:32 }}>
+          <p style={{ fontSize:14, color:"#8aaccc", lineHeight:1.75, marginBottom:32 }}>
             Constraints are enforced pre-execution through protocol-level gating. No manual overrides. No discretionary exceptions. Fundoria operates as a headless risk manager — rules are executable logic, not governance choices.
           </p>
           {RISK_ITEMS.map((r, i) => (
@@ -661,7 +661,7 @@ function RiskSection() {
                 <div style={{ width:20, height:20, borderRadius:"50%", border:`1px solid ${GREEN}40`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:1 }}>
                   <Icon name="check" size={10} color={GREEN} />
                 </div>
-                <span style={{ fontSize:13, color:"#6080a0", lineHeight:1.55 }}>{r.label}</span>
+                <span style={{ fontSize:13, color:"#9ab4cc", lineHeight:1.55 }}>{r.label}</span>
               </div>
             </Fade>
           ))}
@@ -670,7 +670,7 @@ function RiskSection() {
         <Fade delay={0.2}>
           <div style={{ border:"1px solid #0e1a2e", padding:"30px", fontFamily:"'Space Mono',monospace" }}>
             <div style={{ display:"flex", justifyContent:"space-between", marginBottom:24 }}>
-              <Mono style={{ fontSize:10, color:"#3a5070", letterSpacing:"0.12em" }}>SECURE_MONITOR_V1.07</Mono>
+              <Mono style={{ fontSize:10, color:"#607a94", letterSpacing:"0.12em" }}>SECURE_MONITOR_V1.07</Mono>
               <div style={{ display:"flex", alignItems:"center", gap:6 }}>
                 <span style={{ width:6, height:6, borderRadius:"50%", background:GREEN, animation:"pulse 1.5s infinite", display:"inline-block" }} />
                 <Mono style={{ fontSize:9, color:GREEN }}>ALIVE</Mono>
@@ -688,9 +688,9 @@ function RiskSection() {
             {RISK_METRICS.map(({ label, value, pct, status, color }, i) => (
               <div key={i} style={{ marginBottom:14 }}>
                 <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:5 }}>
-                  <Mono style={{ fontSize:10, color:"#3a5070", letterSpacing:"0.08em" }}>{label}</Mono>
+                  <Mono style={{ fontSize:10, color:"#607a94", letterSpacing:"0.08em" }}>{label}</Mono>
                   <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                    <Mono style={{ fontSize:12, color:"#dce8ff" }}>{value}</Mono>
+                    <Mono style={{ fontSize:12, color:"#eaf2ff" }}>{value}</Mono>
                     <span style={{ fontSize:8, color, border:`1px solid ${color}30`, padding:"2px 7px", borderRadius:2 }}>{status}</span>
                   </div>
                 </div>
@@ -699,12 +699,12 @@ function RiskSection() {
             ))}
 
             <div style={{ marginTop:20, padding:"12px 16px", background:"#081428", border:`1px solid ${BLUE}20` }}>
-              <Mono style={{ fontSize:9, color:"#3a5070", display:"block" }}>ABSOLUTE_LOSS_CEILING DD_THRESHOLD_01</Mono>
-              <Mono style={{ fontSize:13, color:"#dce8ff", display:"block", marginTop:4 }}>HARD_CAP: 15%</Mono>
-              <Mono style={{ fontSize:9, color:"#2a3f58", display:"block", marginTop:4 }}>Deterministic loss ceilings at sub-account level.</Mono>
+              <Mono style={{ fontSize:9, color:"#607a94", display:"block" }}>ABSOLUTE_LOSS_CEILING DD_THRESHOLD_01</Mono>
+              <Mono style={{ fontSize:13, color:"#eaf2ff", display:"block", marginTop:4 }}>HARD_CAP: 15%</Mono>
+              <Mono style={{ fontSize:9, color:"#4a6480", display:"block", marginTop:4 }}>Deterministic loss ceilings at sub-account level.</Mono>
             </div>
 
-            <Mono style={{ fontSize:9, color:"#1a2d46", display:"block", marginTop:16 }}>ENFORCE_ENGINE::V.ALPHA · SECURE_LINK: {blink ? "█" : "░"}</Mono>
+            <Mono style={{ fontSize:9, color:"#304a64", display:"block", marginTop:16 }}>ENFORCE_ENGINE::V.ALPHA · SECURE_LINK: {blink ? "█" : "░"}</Mono>
           </div>
         </Fade>
       </div>
@@ -719,10 +719,10 @@ function Rewards() {
       <div style={{ maxWidth:1100, margin:"0 auto" }}>
         <Fade>
           <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>REWARDS & INCENTIVES</Mono>
-          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#dce8ff", margin:"0 0 12px", lineHeight:0.92 }}>
+          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#eaf2ff", margin:"0 0 12px", lineHeight:0.92 }}>
             PERFORMANCE-DRIVEN<br /><GT>CAPITAL ACCESS.</GT>
           </h2>
-          <p style={{ fontSize:14, color:"#4a6484", maxWidth:520, lineHeight:1.75 }}>
+          <p style={{ fontSize:14, color:"#8aaccc", maxWidth:520, lineHeight:1.75 }}>
             Capital access and scaling are determined algorithmically — based on observed performance and compliance with enforced risk constraints.
           </p>
         </Fade>
@@ -739,10 +739,10 @@ function Rewards() {
                   <div style={{ width:44, height:44, borderRadius:"50%", border:`1px solid ${r.color}40`, display:"flex", alignItems:"center", justifyContent:"center", marginBottom:20, background:`${r.color}10` }}>
                     <Icon name={r.icon} size={18} color={r.color} />
                   </div>
-                  <Mono style={{ fontSize:10, color:"#3a5070", letterSpacing:"0.14em", display:"block", marginBottom:8 }}>{r.label}</Mono>
-                  <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:40, color:"#dce8ff", margin:"0 0 2px", letterSpacing:"0.06em" }}>{r.value}</p>
+                  <Mono style={{ fontSize:10, color:"#607a94", letterSpacing:"0.14em", display:"block", marginBottom:8 }}>{r.label}</Mono>
+                  <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:40, color:"#eaf2ff", margin:"0 0 2px", letterSpacing:"0.06em" }}>{r.value}</p>
                   <Mono style={{ fontSize:9, color:r.color, letterSpacing:"0.1em", display:"block", marginBottom:14 }}>{r.sub}</Mono>
-                  <p style={{ fontSize:13, color:"#4a6484", lineHeight:1.65, margin:0 }}>{r.desc}</p>
+                  <p style={{ fontSize:13, color:"#8aaccc", lineHeight:1.65, margin:0 }}>{r.desc}</p>
                 </div>
               </GradientCard>
             </Fade>
@@ -754,7 +754,7 @@ function Rewards() {
             {[["TRADERS","Attract capital via verified performance"],["CAPITAL","Incentivises disciplined risk-adjusted returns"],["PERFORMANCE","Increases institutional participation"],["GOVERNANCE","Evolves risk and allocation frameworks"]].map(([title, desc], i) => (
               <div key={i}>
                 <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.12em", display:"block", marginBottom:8 }}>{title}</Mono>
-                <p style={{ fontSize:12, color:"#3a5070", lineHeight:1.6, margin:0 }}>{desc}</p>
+                <p style={{ fontSize:12, color:"#607a94", lineHeight:1.6, margin:0 }}>{desc}</p>
               </div>
             ))}
           </div>
@@ -878,13 +878,13 @@ function TokenCoin({ hovered, setHovered }) {
 
         {/* $FND text */}
         <text x={cx} y={cy - 12} textAnchor="middle"
-          fontFamily="'Bebas Neue',sans-serif" fontSize="38" fill="#dce8ff"
+          fontFamily="'Bebas Neue',sans-serif" fontSize="38" fill="#eaf2ff"
           letterSpacing="3">$FND</text>
         <text x={cx} y={cy + 10} textAnchor="middle"
-          fontFamily="'Space Mono',monospace" fontSize="8" fill="#3a5070"
+          fontFamily="'Space Mono',monospace" fontSize="8" fill="#607a94"
           letterSpacing="2">COORDINATION TOKEN</text>
         <text x={cx} y={cy + 26} textAnchor="middle"
-          fontFamily="'Space Mono',monospace" fontSize="8" fill="#2a3f58"
+          fontFamily="'Space Mono',monospace" fontSize="8" fill="#4a6480"
           letterSpacing="1">1,000,000,000 SUPPLY</text>
 
         {/* Live dot */}
@@ -908,10 +908,10 @@ function Token() {
       <div style={{ maxWidth:1200, margin:"0 auto", position:"relative", zIndex:1 }}>
         <Fade>
           <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>TOKEN ARCHITECTURE</Mono>
-          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#dce8ff", margin:"0 0 12px", lineHeight:0.92 }}>
+          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#eaf2ff", margin:"0 0 12px", lineHeight:0.92 }}>
             THE $FND<br /><GT>COORDINATION UTILITY LAYER.</GT>
           </h2>
-          <p style={{ fontSize:14, color:"#4a6484", maxWidth:520, lineHeight:1.75, marginTop:16 }}>
+          <p style={{ fontSize:14, color:"#8aaccc", maxWidth:520, lineHeight:1.75, marginTop:16 }}>
             $FND aligns traders, capital providers, and contributors through native coordination mechanisms and verifiable access rules.
           </p>
         </Fade>
@@ -923,7 +923,7 @@ function Token() {
 
             {/* Allocation breakdown */}
             <div style={{ flex:1, minWidth:300 }}>
-              <Mono style={{ fontSize:10, color:"#3a5070", letterSpacing:"0.14em", display:"block", marginBottom:24 }}>
+              <Mono style={{ fontSize:10, color:"#607a94", letterSpacing:"0.14em", display:"block", marginBottom:24 }}>
                 TOKEN ALLOCATION — SUPPLY: 1,000,000,000 $FND
               </Mono>
               {TOKEN_ALLOC.map((t, i) => (
@@ -936,9 +936,9 @@ function Token() {
                         boxShadow:hovered===i?`0 0 12px ${t.color}, 0 0 24px ${t.color}40`:"none",
                         transition:"box-shadow .3s",
                       }} />
-                      <Mono style={{ fontSize:12, color:hovered===i?"#dce8ff":"#6080a0", transition:"color .2s" }}>{t.label}</Mono>
+                      <Mono style={{ fontSize:12, color:hovered===i?"#eaf2ff":"#9ab4cc", transition:"color .2s" }}>{t.label}</Mono>
                     </div>
-                    <Mono style={{ fontSize:16, color:"#dce8ff", fontWeight:"bold", letterSpacing:"0.04em" }}>{t.pct}%</Mono>
+                    <Mono style={{ fontSize:16, color:"#eaf2ff", fontWeight:"bold", letterSpacing:"0.04em" }}>{t.pct}%</Mono>
                   </div>
                   <AnimatedBar pct={t.pct} color={t.color} delay={i * 0.1} />
                 </div>
@@ -949,8 +949,8 @@ function Token() {
                 {[["1B","TOTAL SUPPLY"],["40%","COMMUNITY"],["PHASE 1","ACTIVE"]].map(([v, l], i) => (
                   <div key={i} style={{ background:"#04080f", padding:"16px", textAlign:"center", position:"relative", overflow:"hidden" }}>
                     <div style={{ position:"absolute", bottom:0, left:0, right:0, height:1, background:GRAD, opacity:0.3 }} />
-                    <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, color:"#dce8ff", margin:"0 0 3px", letterSpacing:"0.06em" }}>{v}</p>
-                    <Mono style={{ fontSize:8, color:"#2a3f58", letterSpacing:"0.12em", display:"block" }}>{l}</Mono>
+                    <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, color:"#eaf2ff", margin:"0 0 3px", letterSpacing:"0.06em" }}>{v}</p>
+                    <Mono style={{ fontSize:8, color:"#4a6480", letterSpacing:"0.12em", display:"block" }}>{l}</Mono>
                   </div>
                 ))}
               </div>
@@ -970,7 +970,7 @@ function Token() {
                     </div>
                     <Mono style={{ fontSize:10, color:i===1?GREEN:BLUE, letterSpacing:"0.12em" }}>{c.label}</Mono>
                   </div>
-                  <p style={{ fontSize:13, color:"#4a6484", lineHeight:1.65, margin:0 }}>{c.desc}</p>
+                  <p style={{ fontSize:13, color:"#8aaccc", lineHeight:1.65, margin:0 }}>{c.desc}</p>
                 </div>
               </GradientCard>
             </Fade>
@@ -991,7 +991,7 @@ function Token() {
                 onMouseLeave={e => e.currentTarget.style.background="#04080f"}>
                 <div style={{ position:"absolute", top:0, left:0, right:0, height:1, background:f.color, opacity:0.4 }} />
                 <Mono style={{ fontSize:9, color:BLUE, letterSpacing:"0.12em", display:"block", marginBottom:6 }}>$FND</Mono>
-                <Mono style={{ fontSize:11, color:"#dce8ff", letterSpacing:"0.08em", display:"block", marginBottom:4 }}>{f.label}</Mono>
+                <Mono style={{ fontSize:11, color:"#eaf2ff", letterSpacing:"0.08em", display:"block", marginBottom:4 }}>{f.label}</Mono>
                 <Mono style={{ fontSize:9, color:f.color, letterSpacing:"0.08em", display:"block" }}>{f.sub}</Mono>
               </div>
             ))}
@@ -1001,7 +1001,7 @@ function Token() {
         {/* Disclosure */}
         <Fade delay={0.1}>
           <div style={{ marginTop:32, padding:"20px 28px", border:"1px solid #0a1220" }}>
-            <Mono style={{ fontSize:9, color:"#2a3f58", letterSpacing:"0.08em", lineHeight:1.7, display:"block" }}>
+            <Mono style={{ fontSize:9, color:"#4a6480", letterSpacing:"0.08em", lineHeight:1.7, display:"block" }}>
               [ GLOBAL_DISCLOSURE ] — $FND IS A COORDINATION UTILITY TOKEN. IT IS NOT AN INVESTMENT CONTRACT, SECURITY, OR CLAIM ON PROTOCOL REVENUE OR TRADER PERFORMANCE. ALLOCATION FIGURES ARE ILLUSTRATIVE AND SUBJECT TO CHANGE.
             </Mono>
           </div>
@@ -1018,10 +1018,10 @@ function Participation() {
       <div style={{ maxWidth:1100, margin:"0 auto" }}>
         <Fade>
           <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>PARTICIPATION</Mono>
-          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#dce8ff", margin:"0 0 8px", lineHeight:0.92 }}>
+          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#eaf2ff", margin:"0 0 8px", lineHeight:0.92 }}>
             POSITION YOUR SKILL<br /><GT>AS INFRASTRUCTURE.</GT>
           </h2>
-          <Mono style={{ fontSize:11, color:"#3a5070", letterSpacing:"0.1em", display:"block" }}>No discretionary gates. Phased onboarding active.</Mono>
+          <Mono style={{ fontSize:11, color:"#607a94", letterSpacing:"0.1em", display:"block" }}>No discretionary gates. Phased onboarding active.</Mono>
         </Fade>
 
         <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:16, marginTop:56 }}>
@@ -1035,17 +1035,17 @@ function Participation() {
                     </div>
                     <div>
                       <Mono style={{ fontSize:9, color:c.accent, letterSpacing:"0.14em", display:"block" }}>{c.id}</Mono>
-                      <Mono style={{ fontSize:9, color:"#2a3f58", letterSpacing:"0.1em", display:"block" }}>class / {c.class}</Mono>
+                      <Mono style={{ fontSize:9, color:"#4a6480", letterSpacing:"0.1em", display:"block" }}>class / {c.class}</Mono>
                     </div>
                   </div>
-                  <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, color:"#dce8ff", letterSpacing:"0.06em", margin:"0 0 4px" }}>{c.tag}</p>
-                  <Mono style={{ fontSize:10, color:"#2a3f58", letterSpacing:"0.08em", display:"block", marginBottom:22 }}>{c.settle}</Mono>
+                  <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, color:"#eaf2ff", letterSpacing:"0.06em", margin:"0 0 4px" }}>{c.tag}</p>
+                  <Mono style={{ fontSize:10, color:"#4a6480", letterSpacing:"0.08em", display:"block", marginBottom:22 }}>{c.settle}</Mono>
                   {c.items.map((item, j) => (
                     <div key={j} style={{ display:"flex", gap:12, marginBottom:11, alignItems:"flex-start" }}>
                       <div style={{ width:16, height:16, borderRadius:"50%", border:`1px solid ${c.accent}30`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:1 }}>
                         <Icon name="check" size={8} color={c.accent} />
                       </div>
-                      <span style={{ fontSize:13, color:"#4a6484", lineHeight:1.55 }}>{item}</span>
+                      <span style={{ fontSize:13, color:"#8aaccc", lineHeight:1.55 }}>{item}</span>
                     </div>
                   ))}
                   <button onClick={() => document.getElementById("whitelist-section").scrollIntoView({ behavior:"smooth" })}
@@ -1071,10 +1071,10 @@ function InstitutionalGateway() {
       <div style={{ maxWidth:1100, margin:"0 auto" }}>
         <Fade>
           <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>INSTITUTIONAL GATEWAY</Mono>
-          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#dce8ff", margin:"0 0 12px", lineHeight:0.92 }}>
+          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#eaf2ff", margin:"0 0 12px", lineHeight:0.92 }}>
             PROTOCOL<br /><GT>INTEGRATIONS.</GT>
           </h2>
-          <p style={{ fontSize:14, color:"#4a6484", maxWidth:520, lineHeight:1.75 }}>
+          <p style={{ fontSize:14, color:"#8aaccc", maxWidth:520, lineHeight:1.75 }}>
             Fundoria provides institution-grade connectivity for high-throughput strategies, secure treasury scaling, and verifiable performance reporting.
           </p>
         </Fade>
@@ -1087,7 +1087,7 @@ function InstitutionalGateway() {
                   <Icon name="shield" size={20} color={BLUE} />
                 </div>
                 <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.14em", display:"block", marginBottom:12 }}>COMPLIANCE READY</Mono>
-                <p style={{ fontSize:13, color:"#4a6484", lineHeight:1.7, margin:0 }}>
+                <p style={{ fontSize:13, color:"#8aaccc", lineHeight:1.7, margin:0 }}>
                   Verifiable on-chain audit trails and rule-enforced risk parameters for institutional mandates. Every allocation decision is attributable, reproducible, and checkpointed on-chain.
                 </p>
               </div>
@@ -1100,7 +1100,7 @@ function InstitutionalGateway() {
                   <Icon name="bolt" size={20} color={GREEN} />
                 </div>
                 <Mono style={{ fontSize:10, color:GREEN, letterSpacing:"0.14em", display:"block", marginBottom:12 }}>CLEAN LIQUIDITY</Mono>
-                <p style={{ fontSize:13, color:"#4a6484", lineHeight:1.7, margin:0 }}>
+                <p style={{ fontSize:13, color:"#8aaccc", lineHeight:1.7, margin:0 }}>
                   Direct settlement on HyperEVM with non-custodial capital protection at every execution layer. No counterparty custody risk. No discretionary override path.
                 </p>
               </div>
@@ -1110,8 +1110,8 @@ function InstitutionalGateway() {
 
         <Fade delay={0.2}>
           <div style={{ marginTop:16, background:"#04080f", padding:"40px", border:"1px solid #0e1a2e" }}>
-            <Mono style={{ fontSize:10, color:"#3a5070", letterSpacing:"0.14em", display:"block", marginBottom:16 }}>INSTITUTIONAL ONBOARDING</Mono>
-            <h3 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:28, color:"#dce8ff", margin:"0 0 12px", letterSpacing:"0.06em" }}>
+            <Mono style={{ fontSize:10, color:"#607a94", letterSpacing:"0.14em", display:"block", marginBottom:16 }}>INSTITUTIONAL ONBOARDING</Mono>
+            <h3 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:28, color:"#eaf2ff", margin:"0 0 12px", letterSpacing:"0.06em" }}>
               DISCUSS CUSTOM MANDATES, API ACCESS, OR DAO TREASURY INTEGRATIONS WITH OUR CONTRIBUTORS.
             </h3>
             <div style={{ display:"flex", gap:16, marginTop:24, flexWrap:"wrap" }}>
@@ -1121,9 +1121,9 @@ function InstitutionalGateway() {
                 onMouseLeave={e => { e.target.style.opacity="1"; e.target.style.transform="translateY(0)"; }}>
                 REQUEST INSTITUTIONAL ACCESS
               </button>
-              <a href="mailto:PARTNERS@FUNDORIA.IO" style={{ display:"flex", alignItems:"center", padding:"12px 28px", border:"1px solid #1a2d46", borderRadius:3, color:"#6080a0", fontSize:11, fontFamily:"'Space Mono',monospace", letterSpacing:"0.1em", textDecoration:"none", transition:"all .25s" }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor="#3a5070"; e.currentTarget.style.color="#dce8ff"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor="#1a2d46"; e.currentTarget.style.color="#6080a0"; }}>
+              <a href="mailto:PARTNERS@FUNDORIA.IO" style={{ display:"flex", alignItems:"center", padding:"12px 28px", border:"1px solid #1a2d46", borderRadius:3, color:"#9ab4cc", fontSize:11, fontFamily:"'Space Mono',monospace", letterSpacing:"0.1em", textDecoration:"none", transition:"all .25s" }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor="#607a94"; e.currentTarget.style.color="#eaf2ff"; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor="#304a64"; e.currentTarget.style.color="#9ab4cc"; }}>
                 PARTNERS@FUNDORIA.IO
               </a>
             </div>
@@ -1140,10 +1140,10 @@ function Roadmap() {
     <section style={{ padding:"120px 24px", maxWidth:1100, margin:"0 auto" }}>
       <Fade>
         <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>LIFECYCLE</Mono>
-        <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#dce8ff", margin:"0 0 8px", lineHeight:0.92 }}>
+        <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#eaf2ff", margin:"0 0 8px", lineHeight:0.92 }}>
           THE <GT>EVOLUTION.</GT>
         </h2>
-        <p style={{ fontSize:14, color:"#4a6484", maxWidth:420, lineHeight:1.75, marginTop:12 }}>
+        <p style={{ fontSize:14, color:"#8aaccc", maxWidth:420, lineHeight:1.75, marginTop:12 }}>
           From core infrastructure to institutional capital markets. Each phase builds on verified foundations before proceeding.
         </p>
       </Fade>
@@ -1153,11 +1153,11 @@ function Roadmap() {
         <div style={{ display:"flex", alignItems:"center", gap:0, marginTop:56, marginBottom:1 }}>
           {ROADMAP.map((r, i) => (
             <div key={i} style={{ flex:1, display:"flex", alignItems:"center" }}>
-              <div style={{ width:12, height:12, borderRadius:"50%", background:r.status==="ACTIVE"?GREEN:"#1a2d46", border:`2px solid ${r.status==="ACTIVE"?GREEN:"#1a2d46"}`, flexShrink:0, boxShadow:r.status==="ACTIVE"?`0 0 12px ${GREEN}60`:"none", position:"relative" }}>
+              <div style={{ width:12, height:12, borderRadius:"50%", background:r.status==="ACTIVE"?GREEN:"#304a64", border:`2px solid ${r.status==="ACTIVE"?GREEN:"#304a64"}`, flexShrink:0, boxShadow:r.status==="ACTIVE"?`0 0 12px ${GREEN}60`:"none", position:"relative" }}>
                 {r.status==="ACTIVE" && <div style={{ position:"absolute", inset:-4, borderRadius:"50%", border:`1px solid ${GREEN}40`, animation:"pulseRing 2s ease-out infinite" }} />}
               </div>
               {i < ROADMAP.length - 1 && (
-                <div style={{ flex:1, height:1, background:i===0?`linear-gradient(90deg,${GREEN},#1a2d46)`:"#1a2d46" }} />
+                <div style={{ flex:1, height:1, background:i===0?`linear-gradient(90deg,${GREEN},#1a2d46)`:"#304a64" }} />
               )}
             </div>
           ))}
@@ -1167,27 +1167,27 @@ function Roadmap() {
       <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:1, background:"#0a1220" }}>
         {ROADMAP.map((r, i) => (
           <Fade key={i} delay={i * 0.12}>
-            <GradientCard accent={r.status==="ACTIVE"?GREEN:"#1a2d46"} style={{ borderRadius:0 }}>
+            <GradientCard accent={r.status==="ACTIVE"?GREEN:"#304a64"} style={{ borderRadius:0 }}>
               <div style={{ padding:"32px" }}>
                 <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:20 }}>
                   <span style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:52, color:"#0a1220", lineHeight:1 }}>0{r.phase}</span>
-                  <span style={{ fontSize:9, color:r.status==="ACTIVE"?GREEN:"#2a3f58", border:`1px solid ${r.status==="ACTIVE"?GREEN+"40":"#1a2d46"}`, padding:"3px 10px", fontFamily:"'Space Mono',monospace", letterSpacing:"0.12em", display:"flex", alignItems:"center", gap:5 }}>
+                  <span style={{ fontSize:9, color:r.status==="ACTIVE"?GREEN:"#4a6480", border:`1px solid ${r.status==="ACTIVE"?GREEN+"40":"#304a64"}`, padding:"3px 10px", fontFamily:"'Space Mono',monospace", letterSpacing:"0.12em", display:"flex", alignItems:"center", gap:5 }}>
                     {r.status==="ACTIVE" && <span style={{ width:5, height:5, borderRadius:"50%", background:GREEN, animation:"pulse 1.5s infinite", display:"inline-block" }} />}
                     {r.status}
                   </span>
                 </div>
-                <Mono style={{ fontSize:9, color:"#2a3f58", letterSpacing:"0.14em", display:"block", marginBottom:6 }}>MISSION_LOG_PHASE_0{r.phase}.TXT</Mono>
-                <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, color:"#dce8ff", letterSpacing:"0.06em", margin:"0 0 4px" }}>{r.title}</p>
-                <Mono style={{ fontSize:10, color:r.status==="ACTIVE"?GREEN:"#3a5070", letterSpacing:"0.08em", display:"block", marginBottom:20 }}>{r.sub}</Mono>
+                <Mono style={{ fontSize:9, color:"#4a6480", letterSpacing:"0.14em", display:"block", marginBottom:6 }}>MISSION_LOG_PHASE_0{r.phase}.TXT</Mono>
+                <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, color:"#eaf2ff", letterSpacing:"0.06em", margin:"0 0 4px" }}>{r.title}</p>
+                <Mono style={{ fontSize:10, color:r.status==="ACTIVE"?GREEN:"#607a94", letterSpacing:"0.08em", display:"block", marginBottom:20 }}>{r.sub}</Mono>
                 {r.items.map((item, j) => (
                   <div key={j} style={{ display:"flex", gap:12, marginBottom:10, alignItems:"flex-start" }}>
                     <div style={{ width:14, height:14, borderRadius:"50%", border:`1px solid ${r.status==="ACTIVE"?GREEN+"40":"#1a2d4640"}`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:2 }}>
-                      <Icon name="check" size={7} color={r.status==="ACTIVE"?GREEN:"#3a5070"} />
+                      <Icon name="check" size={7} color={r.status==="ACTIVE"?GREEN:"#607a94"} />
                     </div>
-                    <span style={{ fontSize:13, color:"#3a5070", lineHeight:1.55 }}>{item}</span>
+                    <span style={{ fontSize:13, color:"#607a94", lineHeight:1.55 }}>{item}</span>
                   </div>
                 ))}
-                <Mono style={{ fontSize:9, color:"#1a2d46", letterSpacing:"0.1em", display:"block", marginTop:20 }}>MILESTONE-GATED — NO FIXED DATE</Mono>
+                <Mono style={{ fontSize:9, color:"#304a64", letterSpacing:"0.1em", display:"block", marginTop:20 }}>MILESTONE-GATED — NO FIXED DATE</Mono>
               </div>
             </GradientCard>
           </Fade>
@@ -1205,10 +1205,10 @@ function FAQ() {
       <div style={{ maxWidth:760, margin:"0 auto" }}>
         <Fade>
           <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>KNOWLEDGE BASE</Mono>
-          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#dce8ff", margin:"0 0 12px", lineHeight:0.92 }}>
+          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#eaf2ff", margin:"0 0 12px", lineHeight:0.92 }}>
             TECHNICAL <GT>FAQ.</GT>
           </h2>
-          <Mono style={{ fontSize:10, color:"#2a3f58", letterSpacing:"0.1em", display:"block", marginBottom:40 }}>Direct answers for protocol-native capital markets.</Mono>
+          <Mono style={{ fontSize:10, color:"#4a6480", letterSpacing:"0.1em", display:"block", marginBottom:40 }}>Direct answers for protocol-native capital markets.</Mono>
         </Fade>
         {FAQS.map((f, i) => (
           <Fade key={i} delay={i * 0.03}>
@@ -1216,8 +1216,8 @@ function FAQ() {
               <button onClick={() => setOpen(open === i ? null : i)}
                 style={{ width:"100%", display:"flex", justifyContent:"space-between", alignItems:"center", padding:"18px 0", background:"transparent", border:"none", cursor:"pointer", textAlign:"left" }}>
                 <div style={{ display:"flex", gap:16, alignItems:"center" }}>
-                  <Mono style={{ fontSize:10, color:open===i?BLUE:"#2a3f58", transition:"color .2s" }}>{"?>"}</Mono>
-                  <Mono style={{ fontSize:13, color:open===i?"#dce8ff":"#6080a0", letterSpacing:"0.04em", transition:"color .2s" }}>{f.q}</Mono>
+                  <Mono style={{ fontSize:10, color:open===i?BLUE:"#4a6480", transition:"color .2s" }}>{"?>"}</Mono>
+                  <Mono style={{ fontSize:13, color:open===i?"#eaf2ff":"#9ab4cc", letterSpacing:"0.04em", transition:"color .2s" }}>{f.q}</Mono>
                 </div>
                 <div style={{ width:20, height:20, borderRadius:"50%", border:`1px solid ${open===i?GREEN:BLUE}40`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginLeft:16, transition:"border-color .2s" }}>
                   <span style={{ color:open===i?GREEN:BLUE, fontSize:14, fontFamily:"monospace", lineHeight:1, transition:"color .2s" }}>{open===i?"−":"+"}</span>
@@ -1226,7 +1226,7 @@ function FAQ() {
               <div style={{ maxHeight:open===i?400:0, overflow:"hidden", transition:"max-height .4s cubic-bezier(.16,1,.3,1)" }}>
                 <div style={{ paddingBottom:20 }}>
                   <Mono style={{ fontSize:9, color:GREEN, letterSpacing:"0.1em", display:"block", marginBottom:8 }}>SYS::RESPONSE_STREAM</Mono>
-                  <p style={{ fontSize:13, color:"#4a6484", lineHeight:1.75, margin:"0 0 12px", paddingLeft:26 }}>{f.a}</p>
+                  <p style={{ fontSize:13, color:"#8aaccc", lineHeight:1.75, margin:"0 0 12px", paddingLeft:26 }}>{f.a}</p>
                 </div>
               </div>
             </div>
@@ -1257,8 +1257,8 @@ function WhitelistForm() {
       <div style={{ width:56, height:56, borderRadius:"50%", border:`2px solid ${GREEN}`, display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 16px", background:`${GREEN}10`, boxShadow:`0 0 24px ${GREEN}30` }}>
         <Icon name="check" size={22} color={GREEN} />
       </div>
-      <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:28, color:"#dce8ff", letterSpacing:"0.06em", margin:"0 0 8px" }}>YOU'RE IN.</p>
-      <Mono style={{ fontSize:12, color:"#3a5070", display:"block" }}>We'll be in touch with early access details. Watch your inbox.</Mono>
+      <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:28, color:"#eaf2ff", letterSpacing:"0.06em", margin:"0 0 8px" }}>YOU'RE IN.</p>
+      <Mono style={{ fontSize:12, color:"#607a94", display:"block" }}>We'll be in touch with early access details. Watch your inbox.</Mono>
     </div>
   );
 
@@ -1266,7 +1266,7 @@ function WhitelistForm() {
     <div>
       <div style={{ display:"flex", border:"1px solid #1a2d46", borderRadius:4, overflow:"hidden", maxWidth:480, margin:"0 auto", transition:"border-color .2s" }}
         onFocusCapture={e => e.currentTarget.style.borderColor = BLUE}
-        onBlurCapture={e => e.currentTarget.style.borderColor = "#1a2d46"}>
+        onBlurCapture={e => e.currentTarget.style.borderColor = "#304a64"}>
         <input type="email" value={email} onChange={e => setEmail(e.target.value)} onKeyDown={e => e.key === "Enter" && submit()}
           placeholder="protocol@access.link"
           style={{ flex:1, background:"#04080f", border:"none", outline:"none", padding:"14px 16px", fontSize:12, color:"#8aaccc", fontFamily:"'Space Mono',monospace", letterSpacing:"0.04em" }} />
@@ -1277,7 +1277,7 @@ function WhitelistForm() {
         </button>
       </div>
       {err && <Mono style={{ color:"#ff6060", fontSize:11, textAlign:"center", display:"block", marginTop:8 }}>{err}</Mono>}
-      <Mono style={{ fontSize:10, color:"#2a3f58", display:"block", textAlign:"center", marginTop:12, letterSpacing:"0.06em" }}>
+      <Mono style={{ fontSize:10, color:"#4a6480", display:"block", textAlign:"center", marginTop:12, letterSpacing:"0.06em" }}>
         REGISTRATION IS FREE AND DOES NOT CONSTITUTE A PURCHASE, ALLOCATION, OR COMMITMENT OF ANY KIND.
       </Mono>
     </div>
@@ -1292,10 +1292,10 @@ function WhitelistSection() {
       <div style={{ position:"relative", zIndex:1, maxWidth:640, margin:"0 auto" }}>
         <Fade>
           <Tag color={GREEN}>PHASED ONBOARDING ACTIVE</Tag>
-          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(44px,8vw,90px)", color:"#dce8ff", margin:"24px 0 12px", lineHeight:0.88 }}>
+          <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(44px,8vw,90px)", color:"#eaf2ff", margin:"24px 0 12px", lineHeight:0.88 }}>
             JOIN THE<br /><GT>FUNDORIA WHITELIST.</GT>
           </h2>
-          <p style={{ fontSize:14, color:"#4a6484", lineHeight:1.75, marginBottom:8 }}>
+          <p style={{ fontSize:14, color:"#8aaccc", lineHeight:1.75, marginBottom:8 }}>
             Members receive priority onboarding, early governance visibility, and standing invitations to contributor sessions.
           </p>
         </Fade>
@@ -1304,7 +1304,7 @@ function WhitelistSection() {
             {["Early access to the trading interface during evaluation phases","Priority eligibility for trader verification cohorts","Governance previews and contributor sessions","Direct ecosystem updates ahead of public release"].map((b, i) => (
               <div key={i} style={{ display:"flex", gap:10, alignItems:"flex-start", padding:"8px 0" }}>
                 <Icon name="check" size={12} color={GREEN} style={{ marginTop:2, flexShrink:0 }} />
-                <Mono style={{ fontSize:11, color:"#3a5070", letterSpacing:"0.04em", textAlign:"left" }}>{b}</Mono>
+                <Mono style={{ fontSize:11, color:"#607a94", letterSpacing:"0.04em", textAlign:"left" }}>{b}</Mono>
               </div>
             ))}
           </div>
@@ -1323,29 +1323,29 @@ function Footer() {
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:24, marginBottom:24 }}>
           <div style={{ display:"flex", alignItems:"center", gap:10 }}>
             <div style={{ width:26, height:26, borderRadius:4, background:GRAD }} />
-            <Mono style={{ fontSize:20, color:"#dce8ff", letterSpacing:"0.08em", fontFamily:"'Bebas Neue',sans-serif" }}>Fundoria</Mono>
+            <Mono style={{ fontSize:20, color:"#eaf2ff", letterSpacing:"0.08em", fontFamily:"'Bebas Neue',sans-serif" }}>Fundoria</Mono>
             <span style={{ width:6, height:6, borderRadius:"50%", background:GREEN, animation:"pulse 2s infinite" }} />
           </div>
           <div style={{ display:"flex", gap:8 }}>
             {[["◻","X"],["○","TG"],["◁","DC"]].map(([icon, label], i) => (
               <div key={i} title={label} style={{ width:36, height:36, border:"1px solid #0e1a2e", display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer", borderRadius:3, transition:"border-color .2s, background .2s" }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor="#2a3f58"; e.currentTarget.style.background="#0a1220"; }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor="#4a6480"; e.currentTarget.style.background="#0a1220"; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor="#0e1a2e"; e.currentTarget.style.background="transparent"; }}>
-                <Mono style={{ fontSize:13, color:"#3a5070" }}>{icon}</Mono>
+                <Mono style={{ fontSize:13, color:"#607a94" }}>{icon}</Mono>
               </div>
             ))}
           </div>
           <div style={{ display:"flex", gap:28, flexWrap:"wrap" }}>
             {["WHITEPAPER","HYPERLIQUID ↗","RISK FRAMEWORK [SOON]","STATUS [V0.1]"].map((l, i) => (
-              <Mono key={i} style={{ fontSize:10, color:"#2a3f58", letterSpacing:"0.12em", cursor:"pointer", transition:"color .2s" }}
-                onMouseEnter={e => e.target.style.color="#6080a0"}
-                onMouseLeave={e => e.target.style.color="#2a3f58"}>{l}</Mono>
+              <Mono key={i} style={{ fontSize:10, color:"#4a6480", letterSpacing:"0.12em", cursor:"pointer", transition:"color .2s" }}
+                onMouseEnter={e => e.target.style.color="#9ab4cc"}
+                onMouseLeave={e => e.target.style.color="#4a6480"}>{l}</Mono>
             ))}
           </div>
-          <Mono style={{ fontSize:10, color:"#1a2d46", letterSpacing:"0.06em" }}>© 2026 FUNDORIA · HYPEREVM</Mono>
+          <Mono style={{ fontSize:10, color:"#304a64", letterSpacing:"0.06em" }}>© 2026 FUNDORIA · HYPEREVM</Mono>
         </div>
         <div style={{ borderTop:"1px solid #080f1a", paddingTop:20 }}>
-          <Mono style={{ fontSize:9, color:"#1a2d46", letterSpacing:"0.06em", lineHeight:1.7, display:"block" }}>
+          <Mono style={{ fontSize:9, color:"#304a64", letterSpacing:"0.06em", lineHeight:1.7, display:"block" }}>
             [ DISCLOSURE ] · $FND IS AN ACCESS AND COORDINATION TOKEN. NOT AN INVESTMENT, SECURITY, OR PROFIT-SHARING INSTRUMENT. USERS ARE RESPONSIBLE FOR LOCAL REGULATORY COMPLIANCE. FUNDORIA IS NOT A REGISTERED BROKER, EXCHANGE, OR INVESTMENT ADVISOR.
           </Mono>
         </div>
@@ -1357,7 +1357,7 @@ function Footer() {
 /* ─── ROOT ───────────────────────────────────────────────── */
 export default function FundoriaV2() {
   return (
-    <div style={{ background:"#02050c", minHeight:"100vh", fontFamily:"'DM Sans',sans-serif", color:"#dce8ff" }}>
+    <div style={{ background:"#02050c", minHeight:"100vh", fontFamily:"'DM Sans',sans-serif", color:"#eaf2ff" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,500;1,300&display=swap');
         *{box-sizing:border-box;margin:0;padding:0}
