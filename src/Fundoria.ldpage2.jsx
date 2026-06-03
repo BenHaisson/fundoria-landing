@@ -223,19 +223,24 @@ function GradientCard({ children, accent = BLUE, style: extraStyle = {}, onClick
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
+        position: "relative",
         background: hovered
           ? `linear-gradient(#081428,#081428) padding-box, linear-gradient(135deg,${accent},${accent === BLUE ? GREEN : BLUE}) border-box`
           : `linear-gradient(#04080f,#04080f) padding-box, linear-gradient(135deg,${accent}40,#1a2d46) border-box`,
         border: "1px solid transparent",
-        borderRadius: 4,
-        transform: hovered ? "translateY(-5px)" : "translateY(0)",
-        boxShadow: hovered ? `0 16px 40px ${accent}18, 0 0 0 1px ${accent}20` : "none",
-        transition: "all 0.35s ease",
+        borderRadius: 8,
+        transform: hovered ? "translateY(-6px)" : "translateY(0)",
+        boxShadow: hovered ? `0 20px 60px ${accent}30, 0 0 0 1px ${accent}30` : "none",
+        transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)",
         cursor: onClick ? "pointer" : "default",
+        overflow: "hidden",
         ...extraStyle,
       }}
     >
-      {children}
+      <div style={{ position:"absolute", top:0, left:0, right:0, height:2, background:accent, borderRadius:"8px 8px 0 0", opacity:0.6, pointerEvents:"none" }} />
+      <div style={{ position:"relative" }}>
+        {children}
+      </div>
     </div>
   );
 }
@@ -582,10 +587,10 @@ function Architecture() {
         </Fade>
 
         <Fade delay={0.15}>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, marginTop:56, background:"#0a1220" }}>
+          <div className="grid-4" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, marginTop:56, background:"#0a1220" }}>
             {ARCH_STAGES.map((s, i) => (
               <div key={i} onClick={() => setActive(i)}
-                style={{ padding:"24px", background:active===i?"#081428":"#04080f", borderTop:`2px solid ${active===i?BLUE:"transparent"}`, cursor:"pointer", transition:"all .25s" }}>
+                style={{ padding:"24px", background:active===i?`linear-gradient(180deg,#0a1e38,#04080f)`:"#04080f", borderTop:`${active===i?"3px":"2px"} solid ${active===i?BLUE:"transparent"}`, cursor:"pointer", transition:"all .25s" }}>
                 <div style={{ width:36, height:36, borderRadius:"50%", border:`1px solid ${active===i?BLUE:"#304a64"}`, display:"flex", alignItems:"center", justifyContent:"center", marginBottom:12, transition:"all .25s", background:active===i?`${BLUE}15`:"transparent" }}>
                   <Icon name={s.icon} size={16} color={active===i?BLUE:"#607a94"} />
                 </div>
@@ -598,7 +603,7 @@ function Architecture() {
         </Fade>
 
         <Fade delay={0.2}>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, background:"#0e1a2e" }}>
+          <div className="grid-4" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, background:"#0e1a2e" }}>
             {["↑ CAPITAL_IN","↑ ORACLE_VALIDATED","↑ SETTLEMENT","↑ HYPERLIQUID_EXEC"].map((l, i) => (
               <div key={i} style={{ padding:"8px 24px", background:"#04080f" }}>
                 <Mono style={{ fontSize:9, color:i===active?BLUE:"#4a6480", letterSpacing:"0.08em", transition:"color .25s" }}>{l}</Mono>
@@ -730,7 +735,7 @@ function Rewards() {
           </p>
         </Fade>
 
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:16, marginTop:56 }}>
+        <div className="grid-3" style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:16, marginTop:56 }}>
           {[
             { label:"TRADER INCENTIVES",    icon:"chart",  value:"22%", sub:"of FND supply", color:BLUE,  desc:"Performance-based profit sharing derived from vault participation. Splits scale with verification tier, consistency, and long-term track record." },
             { label:"ECOSYSTEM & TREASURY", icon:"layers", value:"17%", sub:"of FND supply", color:GREEN, desc:"Ecosystem growth, third-party integrations, DAO treasury deployment, and long-term protocol sustainability. Governed by token holders." },
@@ -739,11 +744,11 @@ function Rewards() {
             <Fade key={i} delay={i * 0.1}>
               <GradientCard accent={r.color} style={{ height:"100%" }}>
                 <div style={{ padding:"32px" }}>
-                  <div style={{ width:44, height:44, borderRadius:"50%", border:`1px solid ${r.color}40`, display:"flex", alignItems:"center", justifyContent:"center", marginBottom:20, background:`${r.color}10` }}>
-                    <Icon name={r.icon} size={18} color={r.color} />
+                  <div style={{ width:52, height:52, borderRadius:"50%", border:`1px solid ${r.color}40`, display:"flex", alignItems:"center", justifyContent:"center", marginBottom:20, background:`linear-gradient(135deg,${r.color}20,${r.color}08)` }}>
+                    <Icon name={r.icon} size={20} color={r.color} />
                   </div>
                   <Mono style={{ fontSize:10, color:"#607a94", letterSpacing:"0.14em", display:"block", marginBottom:8 }}>{r.label}</Mono>
-                  <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:40, color:"#eaf2ff", margin:"0 0 2px", letterSpacing:"0.06em" }}>{r.value}</p>
+                  <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:40, background:`linear-gradient(90deg,${r.color},#eaf2ff)`, WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text", margin:"0 0 2px", letterSpacing:"0.06em" }}>{r.value}</p>
                   <Mono style={{ fontSize:9, color:r.color, letterSpacing:"0.1em", display:"block", marginBottom:14 }}>{r.sub}</Mono>
                   <p style={{ fontSize:13, color:"#8aaccc", lineHeight:1.65, margin:0 }}>{r.desc}</p>
                 </div>
@@ -982,17 +987,17 @@ function Token() {
 
         {/* ── Feature grid ── */}
         <Fade delay={0.3}>
-          <div style={{ marginTop:16, display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, background:"#0a1220" }}>
+          <div className="grid-4" style={{ marginTop:16, display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, background:"#0a1220" }}>
             {[
               { label:"VERIFICATION", sub:"VAULT ISOLATION",    color:BLUE  },
               { label:"GOVERNANCE",   sub:"DAO GOVERNED",       color:GREEN },
               { label:"INCENTIVES",   sub:"ECOSYSTEM REWARDS",  color:BLUE  },
               { label:"RISK ENGINE",  sub:"HARD BOUNDS ACTIVE", color:GREEN },
             ].map((f, i) => (
-              <div key={i} style={{ background:"#04080f", padding:"20px 24px", transition:"background .2s", position:"relative", overflow:"hidden" }}
-                onMouseEnter={e => e.currentTarget.style.background="#081428"}
-                onMouseLeave={e => e.currentTarget.style.background="#04080f"}>
-                <div style={{ position:"absolute", top:0, left:0, right:0, height:1, background:f.color, opacity:0.4 }} />
+              <div key={i} style={{ background:"#04080f", padding:"24px", borderRadius:8, transition:"background .2s, box-shadow .2s", position:"relative", overflow:"hidden" }}
+                onMouseEnter={e => { e.currentTarget.style.background="#081428"; e.currentTarget.style.boxShadow=`0 0 30px ${f.color}15`; }}
+                onMouseLeave={e => { e.currentTarget.style.background="#04080f"; e.currentTarget.style.boxShadow="none"; }}>
+                <div style={{ position:"absolute", top:0, left:0, right:0, height:2, background:f.color, borderRadius:"8px 8px 0 0", opacity:0.4 }} />
                 <Mono style={{ fontSize:9, color:BLUE, letterSpacing:"0.12em", display:"block", marginBottom:6 }}>$FND</Mono>
                 <Mono style={{ fontSize:11, color:"#eaf2ff", letterSpacing:"0.08em", display:"block", marginBottom:4 }}>{f.label}</Mono>
                 <Mono style={{ fontSize:9, color:f.color, letterSpacing:"0.08em", display:"block" }}>{f.sub}</Mono>
@@ -1027,14 +1032,14 @@ function Participation() {
           <Mono style={{ fontSize:11, color:"#607a94", letterSpacing:"0.1em", display:"block" }}>No discretionary gates. Phased onboarding active.</Mono>
         </Fade>
 
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:16, marginTop:56 }}>
+        <div className="grid-3" style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:16, marginTop:56 }}>
           {CLASSES.map((c, i) => (
             <Fade key={i} delay={i * 0.1}>
               <GradientCard accent={c.accent} style={{ height:"100%" }}>
                 <div style={{ padding:"32px", display:"flex", flexDirection:"column", height:"100%" }}>
                   <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:20 }}>
-                    <div style={{ width:44, height:44, borderRadius:"50%", border:`1px solid ${c.accent}50`, display:"flex", alignItems:"center", justifyContent:"center", background:`${c.accent}10`, flexShrink:0 }}>
-                      <Icon name={c.icon} size={20} color={c.accent} />
+                    <div style={{ width:52, height:52, borderRadius:"50%", border:`1px solid ${c.accent}40`, display:"flex", alignItems:"center", justifyContent:"center", background:`linear-gradient(135deg,${c.accent}20,${c.accent}08)`, flexShrink:0 }}>
+                      <Icon name={c.icon} size={22} color={c.accent} />
                     </div>
                     <div>
                       <Mono style={{ fontSize:9, color:c.accent, letterSpacing:"0.14em", display:"block" }}>{c.id}</Mono>
@@ -1044,17 +1049,14 @@ function Participation() {
                   <p style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, color:"#eaf2ff", letterSpacing:"0.06em", margin:"0 0 4px" }}>{c.tag}</p>
                   <Mono style={{ fontSize:10, color:"#4a6480", letterSpacing:"0.08em", display:"block", marginBottom:22 }}>{c.settle}</Mono>
                   {c.items.map((item, j) => (
-                    <div key={j} style={{ display:"flex", gap:12, marginBottom:11, alignItems:"flex-start" }}>
-                      <div style={{ width:16, height:16, borderRadius:"50%", border:`1px solid ${c.accent}30`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:1 }}>
-                        <Icon name="check" size={8} color={c.accent} />
-                      </div>
+                    <div key={j} style={{ display:"flex", gap:12, marginBottom:11, alignItems:"flex-start", borderLeft:`2px solid ${c.accent}30`, paddingLeft:12, marginLeft:0 }}>
                       <span style={{ fontSize:13, color:"#8aaccc", lineHeight:1.55 }}>{item}</span>
                     </div>
                   ))}
                   <button onClick={() => document.getElementById("whitelist-section").scrollIntoView({ behavior:"smooth" })}
-                    style={{ marginTop:"auto", paddingTop:24, width:"100%", padding:"12px 0", background:"transparent", border:`1px solid ${c.accent}40`, color:c.accent, fontSize:10, fontFamily:"'Space Mono',monospace", letterSpacing:"0.12em", cursor:"pointer", borderRadius:3, transition:"all .25s" }}
-                    onMouseEnter={e => { e.target.style.background=`${c.accent}15`; e.target.style.borderColor=c.accent; }}
-                    onMouseLeave={e => { e.target.style.background="transparent"; e.target.style.borderColor=`${c.accent}40`; }}>
+                    style={{ marginTop:"auto", paddingTop:24, width:"100%", padding:"14px 0", background:"transparent", border:`1px solid ${c.accent}40`, color:c.accent, fontSize:11, fontFamily:"'Space Mono',monospace", letterSpacing:"0.12em", cursor:"pointer", borderRadius:6, transition:"all .25s" }}
+                    onMouseEnter={e => { e.target.style.background=c.accent; e.target.style.color="#02050c"; e.target.style.borderColor=c.accent; }}
+                    onMouseLeave={e => { e.target.style.background="transparent"; e.target.style.color=c.accent; e.target.style.borderColor=`${c.accent}40`; }}>
                     {c.cta} →
                   </button>
                 </div>
@@ -1082,7 +1084,7 @@ function InstitutionalGateway() {
           </p>
         </Fade>
 
-        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16, marginTop:56 }}>
+        <div className="grid-2" style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16, marginTop:56 }}>
           <Fade delay={0.1}>
             <GradientCard accent={BLUE}>
               <div style={{ padding:"36px" }}>
@@ -1167,14 +1169,15 @@ function Roadmap() {
         </div>
       </Fade>
 
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:1, background:"#0a1220" }}>
+      <div className="grid-3" style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:1, background:"#0a1220" }}>
         {ROADMAP.map((r, i) => (
           <Fade key={i} delay={i * 0.12}>
-            <GradientCard accent={r.status==="ACTIVE"?GREEN:"#304a64"} style={{ borderRadius:0 }}>
-              <div style={{ padding:"32px" }}>
+            <GradientCard accent={r.status==="ACTIVE"?GREEN:"#304a64"} style={{ borderRadius:0, background: r.status==="ACTIVE" ? `linear-gradient(135deg,#081e3a,#04080f)` : undefined }}>
+              <div style={{ padding:"32px", position:"relative", overflow:"hidden" }}>
+                <span style={{ position:"absolute", right:16, top:8, fontSize:80, opacity:0.06, color:"#fff", fontFamily:"'Bebas Neue',sans-serif", lineHeight:1, pointerEvents:"none", userSelect:"none" }}>0{r.phase}</span>
                 <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:20 }}>
                   <span style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:52, color:"#0a1220", lineHeight:1 }}>0{r.phase}</span>
-                  <span style={{ fontSize:9, color:r.status==="ACTIVE"?GREEN:"#4a6480", border:`1px solid ${r.status==="ACTIVE"?GREEN+"40":"#304a64"}`, padding:"3px 10px", fontFamily:"'Space Mono',monospace", letterSpacing:"0.12em", display:"flex", alignItems:"center", gap:5 }}>
+                  <span style={{ fontSize:9, color:r.status==="ACTIVE"?GREEN:"#4a6480", border:`1px solid ${r.status==="ACTIVE"?GREEN+"40":"#304a64"}`, padding:"4px 12px", borderRadius:4, fontFamily:"'Space Mono',monospace", letterSpacing:"0.12em", display:"flex", alignItems:"center", gap:5 }}>
                     {r.status==="ACTIVE" && <span style={{ width:5, height:5, borderRadius:"50%", background:GREEN, animation:"pulse 1.5s infinite", display:"inline-block" }} />}
                     {r.status}
                   </span>
@@ -1215,9 +1218,11 @@ function FAQ() {
         </Fade>
         {FAQS.map((f, i) => (
           <Fade key={i} delay={i * 0.03}>
-            <div style={{ borderBottom:"1px solid #0a1220" }}>
+            <div style={{ borderBottom:"1px solid #0a1220", borderRadius:open===i?6:0, background:open===i?"#04080f":"transparent", borderLeft:open===i?`3px solid ${BLUE}`:"3px solid transparent", transition:"background .2s, border-color .2s, border-radius .2s", overflow:"hidden" }}
+              onMouseEnter={e => { if(open!==i) e.currentTarget.style.background="#030810"; }}
+              onMouseLeave={e => { if(open!==i) e.currentTarget.style.background="transparent"; }}>
               <button onClick={() => setOpen(open === i ? null : i)}
-                style={{ width:"100%", display:"flex", justifyContent:"space-between", alignItems:"center", padding:"18px 0", background:"transparent", border:"none", cursor:"pointer", textAlign:"left" }}>
+                style={{ width:"100%", display:"flex", justifyContent:"space-between", alignItems:"center", padding:"18px 20px", background:"transparent", border:"none", cursor:"pointer", textAlign:"left" }}>
                 <div style={{ display:"flex", gap:16, alignItems:"center" }}>
                   <Mono style={{ fontSize:10, color:open===i?BLUE:"#4a6480", transition:"color .2s" }}>{"?>"}</Mono>
                   <Mono style={{ fontSize:13, color:open===i?"#eaf2ff":"#9ab4cc", letterSpacing:"0.04em", transition:"color .2s" }}>{f.q}</Mono>
@@ -1227,7 +1232,7 @@ function FAQ() {
                 </div>
               </button>
               <div style={{ maxHeight:open===i?400:0, overflow:"hidden", transition:"max-height .4s cubic-bezier(.16,1,.3,1)" }}>
-                <div style={{ paddingBottom:20 }}>
+                <div style={{ padding:"0 20px 20px" }}>
                   <Mono style={{ fontSize:9, color:GREEN, letterSpacing:"0.1em", display:"block", marginBottom:8 }}>SYS::RESPONSE_STREAM</Mono>
                   <p style={{ fontSize:13, color:"#8aaccc", lineHeight:1.75, margin:"0 0 12px", paddingLeft:26 }}>{f.a}</p>
                 </div>
@@ -1385,14 +1390,21 @@ export default function FundoriaV2() {
 
         ::selection { background:#2F80ED30; color:#dce8ff }
 
+        @media(max-width:1024px){
+          .grid-4 { grid-template-columns:repeat(2,1fr)!important }
+          .grid-3 { grid-template-columns:repeat(2,1fr)!important }
+        }
         @media(max-width:768px){
           section { padding-left:16px!important; padding-right:16px!important }
           h1 { font-size:clamp(48px,14vw,80px)!important }
           h2 { font-size:clamp(32px,10vw,56px)!important }
-          div[style*="gridTemplateColumns: repeat(4"] { grid-template-columns:1fr 1fr!important }
-          div[style*="gridTemplateColumns: repeat(3"] { grid-template-columns:1fr!important }
-          div[style*="gridTemplateColumns: 1fr 1fr"]:not(nav *) { grid-template-columns:1fr!important }
           nav > div:nth-child(2) { display:none!important }
+        }
+        @media(max-width:640px){
+          .grid-4,.grid-3,.grid-2 { grid-template-columns:1fr!important }
+          .hero-h1 { font-size:clamp(48px,12vw,80px)!important }
+          .section-pad { padding:60px 20px!important }
+          .card-pad { padding:24px!important }
         }
       `}</style>
       <Nav />
