@@ -386,18 +386,9 @@ function Nav() {
   return (
     <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, height:58, display:"flex", alignItems:"center", padding:"0 32px", justifyContent:"space-between", background:scrolled?"rgba(2,5,12,0.96)":"transparent", backdropFilter:scrolled?"blur(14px)":"none", borderBottom:scrolled?"1px solid #0e1a2e":"1px solid transparent", transition:"all .3s" }}>
       <div style={{ display:"flex", alignItems:"center", gap:9 }}>
-        {/* SVG icon — boomerang, blue→green gradient */}
-        <svg width="36" height="31" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink:0 }}>
-          <defs>
-            <linearGradient id="logoGradNav" x1="2" y1="30" x2="34" y2="2" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#2F80ED"/>
-              <stop offset="1" stopColor="#00C896"/>
-            </linearGradient>
-          </defs>
-          <path d="M5 26C5 17 10 13 20 13H32" stroke="url(#logoGradNav)" strokeWidth="8.5" strokeLinecap="round" opacity="0.72"/>
-          <path d="M5 18C5 8 10 3 21 3H32" stroke="url(#logoGradNav)" strokeWidth="8.5" strokeLinecap="round"/>
-        </svg>
-        {/* Wordmark — white, no animation */}
+        {/* Original brand icon — do not replace */}
+        <img src="/icon-light.png" alt="Fundoria" style={{ height:31, width:"auto", display:"block", flexShrink:0 }} />
+        {/* Wordmark — white, static */}
         <span style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:20, letterSpacing:"0.14em", lineHeight:1, color:"#eaf2ff", userSelect:"none" }}>FUNDORIA</span>
         {/* Animated dot only */}
         <span style={{ width:5, height:5, borderRadius:"50%", background:"#00C896", animation:"pulse 2s ease-in-out infinite", flexShrink:0, display:"block" }} />
