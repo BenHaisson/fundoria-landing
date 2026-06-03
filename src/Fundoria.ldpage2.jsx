@@ -386,8 +386,9 @@ function Nav() {
   return (
     <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, height:58, display:"flex", alignItems:"center", padding:"0 32px", justifyContent:"space-between", background:scrolled?"rgba(2,5,12,0.96)":"transparent", backdropFilter:scrolled?"blur(14px)":"none", borderBottom:scrolled?"1px solid #0e1a2e":"1px solid transparent", transition:"all .3s" }}>
       <div style={{ display:"flex", alignItems:"center", gap:10 }}>
-        <img src="/logo-light.png" alt="Fundoria" style={{ height:32, width:"auto", display:"block" }} />
-        <span style={{ width:6, height:6, borderRadius:"50%", background:GREEN, animation:"pulse 2s infinite", flexShrink:0 }} />
+        <img src="/icon-light.png" alt="Fundoria icon" style={{ height:32, width:"auto", display:"block" }} />
+        <span style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:22, letterSpacing:"0.12em", color:"#eaf2ff", lineHeight:1, userSelect:"none" }}>FUNDORIA</span>
+        <span style={{ width:5, height:5, borderRadius:"50%", background:GREEN, animation:"pulse 2s infinite", flexShrink:0 }} />
       </div>
       <div style={{ display:"flex", gap:32, alignItems:"center" }}>
         {[["vision","VISION"],["protocol-section","PROTOCOL"],["rewards-section","REWARDS"],["token-section","TOKEN"],["faq-section","FAQ"]].map(([id, label]) => (
@@ -1321,8 +1322,9 @@ function Footer() {
       <div style={{ maxWidth:1100, margin:"0 auto" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:24, marginBottom:24 }}>
           <div style={{ display:"flex", alignItems:"center", gap:10 }}>
-            <img src="/logo-light.png" alt="Fundoria" style={{ height:28, width:"auto", display:"block" }} />
-            <span style={{ width:6, height:6, borderRadius:"50%", background:GREEN, animation:"pulse 2s infinite", flexShrink:0 }} />
+            <img src="/icon-light.png" alt="Fundoria icon" style={{ height:28, width:"auto", display:"block" }} />
+            <span style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:19, letterSpacing:"0.12em", color:"#eaf2ff", lineHeight:1, userSelect:"none" }}>FUNDORIA</span>
+            <span style={{ width:5, height:5, borderRadius:"50%", background:GREEN, animation:"pulse 2s infinite", flexShrink:0 }} />
           </div>
           <div style={{ display:"flex", gap:8 }}>
             {[["◻","X"],["○","TG"],["◁","DC"]].map(([icon, label], i) => (
