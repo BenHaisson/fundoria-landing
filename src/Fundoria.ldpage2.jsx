@@ -387,7 +387,7 @@ function Nav() {
     <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, height:58, display:"flex", alignItems:"center", padding:"0 32px", justifyContent:"space-between", background:scrolled?"rgba(2,5,12,0.96)":"transparent", backdropFilter:scrolled?"blur(14px)":"none", borderBottom:scrolled?"1px solid #0e1a2e":"1px solid transparent", transition:"all .3s" }}>
       <div style={{ display:"flex", alignItems:"center", gap:9 }}>
         {/* Original brand icon — do not replace */}
-        <img src="/icon-light.png" alt="Fundoria" style={{ height:31, width:"auto", display:"block", flexShrink:0 }} />
+        <img src="/icon-light.png" alt="Fundoria" style={{ height:20, width:"auto", display:"block", flexShrink:0 }} />
         {/* Wordmark — white, static */}
         <span style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:20, letterSpacing:"0.14em", lineHeight:1, color:"#eaf2ff", userSelect:"none" }}>FUNDORIA</span>
         {/* Animated dot only */}
