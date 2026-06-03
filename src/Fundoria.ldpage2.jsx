@@ -387,18 +387,18 @@ function Nav() {
     <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, height:58, display:"flex", alignItems:"center", padding:"0 32px", justifyContent:"space-between", background:scrolled?"rgba(2,5,12,0.96)":"transparent", backdropFilter:scrolled?"blur(14px)":"none", borderBottom:scrolled?"1px solid #0e1a2e":"1px solid transparent", transition:"all .3s" }}>
       <div style={{ display:"flex", alignItems:"center", gap:9 }}>
         {/* Coded SVG icon — same height as WHITELIST button (31px) */}
-        <svg width="34" height="31" viewBox="0 0 34 31" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <svg width="36" height="31" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg"
           style={{ animation:"logoFloat 4s ease-in-out infinite", flexShrink:0 }}>
           <defs>
-            <linearGradient id="logoGradNav" x1="2" y1="28" x2="32" y2="2" gradientUnits="userSpaceOnUse">
+            <linearGradient id="logoGradNav" x1="2" y1="30" x2="34" y2="2" gradientUnits="userSpaceOnUse">
               <stop stopColor="#2F80ED"/>
               <stop offset="1" stopColor="#00C896"/>
             </linearGradient>
           </defs>
-          {/* Lower arm — subtle gray */}
-          <path d="M4 27C4 18 9 13 18 13H30" stroke="#D1D5DB" strokeWidth="8" strokeLinecap="round" opacity="0.18"/>
-          {/* Upper arm — blue→green gradient */}
-          <path d="M4 20C4 10 9 4 19 4H30" stroke="url(#logoGradNav)" strokeWidth="8" strokeLinecap="round"/>
+          {/* Lower arm */}
+          <path d="M5 26C5 17 10 13 20 13H32" stroke="url(#logoGradNav)" strokeWidth="8.5" strokeLinecap="round" opacity="0.72"/>
+          {/* Upper arm */}
+          <path d="M5 18C5 8 10 3 21 3H32" stroke="url(#logoGradNav)" strokeWidth="8.5" strokeLinecap="round"/>
         </svg>
         {/* Wordmark — Bebas Neue matching site heading style */}
         <span style={{
@@ -1346,16 +1346,16 @@ function Footer() {
       <div style={{ maxWidth:1100, margin:"0 auto" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:24, marginBottom:24 }}>
           <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-            <svg width="28" height="26" viewBox="0 0 34 31" fill="none" xmlns="http://www.w3.org/2000/svg"
+            <svg width="30" height="26" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg"
               style={{ animation:"logoFloat 4s ease-in-out infinite", flexShrink:0 }}>
               <defs>
-                <linearGradient id="logoGradFooter" x1="2" y1="28" x2="32" y2="2" gradientUnits="userSpaceOnUse">
+                <linearGradient id="logoGradFooter" x1="2" y1="30" x2="34" y2="2" gradientUnits="userSpaceOnUse">
                   <stop stopColor="#2F80ED"/>
                   <stop offset="1" stopColor="#00C896"/>
                 </linearGradient>
               </defs>
-              <path d="M4 27C4 18 9 13 18 13H30" stroke="#D1D5DB" strokeWidth="8" strokeLinecap="round" opacity="0.18"/>
-              <path d="M4 20C4 10 9 4 19 4H30" stroke="url(#logoGradFooter)" strokeWidth="8" strokeLinecap="round"/>
+              <path d="M5 26C5 17 10 13 20 13H32" stroke="url(#logoGradFooter)" strokeWidth="8.5" strokeLinecap="round" opacity="0.72"/>
+              <path d="M5 18C5 8 10 3 21 3H32" stroke="url(#logoGradFooter)" strokeWidth="8.5" strokeLinecap="round"/>
             </svg>
             <span style={{
               fontFamily:"'Bebas Neue',sans-serif",
