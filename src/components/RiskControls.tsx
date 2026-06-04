@@ -140,8 +140,8 @@ export default function RiskControls() {
         DETERMINISTIC_RULES
       </div>
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -194,9 +194,9 @@ export default function RiskControls() {
                 </div>
               </div>
 
-              <div className="p-8 md:p-10 min-h-[480px] flex flex-col relative">
+              <div className="p-5 sm:p-8 md:p-10 min-h-[420px] sm:min-h-[480px] flex flex-col relative">
                 {/* Holographic Scanline Overlay */}
-                <div className="absolute inset-x-0 h-40 bg-gradient-to-b from-blue/5 to-transparent pointer-events-none animate-scanline z-20" />
+                <div className="absolute inset-x-0 h-40 bg-linear-to-b from-blue/5 to-transparent pointer-events-none animate-scanline z-20" />
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.01),rgba(0,255,0,0.005),rgba(0,0,255,0.01))] bg-[length:100%_2px,3px_100%] pointer-events-none z-20 opacity-50" />
 
                 <div className="flex items-center gap-4 mb-3 overflow-x-auto pb-2 scrollbar-none">

@@ -62,7 +62,7 @@ export default function Participation({ onOpenWhitelist }: ParticipationProps) {
 
   return (
     <section id="participation" className="py-24 border-t border-protocol-border transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-wrap items-start justify-between gap-4 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -128,7 +128,7 @@ export default function Participation({ onOpenWhitelist }: ParticipationProps) {
               </div>
 
               {/* Body */}
-              <div className="relative z-10 p-8 pt-9 flex flex-col flex-1">
+              <div className="relative z-10 p-5 sm:p-8 pt-7 sm:pt-9 flex flex-col flex-1">
                 {/* Icon + Title */}
                 <div className="flex items-start justify-between mb-8">
                   <div className="font-display text-[46px] leading-none transition-all group-hover:translate-x-1 duration-300">

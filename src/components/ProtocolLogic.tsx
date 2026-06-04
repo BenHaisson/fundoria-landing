@@ -20,7 +20,7 @@ export default function ProtocolLogic() {
 
   return (
     <section id="protocol" className="py-24 bg-protocol-bg border-t border-protocol-border transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-wrap gap-8 items-end justify-between mb-14">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -52,13 +52,13 @@ export default function ProtocolLogic() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-9 border-b border-protocol-border md:border-r last:border-b-0 [&:nth-child(2)]:md:border-r-0 lg:[&:nth-child(2)]:border-r [&:nth-child(3n)]:lg:border-r-0 group relative overflow-hidden transition-all hover:bg-protocol-accent-bg/80 hover:shadow-[inset_0_0_60px_rgba(59,130,246,0.04)] active:scale-[0.98]"
+              className="p-6 sm:p-9 border-b border-protocol-border sm:border-r last:border-b-0 sm:nth-[2n]:border-r-0 lg:nth-[2n]:border-r lg:nth-[3n]:border-r-0 group relative overflow-hidden transition-all hover:bg-protocol-accent-bg/80 hover:shadow-[inset_0_0_60px_rgba(59,130,246,0.04)] active:scale-[0.98]"
             >
               <div className="absolute inset-0 bg-blue/[0.04] translate-y-full transition-transform duration-500 group-hover:translate-y-0" />
               <div className="absolute top-0 right-0 p-2 opacity-5 group-hover:opacity-30 transition-opacity duration-500 text-blue">
                 <div className="font-mono text-[80px] leading-none mb-[-20px] select-none italic font-bold tracking-tighter">{prop.num}</div>
               </div>
-              <div className={`absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent ${accentMap[prop.accent].topLine} to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
+              <div className={`absolute top-0 left-0 w-full h-[1px] bg-linear-to-r from-transparent ${accentMap[prop.accent].topLine} to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
               <div className={`absolute bottom-0 left-0 w-full h-[2px] ${accentMap[prop.accent].bar} scale-x-0 origin-left transition-transform duration-700 group-hover:scale-x-100`} />
               
               <div className="relative z-10">
@@ -88,7 +88,7 @@ export default function ProtocolLogic() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 p-10 border border-protocol-border bg-black/40 backdrop-blur-sm relative overflow-hidden group shadow-2xl"
+          className="mt-14 sm:mt-20 p-6 sm:p-10 border border-protocol-border bg-black/40 backdrop-blur-sm relative overflow-hidden group shadow-2xl"
         >
           {/* Corner Decors */}
           <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-blue/40" />
@@ -103,7 +103,7 @@ export default function ProtocolLogic() {
             </div>
             
             <div className="flex-2 w-full lg:w-auto overflow-x-auto scrollbar-none -mx-4 px-4 relative">
-              <div className="absolute right-0 inset-y-0 w-10 bg-gradient-to-l from-black/80 to-transparent pointer-events-none lg:hidden z-10" />
+              <div className="absolute right-0 inset-y-0 w-10 bg-linear-to-l from-black/80 to-transparent pointer-events-none lg:hidden z-10" />
               <div className="flex items-center gap-4 min-w-[560px] py-4">
                 <FlowStep label="CAPITAL" sub="Vaults" active />
                 <FlowLine />
@@ -144,7 +144,7 @@ function FlowLine() {
       <motion.div 
         animate={{ left: ["0%", "100%"] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-        className="absolute top-0 w-4 h-full bg-gradient-to-r from-transparent via-blue/50 to-transparent"
+        className="absolute top-0 w-4 h-full bg-linear-to-r from-transparent via-blue/50 to-transparent"
       />
     </div>
   );

@@ -164,8 +164,8 @@ export default function Vision({ onOpenWhitelist }: VisionProps) {
       <div className="absolute inset-0 font-mono text-[8px] text-protocol-text opacity-[0.02] pointer-events-none select-none break-all leading-tight">
         {Array(50).fill('01100110 01110101 01101110 01100100 01101111 01110010 01101001 01100001 ').join(' ')}
       </div>
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -203,7 +203,7 @@ export default function Vision({ onOpenWhitelist }: VisionProps) {
           >
             <div className={`absolute -inset-10 blur-[60px] rounded-full pointer-events-none -z-10 transition-colors duration-700 ${colorMap[features[activeSlide].color].glow}`} />
 
-            <div className="relative z-10 p-7 border border-protocol-border bg-protocol-accent-bg rounded-sm backdrop-blur-2xl min-h-[400px] flex flex-col">
+            <div className="relative z-10 p-5 sm:p-7 border border-protocol-border bg-protocol-accent-bg rounded-sm backdrop-blur-2xl min-h-[360px] sm:min-h-[400px] flex flex-col overflow-hidden">
               <div className="flex items-center gap-4 mb-2">
                 {features.map((f, i) => {
                   const c = colorMap[f.color];

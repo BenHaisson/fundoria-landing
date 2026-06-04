@@ -7,8 +7,8 @@ export default function TokenEconomics() {
     <section id="token" className="py-24 relative overflow-hidden bg-protocol-bg transition-colors duration-300 border-t border-protocol-border">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue/10 blur-[100px] rounded-full pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -81,47 +81,50 @@ export default function TokenEconomics() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="relative h-[600px] flex items-center justify-center overflow-hidden scale-90 md:scale-110 lg:scale-125"
+            className="relative h-[420px] sm:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden"
           >
             {/* Background Glows */}
             <div className="absolute inset-0 bg-blue/5 blur-[120px] rounded-full scale-150 animate-pulse" />
-            
+
+            {/* Scaled orbital system — fits any container size */}
+            <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'scale(var(--orbital-scale, 1))' }}>
             {/* Orbital Rings - Enhanced Layering */}
-            <motion.div 
+            <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[440px] h-[440px] rounded-full border border-blue/5 border-dashed"
+              className="absolute w-70 h-70 sm:w-95 sm:h-95 lg:w-110 lg:h-110 rounded-full border border-blue/5 border-dashed"
             />
-            <motion.div 
+            <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[380px] h-[380px] rounded-full border border-blue/10 border-dashed"
+              className="absolute w-60 h-60 sm:w-80 sm:h-80 lg:w-95 lg:h-95 rounded-full border border-blue/10 border-dashed"
             />
-            <motion.div 
+            <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[320px] h-[320px] rounded-full border border-blue/20"
+              className="absolute w-50 h-50 sm:w-65 sm:h-65 lg:w-80 lg:h-80 rounded-full border border-blue/20"
             />
-            
+
             {/* Rapid Inner Ring */}
-            <motion.div 
+            <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[220px] h-[220px] rounded-full border border-blue/40 border-dotted opacity-30"
+              className="absolute w-35 h-35 sm:w-45 sm:h-45 lg:w-55 lg:h-55 rounded-full border border-blue/40 border-dotted opacity-30"
             />
-            
+
             {/* Moving Data Particles on Rings */}
-            {[0, 1, 2, 3].map((i) => (
+            {([200, 230, 260, 290] as const).map((size, i) => (
               <motion.div
                 key={i}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 10 + i * 5, repeat: Infinity, ease: "linear" }}
-                className={`absolute w-[${320 + i * 30}px] h-[${320 + i * 30}px]`}
-                style={{ width: 320 + i * 30, height: 320 + i * 30 }}
+                className="absolute hidden sm:block"
+                style={{ width: size, height: size }}
               >
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-blue shadow-[0_0_15px_rgba(59,130,246,1)] rounded-full animate-pulse" />
               </motion.div>
             ))}
+            </div>
 
             {/* Central Token - Energy Core Upgrade */}
             <div className="relative z-30 group">
@@ -186,28 +189,28 @@ export default function TokenEconomics() {
             {/* Satellites - Positioning for 1.25x scale with enhanced orbital feel */}
             <Satellite
               delay={0.3}
-              pos="top-[8%] left-[0%] md:left-[8%]"
+              pos="top-[6%] left-[4%] sm:left-[8%]"
               label="Verification"
               val="Vault Isolation"
               icon={<ShieldCheck className="w-4 h-4 text-blue" />}
             />
             <Satellite
               delay={0.4}
-              pos="top-[8%] right-[0%] md:right-[8%]"
+              pos="top-[6%] right-[4%] sm:right-[8%]"
               label="Governance"
               val="DAO Governed"
               icon={<Gavel className="w-4 h-4 text-blue" />}
             />
             <Satellite
               delay={0.5}
-              pos="bottom-[8%] left-[0%] md:left-[8%]"
+              pos="bottom-[6%] left-[4%] sm:left-[8%]"
               label="Incentives"
               val="Protocol Rewards"
               icon={<Coins className="w-4 h-4 text-blue" />}
             />
             <Satellite
               delay={0.6}
-              pos="bottom-[8%] right-[0%] md:right-[8%]"
+              pos="bottom-[6%] right-[4%] sm:right-[8%]"
               label="Risk Engine"
               val="Hard Bounds Active"
               icon={<Activity className="w-4 h-4 text-blue" />}

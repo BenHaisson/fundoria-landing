@@ -9,7 +9,7 @@ export default function Roadmap() {
 
   return (
     <section className="py-24 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -31,13 +31,13 @@ export default function Roadmap() {
 
         <div className="relative">
           {/* Scroll Progress Line */}
-          <div className="absolute left-[38px] top-0 bottom-0 w-px bg-protocol-border md:block hidden">
+          <div className="absolute left-9.5 top-0 bottom-0 w-px bg-protocol-border hidden md:block">
             <motion.div
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="w-full h-full bg-gradient-to-b from-blue via-cyan to-transparent origin-top"
+              className="w-full h-full bg-linear-to-b from-blue via-cyan to-transparent origin-top"
             />
           </div>
           
@@ -67,7 +67,7 @@ export default function Roadmap() {
                   </div>
                 </div>
 
-                <div className="p-8 pt-12 md:p-10 md:pt-14 flex flex-col md:flex-row gap-8 items-start w-full">
+                <div className="p-5 pt-10 sm:p-8 sm:pt-12 md:p-10 md:pt-14 flex flex-col md:flex-row gap-6 sm:gap-8 items-start w-full">
                   <div className="shrink-0 relative z-10 hidden md:block">
                     <div className={`w-16 h-16 flex items-center justify-center border ${item.active ? 'border-blue text-blue bg-blue/10' : 'border-protocol-border text-protocol-text-dim'} bg-protocol-bg font-display text-4xl transition-all group-hover:scale-105 duration-300 relative`}>
                       {item.phase}
@@ -78,7 +78,7 @@ export default function Roadmap() {
                         <motion.div 
                           animate={{ opacity: [0.2, 0.6, 0.2] }}
                           transition={{ duration: 1.5, repeat: Infinity }}
-                          className="absolute inset-0 bg-blue/20 blur-[8px]" 
+                          className="absolute inset-0 bg-blue/20 blur-sm"
                         />
                       )}
                     </div>

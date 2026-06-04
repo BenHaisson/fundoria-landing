@@ -47,7 +47,7 @@ function SchematicDiagram() {
 
       <div className="p-8 md:p-10 relative">
         {/* Scanline */}
-        <div className="absolute inset-x-0 h-24 bg-gradient-to-b from-blue/[0.03] to-transparent pointer-events-none animate-scanline z-0" />
+        <div className="absolute inset-x-0 h-24 bg-linear-to-b from-blue/[0.03] to-transparent pointer-events-none animate-scanline z-0" />
 
         {/* Desktop: horizontal flow */}
         <div className="hidden md:flex items-center justify-between gap-0 relative z-10">
@@ -95,7 +95,7 @@ function SchematicDiagram() {
                     <motion.div
                       animate={{ left: ['-100%', '200%'] }}
                       transition={{ duration: 1.2, repeat: Infinity, ease: 'linear' }}
-                      className="absolute top-0 w-3 h-full bg-gradient-to-r from-transparent via-blue/60 to-transparent"
+                      className="absolute top-0 w-3 h-full bg-linear-to-r from-transparent via-blue/60 to-transparent"
                     />
                   </div>
                   {/* Arrow head */}
@@ -129,7 +129,7 @@ function SchematicDiagram() {
                     <motion.div
                       animate={{ top: ['-100%', '200%'] }}
                       transition={{ duration: 1.2, repeat: Infinity, ease: 'linear' }}
-                      className="absolute left-0 h-2 w-full bg-gradient-to-b from-transparent via-blue/60 to-transparent"
+                      className="absolute left-0 h-2 w-full bg-linear-to-b from-transparent via-blue/60 to-transparent"
                     />
                   </div>
                   <div className="w-0 h-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent border-t-blue/40" />
@@ -157,7 +157,7 @@ function SchematicDiagram() {
       </div>
 
       {/* Bottom flash bar */}
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-blue to-transparent animate-flash" />
+      <div className="h-[2px] bg-linear-to-r from-transparent via-blue to-transparent animate-flash" />
     </div>
   );
 }
@@ -165,7 +165,7 @@ function SchematicDiagram() {
 export default function Architecture() {
   return (
     <section id="protocol" className="py-24 bg-protocol-bg border-t border-protocol-border overflow-hidden transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -197,7 +197,7 @@ export default function Architecture() {
         </motion.div>
 
         {/* Steps + code panel */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
 
           {/* Left — Steps */}
           <motion.div
@@ -213,7 +213,7 @@ export default function Architecture() {
                   whileInView={{ scaleY: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
-                  className="w-full h-full bg-gradient-to-b from-blue/60 via-blue/20 to-transparent origin-top"
+                  className="w-full h-full bg-linear-to-b from-blue/60 via-blue/20 to-transparent origin-top"
                 />
               </div>
 
@@ -282,7 +282,7 @@ export default function Architecture() {
               {/* Code body */}
               <div className="p-6 font-mono text-[11px] leading-[2] text-protocol-text font-medium relative overflow-hidden">
                 {/* Scanline */}
-                <div className="absolute inset-x-0 h-20 bg-gradient-to-b from-blue/[0.03] to-transparent pointer-events-none animate-scanline z-10" />
+                <div className="absolute inset-x-0 h-20 bg-linear-to-b from-blue/[0.03] to-transparent pointer-events-none animate-scanline z-10" />
 
                 {codeLines.map((line, i) => (
                   <motion.div
@@ -318,7 +318,7 @@ export default function Architecture() {
               </div>
 
               {/* Bottom flash bar */}
-              <div className="h-[2px] bg-gradient-to-r from-transparent via-blue to-transparent animate-flash" />
+              <div className="h-[2px] bg-linear-to-r from-transparent via-blue to-transparent animate-flash" />
             </div>
           </motion.div>
         </div>

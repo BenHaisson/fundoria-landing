@@ -39,7 +39,7 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
   };
 
   return (
-    <section className="relative pt-[160px] md:pt-[200px] pb-[120px] md:pb-[160px] text-center overflow-hidden px-6 transition-colors duration-300">
+    <section className="relative pt-[140px] md:pt-[200px] pb-[80px] md:pb-[160px] text-center overflow-hidden px-4 sm:px-6 transition-colors duration-300">
       {/* Background glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[700px] pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue/10 rounded-full blur-[140px] mix-blend-screen animate-pulse-custom" />
@@ -51,17 +51,17 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
         {/* Badge */}
         <motion.div
           variants={itemVariants}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue/30 bg-blue/5 backdrop-blur-md mb-10 group cursor-default"
+          className="inline-flex flex-wrap items-center justify-center gap-2 px-3 py-2 sm:px-4 rounded-full border border-blue/30 bg-blue/5 backdrop-blur-md mb-8 sm:mb-10 group cursor-default max-w-[90vw]"
         >
-          <div className="relative w-2 h-2">
+          <div className="relative w-2 h-2 shrink-0">
             <span className="absolute inset-0 rounded-full bg-blue animate-ping-custom" />
             <span className="relative block w-2 h-2 rounded-full bg-blue" />
           </div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-blue font-bold">
+          <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-blue font-bold">
             PRE-LAUNCH · HYPEREVM NATIVE
           </span>
-          <div className="w-px h-3 bg-blue/30 ml-2 mr-1" />
-          <span className="font-mono text-[9px] uppercase tracking-[0.1em] text-protocol-text/40">
+          <div className="w-px h-3 bg-blue/30 ml-1 mr-1 hidden sm:block" />
+          <span className="font-mono text-[9px] uppercase tracking-[0.1em] text-protocol-text/40 hidden sm:inline">
             Phase 01: Active
           </span>
         </motion.div>
@@ -74,14 +74,14 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
           <span className="block text-protocol-text/20 mb-2 font-mono text-sm tracking-widest animate-flicker">[ SYSTEM_INIT ]</span>
           Protocol-Native <br />
           <span className="relative inline-block">
-            <span className="bg-gradient-to-r from-blue via-cyan to-green bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-blue via-cyan to-green bg-clip-text text-transparent">
               Capital Markets
             </span>
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 1.2, duration: 1 }}
-              className="absolute -bottom-2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue/50 to-transparent"
+              className="absolute -bottom-2 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue/50 to-transparent"
             />
           </span>
         </motion.h1>
@@ -89,7 +89,7 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
         {/* Sub */}
         <motion.p
           variants={itemVariants}
-          className="max-w-[620px] mx-auto text-protocol-text-dim text-[16px] md:text-lg leading-relaxed mb-14 italic"
+          className="max-w-[620px] mx-auto text-protocol-text-dim text-[14px] sm:text-[16px] md:text-lg leading-relaxed mb-10 sm:mb-14 italic px-2"
         >
           Fundoria is a non-custodial capital markets protocol on HyperEVM — where{' '}
           <span className="text-protocol-text">trader skill is verified on-chain</span>, risk is enforced by{' '}
@@ -97,13 +97,13 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
         </motion.p>
 
         {/* CTAs */}
-        <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-6 mb-16">
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-16 px-4 sm:px-0">
           <button
             onClick={onOpenWhitelist}
-            className="group relative bg-blue hover:bg-green text-black font-mono text-[12px] font-black uppercase tracking-[0.2em] px-10 py-5 rounded-sm overflow-hidden transition-all duration-300 shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_80px_rgba(16,185,129,0.5)]"
+            className="group relative w-full sm:w-auto bg-blue hover:bg-green text-black font-mono text-[11px] sm:text-[12px] font-black uppercase tracking-[0.2em] px-8 sm:px-10 py-4 sm:py-5 rounded-sm overflow-hidden transition-all duration-300 shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_80px_rgba(16,185,129,0.5)]"
           >
             <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500" />
-            <span className="relative flex items-center gap-3">
+            <span className="relative flex items-center justify-center gap-3">
               Whitelist Now
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </span>
@@ -111,7 +111,7 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
 
           <button
             onClick={onShowWhitepaper}
-            className="group px-10 py-5 border border-protocol-border hover:border-blue/50 text-protocol-text/60 hover:text-protocol-text font-mono text-[12px] font-black uppercase tracking-[0.2em] rounded-sm transition-all relative overflow-hidden"
+            className="group w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border border-protocol-border hover:border-blue/50 text-protocol-text/60 hover:text-protocol-text font-mono text-[11px] sm:text-[12px] font-black uppercase tracking-[0.2em] rounded-sm transition-all relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-blue/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
             <span className="relative">Read Documentation</span>
@@ -121,7 +121,7 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
         {/* Stats bar */}
         <motion.div
           variants={itemVariants}
-          className="inline-grid grid-cols-2 md:grid-cols-4 gap-px bg-protocol-border border border-protocol-border max-w-2xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-protocol-border border border-protocol-border w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto"
         >
           {stats.map((s, i) => (
             <div

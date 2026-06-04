@@ -42,7 +42,7 @@ export default function Navbar({ onShowWhitepaper, onOpenWhitelist }: NavbarProp
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 h-[72px] flex items-center border-b ${scrolled || mobileMenuOpen ? 'bg-protocol-bg/92 backdrop-blur-xl border-protocol-border' : 'bg-transparent border-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center transition-opacity hover:opacity-80">
           <Logo size={32} showText={true} />
@@ -138,7 +138,7 @@ export default function Navbar({ onShowWhitepaper, onOpenWhitelist }: NavbarProp
                       <a
                         href={`#${item.toLowerCase()}`}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-3 font-mono text-xs uppercase tracking-[0.3em] text-protocol-text-dim hover:text-blue transition-colors border-b border-protocol-border/30 flex items-center justify-between group"
+                        className="py-3 font-mono text-xs uppercase tracking-[0.3em] text-protocol-text-dim hover:text-blue transition-colors border-b border-protocol-border/30 flex items-center justify-between group"
                       >
                         {item}
                         <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
