@@ -29,7 +29,7 @@ export default function RiskControls() {
               HARD_CAP: 15%
             </div>
           </div>
-          <p className="text-[12px] text-protocol-text-dim leading-relaxed font-sans italic border-l border-blue/30 pl-4 py-1">
+          <p className="text-[13px] text-protocol-text-dim leading-relaxed font-sans italic border-l border-blue/30 pl-4 py-1">
             Deterministic loss ceilings enforced at the sub-account level. Liquidation triggers are calculated pre-tick.
           </p>
           <div className="grid grid-cols-2 gap-3 pt-2">
@@ -109,7 +109,7 @@ export default function RiskControls() {
               <div className="font-mono text-[10px] text-protocol-text opacity-40 animate-pulse">SCANNING::NETWORK_STATE</div>
             </div>
           </div>
-          <p className="text-[11px] text-protocol-text-dim leading-relaxed italic">
+          <p className="text-[13px] text-protocol-text-dim leading-relaxed italic">
             On-chain state verification ensures vault collateral and exposure markers remain accurate across all active protocol positions.
           </p>
           <div className="flex flex-col gap-2 pt-2">
@@ -135,7 +135,7 @@ export default function RiskControls() {
   }, [controls.length]);
 
   return (
-    <section id="risk" className="py-24 bg-protocol-bg border-y border-protocol-border relative overflow-hidden transition-colors duration-300">
+    <section id="risk" className="py-28 md:py-36 bg-protocol-bg border-y border-protocol-border relative overflow-hidden transition-colors duration-300">
       <div className="absolute right-[-2%] top-1/2 -translate-y-1/2 rotate-90 font-display text-[10vw] text-protocol-text opacity-[0.02] pointer-events-none whitespace-nowrap">
         DETERMINISTIC_RULES
       </div>
@@ -156,7 +156,7 @@ export default function RiskControls() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-protocol-text-dim text-[15px] leading-relaxed mt-6 max-w-lg italic"
+              className="text-protocol-text-dim text-[15px] sm:text-[16px] leading-relaxed mt-6 max-w-lg italic"
             >
               Constraints are enforced pre-execution through protocol-level gating. No manual overrides. No discretionary exceptions. Fundoria operates as a headless risk manager.
             </motion.p>
@@ -178,7 +178,7 @@ export default function RiskControls() {
             <div className="absolute -inset-10 bg-blue/10 blur-[100px] rounded-full pointer-events-none -z-10 animate-pulse" />
             
             {/* System Console Aesthetic */}
-            <div className="relative z-10 p-1 border border-protocol-border bg-black shadow-2xl overflow-hidden group">
+            <div className="relative z-10 p-1 border border-protocol-border bg-black rounded-2xl shadow-[0_8px_60px_rgba(0,0,0,0.6)] overflow-hidden group">
               {/* Header Bar */}
               <div className="flex items-center justify-between px-4 py-2 border-b border-protocol-border bg-protocol-accent-bg">
                 <div className="flex gap-1.5 focus-within:ring-0">
@@ -285,11 +285,11 @@ export default function RiskControls() {
             <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-blue/20" />
             <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-blue/20" />
             
-            {/* Float Accents */}
-            <div className="absolute -top-10 right-10 p-2 border border-protocol-border bg-protocol-bg font-mono text-[8px] text-protocol-text/30 uppercase tracking-widest -z-10 rotate-12">
+            {/* Float Accents — hidden on mobile to prevent overflow */}
+            <div className="hidden sm:block absolute -top-10 right-10 p-2 border border-protocol-border bg-protocol-bg font-mono text-[8px] text-protocol-text/30 uppercase tracking-widest -z-10 rotate-12">
               ENFORCE_ENGINE::v.alpha
             </div>
-            <div className="absolute -bottom-10 left-10 p-2 border border-protocol-border bg-protocol-bg font-mono text-[8px] text-protocol-text/30 uppercase tracking-widest -z-10 -rotate-6">
+            <div className="hidden sm:block absolute -bottom-10 left-10 p-2 border border-protocol-border bg-protocol-bg font-mono text-[8px] text-protocol-text/30 uppercase tracking-widest -z-10 -rotate-6">
               AUDIT_TRAIL::ON_CHAIN
             </div>
           </motion.div>
@@ -304,7 +304,7 @@ function RiskItem({ text, index }: { text: string; index: number }) {
     <li className="flex items-center gap-3 text-sm font-medium group">
       <div className="font-mono text-blue text-[10px] shrink-0 opacity-50 group-hover:opacity-100 transition-opacity">RC_{index.toString().padStart(2, '0')}</div>
       <div className="w-1 h-3 bg-blue/20 group-hover:bg-blue transition-colors" />
-      <span className="text-protocol-text-dim group-hover:text-protocol-text transition-colors lowercase font-mono leading-none pt-0.5">{text}</span>
+      <span className="text-protocol-text-dim group-hover:text-protocol-text transition-colors lowercase font-mono text-[13px] leading-snug pt-0.5">{text}</span>
     </li>
   );
 }

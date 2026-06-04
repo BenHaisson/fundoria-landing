@@ -4,7 +4,7 @@ import { ShieldCheck, Gavel, Coins, Activity } from 'lucide-react';
 
 export default function TokenEconomics() {
   return (
-    <section id="token" className="py-24 relative overflow-hidden bg-protocol-bg transition-colors duration-300 border-t border-protocol-border">
+    <section id="token" className="py-28 md:py-36 relative overflow-hidden bg-protocol-bg transition-colors duration-300 border-t border-protocol-border">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue/10 blur-[100px] rounded-full pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
@@ -35,11 +35,11 @@ export default function TokenEconomics() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.35 }}
-              className="mt-10 border border-protocol-border bg-protocol-accent-bg"
+              className="mt-10 border border-protocol-border bg-protocol-accent-bg rounded-xl overflow-hidden"
             >
               <div className="px-5 py-3 border-b border-protocol-border flex items-center justify-between">
-                <div className="font-mono text-[9px] uppercase tracking-widest text-blue font-bold">Token Allocation</div>
-                <div className="font-mono text-[8px] text-protocol-text-dim/40 uppercase tracking-widest">Supply: 100,000,000 $FND</div>
+                <div className="font-mono text-[10px] uppercase tracking-widest text-blue font-bold">Token Allocation</div>
+                <div className="font-mono text-[9px] text-protocol-text-dim/50 uppercase tracking-widest">Supply: 100,000,000 $FND</div>
               </div>
               {[
                 { label: 'Community & Ecosystem', pct: 40, color: 'bg-blue', note: '' },
@@ -52,7 +52,7 @@ export default function TokenEconomics() {
                   <div className="font-mono text-[9px] text-blue font-bold w-8 shrink-0">{row.pct}%</div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-protocol-text">{row.label}</span>
+                      <span className="font-mono text-[10px] uppercase tracking-wider text-protocol-text">{row.label}</span>
                       {row.note && <span className="font-mono text-[7px] text-protocol-text-dim/40 uppercase tracking-tighter">{row.note}</span>}
                     </div>
                     <div className="h-[3px] bg-protocol-border/50 rounded-full overflow-hidden">
@@ -69,7 +69,7 @@ export default function TokenEconomics() {
               ))}
             </motion.div>
 
-            <div className="mt-4 p-5 border border-blue/10 bg-blue/5 rounded-sm">
+            <div className="mt-4 p-5 border border-blue/10 bg-blue/5 rounded-xl">
               <p className="text-[10px] font-mono leading-relaxed text-protocol-text-dim/60 uppercase tracking-tight">
                 <span className="text-blue font-bold opacity-80">[ GLOBAL_DISCLOSURE ]</span> :: $FND is a coordination utility token. It is not an investment contract, security, or claim on protocol revenue or trader performance. Allocation figures are illustrative and subject to change. Participation is subject to protocol eligibility.
               </p>
@@ -229,13 +229,13 @@ function TokenItem({ title, desc, index }: { title: string; desc: string; index:
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 + 0.2 }}
-      className="p-5 px-6 border border-protocol-border bg-protocol-accent-bg hover:bg-protocol-accent-bg/80 transition-all group border-l-2 border-l-blue/20 hover:border-l-blue"
+      className="p-5 px-6 border border-protocol-border bg-protocol-accent-bg hover:bg-protocol-accent-bg/80 transition-all group border-l-2 border-l-blue/20 hover:border-l-blue rounded-lg"
     >
       <div className="flex items-center gap-3 mb-2">
         <div className="w-1.5 h-1.5 bg-blue/40 group-hover:bg-blue animate-pulse" />
-        <h4 className="text-[12px] font-bold uppercase tracking-wider text-protocol-text">{title}</h4>
+        <h4 className="text-[13px] font-bold uppercase tracking-wider text-protocol-text">{title}</h4>
       </div>
-      <p className="text-[11px] text-protocol-text-dim leading-relaxed font-sans pl-4.5 font-medium">{desc}</p>
+      <p className="text-[13px] text-protocol-text-dim leading-relaxed font-sans pl-5 font-medium">{desc}</p>
     </motion.div>
   );
 }

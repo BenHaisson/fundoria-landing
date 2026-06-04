@@ -19,7 +19,7 @@ export default function ProtocolLogic() {
   ];
 
   return (
-    <section id="protocol" className="py-24 bg-protocol-bg border-t border-protocol-border transition-colors duration-300">
+    <section id="protocol" className="py-28 md:py-36 bg-protocol-bg border-t border-protocol-border transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-wrap gap-8 items-end justify-between mb-14">
           <motion.div
@@ -37,14 +37,14 @@ export default function ProtocolLogic() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="max-w-[380px] text-protocol-text-dim text-[13px] leading-relaxed md:text-right italic"
+            className="max-w-[380px] text-protocol-text-dim text-[15px] leading-relaxed md:text-right italic"
           >
             Every constraint and settlement is enforced by code — not human gatekeepers. 
             Fundoria coordinates capital with zero intermediary trust.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-protocol-border bg-protocol-accent-bg">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-protocol-border bg-protocol-accent-bg rounded-xl overflow-hidden">
           {properties.map((prop, i) => (
             <motion.div 
               key={i}
@@ -67,15 +67,15 @@ export default function ProtocolLogic() {
                     <span className={`w-1.5 h-1.5 ${accentMap[prop.accent].dot} rounded-full animate-pulse`} />
                     LOGIC_MODULE::{prop.num}
                   </div>
-                  <div className={`w-8 h-8 border border-protocol-border flex items-center justify-center ${accentMap[prop.accent].label} opacity-20 group-hover:opacity-70 transition-opacity duration-300`}>
+                  <div className={`w-9 h-9 border border-protocol-border flex items-center justify-center ${accentMap[prop.accent].label} opacity-20 group-hover:opacity-70 transition-opacity duration-300`}>
                     {prop.icon}
                   </div>
                 </div>
-                <h3 className="text-[11px] font-mono font-black uppercase tracking-[0.2em] mb-4 transition-all group-hover:translate-x-1 flex items-center gap-2 text-protocol-text">
-                  <span className={accentMap[prop.accent].label}>[+ ]</span>
+                <h3 className="text-[13px] font-mono font-black uppercase tracking-[0.15em] mb-4 transition-all group-hover:translate-x-1 flex items-center gap-2 text-protocol-text">
+                  <span className={accentMap[prop.accent].label}>[+]</span>
                   {prop.title}
                 </h3>
-                <p className="text-[12px] text-protocol-text-dim leading-relaxed font-sans font-medium line-clamp-3 group-hover:line-clamp-none transition-all duration-300">
+                <p className="text-[13px] text-protocol-text-dim leading-relaxed font-sans font-medium line-clamp-3 group-hover:line-clamp-none transition-all duration-300">
                   {prop.desc}
                 </p>
               </div>
@@ -88,7 +88,7 @@ export default function ProtocolLogic() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-14 sm:mt-20 p-6 sm:p-10 border border-protocol-border bg-black/40 backdrop-blur-sm relative overflow-hidden group shadow-2xl"
+          className="mt-14 sm:mt-20 p-6 sm:p-10 border border-protocol-border bg-black/40 backdrop-blur-md rounded-xl relative overflow-hidden group shadow-2xl"
         >
           {/* Corner Decors */}
           <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-blue/40" />
@@ -131,8 +131,8 @@ function FlowStep({ label, sub, active, pulse }: { label: string; sub: string; a
         <div className={`w-2 h-2 rounded-full ${active ? 'bg-blue' : 'bg-protocol-text-dim/30'}`} />
       </div>
       <div className="text-center font-mono">
-        <div className="text-[10px] font-black tracking-widest text-protocol-text">{label}</div>
-        <div className="text-[8px] text-protocol-text-dim/60 uppercase tracking-tighter">{sub}</div>
+        <div className="text-[11px] font-black tracking-widest text-protocol-text">{label}</div>
+        <div className="text-[9px] text-protocol-text-dim/60 uppercase tracking-tighter">{sub}</div>
       </div>
     </div>
   );

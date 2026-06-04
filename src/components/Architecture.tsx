@@ -30,7 +30,7 @@ const schematicNodes = [
 
 function SchematicDiagram() {
   return (
-    <div className="mb-20 border border-protocol-border bg-black/40 backdrop-blur-sm relative overflow-hidden">
+    <div className="mb-20 border border-protocol-border bg-black/40 backdrop-blur-md rounded-xl relative overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
       {/* Header bar */}
       <div className="py-2.5 px-4 border-b border-protocol-border bg-protocol-accent-bg flex items-center gap-2">
         <div className="w-2 h-2 rounded-full bg-red-500/40" />
@@ -164,7 +164,7 @@ function SchematicDiagram() {
 
 export default function Architecture() {
   return (
-    <section id="protocol" className="py-24 bg-protocol-bg border-t border-protocol-border overflow-hidden transition-colors duration-300">
+    <section id="protocol" className="py-28 md:py-36 bg-protocol-bg border-t border-protocol-border overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section header */}
         <motion.div
@@ -180,7 +180,7 @@ export default function Architecture() {
               Components & <br />
               <em className="text-blue not-italic">Execution Flow.</em>
             </h2>
-            <p className="text-protocol-text-dim text-[13px] leading-relaxed max-w-[360px] italic">
+            <p className="text-protocol-text-dim text-[15px] leading-relaxed max-w-[360px] italic">
               Fundoria separates capital custody, execution, and risk enforcement into verifiable, auditable components.
             </p>
           </div>
@@ -237,17 +237,17 @@ export default function Architecture() {
                   </div>
 
                   {/* Card */}
-                  <div className="flex-1 p-5 lg:p-6 border border-protocol-border bg-protocol-bg/40 backdrop-blur-sm group-hover:bg-protocol-accent-bg group-hover:border-blue/40 group-hover:shadow-[0_4px_24px_rgba(59,130,246,0.06)] transition-all duration-500 relative">
+                  <div className="flex-1 p-5 lg:p-6 border border-protocol-border bg-protocol-bg/40 backdrop-blur-sm group-hover:bg-protocol-accent-bg group-hover:border-blue/40 group-hover:shadow-[0_4px_24px_rgba(59,130,246,0.1)] transition-all duration-500 relative rounded-xl">
                     <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-protocol-border group-hover:bg-blue transition-colors duration-300" />
                     <div className="absolute bottom-0 left-0 w-0 h-px bg-blue group-hover:w-full transition-all duration-700" />
 
                     <div className="font-mono text-[10px] text-blue uppercase tracking-[0.3em] font-black mb-2 opacity-50 group-hover:opacity-100 transition-opacity">
                       STAGE::{step.num} / {step.tag}
                     </div>
-                    <h3 className="text-[15px] font-bold uppercase tracking-tight mb-2 text-protocol-text/80 group-hover:text-protocol-text transition-colors">
+                    <h3 className="text-[16px] font-bold uppercase tracking-tight mb-2 text-protocol-text/80 group-hover:text-protocol-text transition-colors">
                       {step.title}
                     </h3>
-                    <p className="text-[12px] text-protocol-text-dim leading-relaxed max-w-[340px] font-medium">
+                    <p className="text-[14px] text-protocol-text-dim leading-relaxed max-w-[340px] font-medium">
                       {step.desc}
                     </p>
                   </div>
@@ -264,7 +264,7 @@ export default function Architecture() {
             transition={{ delay: 0.1 }}
             className="lg:pt-0"
           >
-            <div className="sticky top-32 border border-protocol-border bg-protocol-bg overflow-hidden shadow-[0_0_60px_rgba(59,130,246,0.06)]">
+            <div className="sticky top-32 border border-protocol-border bg-protocol-bg rounded-xl overflow-hidden shadow-[0_0_60px_rgba(59,130,246,0.1)]">
               {/* Title bar */}
               <div className="py-2.5 px-3.5 border-b border-protocol-border bg-protocol-accent-bg flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-red-500/50" />

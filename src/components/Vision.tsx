@@ -160,7 +160,7 @@ export default function Vision({ onOpenWhitelist }: VisionProps) {
   }, [features.length]);
 
   return (
-    <section id="vision" className="py-24 border-y border-protocol-border relative overflow-hidden transition-colors duration-300">
+    <section id="vision" className="py-28 md:py-36 border-y border-protocol-border relative overflow-hidden transition-colors duration-300">
       <div className="absolute inset-0 font-mono text-[8px] text-protocol-text opacity-[0.02] pointer-events-none select-none break-all leading-tight">
         {Array(50).fill('01100110 01110101 01101110 01100100 01101111 01110010 01101001 01100001 ').join(' ')}
       </div>
@@ -181,7 +181,7 @@ export default function Vision({ onOpenWhitelist }: VisionProps) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-protocol-text-dim text-[15px] leading-relaxed mt-6 max-w-lg italic"
+              className="text-protocol-text-dim text-[15px] sm:text-[16px] leading-relaxed mt-6 max-w-lg italic"
             >
               Fundoria establishes a protocol-controlled infrastructure that coordinates traders 
               and capital within a unified, rule-enforced system. Trading skill becomes a 
@@ -203,7 +203,7 @@ export default function Vision({ onOpenWhitelist }: VisionProps) {
           >
             <div className={`absolute -inset-10 blur-[60px] rounded-full pointer-events-none -z-10 transition-colors duration-700 ${colorMap[features[activeSlide].color].glow}`} />
 
-            <div className="relative z-10 p-5 sm:p-7 border border-protocol-border bg-protocol-accent-bg rounded-sm backdrop-blur-2xl min-h-[360px] sm:min-h-[400px] flex flex-col overflow-hidden">
+            <div className="relative z-10 p-5 sm:p-7 border border-protocol-border bg-protocol-accent-bg rounded-2xl backdrop-blur-2xl min-h-[360px] sm:min-h-[400px] flex flex-col overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
               <div className="flex items-center gap-4 mb-2">
                 {features.map((f, i) => {
                   const c = colorMap[f.color];
@@ -292,7 +292,7 @@ function VisionItem({ text, index }: { text: string; index: number }) {
     <li className="flex items-center gap-3 text-sm font-medium group">
       <div className="font-mono text-green text-[10px] shrink-0 opacity-50 group-hover:opacity-100 transition-opacity">0x_{index.toString().padStart(2, '0')}</div>
       <div className="w-1 h-3 bg-green/20 group-hover:bg-green transition-colors" />
-      <span className="text-protocol-text-dim group-hover:text-protocol-text transition-colors lowercase font-mono leading-none pt-0.5">{text}</span>
+      <span className="text-protocol-text-dim group-hover:text-protocol-text transition-colors lowercase font-mono text-[13px] leading-snug pt-0.5">{text}</span>
     </li>
   );
 }

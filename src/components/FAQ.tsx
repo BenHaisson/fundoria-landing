@@ -55,7 +55,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-24 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
+    <section id="faq" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
@@ -70,7 +70,7 @@ export default function FAQ() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-protocol-text-dim text-[13px] mt-3 italic"
+            className="text-protocol-text-dim text-[15px] mt-3 italic"
           >
             Direct answers for protocol-native capital markets.
           </motion.p>
@@ -98,7 +98,7 @@ function FAQItem({ q, a, isFirst }: { q: string; a: string; isFirst?: boolean })
   const [open, setOpen] = useState(isFirst || false);
 
   return (
-    <div className={`border-b border-protocol-border transition-all duration-500 ${open ? 'bg-protocol-accent-bg/60 shadow-[inset_0_0_40px_rgba(59,130,246,0.03)]' : 'hover:bg-protocol-accent-bg'}`}>
+    <div className={`border-b border-protocol-border transition-all duration-500 ${open ? 'bg-protocol-accent-bg/60 shadow-[inset_0_0_40px_rgba(59,130,246,0.04)]' : 'hover:bg-protocol-accent-bg/40'}`}>
       <button
         onClick={() => setOpen(!open)}
         className="w-full py-5 sm:py-7 flex justify-between items-center text-left group transition-all px-4 sm:px-5 relative overflow-hidden"
@@ -128,7 +128,7 @@ function FAQItem({ q, a, isFirst }: { q: string; a: string; isFirst?: boolean })
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="px-5 sm:px-14 pb-8 sm:pb-10 text-[13px] sm:text-[14px] text-protocol-text-dim leading-[1.7] font-sans relative transition-colors font-medium max-w-2xl group/ans">
+            <div className="px-5 sm:px-14 pb-8 sm:pb-10 text-[14px] sm:text-[15px] text-protocol-text-dim leading-[1.75] font-sans relative transition-colors font-medium max-w-2xl group/ans">
               {/* Vertical Guide Line */}
               <div className="absolute left-4 top-0 bottom-10 w-px bg-linear-to-b from-blue/30 via-blue/10 to-transparent" />
               

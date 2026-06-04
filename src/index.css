@@ -191,3 +191,24 @@
 .animate-ticker-pausable:hover {
   animation-play-state: paused;
 }
+
+/* Card glow on hover — reusable */
+.card-glow-hover {
+  transition: box-shadow 0.3s ease;
+}
+.card-glow-hover:hover {
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2), 0 8px 40px rgba(59, 130, 246, 0.08);
+}
+
+/* Smooth section fade-in from below */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Prevent layout shift on mobile from oversized decorative elements */
+@media (max-width: 640px) {
+  .hide-mobile-overflow {
+    overflow: hidden;
+  }
+}

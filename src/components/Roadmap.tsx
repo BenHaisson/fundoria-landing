@@ -8,7 +8,7 @@ export default function Roadmap() {
   ];
 
   return (
-    <section className="py-24 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
+    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
@@ -31,7 +31,7 @@ export default function Roadmap() {
 
         <div className="relative">
           {/* Scroll Progress Line */}
-          <div className="absolute left-9.5 top-0 bottom-0 w-px bg-protocol-border hidden md:block">
+          <div className="absolute left-[38px] top-0 bottom-0 w-px bg-protocol-border hidden md:block">
             <motion.div
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
@@ -53,7 +53,7 @@ export default function Roadmap() {
                   delay: i * 0.2,
                   ease: [0.16, 1, 0.3, 1]
                 }}
-                className={`group relative flex flex-col md:flex-row gap-8 items-start border bg-protocol-bg transition-all duration-500 ${item.active ? 'border-blue/40 shadow-[0_0_40px_rgba(59,130,246,0.08)] hover:shadow-[0_0_60px_rgba(59,130,246,0.15)]' : 'border-protocol-border opacity-50 grayscale hover:opacity-100 hover:grayscale-0 hover:shadow-[0_0_30px_rgba(59,130,246,0.05)]'}`}
+                className={`group relative flex flex-col md:flex-row gap-8 items-start border bg-protocol-bg rounded-xl overflow-hidden transition-all duration-500 ${item.active ? 'border-blue/40 shadow-[0_0_40px_rgba(59,130,246,0.08)] hover:shadow-[0_0_60px_rgba(59,130,246,0.15)]' : 'border-protocol-border opacity-50 grayscale hover:opacity-100 hover:grayscale-0 hover:shadow-[0_0_30px_rgba(59,130,246,0.05)]'}`}
               >
                 {/* Terminal Header Decoration */}
                 <div className="absolute top-0 inset-x-0 h-6 border-b border-protocol-border bg-protocol-accent-bg flex items-center px-4 justify-between pointer-events-none">
@@ -102,27 +102,27 @@ export default function Roadmap() {
                         )}
                       </h3>
                     </div>
-                    <p className="text-[13px] text-protocol-text-dim leading-relaxed font-mono tracking-tight pb-2 max-w-xl">
+                    <p className="text-[14px] text-protocol-text-dim leading-relaxed pb-2 max-w-xl font-sans">
                       <span className="text-protocol-text/40 mr-1">&gt;</span>
                       {item.desc}
                     </p>
                     
                     <div className="mt-6 flex flex-wrap gap-4">
                       {item.active ? (
-                        <div className="px-3 py-1 border border-blue/30 bg-blue/5 rounded-sm font-mono text-[8px] text-blue uppercase tracking-widest flex items-center gap-2">
+                        <div className="px-3 py-1.5 border border-blue/30 bg-blue/5 rounded-full font-mono text-[9px] text-blue uppercase tracking-widest flex items-center gap-2">
                           <span className="w-1.5 h-1.5 bg-blue rounded-full animate-ping" />
                           Process: Active
                         </div>
                       ) : (
-                        <div className="px-3 py-1 border border-protocol-border bg-protocol-accent-bg rounded-sm font-mono text-[8px] text-protocol-text/20 uppercase tracking-widest">
+                        <div className="px-3 py-1.5 border border-protocol-border bg-protocol-accent-bg rounded-full font-mono text-[9px] text-protocol-text/30 uppercase tracking-widest">
                           Process: Pending
                         </div>
                       )}
-                      <div className="px-3 py-1 border border-protocol-border rounded-sm font-mono text-[8px] text-protocol-text/30 uppercase tracking-widest group-hover:text-protocol-text/60 transition-colors">
+                      <div className="px-3 py-1.5 border border-protocol-border rounded-full font-mono text-[9px] text-protocol-text/40 uppercase tracking-widest group-hover:text-protocol-text/70 transition-colors">
                         {item.timeline}
                       </div>
                       {item.active && (
-                        <div className="px-3 py-1 border border-protocol-border rounded-sm font-mono text-[8px] text-protocol-text/30 uppercase tracking-widest group-hover:text-protocol-text/60 transition-colors">
+                        <div className="px-3 py-1.5 border border-protocol-border rounded-full font-mono text-[9px] text-protocol-text/30 uppercase tracking-widest group-hover:text-protocol-text/60 transition-colors">
                           Stability: 99.98%
                         </div>
                       )}

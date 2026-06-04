@@ -61,7 +61,7 @@ export default function Participation({ onOpenWhitelist }: ParticipationProps) {
   ];
 
   return (
-    <section id="participation" className="py-24 border-t border-protocol-border transition-colors duration-300">
+    <section id="participation" className="py-28 md:py-36 border-t border-protocol-border transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-wrap items-start justify-between gap-4 mb-16">
           <motion.div
@@ -73,7 +73,7 @@ export default function Participation({ onOpenWhitelist }: ParticipationProps) {
             <h2 className="font-display text-[clamp(44px,8vw,90px)] uppercase italic leading-[0.95] text-protocol-text">
               Direct Access.
             </h2>
-            <p className="text-protocol-text-dim text-[13px] mt-2.5 italic">Positioning skill as infrastructure. No discretionary gates.</p>
+            <p className="text-protocol-text-dim text-[15px] mt-3 italic">Positioning skill as infrastructure. No discretionary gates.</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -96,7 +96,7 @@ export default function Participation({ onOpenWhitelist }: ParticipationProps) {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
-              className={`group relative flex flex-col bg-protocol-bg border border-protocol-border ${card.borderColor} ${card.hoverShadow} overflow-hidden transition-all duration-300`}
+              className={`group relative flex flex-col bg-protocol-bg border border-protocol-border ${card.borderColor} ${card.hoverShadow} rounded-2xl overflow-hidden transition-all duration-300`}
             >
               {/* Top accent line */}
               <div className={`absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r ${card.topAccent} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-10`} />
@@ -166,7 +166,7 @@ export default function Participation({ onOpenWhitelist }: ParticipationProps) {
                       }`}>
                         {card.perkIcons[j]}
                       </div>
-                      <span className="group-hover/item:text-protocol-text transition-colors leading-relaxed font-medium">{perk}</span>
+                      <span className="group-hover/item:text-protocol-text transition-colors leading-relaxed font-medium text-[13px]">{perk}</span>
                     </li>
                   ))}
                 </ul>
@@ -174,7 +174,7 @@ export default function Participation({ onOpenWhitelist }: ParticipationProps) {
                 {/* CTA */}
                 <button
                   onClick={onOpenWhitelist}
-                  className="relative w-full py-4 bg-protocol-bg border border-protocol-border overflow-hidden font-mono text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-current"
+                  className="relative w-full py-4 min-h-12 bg-protocol-bg border border-protocol-border rounded-lg overflow-hidden font-mono text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-current"
                 >
                   <div className={`absolute inset-0 ${card.btnBg} translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300`} />
                   <span className="relative z-10 group-hover/btn:text-black transition-colors duration-300 flex items-center justify-center gap-3">

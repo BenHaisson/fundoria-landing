@@ -16,7 +16,7 @@ const features = [
 
 export default function Partnerships() {
   return (
-    <section id="partnerships" className="py-24 border-t border-protocol-border bg-protocol-bg relative overflow-hidden">
+    <section id="partnerships" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:28px_28px]" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan/5 rounded-full blur-[140px] pointer-events-none" />
 
@@ -48,11 +48,11 @@ export default function Partnerships() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.12 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="p-5 border border-protocol-border bg-protocol-accent-bg/50 hover:border-cyan/30 hover:bg-protocol-accent-bg hover:shadow-[0_8px_32px_rgba(6,182,212,0.08)] transition-all duration-300 group"
+                  className="p-5 border border-protocol-border bg-protocol-accent-bg/50 hover:border-cyan/30 hover:bg-protocol-accent-bg hover:shadow-[0_8px_32px_rgba(6,182,212,0.08)] transition-all duration-300 group rounded-xl"
                 >
                   <div className="mb-3 group-hover:scale-110 transition-transform duration-300 origin-left">{f.icon}</div>
-                  <h4 className="font-mono text-[11px] font-bold uppercase tracking-widest text-protocol-text mb-2 group-hover:text-cyan transition-colors">{f.title}</h4>
-                  <p className="text-[10px] text-protocol-text-dim leading-relaxed">{f.desc}</p>
+                  <h4 className="font-mono text-[12px] font-bold uppercase tracking-widest text-protocol-text mb-2 group-hover:text-cyan transition-colors">{f.title}</h4>
+                  <p className="text-[13px] text-protocol-text-dim leading-relaxed">{f.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -69,7 +69,7 @@ export default function Partnerships() {
             {/* Glow */}
             <div className="absolute -inset-6 bg-cyan/8 blur-[60px] rounded-full pointer-events-none" />
 
-            <div className="relative border border-cyan/25 bg-gradient-to-b from-cyan/5 to-transparent backdrop-blur-sm overflow-hidden group">
+            <div className="relative border border-cyan/25 bg-gradient-to-b from-cyan/5 to-transparent backdrop-blur-md rounded-2xl overflow-hidden group shadow-[0_8px_40px_rgba(0,0,0,0.3)]">
               {/* Top accent */}
               <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-cyan/60 to-transparent" />
 
@@ -96,13 +96,13 @@ export default function Partnerships() {
                   Institutional<br />Onboarding
                 </h3>
 
-                <p className="text-[11px] text-protocol-text-dim leading-relaxed mb-10 uppercase tracking-widest font-mono">
+                <p className="text-[12px] text-protocol-text-dim leading-relaxed mb-10 uppercase tracking-wider font-mono">
                   Discuss custom mandates, API access, or DAO treasury integrations with our contributors.
                 </p>
 
                 <a
                   href="mailto:partners@fundoria.io"
-                  className="group/btn inline-flex items-center gap-3 bg-cyan text-black px-10 py-5 font-mono text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:bg-white hover:shadow-[0_0_40px_rgba(6,182,212,0.4)] active:scale-95"
+                  className="group/btn inline-flex items-center gap-3 bg-cyan text-black px-10 py-5 min-h-13 font-mono text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:bg-white hover:shadow-[0_0_40px_rgba(6,182,212,0.4)] active:scale-95 rounded-lg"
                 >
                   <Mail className="w-4 h-4" />
                   Request Institutional Access

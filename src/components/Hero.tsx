@@ -39,7 +39,7 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
   };
 
   return (
-    <section className="relative pt-[140px] md:pt-[200px] pb-[80px] md:pb-[160px] text-center overflow-hidden px-4 sm:px-6 transition-colors duration-300">
+    <section className="relative pt-[140px] md:pt-[200px] pb-25 md:pb-45 text-center overflow-hidden px-4 sm:px-6 transition-colors duration-300">
       {/* Background glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[700px] pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue/10 rounded-full blur-[140px] mix-blend-screen animate-pulse-custom" />
@@ -121,16 +121,16 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
         {/* Stats bar */}
         <motion.div
           variants={itemVariants}
-          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-protocol-border border border-protocol-border w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-protocol-border border border-protocol-border w-full max-w-sm md:max-w-2xl mx-auto"
         >
           {stats.map((s, i) => (
             <div
               key={i}
-              className="bg-protocol-bg px-6 py-4 flex flex-col items-center gap-1.5 group hover:bg-protocol-accent-bg transition-colors"
+              className="bg-protocol-bg px-5 py-5 flex flex-col items-center gap-2 group hover:bg-protocol-accent-bg transition-colors"
             >
               <div className={`${s.color} opacity-60 group-hover:opacity-100 transition-opacity`}>{s.icon}</div>
-              <div className={`font-mono text-[13px] font-black ${s.color}`}>{s.value}</div>
-              <div className="font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/40">{s.label}</div>
+              <div className={`font-mono text-[15px] font-black tabular-nums ${s.color}`}>{s.value}</div>
+              <div className="font-mono text-[9px] uppercase tracking-widest text-protocol-text-dim/50">{s.label}</div>
             </div>
           ))}
         </motion.div>

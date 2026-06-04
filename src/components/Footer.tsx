@@ -19,7 +19,7 @@ export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProp
   return (
     <>
       {/* CTA Section */}
-      <section className="relative py-20 sm:py-35 px-4 sm:px-6 text-center border-t border-protocol-border bg-protocol-bg overflow-hidden transition-colors duration-300">
+      <section className="relative py-24 sm:py-36 lg:py-44 px-4 sm:px-6 text-center border-t border-protocol-border bg-protocol-bg overflow-hidden transition-colors duration-300">
         {/* Background accents */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-linear-to-b from-protocol-text/20 to-transparent" />
         <div className="absolute inset-0 pointer-events-none">
@@ -62,7 +62,7 @@ export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProp
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-protocol-text-dim text-[15px] mb-14 italic"
+            className="text-protocol-text-dim text-[16px] mb-14 italic"
           >
             Position your skill as infrastructure on HyperEVM.
           </motion.p>
