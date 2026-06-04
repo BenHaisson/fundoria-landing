@@ -473,7 +473,7 @@ function Hero() {
 
         {/* Animated stats bar */}
         <Fade delay={0.55}>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:1, maxWidth:560, margin:"60px auto 0", background:"#0e1a2e" }}>
+          <div className="grid-4" style={{ display:"grid", gap:1, maxWidth:560, margin:"60px auto 0", background:"#0e1a2e" }}>
             {stats.map(([v, l], i) => (
               <div key={i} style={{ background:"#04080f", padding:"18px 8px", textAlign:"center", position:"relative", overflow:"hidden" }}>
                 <div style={{ position:"absolute", bottom:0, left:0, right:0, height:1, background:GRAD, opacity:0.4 }} />
@@ -534,7 +534,7 @@ function ProtocolLogic() {
       </Fade>
 
       <Fade delay={0.2}>
-        <div style={{ marginTop:80, display:"grid", gridTemplateColumns:"1fr 1fr", gap:40, alignItems:"center" }}>
+        <div className="grid-2" style={{ marginTop:80, display:"grid", gap:40, alignItems:"center" }}>
           <div>
             <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:16 }}>PROTOCOL VISION</Mono>
             <h3 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(32px,4vw,52px)", color:"#eaf2ff", margin:"0 0 16px", lineHeight:0.95 }}>
@@ -654,7 +654,7 @@ function RiskSection() {
 
   return (
     <section style={{ padding:"100px 24px", borderTop:"1px solid #0e1a2e", borderBottom:"1px solid #0e1a2e" }}>
-      <div style={{ maxWidth:1100, margin:"0 auto", display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center" }}>
+      <div className="grid-2" style={{ maxWidth:1100, margin:"0 auto", display:"grid", gap:48, alignItems:"center" }}>
         <Fade>
           <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.18em", display:"block", marginBottom:12 }}>RISK CONTROLS</Mono>
           <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(38px,5vw,64px)", color:"#eaf2ff", margin:"0 0 20px", lineHeight:0.92 }}>
@@ -758,7 +758,7 @@ function Rewards() {
         </div>
 
         <Fade delay={0.3}>
-          <div style={{ marginTop:48, padding:"32px 40px", border:"1px solid #0e1a2e", display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr", gap:32 }}>
+          <div className="grid-4" style={{ marginTop:48, padding:"32px 40px", border:"1px solid #0e1a2e", display:"grid", gap:32 }}>
             {[["TRADERS","Attract capital via verified performance"],["CAPITAL","Incentivises disciplined risk-adjusted returns"],["PERFORMANCE","Increases institutional participation"],["GOVERNANCE","Evolves risk and allocation frameworks"]].map(([title, desc], i) => (
               <div key={i}>
                 <Mono style={{ fontSize:10, color:BLUE, letterSpacing:"0.12em", display:"block", marginBottom:8 }}>{title}</Mono>
@@ -926,11 +926,11 @@ function Token() {
 
         {/* ── Main chart + allocation row ── */}
         <Fade delay={0.15}>
-          <div style={{ display:"flex", gap:64, alignItems:"center", marginTop:64, flexWrap:"wrap", justifyContent:"center" }}>
-            <TokenCoin hovered={hovered} setHovered={setHovered} />
+          <div style={{ display:"flex", gap:48, alignItems:"center", marginTop:64, flexWrap:"wrap", justifyContent:"center" }}>
+            <div className="token-coin"><TokenCoin hovered={hovered} setHovered={setHovered} /></div>
 
             {/* Allocation breakdown */}
-            <div style={{ flex:1, minWidth:300 }}>
+            <div style={{ flex:1, minWidth:0 }}>
               <Mono style={{ fontSize:10, color:"#607a94", letterSpacing:"0.14em", display:"block", marginBottom:24 }}>
                 TOKEN ALLOCATION — SUPPLY: 1,000,000,000 $FND
               </Mono>
@@ -1308,7 +1308,7 @@ function WhitelistSection() {
           </p>
         </Fade>
         <Fade delay={0.15}>
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:0, maxWidth:560, margin:"24px auto 36px" }}>
+          <div className="grid-2" style={{ display:"grid", gap:0, maxWidth:560, margin:"24px auto 36px" }}>
             {["Early access to the trading interface during evaluation phases","Priority eligibility for trader verification cohorts","Governance previews and contributor sessions","Direct ecosystem updates ahead of public release"].map((b, i) => (
               <div key={i} style={{ display:"flex", gap:10, alignItems:"flex-start", padding:"8px 0" }}>
                 <Icon name="check" size={12} color={GREEN} style={{ marginTop:2, flexShrink:0 }} />
@@ -1328,7 +1328,7 @@ function Footer() {
   return (
     <footer style={{ background:"#030810", borderTop:"1px solid #0e1a2e", padding:"40px 32px 32px" }}>
       <div style={{ maxWidth:1100, margin:"0 auto" }}>
-        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:24, marginBottom:24 }}>
+        <div className="footer-top" style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:24, marginBottom:24 }}>
           <div style={{ display:"flex", alignItems:"center", gap:8 }}>
             <img src="/icon-light.png" alt="Fundoria" style={{ height:17, width:"auto", display:"block", flexShrink:0 }} />
             <span style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:17, letterSpacing:"0.14em", lineHeight:1, color:"#eaf2ff", userSelect:"none" }}>FUNDORIA</span>
@@ -1395,16 +1395,24 @@ export default function FundoriaV2() {
           .grid-3 { grid-template-columns:repeat(2,1fr)!important }
         }
         @media(max-width:768px){
-          section { padding-left:16px!important; padding-right:16px!important }
+          section { padding-left:20px!important; padding-right:20px!important }
           h1 { font-size:clamp(48px,14vw,80px)!important }
           h2 { font-size:clamp(32px,10vw,56px)!important }
           nav > div:nth-child(2) { display:none!important }
+          .grid-2 { grid-template-columns:1fr!important }
         }
         @media(max-width:640px){
           .grid-4,.grid-3,.grid-2 { grid-template-columns:1fr!important }
           .hero-h1 { font-size:clamp(48px,12vw,80px)!important }
           .section-pad { padding:60px 20px!important }
-          .card-pad { padding:24px!important }
+          .card-pad { padding:20px!important }
+          .token-coin { width:260px!important; height:260px!important }
+          .footer-top { flex-direction:column!important; align-items:flex-start!important }
+        }
+        @media(max-width:480px){
+          nav { padding:0 16px!important }
+          section { padding-left:16px!important; padding-right:16px!important }
+          footer { padding-left:16px!important; padding-right:16px!important }
         }
       `}</style>
       <Nav />
