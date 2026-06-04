@@ -89,6 +89,7 @@
   html {
     scrollbar-width: thin;
     scrollbar-color: var(--color-blue) var(--color-protocol-bg);
+    overflow-x: hidden;
   }
 }
 
