@@ -21,7 +21,7 @@ export default function ProtocolLogic() {
   return (
     <section id="protocol" className="py-28 md:py-36 bg-protocol-bg border-t border-protocol-border transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-wrap gap-8 items-end justify-between mb-14">
+        <div className="flex flex-col md:flex-row md:flex-wrap gap-6 md:gap-8 md:items-end md:justify-between mb-10 md:mb-14">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -33,13 +33,13 @@ export default function ProtocolLogic() {
               <em className="text-blue not-italic">Not Discretionary.</em>
             </h2>
           </motion.div>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="max-w-[380px] text-protocol-text-dim text-[15px] leading-relaxed md:text-right italic"
+            className="max-w-full md:max-w-[380px] text-protocol-text-dim text-[15px] leading-relaxed md:text-right italic"
           >
-            Every constraint and settlement is enforced by code — not human gatekeepers. 
+            Every constraint and settlement is enforced by code — not human gatekeepers.
             Fundoria coordinates capital with zero intermediary trust.
           </motion.p>
         </div>
@@ -52,7 +52,7 @@ export default function ProtocolLogic() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-6 sm:p-9 border-b border-protocol-border sm:border-r last:border-b-0 sm:nth-[2n]:border-r-0 lg:nth-[2n]:border-r lg:nth-[3n]:border-r-0 group relative overflow-hidden transition-all hover:bg-protocol-accent-bg/80 hover:shadow-[inset_0_0_60px_rgba(59,130,246,0.04)] active:scale-[0.98]"
+              className="p-5 sm:p-9 border-b border-protocol-border last:border-b-0 sm:border-r sm:nth-[2n]:border-r-0 lg:nth-[2n]:border-r lg:nth-[3n]:border-r-0 group relative overflow-hidden transition-all hover:bg-protocol-accent-bg/80 hover:shadow-[inset_0_0_60px_rgba(59,130,246,0.04)] active:scale-[0.98]"
             >
               <div className="absolute inset-0 bg-blue/[0.04] translate-y-full transition-transform duration-500 group-hover:translate-y-0" />
               <div className="absolute top-0 right-0 p-2 opacity-5 group-hover:opacity-30 transition-opacity duration-500 text-blue">
@@ -102,7 +102,7 @@ export default function ProtocolLogic() {
               <p className="text-[11px] text-protocol-text-dim/60 uppercase tracking-widest font-mono max-w-sm">Verifiable on-chain routing from capital container to execution venue.</p>
             </div>
             
-            <div className="flex-2 w-full lg:w-auto overflow-x-auto scrollbar-none -mx-4 px-4 relative">
+            <div className="flex-2 w-full lg:w-auto overflow-x-auto scrollbar-none -mx-4 px-4 pb-3 relative">
               <div className="absolute right-0 inset-y-0 w-10 bg-linear-to-l from-black/80 to-transparent pointer-events-none lg:hidden z-10" />
               <div className="flex items-center gap-4 min-w-[560px] py-4">
                 <FlowStep label="CAPITAL" sub="Vaults" active />

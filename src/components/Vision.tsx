@@ -201,9 +201,9 @@ export default function Vision({ onOpenWhitelist }: VisionProps) {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className={`absolute -inset-10 blur-[60px] rounded-full pointer-events-none -z-10 transition-colors duration-700 ${colorMap[features[activeSlide].color].glow}`} />
+            <div className={`absolute -inset-4 sm:-inset-10 blur-[60px] rounded-full pointer-events-none -z-10 transition-colors duration-700 ${colorMap[features[activeSlide].color].glow}`} />
 
-            <div className="relative z-10 p-5 sm:p-7 border border-protocol-border bg-protocol-accent-bg rounded-2xl backdrop-blur-2xl min-h-[360px] sm:min-h-[400px] flex flex-col overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
+            <div className="relative z-10 p-5 sm:p-7 border border-protocol-border bg-protocol-accent-bg rounded-2xl backdrop-blur-2xl min-h-[320px] sm:min-h-[400px] flex flex-col overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
               <div className="flex items-center gap-4 mb-2">
                 {features.map((f, i) => {
                   const c = colorMap[f.color];
@@ -242,7 +242,7 @@ export default function Vision({ onOpenWhitelist }: VisionProps) {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.4, ease: "circOut" }}
-                    className="absolute inset-0"
+                    className="absolute inset-0 overflow-hidden"
                   >
                     <div className="mb-6">
                       <h3 className="font-display text-2xl uppercase tracking-wider mb-1 text-protocol-text">{features[activeSlide].title}</h3>
@@ -278,8 +278,8 @@ export default function Vision({ onOpenWhitelist }: VisionProps) {
             </div>
 
             {/* Bottom Accent Decor */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 border-r border-b border-protocol-border pointer-events-none" />
-            <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-green pointer-events-none" />
+            <div className="hidden sm:block absolute -bottom-6 -right-6 w-32 h-32 border-r border-b border-protocol-border pointer-events-none" />
+            <div className="hidden sm:block absolute -bottom-2 -right-2 w-4 h-4 bg-green pointer-events-none" />
           </motion.div>
         </div>
       </div>
