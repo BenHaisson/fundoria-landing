@@ -1,245 +1,240 @@
 import { motion } from 'motion/react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 
 const scoreDimensions = [
-  { label: 'Performance', value: 88 },
-  { label: 'Risk Control', value: 92 },
-  { label: 'Consistency', value: 79 },
-  { label: 'Discipline', value: 85 },
-  { label: 'Survival', value: 96 },
+  { label: 'Performance', value: 88, color: '#2F80ED' },
+  { label: 'Risk Control', value: 92, color: '#00C896' },
+  { label: 'Consistency', value: 79, color: '#2F80ED' },
+  { label: 'Discipline', value: 85, color: '#00C896' },
+  { label: 'Survival', value: 96, color: '#2F80ED' },
 ];
 
 const badges = [
-  { label: 'Verified Activity', color: 'green' },
-  { label: 'Low Drawdown', color: 'blue' },
-  { label: 'Tournament Ready', color: 'blue' },
-  { label: 'Capital Watchlist', color: 'green' },
+  { label: 'Verified Activity', color: 'border-green/40 text-green bg-green/5' },
+  { label: 'Low Drawdown', color: 'border-blue/40 text-blue bg-blue/5' },
+  { label: 'Tournament Ready', color: 'border-blue/40 text-blue bg-blue/5' },
+  { label: 'Capital Watchlist', color: 'border-green/40 text-green bg-green/5' },
 ];
 
-const sparkPoints = '0,42 18,36 36,39 54,28 72,22 90,30 108,16 126,10';
+const sparklinePoints = '10,38 30,28 50,33 70,15 90,20 110,10 130,18 150,8 170,14 190,5';
 
-function FundoriaScoreRing({ score = 842 }: { score?: number }) {
+function FundoriaScoreRing({ score }: { score: number }) {
   const radius = 56;
   const circumference = 2 * Math.PI * radius;
-  const progress = score / 1000;
+  const max = 1000;
+  const fraction = score / max;
 
   return (
-    <div className="relative flex items-center justify-center" style={{ width: 140, height: 140 }}>
-      <svg width="140" height="140" className="rotate-[-90deg]">
-        <defs>
-          <linearGradient id="score_ring_grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop stopColor="#2F80ED" />
-            <stop offset="1" stopColor="#00C896" />
-          </linearGradient>
-        </defs>
-        {/* Background ring */}
+    <div className="relative w-32 h-32 flex items-center justify-center">
+      <svg width="128" height="128" viewBox="0 0 128 128" className="-rotate-90">
+        {/* Background track */}
         <circle
-          cx="70" cy="70" r={radius}
+          cx="64" cy="64" r={radius}
           fill="none"
           stroke="#0E1A2E"
-          strokeWidth="10"
+          strokeWidth="8"
         />
-        {/* Score ring */}
+        {/* Gradient definition */}
+        <defs>
+          <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#2F80ED" />
+            <stop offset="100%" stopColor="#00C896" />
+          </linearGradient>
+        </defs>
+        {/* Score arc */}
         <motion.circle
-          cx="70" cy="70" r={radius}
+          cx="64" cy="64" r={radius}
           fill="none"
-          stroke="url(#score_ring_grad)"
-          strokeWidth="10"
+          stroke="url(#scoreGrad)"
+          strokeWidth="8"
           strokeLinecap="round"
           strokeDasharray={circumference}
           initial={{ strokeDashoffset: circumference }}
-          whileInView={{ strokeDashoffset: circumference * (1 - progress) }}
+          whileInView={{ strokeDashoffset: circumference * (1 - fraction) }}
           viewport={{ once: true }}
-          transition={{ duration: 1.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
         />
       </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="font-display text-[40px] leading-none text-protocol-text"
-        >
-          {score}
-        </motion.div>
-        <div className="font-mono text-[8px] text-protocol-text-dim uppercase tracking-widest">/ 1000</div>
+      <div className="absolute flex flex-col items-center">
+        <span className="font-display text-[28px] leading-none text-protocol-text">{score}</span>
+        <span className="font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/50">/ 1000</span>
       </div>
     </div>
   );
 }
 
-function TraderPassportCard() {
+function PassportCard() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 24, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="relative border border-protocol-border bg-protocol-bg rounded-xl overflow-hidden shadow-[0_0_60px_rgba(47,128,237,0.12)] max-w-[380px] w-full mx-auto lg:mx-0"
+      className="relative border border-protocol-border bg-protocol-bg w-full max-w-[360px] mx-auto overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.5)]"
     >
       {/* Top gradient bar */}
-      <div className="h-[2px] bg-linear-to-r from-blue to-green w-full" />
+      <div className="h-[2px] bg-linear-to-r from-blue via-green to-blue" />
 
       {/* Header */}
-      <div className="py-3 px-4 border-b border-protocol-border bg-protocol-accent-bg flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-red-500/40" />
-          <div className="w-2 h-2 rounded-full bg-yellow-500/40" />
-          <div className="w-2 h-2 rounded-full bg-green/40" />
-          <span className="font-mono text-[9px] text-protocol-text-dim/40 ml-2 uppercase tracking-widest">TRADER_PASSPORT</span>
+      <div className="px-5 py-4 border-b border-protocol-border bg-protocol-accent-bg flex items-center justify-between">
+        <div>
+          <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-protocol-text-dim/50">Fundoria Trader Passport</div>
+          <div className="font-mono text-[12px] font-black text-blue mt-0.5">0x7A...93F</div>
         </div>
-        <span className="font-mono text-[9px] text-blue flex items-center gap-1">
-          <span className="w-1 h-1 rounded-full bg-blue animate-pulse" />
-          LIVE
-        </span>
-      </div>
-
-      <div className="p-6">
-        {/* Wallet */}
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <div className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-widest mb-1">Wallet</div>
-            <div className="font-mono text-[13px] text-protocol-text font-bold">0x7A...93F</div>
-          </div>
-          {/* Risk Grade badge */}
-          <div className="px-3 py-1.5 border border-green/30 bg-green/5 rounded-lg">
-            <div className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-widest">Risk Grade</div>
-            <div className="font-mono text-[18px] text-green font-black leading-tight">A-</div>
-          </div>
-        </div>
-
-        {/* Score ring — centered */}
-        <div className="flex justify-center mb-6">
-          <FundoriaScoreRing score={842} />
-        </div>
-        <div className="text-center mb-6">
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-protocol-text-dim mb-1">Fundoria Score</div>
-          <div className="font-mono text-[9px] text-blue uppercase tracking-widest">Rank: Top 3.2%</div>
-        </div>
-
-        {/* Dimension bars */}
-        <div className="space-y-2.5 mb-6">
-          {scoreDimensions.map((dim, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-wider w-[90px] shrink-0">{dim.label}</div>
-              <div className="flex-1 h-1 bg-protocol-border rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${dim.value}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.4 + i * 0.08 }}
-                  className="h-full bg-linear-to-r from-blue to-green rounded-full"
-                />
-              </div>
-              <div className="font-mono text-[10px] text-protocol-text font-bold w-8 text-right shrink-0">{dim.value}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Mini PnL sparkline */}
-        <div className="mb-5 border border-protocol-border/50 bg-protocol-accent-bg rounded-lg p-3">
-          <div className="font-mono text-[8px] text-protocol-text-dim uppercase tracking-widest mb-2">30D PnL Curve</div>
-          <svg width="100%" height="50" viewBox="0 0 140 52" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="spark_grad" x1="0" y1="0" x2="1" y2="0">
-                <stop stopColor="#2F80ED" />
-                <stop offset="1" stopColor="#00C896" />
-              </linearGradient>
-            </defs>
-            <polyline
-              points={sparkPoints}
-              fill="none"
-              stroke="url(#spark_grad)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <div className="flex justify-between mt-1">
-            <span className="font-mono text-[8px] text-protocol-text-dim/40">30 days ago</span>
-            <span className="font-mono text-[8px] text-green">+19.8%</span>
-          </div>
-        </div>
-
-        {/* Status badge */}
-        <div className="mb-5 px-4 py-3 border border-yellow-500/30 bg-yellow-500/5 rounded-lg flex items-center justify-between">
-          <div className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-widest">Status</div>
-          <div className="font-mono text-[11px] text-yellow-400 font-bold">Capital Eligible Soon</div>
-        </div>
-
-        {/* Badges */}
-        <div className="flex flex-wrap gap-2">
-          {badges.map((b, i) => (
-            <div
-              key={i}
-              className={`px-3 py-1.5 rounded-full border font-mono text-[9px] uppercase tracking-wider ${
-                b.color === 'green'
-                  ? 'border-green/30 bg-green/5 text-green/70'
-                  : 'border-blue/30 bg-blue/5 text-blue/70'
-              }`}
-            >
-              {b.label}
-            </div>
-          ))}
+        <div className="flex items-center gap-1.5 px-2.5 py-1 border border-amber-500/30 bg-amber-500/5">
+          <div className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+          <span className="font-mono text-[8px] uppercase tracking-widest text-amber-500">Eligible Soon</span>
         </div>
       </div>
 
-      {/* Bottom flash bar */}
-      <div className="h-[2px] bg-linear-to-r from-transparent via-blue to-transparent animate-flash" />
+      {/* Score ring */}
+      <div className="px-5 py-5 flex items-center gap-5 border-b border-protocol-border">
+        <FundoriaScoreRing score={842} />
+        <div className="flex-1">
+          <div className="font-mono text-[9px] uppercase tracking-widest text-protocol-text-dim/50 mb-1">Fundoria Score</div>
+          <div className="font-display text-[22px] text-protocol-text leading-none mb-1">842</div>
+          <div className="flex items-center gap-2">
+            <div className="px-2 py-0.5 border border-blue/30 bg-blue/5 font-mono text-[8px] uppercase tracking-widest text-blue">Grade A-</div>
+            <div className="font-mono text-[9px] text-green">Top 3.2%</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Stat bars */}
+      <div className="px-5 py-4 space-y-2.5 border-b border-protocol-border">
+        {scoreDimensions.map((d, i) => (
+          <div key={i}>
+            <div className="flex justify-between items-center mb-1">
+              <span className="font-mono text-[9px] uppercase tracking-widest text-protocol-text-dim/60">{d.label}</span>
+              <span className="font-mono text-[9px] font-black" style={{ color: d.color }}>{d.value}%</span>
+            </div>
+            <div className="h-0.5 bg-protocol-border overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: `${d.value}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.2 + i * 0.07 }}
+                className="h-full"
+                style={{ background: d.color }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Sparkline */}
+      <div className="px-5 py-3 border-b border-protocol-border">
+        <div className="flex items-center justify-between mb-2">
+          <span className="font-mono text-[9px] uppercase tracking-widest text-protocol-text-dim/50">30D PnL</span>
+          <span className="font-mono text-[10px] font-black text-green">+19.8%</span>
+        </div>
+        <svg viewBox="0 0 200 48" className="w-full h-8" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#00C896" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#00C896" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <polyline
+            points={sparklinePoints}
+            fill="none"
+            stroke="#00C896"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <polygon
+            points={`10,48 ${sparklinePoints} 190,48`}
+            fill="url(#sparkGrad)"
+          />
+        </svg>
+      </div>
+
+      {/* Stats row */}
+      <div className="grid grid-cols-3 gap-px bg-protocol-border">
+        {[['4.8%', 'Max DD'], ['91%', 'Consistency'], ['247', 'Trades']].map(([val, lbl], i) => (
+          <div key={i} className="bg-protocol-bg px-3 py-3 flex flex-col items-center gap-0.5">
+            <div className="font-mono text-[12px] font-black text-protocol-text">{val}</div>
+            <div className="font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/40">{lbl}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Badges */}
+      <div className="px-5 py-4 flex flex-wrap gap-1.5">
+        {badges.map((b, i) => (
+          <span key={i} className={`border font-mono text-[8px] uppercase tracking-widest px-2 py-0.5 ${b.color}`}>
+            {b.label}
+          </span>
+        ))}
+      </div>
+
+      {/* Bottom bar */}
+      <div className="h-[2px] bg-linear-to-r from-transparent via-green/30 to-transparent" />
     </motion.div>
   );
 }
 
 export default function TraderPassportSection() {
   return (
-    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left — text */}
+    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          {/* Left — Text */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="font-mono text-[10px] uppercase tracking-[0.4em] mb-4 text-blue">Trader Passport</div>
-            <h2 className="font-display text-[clamp(36px,5vw,60px)] uppercase leading-[0.95] mb-6 text-protocol-text">
+            <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center gap-2">
+              <span className="w-4 h-px bg-blue/40" />
+              Trader Passport
+            </div>
+            <h2 className="font-display text-[clamp(34px,5vw,64px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-6">
               Your On-Chain<br />
-              <em className="text-green not-italic">Identity Card.</em>
+              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Identity Card.</span>
             </h2>
-            <p className="text-protocol-text-dim text-[15px] leading-relaxed mb-8 italic max-w-[460px]">
-              Every Hyperliquid trade you make builds your Trader Passport. It's a live, public, verifiable profile that shows exactly who you are as a trader — not just your PnL.
+            <p className="text-protocol-text-dim text-[15px] leading-relaxed mb-8 max-w-lg">
+              The Trader Passport is a verified, wallet-native identity built from your Hyperliquid history. It captures who you are as a trader — your edge, your risk discipline, your consistency — in a portable format that travels with you.
             </p>
 
-            <ul className="space-y-4">
+            <ul className="space-y-3 mb-10">
               {[
-                { label: 'Wallet-linked identity', sub: 'Your passport is tied to your Hyperliquid wallet address. No fake accounts.' },
-                { label: 'Fundoria Score', sub: 'A 0–1000 score across five dimensions, updated daily from on-chain data.' },
-                { label: 'Capital eligibility status', sub: 'As your score grows and tournament record builds, capital access unlocks.' },
+                'Wallet-native — no signup, no KYC required for read-only access',
+                'Score across 5 dimensions, updated every 24 hours',
+                'Tamper-proof record sourced from on-chain Hyperliquid data',
+                'Portable signal for capital providers, tournaments, and protocols',
               ].map((item, i) => (
                 <motion.li
                   key={i}
                   initial={{ opacity: 0, x: -12 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.2 + i * 0.1 }}
-                  className="flex gap-4 group"
+                  transition={{ delay: i * 0.07 }}
+                  className="flex items-start gap-3"
                 >
-                  <div className="w-8 h-8 border border-blue/30 bg-blue/5 flex items-center justify-center shrink-0 mt-0.5 group-hover:border-blue/60 group-hover:bg-blue/10 transition-all">
-                    <span className="font-mono text-[10px] text-blue/60 group-hover:text-blue font-bold">0{i + 1}</span>
-                  </div>
-                  <div>
-                    <div className="font-mono text-[11px] uppercase tracking-widest text-protocol-text mb-1">{item.label}</div>
-                    <div className="text-[13px] text-protocol-text-dim leading-relaxed">{item.sub}</div>
-                  </div>
+                  <CheckCircle className="w-4 h-4 text-green shrink-0 mt-0.5" />
+                  <span className="text-[14px] text-protocol-text-dim leading-relaxed">{item}</span>
                 </motion.li>
               ))}
             </ul>
+
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="inline-flex items-center gap-2 font-mono text-[10px] text-blue uppercase tracking-widest border-b border-blue/30 pb-0.5 group cursor-default">
+                Passport issued at launch
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </motion.div>
           </motion.div>
 
-          {/* Right — Passport card */}
-          <div>
-            <TraderPassportCard />
+          {/* Right — Passport Card */}
+          <div className="flex justify-center lg:justify-end">
+            <PassportCard />
           </div>
         </div>
       </div>

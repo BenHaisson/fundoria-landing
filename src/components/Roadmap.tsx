@@ -1,147 +1,152 @@
 import { motion } from 'motion/react';
 
-export default function Roadmap() {
-  const items: { phase: string; meta: string; title: string; desc: string; status: string; timeline: string; active?: boolean }[] = [
-    { phase: '01', meta: 'Pre-Launch', title: 'Trader Intelligence Foundation', desc: 'Landing page, community formation, brand system, whitepaper v4, early access list, Hyperliquid research and integration scoping.', status: 'ACTIVE', active: true, timeline: 'Q1–Q2 2026' },
-    { phase: '02', meta: 'MVP', title: 'Wallet Connection & Trader Passport', desc: 'Hyperliquid data indexer, wallet connection, basic Trader Passport, PnL analytics, risk metrics, and leaderboard prototype.', status: 'NEXT', timeline: 'Q3 2026' },
-    { phase: '03', meta: 'Beta', title: 'Fundoria Score & Tournaments', desc: 'Fundoria Score engine, public trader profiles, AI journal, advanced leaderboard, tournament Season 1, alerts, and social sharing.', status: 'PLANNED', timeline: 'Q4 2026' },
-    { phase: '04', meta: 'Growth', title: 'Pro Analytics & Capital Providers', desc: '100k trader acquisition strategy, sponsored competitions, Pro subscription, capital provider dashboard, and partner campaigns.', status: 'PLANNED', timeline: 'Q1 2027' },
-    { phase: '05', meta: 'Capital Access', title: 'Funded Challenges & Allocator Discovery', desc: 'Verified trader tiers, funded challenges, controlled funded accounts, allocator discovery, and risk-based capital eligibility.', status: 'FUTURE', timeline: 'Q2–Q3 2027' },
-    { phase: '06', meta: 'Vault Layer', title: 'Capital Pools & Vault Infrastructure', desc: 'Capital allocation vaults, vault mandates, automated allocation rules, settlement logic, and protocol governance.', status: 'FUTURE', timeline: 'Q4 2027+' },
-  ];
+const phases = [
+  {
+    num: '01',
+    meta: 'Pre-Launch',
+    title: 'Brand, Community & Landing',
+    desc: 'Landing page, early access community, brand positioning, and Hyperliquid partnership development.',
+    status: 'ACTIVE',
+    statusColor: 'text-green border-green/30 bg-green/5',
+    dotColor: 'bg-green',
+    timeline: 'Now',
+    active: true,
+  },
+  {
+    num: '02',
+    meta: 'MVP',
+    title: 'Wallet Connection & Basic Passport',
+    desc: 'Wallet connect via Hyperliquid RPC, on-chain indexer, first-generation Trader Passport, and base Fundoria Score.',
+    status: 'NEXT',
+    statusColor: 'text-blue border-blue/30 bg-blue/5',
+    dotColor: 'bg-blue',
+    timeline: 'Q3 2026',
+    active: false,
+  },
+  {
+    num: '03',
+    meta: 'Beta',
+    title: 'Fundoria Score, Profiles & Tournaments',
+    desc: 'Full 5-dimension score engine, public trader profiles, AI Trading Journal, and Tournament Season 1.',
+    status: 'PLANNED',
+    statusColor: 'text-protocol-text-dim border-protocol-border',
+    dotColor: 'bg-protocol-border',
+    timeline: 'Q4 2026',
+    active: false,
+  },
+  {
+    num: '04',
+    meta: 'Growth',
+    title: 'Scale, Pro Tier & Capital Dashboard',
+    desc: '100k trader acquisition milestone, Pro subscription launch, and capital provider dashboard with verified trader discovery.',
+    status: 'PLANNED',
+    statusColor: 'text-protocol-text-dim border-protocol-border',
+    dotColor: 'bg-protocol-border',
+    timeline: 'Q1 2027',
+    active: false,
+  },
+  {
+    num: '05',
+    meta: 'Capital Access',
+    title: 'Verified Tiers & Funded Challenges',
+    desc: 'Capital eligibility tiers, funded trader challenges, allocator discovery marketplace, and institutional onboarding.',
+    status: 'FUTURE',
+    statusColor: 'text-protocol-text-dim/50 border-protocol-border/50',
+    dotColor: 'bg-protocol-border/50',
+    timeline: 'Q2–Q3 2027',
+    active: false,
+  },
+  {
+    num: '06',
+    meta: 'Vault Layer',
+    title: 'Capital Pools & Vault Mandates',
+    desc: 'Protocol-level infrastructure for capital pools, mandate-specific vault strategies, and automated algorithmic allocation.',
+    status: 'FUTURE',
+    statusColor: 'text-protocol-text-dim/50 border-protocol-border/50',
+    dotColor: 'bg-protocol-border/50',
+    timeline: 'Q4 2027+',
+    active: false,
+  },
+];
 
+export default function Roadmap() {
   return (
-    <section id="roadmap" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+    <section id="roadmap" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] mb-3.5 text-blue">Roadmap</div>
-          <h2 className="font-display text-[clamp(36px,5vw,60px)] uppercase tracking-wider text-protocol-text">From Intelligence Layer to Capital Network.</h2>
-          <motion.p
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-protocol-text-dim text-[13px] mt-3 italic"
-          >
-            Six phases from trader intelligence to programmable capital allocation.
-          </motion.p>
+          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center justify-center gap-2">
+            <span className="w-4 h-px bg-blue/40" />
+            Roadmap
+            <span className="w-4 h-px bg-blue/40" />
+          </div>
+          <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
+            Six Phases.<br />
+            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">One Direction.</span>
+          </h2>
+          <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
+            From pre-launch community to protocol-level capital infrastructure.
+          </p>
         </motion.div>
 
         <div className="relative">
-          {/* Scroll Progress Line */}
-          <div className="absolute left-[38px] top-0 bottom-0 w-px bg-protocol-border hidden md:block">
+          {/* Timeline line */}
+          <div className="absolute left-[19px] top-4 bottom-4 w-px bg-protocol-border hidden md:block">
             <motion.div
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              className="w-full h-full bg-linear-to-b from-blue via-blue/40 to-transparent origin-top"
+              transition={{ duration: 2, ease: 'easeOut' }}
+              className="w-full h-full bg-linear-to-b from-green via-blue to-protocol-border origin-top"
             />
           </div>
-          
-          <div className="space-y-8 relative">
-            {items.map((item, i) => (
+
+          <div className="space-y-4 relative">
+            {phases.map((p, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -24 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: i * 0.2,
-                  ease: [0.16, 1, 0.3, 1]
-                }}
-                className={`group relative flex flex-col md:flex-row gap-8 items-start border bg-protocol-bg rounded-xl overflow-hidden transition-all duration-500 ${item.active ? 'border-blue/40 shadow-[0_0_40px_rgba(59,130,246,0.08)] hover:shadow-[0_0_60px_rgba(59,130,246,0.15)]' : 'border-protocol-border opacity-50 grayscale hover:opacity-100 hover:grayscale-0 hover:shadow-[0_0_30px_rgba(59,130,246,0.05)]'}`}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className={`group flex gap-6 md:gap-8 items-start ${!p.active && i > 1 ? 'opacity-50 hover:opacity-100 transition-opacity duration-300' : ''}`}
               >
-                {/* Terminal Header Decoration */}
-                <div className="absolute top-0 inset-x-0 h-6 border-b border-protocol-border bg-protocol-accent-bg flex items-center px-4 justify-between pointer-events-none">
-                  <div className="flex gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-protocol-text/10" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-protocol-text/10" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-protocol-text/10" />
-                  </div>
-                  <div className="font-mono text-[8px] uppercase tracking-widest text-protocol-text/30">
-                    MISSION_LOG_PHASE_0{i+1}.txt
+                {/* Timeline dot */}
+                <div className="shrink-0 hidden md:flex flex-col items-center gap-2 pt-1">
+                  <div className={`w-9.5 h-9.5 rounded-full border flex items-center justify-center ${p.active ? 'border-green/50 bg-green/10' : 'border-protocol-border bg-protocol-bg'}`}>
+                    <div className={`w-2.5 h-2.5 rounded-full ${p.dotColor} ${p.active ? 'animate-pulse' : ''}`} />
                   </div>
                 </div>
 
-                <div className="p-5 pt-10 sm:p-8 sm:pt-12 md:p-10 md:pt-14 flex flex-col md:flex-row gap-6 sm:gap-8 items-start w-full">
-                  <div className="shrink-0 relative z-10 hidden md:block">
-                    <div className={`w-16 h-16 flex items-center justify-center border ${item.active ? 'border-blue text-blue bg-blue/10' : 'border-protocol-border text-protocol-text-dim'} bg-protocol-bg font-display text-4xl transition-all group-hover:scale-105 duration-300 relative`}>
-                      {item.phase}
-                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-protocol-bg border-r border-t border-protocol-border" />
-                      <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-protocol-bg border-l border-b border-protocol-border" />
-                      
-                      {item.active && (
-                        <motion.div 
-                          animate={{ opacity: [0.2, 0.6, 0.2] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                          className="absolute inset-0 bg-blue/20 blur-sm"
-                        />
-                      )}
+                {/* Card */}
+                <div className={`flex-1 border ${p.active ? 'border-green/30 bg-green/[0.02]' : 'border-protocol-border bg-protocol-accent-bg'} p-5 sm:p-6 group-hover:border-blue/30 transition-colors duration-300 relative overflow-hidden`}>
+                  <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-protocol-border to-transparent group-hover:via-blue/20 transition-colors" />
+
+                  <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="font-display text-[20px] text-protocol-text-dim/30">0{i + 1}</span>
+                      <div>
+                        <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-protocol-text-dim/50">{p.meta}</div>
+                        <h3 className="font-mono text-[13px] font-black uppercase tracking-wide text-protocol-text group-hover:text-blue transition-colors">{p.title}</h3>
+                      </div>
                     </div>
-                    <div className="font-mono text-[9px] text-blue uppercase tracking-[0.3em] mt-4 text-center font-bold">{item.meta}</div>
+                    <div className="flex items-center gap-2">
+                      <div className={`flex items-center gap-1.5 border px-2.5 py-1 font-mono text-[8px] uppercase tracking-widest ${p.statusColor}`}>
+                        {p.active && <div className="w-1 h-1 rounded-full bg-green animate-ping" />}
+                        {p.status}
+                      </div>
+                      <div className="border border-protocol-border px-2.5 py-1 font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/40">
+                        {p.timeline}
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="flex-1 relative z-10">
-                    <div className="flex flex-col gap-2 mb-5">
-                      <div className="flex items-center gap-3">
-                        <span className="md:hidden font-display text-2xl text-protocol-text mr-1">{item.phase}</span>
-                        <span className="font-mono text-[9px] text-blue/40 uppercase tracking-widest">SEQ_ENTRY_v1.0{i+1}</span>
-                        <div className="h-px flex-1 bg-protocol-border/30" />
-                      </div>
-                      <h3 className="text-xl font-bold uppercase tracking-widest transition-colors group-hover:text-blue text-protocol-text flex items-center gap-3">
-                        {item.title}
-                        {item.active && (
-                          <div className="flex gap-1.5">
-                            <span className="w-1 h-1 bg-blue rounded-full animate-pulse" />
-                            <span className="w-1 h-1 bg-blue rounded-full animate-pulse delay-100" />
-                          </div>
-                        )}
-                      </h3>
-                    </div>
-                    <p className="text-[14px] text-protocol-text-dim leading-relaxed pb-2 max-w-xl font-sans">
-                      <span className="text-protocol-text/40 mr-1">&gt;</span>
-                      {item.desc}
-                    </p>
-                    
-                    <div className="mt-6 flex flex-wrap gap-4">
-                      {item.status === 'ACTIVE' && (
-                        <div className="px-3 py-1.5 border border-blue/30 bg-blue/5 rounded-full font-mono text-[9px] text-blue uppercase tracking-widest flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 bg-blue rounded-full animate-ping" />
-                          Active
-                        </div>
-                      )}
-                      {item.status === 'NEXT' && (
-                        <div className="px-3 py-1.5 border border-green/30 bg-green/5 rounded-full font-mono text-[9px] text-green uppercase tracking-widest">
-                          Next
-                        </div>
-                      )}
-                      {item.status === 'PLANNED' && (
-                        <div className="px-3 py-1.5 border border-protocol-border bg-protocol-accent-bg rounded-full font-mono text-[9px] text-protocol-text/40 uppercase tracking-widest">
-                          Planned
-                        </div>
-                      )}
-                      {item.status === 'FUTURE' && (
-                        <div className="px-3 py-1.5 border border-protocol-border bg-protocol-accent-bg rounded-full font-mono text-[9px] text-protocol-text/30 uppercase tracking-widest">
-                          Future
-                        </div>
-                      )}
-                      <div className="px-3 py-1.5 border border-protocol-border rounded-full font-mono text-[9px] text-protocol-text/40 uppercase tracking-widest group-hover:text-protocol-text/70 transition-colors">
-                        {item.timeline}
-                      </div>
-                    </div>
-                  </div>
+                  <p className="text-[13px] text-protocol-text-dim leading-relaxed">{p.desc}</p>
                 </div>
-
-                {/* Scanline Overlay */}
-                <div className="absolute inset-x-0 top-0 h-px bg-blue/10 group-hover:bg-blue/30 transition-colors hidden md:block" />
-                <div className="absolute inset-y-0 left-0 w-px bg-blue/10 group-hover:bg-blue/30 transition-colors hidden md:block" />
               </motion.div>
             ))}
           </div>

@@ -1,4 +1,4 @@
-import { ArrowRight, Activity, Shield, TrendingUp, Layers, ChevronDown } from 'lucide-react';
+import { ArrowRight, Activity, Database, Shield, Layers, ChevronDown } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 
@@ -6,11 +6,12 @@ interface HeroProps {
   onOpenWhitelist?: () => void;
 }
 
+// No fake traction numbers — use positioning copy instead
 const stats = [
-  { icon: <Activity className="w-3 h-3" />, label: 'Active Traders', value: '2,400+', color: 'text-blue' },
-  { icon: <TrendingUp className="w-3 h-3" />, label: 'Avg Score', value: '731', color: 'text-green' },
-  { icon: <Shield className="w-3 h-3" />, label: 'Capital Ready', value: '$0 Min', color: 'text-blue' },
-  { icon: <Layers className="w-3 h-3" />, label: 'Status', value: 'Alpha', color: 'text-green' },
+  { icon: <Activity className="w-3 h-3" />, label: 'Trader Identity', value: 'Wallet-Based', color: 'text-blue' },
+  { icon: <Database className="w-3 h-3" />, label: 'Hyperliquid Data', value: 'Live Index', color: 'text-green' },
+  { icon: <Shield className="w-3 h-3" />, label: 'Performance', value: 'Risk-Scored', color: 'text-blue' },
+  { icon: <Layers className="w-3 h-3" />, label: 'Status', value: 'Pre-Launch', color: 'text-green' },
 ];
 
 const terminalLines = [
@@ -37,17 +38,13 @@ function TerminalBlock() {
 
   return (
     <div className="w-full max-w-md mx-auto border border-protocol-border bg-black/40 backdrop-blur-md rounded-xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
-      {/* Terminal chrome */}
       <div className="py-2.5 px-4 border-b border-protocol-border bg-protocol-accent-bg flex items-center gap-2">
         <div className="w-2 h-2 rounded-full bg-red-500/40" />
         <div className="w-2 h-2 rounded-full bg-yellow-500/40" />
         <div className="w-2 h-2 rounded-full bg-green/40" />
-        <span className="font-mono text-[9px] text-protocol-text-dim/40 ml-2 uppercase tracking-widest font-black flex-1">
-          FUNDORIA_INIT :: WALLET_CONNECT
-        </span>
+        <span className="font-mono text-[9px] text-protocol-text-dim/40 ml-2 uppercase tracking-widest font-black flex-1">FUNDORIA_INIT :: WALLET_CONNECT</span>
         <span className="font-mono text-[8px] text-blue/50 flex items-center gap-1">
-          <span className="w-1 h-1 rounded-full bg-blue animate-pulse" />
-          LIVE
+          <span className="w-1 h-1 rounded-full bg-blue animate-pulse" />LIVE
         </span>
       </div>
       <div className="p-5 font-mono text-[11px] leading-[2] text-left min-h-[180px]">
@@ -56,9 +53,7 @@ function TerminalBlock() {
             {line.text || <>&nbsp;</>}
           </div>
         ))}
-        {visibleLines < terminalLines.length && (
-          <span className="animate-pulse text-blue">▋</span>
-        )}
+        {visibleLines < terminalLines.length && <span className="animate-pulse text-blue">▋</span>}
       </div>
       <div className="h-[2px] bg-linear-to-r from-transparent via-blue to-transparent animate-flash" />
     </div>
@@ -83,8 +78,7 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
   };
 
   return (
-    <section className="relative pt-[140px] md:pt-[200px] pb-25 md:pb-45 text-center overflow-hidden px-4 sm:px-6 transition-colors duration-300">
-      {/* Background glows */}
+    <section className="relative pt-[140px] md:pt-[200px] pb-25 md:pb-45 text-center overflow-hidden px-4 sm:px-6">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[700px] pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue/10 rounded-full blur-[140px] mix-blend-screen animate-pulse-custom" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[200px] bg-green/5 rounded-full blur-[120px]" />
@@ -125,14 +119,14 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
           </span>
         </motion.h1>
 
-        {/* Sub */}
+        {/* Sub — "rewards" replaced with "trader incentives" */}
         <motion.p
           variants={itemVariants}
           className="max-w-[620px] mx-auto text-protocol-text-dim text-[14px] sm:text-[16px] md:text-lg leading-relaxed mb-10 sm:mb-14 px-2"
         >
           Fundoria indexes Hyperliquid wallet activity and transforms it into{' '}
-          <span className="text-protocol-text">verified reputation</span>, risk intelligence, rankings, rewards, and{' '}
-          <span className="text-protocol-text">capital eligibility</span>.
+          <span className="text-protocol-text">verified reputation</span>, risk intelligence, rankings,{' '}
+          <span className="text-protocol-text">trader incentives</span>, and future capital eligibility.
         </motion.p>
 
         {/* CTAs */}
@@ -163,18 +157,15 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
           <TerminalBlock />
         </motion.div>
 
-        {/* Stats bar */}
+        {/* Stats bar — positioning language, no fake numbers */}
         <motion.div
           variants={itemVariants}
           className="grid grid-cols-2 md:grid-cols-4 gap-px bg-protocol-border border border-protocol-border w-full max-w-sm md:max-w-2xl mx-auto"
         >
           {stats.map((s, i) => (
-            <div
-              key={i}
-              className="bg-protocol-bg px-5 py-5 flex flex-col items-center gap-2 group hover:bg-protocol-accent-bg transition-colors"
-            >
+            <div key={i} className="bg-protocol-bg px-5 py-5 flex flex-col items-center gap-2 group hover:bg-protocol-accent-bg transition-colors">
               <div className={`${s.color} opacity-60 group-hover:opacity-100 transition-opacity`}>{s.icon}</div>
-              <div className={`font-mono text-[15px] font-black tabular-nums ${s.color}`}>{s.value}</div>
+              <div className={`font-mono text-[13px] font-black ${s.color} text-center leading-tight`}>{s.value}</div>
               <div className="font-mono text-[9px] uppercase tracking-widest text-protocol-text-dim/50">{s.label}</div>
             </div>
           ))}
@@ -184,13 +175,7 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
       {/* Left vertical bars */}
       <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 opacity-20">
         {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ height: 0 }}
-            animate={{ height: i % 2 === 0 ? 40 : 20 }}
-            transition={{ delay: 1 + i * 0.1, duration: 1 }}
-            className="w-[2px] bg-blue"
-          />
+          <motion.div key={i} initial={{ height: 0 }} animate={{ height: i % 2 === 0 ? 40 : 20 }} transition={{ delay: 1 + i * 0.1, duration: 1 }} className="w-[2px] bg-blue" />
         ))}
       </div>
 
@@ -202,10 +187,7 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
       >
         <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-protocol-text-dim/30">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
-        >
+        <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}>
           <ChevronDown className="w-4 h-4 text-protocol-text-dim/20" />
         </motion.div>
       </motion.div>
@@ -213,13 +195,7 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
       {/* Right vertical bars */}
       <div className="absolute right-10 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 opacity-10">
         {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ height: 0 }}
-            animate={{ height: i % 2 !== 0 ? 40 : 20 }}
-            transition={{ delay: 1.2 + i * 0.1, duration: 1 }}
-            className="w-[2px] bg-green"
-          />
+          <motion.div key={i} initial={{ height: 0 }} animate={{ height: i % 2 !== 0 ? 40 : 20 }} transition={{ delay: 1.2 + i * 0.1, duration: 1 }} className="w-[2px] bg-green" />
         ))}
       </div>
     </section>

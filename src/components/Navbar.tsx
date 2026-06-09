@@ -37,12 +37,10 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 h-[72px] flex items-center border-b ${scrolled || mobileMenuOpen ? 'bg-protocol-bg/92 backdrop-blur-xl border-protocol-border' : 'bg-transparent border-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex items-center justify-between">
-        {/* Logo */}
         <a href="#" className="flex items-center transition-opacity hover:opacity-80">
           <Logo size={32} showText={true} />
         </a>
 
-        {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-9">
           {navLinks.map((item) => {
             const anchor = toAnchor(item);
@@ -61,7 +59,6 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
           })}
         </ul>
 
-        {/* Right actions */}
         <div className="flex items-center gap-4">
           <button
             onClick={onOpenWhitelist}
@@ -92,7 +89,6 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -105,12 +101,7 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
             <div className="px-6 pt-6 pb-8">
               <ul className="flex flex-col gap-1 mb-8">
                 {navLinks.map((item, i) => (
-                  <motion.li
-                    key={item}
-                    initial={{ opacity: 0, x: -12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05, duration: 0.3 }}
-                  >
+                  <motion.li key={item} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
                     <a
                       href={`#${toAnchor(item)}`}
                       onClick={() => setMobileMenuOpen(false)}
@@ -122,7 +113,6 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
                   </motion.li>
                 ))}
               </ul>
-
               <motion.button
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -139,15 +129,15 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
       </AnimatePresence>
 
       {/* Ticker */}
-      <div className="absolute top-[72px] left-0 w-full h-[30px] bg-protocol-bg/85 backdrop-blur-md border-b border-protocol-border overflow-hidden flex items-center transition-colors">
+      <div className="absolute top-[72px] left-0 w-full h-[30px] bg-protocol-bg/85 backdrop-blur-md border-b border-protocol-border overflow-hidden flex items-center">
         <div className="flex gap-6 md:gap-12 whitespace-nowrap animate-ticker-pausable">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-6 md:gap-12">
               <TickerItem text="FUNDORIA SCORE ENGINE: ONLINE" dotColor="text-blue" />
               <TickerItem text="TRADER PASSPORT: ACTIVE" dotColor="text-green" />
-              <TickerItem text="DAILY UTILITY: TRADE → INDEX → SCORE → RANK → CAPITAL" dotColor="text-blue" isHex />
-              <TickerItem text="CAPITAL ELIGIBILITY: VERIFIED ON-CHAIN" dotColor="text-blue" isHex />
+              <TickerItem text="DAILY LOOP: TRADE → INDEX → SCORE → RANK → CAPITAL" dotColor="text-blue" isHex />
               <TickerItem text="READ-ONLY FIRST: NO DEPOSITS NEEDED" dotColor="text-green" />
+              <TickerItem text="CAPITAL ELIGIBILITY: VERIFIED ON-CHAIN" dotColor="text-blue" isHex />
               <TickerItem text="TOURNAMENT SEASON 1: COMING SOON" dotColor="text-blue" isHex />
             </div>
           ))}

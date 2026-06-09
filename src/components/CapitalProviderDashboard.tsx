@@ -1,12 +1,13 @@
 import { motion } from 'motion/react';
+import { SlidersHorizontal, CheckCircle } from 'lucide-react';
 
-const pipelineSteps = [
-  { label: 'Connected Wallet', sub: 'Hyperliquid wallet verified', active: true },
-  { label: '30 Days Activity', sub: 'Minimum trading history', active: true },
-  { label: 'Risk Score ≥ 750', sub: 'Fundoria Score threshold', active: false },
-  { label: 'Verified Passport', sub: 'Identity confirmed', active: false },
-  { label: 'Tournament Record', sub: 'Season participation', active: false },
-  { label: 'Capital Eligible', sub: 'Allocator matching enabled', active: false, final: true },
+const pipeline = [
+  { step: 'Connected Wallet', sub: 'Hyperliquid identity verified', done: true },
+  { step: '30 Days Activity', sub: 'Minimum history indexed', done: true },
+  { step: 'Risk Score ≥ 750', sub: 'Fundoria Score threshold', done: true },
+  { step: 'Verified Passport', sub: 'Passport issued on-chain', done: false },
+  { step: 'Tournament Record', sub: 'Optional: season entry', done: false },
+  { step: 'Capital Eligible', sub: 'Matched with allocators', done: false, highlight: true },
 ];
 
 const filters = [
@@ -15,202 +16,169 @@ const filters = [
   { label: 'Consistency', value: '> 85%', pct: 85 },
 ];
 
-function AllocatorMockup() {
-  return (
-    <div className="border border-protocol-border bg-black/40 backdrop-blur-md rounded-xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
-      {/* Chrome */}
-      <div className="py-2.5 px-4 border-b border-protocol-border bg-protocol-accent-bg flex items-center gap-2">
-        <div className="w-2 h-2 rounded-full bg-red-500/40" />
-        <div className="w-2 h-2 rounded-full bg-yellow-500/40" />
-        <div className="w-2 h-2 rounded-full bg-green/40" />
-        <span className="font-mono text-[9px] text-protocol-text-dim/40 ml-2 uppercase tracking-widest font-black flex-1">
-          ALLOCATOR_DASHBOARD :: FILTER_VIEW
-        </span>
-        <span className="font-mono text-[8px] text-blue/50 flex items-center gap-1">
-          <span className="w-1 h-1 rounded-full bg-blue animate-pulse" />
-          BETA
-        </span>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-protocol-border">
-        {/* Left: filter panel */}
-        <div className="md:col-span-2 p-5 border-r border-protocol-border">
-          <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-blue mb-4">Filter Panel</div>
-          <div className="space-y-5">
-            {filters.map((f, i) => (
-              <div key={i}>
-                <div className="flex justify-between mb-1.5">
-                  <span className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-wider">{f.label}</span>
-                  <span className="font-mono text-[9px] text-blue">{f.value}</span>
-                </div>
-                <div className="h-1.5 bg-protocol-border rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${f.pct}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.3 + i * 0.1 }}
-                    className="h-full bg-linear-to-r from-blue to-green rounded-full"
-                  />
-                </div>
-              </div>
-            ))}
-            <div className="flex justify-between items-center pt-2 border-t border-protocol-border/40">
-              <span className="font-mono text-[9px] text-green uppercase tracking-wider">3 matches found</span>
-            </div>
-            <div className="px-4 py-2.5 bg-blue text-black font-mono text-[10px] font-bold uppercase tracking-widest text-center rounded-sm cursor-default hover:bg-green transition-colors">
-              Apply Filters
-            </div>
-          </div>
-        </div>
-
-        {/* Right: trader results */}
-        <div className="md:col-span-3 p-5">
-          <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-blue mb-4">Top Matches</div>
-          <div className="space-y-4">
-            {[
-              { wallet: '0x7a...f291', score: 924, dd: '2.1%', consistency: '97%' },
-              { wallet: '0x3e...8bc4', score: 891, dd: '3.4%', consistency: '94%' },
-            ].map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 12 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + i * 0.1 }}
-                className="border border-protocol-border bg-protocol-accent-bg rounded-lg p-4 flex items-center justify-between gap-4 hover:border-blue/30 hover:bg-blue/5 transition-all group cursor-default"
-              >
-                <div className="flex items-center gap-4">
-                  {/* Small score ring */}
-                  <div className="relative w-10 h-10 shrink-0">
-                    <svg width="40" height="40" className="rotate-[-90deg]">
-                      <circle cx="20" cy="20" r="14" fill="none" stroke="#0E1A2E" strokeWidth="4" />
-                      <circle
-                        cx="20" cy="20" r="14"
-                        fill="none"
-                        stroke="#2F80ED"
-                        strokeWidth="4"
-                        strokeLinecap="round"
-                        strokeDasharray={2 * Math.PI * 14}
-                        strokeDashoffset={2 * Math.PI * 14 * (1 - t.score / 1000)}
-                      />
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-mono text-[8px] text-blue font-black">{Math.round(t.score / 10)}</span>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-mono text-[11px] text-protocol-text font-bold">{t.wallet}</div>
-                    <div className="font-mono text-[9px] text-protocol-text-dim mt-0.5">
-                      Score: {t.score} · DD: {t.dd} · {t.consistency}
-                    </div>
-                  </div>
-                </div>
-                <div className="px-3 py-1.5 border border-blue/30 bg-blue/5 rounded font-mono text-[9px] text-blue uppercase tracking-wider group-hover:bg-blue group-hover:text-black transition-all">
-                  Connect
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="h-[2px] bg-linear-to-r from-transparent via-blue to-transparent animate-flash" />
-    </div>
-  );
-}
-
-function CapitalEligibilityPipeline() {
-  return (
-    <div className="relative">
-      <div className="absolute left-[8px] top-0 bottom-0 w-px bg-protocol-border/40 z-0">
-        <motion.div
-          initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
-          className="w-full h-full bg-linear-to-b from-blue/60 via-green/40 to-green/10 origin-top"
-        />
-      </div>
-
-      <div className="flex flex-col relative">
-        {pipelineSteps.map((step, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.12, duration: 0.4 }}
-            className="flex gap-6 py-3 group relative z-10"
-          >
-            {/* Node */}
-            <div className="shrink-0 flex flex-col items-center pt-1.5">
-              <div className={`w-4 h-4 border-2 flex items-center justify-center transition-all ${
-                step.final ? 'border-green bg-green/20' :
-                step.active ? 'border-blue bg-blue/20' :
-                'border-protocol-border bg-protocol-bg'
-              }`}>
-                <div className={`w-1.5 h-1.5 rounded-full ${
-                  step.final ? 'bg-green' :
-                  step.active ? 'bg-blue' :
-                  'bg-protocol-text-dim/20'
-                }`} />
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className={`flex-1 pb-2 ${step.final ? 'border-l-0' : ''}`}>
-              <div className={`font-bold text-[14px] uppercase tracking-tight ${
-                step.final ? 'text-green' :
-                step.active ? 'text-protocol-text' :
-                'text-protocol-text/50'
-              }`}>
-                {step.label}
-              </div>
-              <div className="font-mono text-[10px] text-protocol-text-dim/50 uppercase tracking-wider">
-                {step.sub}
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  );
-}
+const results = [
+  { address: '0x7a...f291', score: 924, pnl: '+42.1%', grade: 'A+' },
+  { address: '0x3e...8bc4', score: 891, pnl: '+28.4%', grade: 'A' },
+];
 
 export default function CapitalProviderDashboard() {
   return (
-    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-accent-bg px-4 sm:px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="text-center mb-16"
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] mb-3.5 text-blue">For Capital Providers</div>
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-display text-[clamp(36px,5vw,60px)] uppercase leading-[0.95] text-protocol-text">
-              Allocate to<br />
-              <em className="text-green not-italic">Verified Skill.</em>
-            </h2>
-            <p className="text-protocol-text-dim text-[15px] leading-relaxed max-w-[360px] italic">
-              Filter traders by score, drawdown, consistency, and capital eligibility. No guesswork. No discretionary selection.
-            </p>
+          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center justify-center gap-2">
+            <span className="w-4 h-px bg-blue/40" />
+            Capital Providers
+            <span className="w-4 h-px bg-blue/40" />
           </div>
+          <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
+            Allocate to<br />
+            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Verified Skill.</span>
+          </h2>
+          <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
+            Filter, discover, and match with traders who have proven track records — verified on-chain, scored algorithmically.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
-          {/* Left — pipeline */}
-          <div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-8">Capital Eligibility Pipeline</div>
-            <CapitalEligibilityPipeline />
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          {/* Dashboard mockup */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3 border border-protocol-border bg-protocol-bg overflow-hidden"
+          >
+            {/* Terminal header */}
+            <div className="px-4 py-2.5 border-b border-protocol-border bg-protocol-accent-bg flex items-center gap-2 justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-red-500/40" />
+                <div className="w-2 h-2 rounded-full bg-yellow-500/40" />
+                <div className="w-2 h-2 rounded-full bg-green/40" />
+                <span className="font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/40 ml-1">ALLOCATOR_DASHBOARD</span>
+              </div>
+              <span className="font-mono text-[8px] text-blue/50 flex items-center gap-1">
+                <span className="w-1 h-1 rounded-full bg-blue animate-pulse" />LIVE
+              </span>
+            </div>
 
-          {/* Right — allocator dashboard */}
-          <div className="lg:col-span-2">
-            <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-8">Allocator Dashboard</div>
-            <AllocatorMockup />
-          </div>
+            <div className="p-5 grid grid-cols-1 sm:grid-cols-5 gap-4">
+              {/* Filters */}
+              <div className="sm:col-span-2 border border-protocol-border bg-protocol-accent-bg p-4">
+                <div className="flex items-center gap-2 mb-4">
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-blue" />
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-protocol-text-dim">Filters</span>
+                </div>
+                <div className="space-y-4">
+                  {filters.map((f, i) => (
+                    <div key={i}>
+                      <div className="flex justify-between mb-1.5">
+                        <span className="font-mono text-[9px] uppercase tracking-widest text-protocol-text-dim/60">{f.label}</span>
+                        <span className="font-mono text-[9px] font-black text-blue">{f.value}</span>
+                      </div>
+                      <div className="h-1 bg-protocol-border overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${f.pct}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: 0.2 + i * 0.1 }}
+                          className="h-full bg-linear-to-r from-blue to-green"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-5 border-t border-protocol-border pt-4">
+                  <div className="font-mono text-[9px] text-green mb-3">3 matches found</div>
+                  <div className="border border-blue/30 bg-blue/5 py-2 text-center font-mono text-[9px] uppercase tracking-widest text-blue">
+                    Apply Filters
+                  </div>
+                </div>
+              </div>
+
+              {/* Results */}
+              <div className="sm:col-span-3 space-y-3">
+                {results.map((r, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 + i * 0.1 }}
+                    className="border border-protocol-border bg-protocol-accent-bg p-4 hover:border-blue/30 transition-colors group"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="font-mono text-[11px] font-black text-blue">{r.address}</div>
+                      <div className="px-2 py-0.5 border border-green/30 bg-green/5 font-mono text-[8px] text-green uppercase tracking-widest">Grade {r.grade}</div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <div className="font-mono text-[8px] text-protocol-text-dim/40 uppercase tracking-widest mb-0.5">Score</div>
+                        <div className="font-display text-[16px] text-protocol-text">{r.score}</div>
+                      </div>
+                      <div>
+                        <div className="font-mono text-[8px] text-protocol-text-dim/40 uppercase tracking-widest mb-0.5">30D PnL</div>
+                        <div className="font-mono text-[13px] font-black text-green">{r.pnl}</div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+                <div className="border border-dashed border-protocol-border/50 p-4 flex items-center justify-center">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-protocol-text-dim/30">+1 more match</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Eligibility Pipeline */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="lg:col-span-2 border border-protocol-border bg-protocol-bg p-5"
+          >
+            <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-protocol-text-dim/50 mb-5">Capital Eligibility Pipeline</div>
+            <div className="space-y-0 relative">
+              {/* Vertical connector */}
+              <div className="absolute left-[11px] top-3 bottom-3 w-px bg-protocol-border" />
+
+              {pipeline.map((p, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 + i * 0.08 }}
+                  className={`relative flex items-start gap-4 py-3 ${p.highlight ? 'bg-green/5 -mx-5 px-5 border-y border-green/20' : ''}`}
+                >
+                  <div className="relative z-10 shrink-0 mt-0.5">
+                    {p.highlight ? (
+                      <div className="w-5.5 h-5.5 rounded-full bg-green/20 border border-green/50 flex items-center justify-center">
+                        <div className="w-2 h-2 rounded-full bg-green" />
+                      </div>
+                    ) : p.done ? (
+                      <CheckCircle className="w-5 h-5 text-blue" />
+                    ) : (
+                      <div className="w-5 h-5 rounded-full border border-protocol-border bg-protocol-bg flex items-center justify-center">
+                        <div className="w-1.5 h-1.5 rounded-full bg-protocol-border" />
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <div className={`font-mono text-[11px] font-black uppercase tracking-widest ${p.highlight ? 'text-green' : p.done ? 'text-protocol-text' : 'text-protocol-text-dim/50'}`}>
+                      {p.step}
+                    </div>
+                    <div className="font-mono text-[9px] text-protocol-text-dim/40 mt-0.5">{p.sub}</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

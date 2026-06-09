@@ -1,147 +1,135 @@
 import { motion } from 'motion/react';
-import { Users, Zap, Trophy, Building2, Code2, Vault } from 'lucide-react';
+import { UserCheck, Zap, Trophy, Building2, Code2, Vault } from 'lucide-react';
 
-const models = [
+const tiers = [
   {
+    icon: <UserCheck className="w-4 h-4" />,
     num: '01',
-    icon: <Users className="w-5 h-5" />,
-    tier: 'Free Layer',
-    title: 'Full Passport & Score',
-    desc: 'Every trader gets a Trader Passport and Fundoria Score at no cost. The network grows first.',
-    revenue: 'User Growth Hook',
-    color: 'blue',
-    features: ['Wallet connection', 'Basic Trader Passport', 'Basic PnL analytics', 'Public ranking', 'Leaderboard access'],
+    title: 'Free Tier',
+    sub: 'Core Access',
+    desc: 'Full Trader Passport, Fundoria Score, public leaderboard ranking, and wallet analytics. No subscription required.',
+    tag: 'Always Free',
+    tagColor: 'text-green border-green/30 bg-green/5',
+    color: 'text-green',
   },
   {
+    icon: <Zap className="w-4 h-4" />,
     num: '02',
-    icon: <Zap className="w-5 h-5" />,
-    tier: 'Pro Trader',
-    title: 'Advanced Analytics & AI',
-    desc: 'Subscription model for traders who want deeper insights, AI journal, and private dashboards.',
-    revenue: 'Subscription',
-    color: 'green',
-    features: ['Advanced analytics', 'AI trading journal', 'Risk heatmaps', 'Strategy review', 'Private dashboards', 'Performance alerts'],
+    title: 'Pro',
+    sub: 'Subscription',
+    desc: 'Advanced analytics dashboard, AI Trading Journal, historical deep-dives, and performance benchmarking.',
+    tag: 'Subscription',
+    tagColor: 'text-blue border-blue/30 bg-blue/5',
+    color: 'text-blue',
   },
   {
+    icon: <Trophy className="w-4 h-4" />,
     num: '03',
-    icon: <Trophy className="w-5 h-5" />,
-    tier: 'Tournament Layer',
-    title: 'Seasons & Competitions',
-    desc: 'Entry fees, sponsored challenges, and prize pools power the competitive layer.',
-    revenue: 'Event Revenue',
-    color: 'blue',
-    features: ['Season entry fees', 'Sponsored challenges', 'Prize pool distributions', 'Achievement badges', 'Partner campaigns'],
+    title: 'Tournament',
+    sub: 'Event Revenue',
+    desc: 'Season entry fees for score-gated competitive tournaments with verifiable public results.',
+    tag: 'Per Season',
+    tagColor: 'text-blue border-blue/30 bg-blue/5',
+    color: 'text-blue',
   },
   {
+    icon: <Building2 className="w-4 h-4" />,
     num: '04',
-    icon: <Building2 className="w-5 h-5" />,
-    tier: 'Capital Provider',
-    title: 'Allocator Dashboard',
-    desc: 'B2B access for capital providers who need verified trader discovery and risk intelligence.',
-    revenue: 'Platform Fee',
-    color: 'green',
-    features: ['Verified trader discovery', 'Risk filter tools', 'Allocator dashboard', 'Performance reports', 'Watchlists', 'Capital eligibility data'],
+    title: 'Capital Provider',
+    sub: 'Platform Fee',
+    desc: 'Dashboard access for allocators to filter, discover, and match with verified traders. Fee on successful matches.',
+    tag: 'Platform Fee',
+    tagColor: 'text-green border-green/30 bg-green/5',
+    color: 'text-green',
   },
   {
+    icon: <Code2 className="w-4 h-4" />,
     num: '05',
-    icon: <Code2 className="w-5 h-5" />,
-    tier: 'Builder-Code',
-    title: 'SDK & API Access',
-    desc: 'Builders can embed Fundoria intelligence into their own products. Revenue through usage.',
-    revenue: 'Usage Revenue',
-    color: 'blue',
-    features: ['API access', 'Score data feeds', 'Passport lookups', 'Builder SDK', 'Usage-based billing'],
+    title: 'Builder API',
+    sub: 'Usage Revenue',
+    desc: 'Programmatic access to the Fundoria Score API, Trader Passport data, and leaderboard feeds for third-party integrations.',
+    tag: 'Usage-Based',
+    tagColor: 'text-blue border-blue/30 bg-blue/5',
+    color: 'text-blue',
   },
   {
+    icon: <Vault className="w-4 h-4" />,
     num: '06',
-    icon: <Vault className="w-5 h-5" />,
-    tier: 'Future Vault Layer',
-    title: 'Programmable Capital',
-    desc: 'Later-stage model: capital pools matched to verified traders with automated risk rules.',
-    revenue: '% of Performance',
-    color: 'green',
-    features: ['Capital pools', 'Vault mandates', 'Automated allocation', 'Settlement logic', 'Profit splits'],
+    title: 'Vault Layer',
+    sub: 'Future',
+    desc: 'Protocol-level infrastructure for capital pools and vault mandates. Fee structure: mandate-based protocol fee on managed capital.',
+    tag: 'Protocol Fee',
+    tagColor: 'text-protocol-text-dim border-protocol-border',
+    color: 'text-protocol-text-dim',
     future: true,
   },
 ];
 
 export default function BusinessModel() {
   return (
-    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="text-center mb-16"
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] mb-3.5 text-blue">Business Model</div>
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-display text-[clamp(36px,5vw,60px)] uppercase leading-[0.95] text-protocol-text">
-              Utility First.<br />
-              <em className="text-green not-italic">No ICO Required.</em>
-            </h2>
-            <p className="text-protocol-text-dim text-[15px] leading-relaxed max-w-[360px] italic">
-              Six revenue layers stacked on top of real product usage. The free layer is the network effect.
-            </p>
+          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center justify-center gap-2">
+            <span className="w-4 h-px bg-blue/40" />
+            Business Model
+            <span className="w-4 h-px bg-blue/40" />
           </div>
+          <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
+            Built for<br />
+            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Sustainable Growth.</span>
+          </h2>
+          <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
+            Multiple revenue layers aligned with value creation. No token emissions. No speculation. Pure product.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-protocol-border border border-protocol-border">
-          {models.map((m, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {tiers.map((t, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.4 }}
-              className={`group bg-protocol-bg p-8 relative overflow-hidden cursor-default card-glow-hover ${m.future ? 'opacity-60 hover:opacity-100' : ''}`}
+              transition={{ delay: i * 0.07 }}
+              className={`group relative border border-protocol-border bg-protocol-accent-bg p-7 transition-all duration-300 card-glow-hover overflow-hidden ${t.future ? 'opacity-60 hover:opacity-100' : ''}`}
             >
-              {/* Ghosted number */}
-              <div className={`absolute -bottom-4 -right-2 font-display text-[80px] ${m.color === 'green' ? 'text-green/[0.03]' : 'text-blue/[0.03]'} leading-none select-none pointer-events-none`}>
-                {m.num}
+              <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-protocol-border to-transparent group-hover:via-blue/30 transition-colors duration-500" />
+
+              <div className="flex items-start justify-between mb-5">
+                <div className={`${t.color} opacity-70 group-hover:opacity-100 transition-opacity`}>{t.icon}</div>
+                <span className={`border font-mono text-[8px] uppercase tracking-widest px-2 py-0.5 ${t.tagColor}`}>{t.tag}</span>
               </div>
 
-              {/* Top accent line */}
-              <div className={`absolute top-0 left-0 w-0 h-[1px] ${m.color === 'green' ? 'bg-green' : 'bg-blue'} group-hover:w-full transition-all duration-500`} />
+              <div className="font-mono text-[9px] text-protocol-text-dim/40 uppercase tracking-widest mb-1">{t.sub}</div>
+              <h3 className="font-mono text-[14px] font-black uppercase tracking-wide text-protocol-text mb-3 group-hover:text-blue transition-colors">{t.title}</h3>
+              <p className="text-[13px] text-protocol-text-dim leading-relaxed">{t.desc}</p>
 
-              {/* Icon */}
-              <div className={`w-9 h-9 border ${m.color === 'green' ? 'border-green/30 bg-green/5 text-green/60 group-hover:text-green group-hover:border-green/60' : 'border-blue/30 bg-blue/5 text-blue/60 group-hover:text-blue group-hover:border-blue/60'} flex items-center justify-center transition-all mb-5 relative z-10`}>
-                {m.icon}
+              <div className="absolute bottom-4 right-5 font-mono text-[48px] font-black opacity-[0.04] leading-none select-none pointer-events-none text-protocol-text">
+                {t.num}
               </div>
-
-              {/* Labels */}
-              <div className={`font-mono text-[8px] uppercase tracking-[0.3em] mb-1.5 ${m.color === 'green' ? 'text-green/40 group-hover:text-green/70' : 'text-blue/40 group-hover:text-blue/70'} transition-colors relative z-10`}>
-                TIER::{m.num} — {m.tier}
-              </div>
-              <h3 className="text-[16px] font-bold uppercase tracking-tight mb-2 text-protocol-text/80 group-hover:text-protocol-text transition-colors relative z-10">
-                {m.title}
-              </h3>
-              <p className="text-[13px] text-protocol-text-dim leading-relaxed mb-4 relative z-10 font-medium">{m.desc}</p>
-
-              {/* Revenue model badge */}
-              <div className={`inline-block px-2.5 py-1 mb-4 border font-mono text-[9px] uppercase tracking-widest ${m.color === 'green' ? 'border-green/20 text-green/60 bg-green/5' : 'border-blue/20 text-blue/60 bg-blue/5'} relative z-10`}>
-                {m.revenue}
-              </div>
-
-              {/* Features */}
-              <ul className="space-y-1 relative z-10">
-                {m.features.map((f, j) => (
-                  <li key={j} className="flex items-center gap-2">
-                    <span className={`text-[8px] ${m.color === 'green' ? 'text-green/50' : 'text-blue/50'}`}>▸</span>
-                    <span className="font-mono text-[9px] text-protocol-text-dim/60 uppercase tracking-wider">{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {m.future && (
-                <div className="mt-4 px-2.5 py-1 border border-protocol-border bg-protocol-accent-bg rounded font-mono text-[8px] uppercase tracking-widest text-protocol-text/30 inline-block relative z-10">
-                  Future Layer
-                </div>
-              )}
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-8 border border-protocol-border/50 p-5 flex items-center justify-center gap-3"
+        >
+          <div className="h-px flex-1 max-w-[80px] bg-protocol-border/50" />
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-protocol-text-dim/40 text-center">
+            No ICO · No Token Sale · No Passive Income Claims · No Guaranteed Returns
+          </p>
+          <div className="h-px flex-1 max-w-[80px] bg-protocol-border/50" />
+        </motion.div>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Mail, ArrowRight, CheckCircle2, Zap, Shield, Loader2 } from 'lucide-react';
+import { X, Mail, ArrowRight, CheckCircle2, Zap, Loader2 } from 'lucide-react';
 
 interface WhitelistModalProps {
   isOpen: boolean;
@@ -8,19 +8,22 @@ interface WhitelistModalProps {
 }
 
 const perks = [
-  'First access to your Fundoria Score and Trader Passport',
-  'Priority placement in Tournament Season 1 leaderboard',
-  'Early notification when capital providers go live',
-  'Direct feedback sessions with the Fundoria team',
+  'Early Score access before public launch',
+  'Tournament Season 1 priority registration',
+  'Notification when capital providers go live',
+  'Direct team feedback sessions during beta',
 ];
+
+const roles = ['Trader', 'Capital Provider', 'Partner', 'Contributor'];
 
 export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps) {
   const [email, setEmail] = useState('');
+  const [role, setRole] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   useEffect(() => {
     if (!isOpen) {
-      const t = setTimeout(() => { setEmail(''); setStatus('idle'); }, 400);
+      const t = setTimeout(() => { setEmail(''); setRole(''); setStatus('idle'); }, 400);
       return () => clearTimeout(t);
     }
   }, [isOpen]);
@@ -37,7 +40,6 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4">
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -47,7 +49,6 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
             className="absolute inset-0 bg-black/92 backdrop-blur-md"
           />
 
-          {/* Modal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.97, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -56,13 +57,10 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
-            className="relative w-full max-w-[520px] bg-protocol-bg border border-protocol-border overflow-hidden transition-colors shadow-[0_0_80px_rgba(59,130,246,0.15)]"
+            className="relative w-full max-w-[520px] bg-protocol-bg border border-protocol-border overflow-hidden shadow-[0_0_80px_rgba(47,128,237,0.15)]"
           >
             {/* Top gradient bar */}
-            <div className="h-[3px] bg-gradient-to-r from-blue via-cyan to-green w-full" />
-
-            {/* Scanline overlay */}
-            <div className="absolute inset-x-0 h-32 bg-gradient-to-b from-blue/[0.03] to-transparent pointer-events-none animate-scanline z-20" />
+            <div className="h-[3px] bg-linear-to-r from-blue via-green to-blue w-full" />
 
             {/* Corner decor */}
             <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-blue/20 pointer-events-none" />
@@ -101,7 +99,7 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                     You're In.
                   </h3>
                   <p className="font-mono text-[11px] text-protocol-text-dim uppercase tracking-widest leading-relaxed px-6 mb-8">
-                    You're on the Fundoria early access list. Connect your wallet, build reputation, and prepare for the first trader intelligence release.
+                    Your Trader Passport request is registered. We'll be in touch.
                   </p>
                   <button
                     onClick={onClose}
@@ -112,32 +110,22 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                 </motion.div>
               ) : (
                 <>
-                  {/* Header */}
                   <div className="mb-8">
                     <div className="flex items-center gap-2 mb-4">
                       <Zap className="w-4 h-4 text-blue" />
                       <span className="font-mono text-[10px] text-blue font-black uppercase tracking-[0.3em]">Early Access</span>
                       <div className="flex-1 h-px bg-protocol-border ml-2" />
                     </div>
-                    <h2 id="modal-title" className="font-display text-[clamp(36px,6vw,54px)] uppercase leading-[0.9] tracking-tight mb-4 text-protocol-text">
-                      Get Your <br />
-                      <span className="text-blue">Trader Passport</span> Early.
+                    <h2 id="modal-title" className="font-display text-[clamp(32px,6vw,50px)] uppercase leading-[0.9] tracking-tight mb-4 text-protocol-text">
+                      Get Your Trader<br />
+                      <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Passport Early.</span>
                     </h2>
-                    <p className="text-protocol-text-dim text-[13px] leading-relaxed font-sans font-medium">
-                      Members receive priority access to the Score Engine, early Leaderboard placement, and first-look capital matching.
+                    <p className="text-protocol-text-dim text-[13px] leading-relaxed">
+                      Secure your spot in the first cohort of verified Fundoria traders.
                     </p>
                   </div>
 
-                  {/* Disclaimer */}
-                  <div className="p-4 bg-protocol-accent-bg border border-protocol-border/50 mb-7 flex gap-3">
-                    <Shield className="w-4 h-4 text-blue/40 shrink-0 mt-0.5" />
-                    <p className="text-[10px] text-protocol-text-dim/60 leading-relaxed font-mono">
-                      Registration is free. Fundoria is a read-only intelligence layer — no deposits, no custody, no token sale. Connect your Hyperliquid wallet when the Score Engine goes live.
-                    </p>
-                  </div>
-
-                  {/* Perks */}
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3 mb-7">
                     {perks.map((point, i) => (
                       <motion.li
                         key={i}
@@ -149,22 +137,18 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                         <span className="font-mono text-[9px] text-blue/40 group-hover:text-blue transition-colors mt-0.5 shrink-0 font-bold">
                           {String(i + 1).padStart(2, '0')}
                         </span>
-                        <p className="text-[11px] text-protocol-text-dim group-hover:text-protocol-text transition-colors uppercase tracking-widest leading-relaxed font-semibold">
+                        <p className="text-[11px] text-protocol-text-dim group-hover:text-protocol-text transition-colors uppercase tracking-widest leading-relaxed">
                           {point}
                         </p>
                       </motion.li>
                     ))}
                   </ul>
 
-                  {/* Form */}
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-3">
                     <div>
-                      <div className="flex justify-between items-end mb-2">
-                        <label className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-widest font-black">
-                          Email <span className="text-blue">*</span>
-                        </label>
-                        <span className="text-[8px] text-protocol-text-dim/30 uppercase tracking-widest">confirmation sent here</span>
-                      </div>
+                      <label className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-widest font-black block mb-2">
+                        Email <span className="text-blue">*</span>
+                      </label>
                       <div className="relative">
                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-protocol-text-dim/30" />
                         <input
@@ -172,16 +156,32 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                           required
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder="protocol@access.link"
-                          className="w-full bg-protocol-accent-bg border border-protocol-border px-12 py-4 font-mono text-sm text-protocol-text placeholder:text-protocol-text-dim/40 focus:outline-none focus:border-blue focus:shadow-[0_0_0_2px_rgba(59,130,246,0.25)] transition-all"
+                          placeholder="you@domain.com"
+                          className="w-full bg-protocol-accent-bg border border-protocol-border px-12 py-3.5 font-mono text-sm text-protocol-text placeholder:text-protocol-text-dim/40 focus:outline-none focus:border-blue focus:shadow-[0_0_0_2px_rgba(47,128,237,0.2)] transition-all"
                         />
                       </div>
+                    </div>
+
+                    <div>
+                      <label className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-widest font-black block mb-2">
+                        I am a
+                      </label>
+                      <select
+                        value={role}
+                        onChange={(e) => setRole(e.target.value)}
+                        className="w-full bg-protocol-accent-bg border border-protocol-border px-4 py-3.5 font-mono text-sm text-protocol-text focus:outline-none focus:border-blue transition-all appearance-none cursor-pointer"
+                      >
+                        <option value="">Select role...</option>
+                        {roles.map((r) => (
+                          <option key={r} value={r}>{r}</option>
+                        ))}
+                      </select>
                     </div>
 
                     <button
                       type="submit"
                       disabled={status === 'submitting'}
-                      className="group w-full bg-blue hover:bg-green text-black font-mono text-[11px] font-black uppercase tracking-[0.2em] py-5 flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_24px_rgba(59,130,246,0.3)] hover:shadow-[0_4px_32px_rgba(16,185,129,0.4)] relative overflow-hidden"
+                      className="group w-full bg-blue hover:bg-green text-black font-mono text-[11px] font-black uppercase tracking-[0.2em] py-4 flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_24px_rgba(47,128,237,0.3)] hover:shadow-[0_4px_32px_rgba(0,200,150,0.4)] relative overflow-hidden mt-4"
                     >
                       <div className="absolute inset-0 bg-white/15 -translate-x-full group-hover:translate-x-full transition-transform duration-500 pointer-events-none" />
                       {status === 'submitting' ? (
@@ -198,10 +198,9 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                     </button>
                   </form>
 
-                  <div className="mt-8 pt-5 border-t border-protocol-border flex items-center justify-between">
-                    <span className="font-mono text-[8px] text-protocol-text-dim/25 uppercase tracking-widest">Fundoria_Protocol</span>
-                    <span className="font-mono text-[8px] text-protocol-text-dim/25 uppercase tracking-widest">v0.1.0</span>
-                  </div>
+                  <p className="mt-5 text-[9px] font-mono text-protocol-text-dim/30 text-center leading-relaxed">
+                    Registration is free and does not constitute a purchase, investment, or allocation of any kind.
+                  </p>
                 </>
               )}
             </div>

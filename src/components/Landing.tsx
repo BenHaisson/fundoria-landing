@@ -13,23 +13,25 @@ import ArchitectureV2 from './ArchitectureV2';
 import Roadmap from './Roadmap';
 import FAQ from './FAQ';
 import Footer from './Footer';
-import WhitelistModal from './WhitelistModal';
 import FloatingCTA from './FloatingCTA';
+import WhitelistModal from './WhitelistModal';
 
 export default function Landing() {
   const [isWhitelistOpen, setIsWhitelistOpen] = useState(false);
+  const openWhitelist = () => setIsWhitelistOpen(true);
+  const closeWhitelist = () => setIsWhitelistOpen(false);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-protocol-bg text-protocol-text">
-      {/* Background Orbs */}
-      <div className="fixed top-[-5%] sm:top-[-10%] right-[-10%] w-[80vw] sm:w-[50vw] h-[80vw] sm:h-[50vw] bg-blue/[0.10] blur-[80px] sm:blur-[140px] rounded-full pointer-events-none z-0" />
-      <div className="fixed bottom-[-5%] sm:bottom-[-10%] left-[-10%] w-[70vw] sm:w-[40vw] h-[70vw] sm:h-[40vw] bg-green/[0.06] blur-[80px] sm:blur-[140px] rounded-full pointer-events-none z-0" />
+      {/* Background orbs */}
+      <div className="fixed top-[-5%] right-[-10%] w-[50vw] h-[50vw] bg-blue/[0.08] blur-[140px] rounded-full pointer-events-none z-0" />
+      <div className="fixed bottom-[-5%] left-[-10%] w-[40vw] h-[40vw] bg-green/[0.06] blur-[140px] rounded-full pointer-events-none z-0" />
 
-      <Navbar onOpenWhitelist={() => setIsWhitelistOpen(true)} />
-      <FloatingCTA onOpenWhitelist={() => setIsWhitelistOpen(true)} />
+      <Navbar onOpenWhitelist={openWhitelist} />
+      <FloatingCTA onOpenWhitelist={openWhitelist} />
 
       <main className="relative z-10">
-        <Hero onOpenWhitelist={() => setIsWhitelistOpen(true)} />
+        <Hero onOpenWhitelist={openWhitelist} />
         <Problem />
         <Solution />
         <ProductStack />
@@ -43,9 +45,8 @@ export default function Landing() {
         <FAQ />
       </main>
 
-      <Footer onOpenWhitelist={() => setIsWhitelistOpen(true)} />
-
-      <WhitelistModal isOpen={isWhitelistOpen} onClose={() => setIsWhitelistOpen(false)} />
+      <Footer onOpenWhitelist={openWhitelist} />
+      <WhitelistModal isOpen={isWhitelistOpen} onClose={closeWhitelist} />
     </div>
   );
 }
