@@ -1,14 +1,17 @@
 import { motion } from 'motion/react';
 
 export default function Roadmap() {
-  const items: { phase: string; meta: string; title: string; desc: string; active?: boolean; timeline: string }[] = [
-    { phase: '01', meta: 'Foundation', title: 'Core Trading & Verification', desc: 'Deployment of protocol interface and simulated environments. Implementation of on-chain identity logic and Hyperliquid integration.', active: true, timeline: 'Q1–Q2 2026' },
-    { phase: '02', meta: 'Scaling', title: 'Vault Markets & Capital', desc: 'Expansion of vault configurations and mandate-specific allocation strategies. Enhanced institutional reporting and capital scaling mechanisms.', timeline: 'Q3 2026' },
-    { phase: '03', meta: 'Decentralization', title: 'Governance & Ecosystem', desc: 'Progressive decentralization of protocol parameters via DAO. Expansion of third-party integrations and composable financial products.', timeline: 'Q4 2026 – Q1 2027' }
+  const items: { phase: string; meta: string; title: string; desc: string; status: string; timeline: string; active?: boolean }[] = [
+    { phase: '01', meta: 'Pre-Launch', title: 'Trader Intelligence Foundation', desc: 'Landing page, community formation, brand system, whitepaper v4, early access list, Hyperliquid research and integration scoping.', status: 'ACTIVE', active: true, timeline: 'Q1–Q2 2026' },
+    { phase: '02', meta: 'MVP', title: 'Wallet Connection & Trader Passport', desc: 'Hyperliquid data indexer, wallet connection, basic Trader Passport, PnL analytics, risk metrics, and leaderboard prototype.', status: 'NEXT', timeline: 'Q3 2026' },
+    { phase: '03', meta: 'Beta', title: 'Fundoria Score & Tournaments', desc: 'Fundoria Score engine, public trader profiles, AI journal, advanced leaderboard, tournament Season 1, alerts, and social sharing.', status: 'PLANNED', timeline: 'Q4 2026' },
+    { phase: '04', meta: 'Growth', title: 'Pro Analytics & Capital Providers', desc: '100k trader acquisition strategy, sponsored competitions, Pro subscription, capital provider dashboard, and partner campaigns.', status: 'PLANNED', timeline: 'Q1 2027' },
+    { phase: '05', meta: 'Capital Access', title: 'Funded Challenges & Allocator Discovery', desc: 'Verified trader tiers, funded challenges, controlled funded accounts, allocator discovery, and risk-based capital eligibility.', status: 'FUTURE', timeline: 'Q2–Q3 2027' },
+    { phase: '06', meta: 'Vault Layer', title: 'Capital Pools & Vault Infrastructure', desc: 'Capital allocation vaults, vault mandates, automated allocation rules, settlement logic, and protocol governance.', status: 'FUTURE', timeline: 'Q4 2027+' },
   ];
 
   return (
-    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
+    <section id="roadmap" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg transition-colors duration-300">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
@@ -16,16 +19,16 @@ export default function Roadmap() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] mb-3.5 text-blue">Lifecycle</div>
-          <h2 className="font-display text-[clamp(36px,5vw,60px)] uppercase tracking-wider text-protocol-text">The Evolution.</h2>
-          <motion.p 
+          <div className="font-mono text-[10px] uppercase tracking-[0.4em] mb-3.5 text-blue">Roadmap</div>
+          <h2 className="font-display text-[clamp(36px,5vw,60px)] uppercase tracking-wider text-protocol-text">From Intelligence Layer to Capital Network.</h2>
+          <motion.p
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-protocol-text-dim text-[13px] mt-3 italic"
           >
-            From core infrastructure to institutional capital markets.
+            Six phases from trader intelligence to programmable capital allocation.
           </motion.p>
         </motion.div>
 
@@ -37,7 +40,7 @@ export default function Roadmap() {
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="w-full h-full bg-linear-to-b from-blue via-cyan to-transparent origin-top"
+              className="w-full h-full bg-linear-to-b from-blue via-blue/40 to-transparent origin-top"
             />
           </div>
           
@@ -108,24 +111,30 @@ export default function Roadmap() {
                     </p>
                     
                     <div className="mt-6 flex flex-wrap gap-4">
-                      {item.active ? (
+                      {item.status === 'ACTIVE' && (
                         <div className="px-3 py-1.5 border border-blue/30 bg-blue/5 rounded-full font-mono text-[9px] text-blue uppercase tracking-widest flex items-center gap-2">
                           <span className="w-1.5 h-1.5 bg-blue rounded-full animate-ping" />
-                          Process: Active
+                          Active
                         </div>
-                      ) : (
+                      )}
+                      {item.status === 'NEXT' && (
+                        <div className="px-3 py-1.5 border border-green/30 bg-green/5 rounded-full font-mono text-[9px] text-green uppercase tracking-widest">
+                          Next
+                        </div>
+                      )}
+                      {item.status === 'PLANNED' && (
+                        <div className="px-3 py-1.5 border border-protocol-border bg-protocol-accent-bg rounded-full font-mono text-[9px] text-protocol-text/40 uppercase tracking-widest">
+                          Planned
+                        </div>
+                      )}
+                      {item.status === 'FUTURE' && (
                         <div className="px-3 py-1.5 border border-protocol-border bg-protocol-accent-bg rounded-full font-mono text-[9px] text-protocol-text/30 uppercase tracking-widest">
-                          Process: Pending
+                          Future
                         </div>
                       )}
                       <div className="px-3 py-1.5 border border-protocol-border rounded-full font-mono text-[9px] text-protocol-text/40 uppercase tracking-widest group-hover:text-protocol-text/70 transition-colors">
                         {item.timeline}
                       </div>
-                      {item.active && (
-                        <div className="px-3 py-1.5 border border-protocol-border rounded-full font-mono text-[9px] text-protocol-text/30 uppercase tracking-widest group-hover:text-protocol-text/60 transition-colors">
-                          Stability: 99.98%
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>

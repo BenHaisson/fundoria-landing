@@ -21,8 +21,8 @@ export default function Logo({ className = "", size = 32, showText = false }: Lo
     >
       <defs>
         <linearGradient id="logo_grad_main" x1="6" y1="18" x2="24" y2="6" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#36AAB5" />
-          <stop offset="1" stopColor="#39D392" />
+          <stop stopColor="#2F80ED" />
+          <stop offset="1" stopColor="#00C896" />
         </linearGradient>
       </defs>
       {/* Bottom arc — light gray */}
@@ -66,7 +66,7 @@ export default function Logo({ className = "", size = 32, showText = false }: Lo
         style={{
           width: Math.max(4, Math.round(size * 0.13)),
           height: Math.max(4, Math.round(size * 0.13)),
-          background: 'linear-gradient(135deg, #36AAB5, #39D392)',
+          background: 'linear-gradient(135deg, #2F80ED, #00C896)',
         }}
       />
     </span>

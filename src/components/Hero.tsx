@@ -1,41 +1,85 @@
-import { ArrowRight, Activity, Shield, Cpu, Layers, ChevronDown } from 'lucide-react';
+import { ArrowRight, Activity, Shield, TrendingUp, Layers, ChevronDown } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 
 interface HeroProps {
-  onShowWhitepaper?: () => void;
   onOpenWhitelist?: () => void;
 }
 
 const stats = [
-  { icon: <Activity className="w-3 h-3" />, label: 'Network', value: 'HyperEVM', color: 'text-blue' },
-  { icon: <Shield className="w-3 h-3" />, label: 'Custody', value: '0%', color: 'text-green' },
-  { icon: <Cpu className="w-3 h-3" />, label: 'Risk Engine', value: 'On-Chain', color: 'text-cyan' },
-  { icon: <Layers className="w-3 h-3" />, label: 'Status', value: 'Live Alpha', color: 'text-blue' },
+  { icon: <Activity className="w-3 h-3" />, label: 'Active Traders', value: '2,400+', color: 'text-blue' },
+  { icon: <TrendingUp className="w-3 h-3" />, label: 'Avg Score', value: '731', color: 'text-green' },
+  { icon: <Shield className="w-3 h-3" />, label: 'Capital Ready', value: '$0 Min', color: 'text-blue' },
+  { icon: <Layers className="w-3 h-3" />, label: 'Status', value: 'Alpha', color: 'text-green' },
 ];
 
-export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
+const terminalLines = [
+  { text: '[ FUNDORIA_INIT ]', color: 'text-blue', delay: 300 },
+  { text: '', delay: 500 },
+  { text: 'source: Hyperliquid', color: 'text-protocol-text-dim', delay: 700 },
+  { text: 'mode: read-only intelligence', color: 'text-protocol-text-dim', delay: 900 },
+  { text: 'wallet: connected', color: 'text-green', delay: 1100 },
+  { text: 'risk_profile: generating...', color: 'text-protocol-text-dim', delay: 1400 },
+  { text: 'trader_passport: pending', color: 'text-protocol-text-dim', delay: 1700 },
+  { text: 'capital_access: locked until verified', color: 'text-protocol-text-dim', delay: 2000 },
+  { text: '', delay: 2200 },
+  { text: 'status: pre-launch', color: 'text-blue', delay: 2400 },
+];
+
+function TerminalBlock() {
+  const [visibleLines, setVisibleLines] = useState(0);
+
+  useEffect(() => {
+    terminalLines.forEach((_, i) => {
+      setTimeout(() => setVisibleLines(i + 1), terminalLines[i].delay);
+    });
+  }, []);
+
+  return (
+    <div className="w-full max-w-md mx-auto border border-protocol-border bg-black/40 backdrop-blur-md rounded-xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
+      {/* Terminal chrome */}
+      <div className="py-2.5 px-4 border-b border-protocol-border bg-protocol-accent-bg flex items-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-red-500/40" />
+        <div className="w-2 h-2 rounded-full bg-yellow-500/40" />
+        <div className="w-2 h-2 rounded-full bg-green/40" />
+        <span className="font-mono text-[9px] text-protocol-text-dim/40 ml-2 uppercase tracking-widest font-black flex-1">
+          FUNDORIA_INIT :: WALLET_CONNECT
+        </span>
+        <span className="font-mono text-[8px] text-blue/50 flex items-center gap-1">
+          <span className="w-1 h-1 rounded-full bg-blue animate-pulse" />
+          LIVE
+        </span>
+      </div>
+      <div className="p-5 font-mono text-[11px] leading-[2] text-left min-h-[180px]">
+        {terminalLines.slice(0, visibleLines).map((line, i) => (
+          <div key={i} className={line.color || 'text-protocol-text'}>
+            {line.text || <>&nbsp;</>}
+          </div>
+        ))}
+        {visibleLines < terminalLines.length && (
+          <span className="animate-pulse text-blue">▋</span>
+        )}
+      </div>
+      <div className="h-[2px] bg-linear-to-r from-transparent via-blue to-transparent animate-flash" />
+    </div>
+  );
+}
+
+export default function Hero({ onOpenWhitelist }: HeroProps) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 100);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
   };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: 'spring', stiffness: 100, damping: 20 },
-    },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
   };
 
   return (
@@ -43,12 +87,11 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
       {/* Background glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[700px] pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue/10 rounded-full blur-[140px] mix-blend-screen animate-pulse-custom" />
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-cyan/5 rounded-full blur-[100px] mix-blend-screen animate-pulse-custom delay-1000" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[200px] bg-green/5 rounded-full blur-[120px]" />
       </div>
 
       <motion.div variants={containerVariants} initial="hidden" animate="visible" className="relative z-10">
-        {/* Badge */}
+        {/* Eyebrow */}
         <motion.div
           variants={itemVariants}
           className="inline-flex flex-wrap items-center justify-center gap-2 px-3 py-2 sm:px-4 rounded-full border border-blue/30 bg-blue/5 backdrop-blur-md mb-8 sm:mb-10 group cursor-default max-w-[90vw]"
@@ -58,24 +101,20 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
             <span className="relative block w-2 h-2 rounded-full bg-blue" />
           </div>
           <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-blue font-bold">
-            PRE-LAUNCH · HYPEREVM NATIVE
-          </span>
-          <div className="w-px h-3 bg-blue/30 ml-1 mr-1 hidden sm:block" />
-          <span className="font-mono text-[9px] uppercase tracking-[0.1em] text-protocol-text/40 hidden sm:inline">
-            Phase 01: Active
+            HYPERLIQUID-NATIVE TRADER INTELLIGENCE
           </span>
         </motion.div>
 
         {/* Headline */}
         <motion.h1
           variants={itemVariants}
-          className="font-display text-[clamp(54px,11vw,140px)] leading-[0.88] tracking-tighter uppercase mb-8 text-protocol-text"
+          className="font-display text-[clamp(48px,10vw,130px)] leading-[0.88] tracking-tighter uppercase mb-8 text-protocol-text"
         >
-          <span className="block text-protocol-text/20 mb-2 font-mono text-sm tracking-widest animate-flicker">[ SYSTEM_INIT ]</span>
-          Protocol-Native <br />
+          Turn Trading<br />
+          Performance Into<br />
           <span className="relative inline-block">
-            <span className="bg-linear-to-r from-blue via-cyan to-green bg-clip-text text-transparent">
-              Capital Markets
+            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">
+              Verified Capital Access.
             </span>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -89,33 +128,39 @@ export default function Hero({ onShowWhitepaper, onOpenWhitelist }: HeroProps) {
         {/* Sub */}
         <motion.p
           variants={itemVariants}
-          className="max-w-[620px] mx-auto text-protocol-text-dim text-[14px] sm:text-[16px] md:text-lg leading-relaxed mb-10 sm:mb-14 italic px-2"
+          className="max-w-[620px] mx-auto text-protocol-text-dim text-[14px] sm:text-[16px] md:text-lg leading-relaxed mb-10 sm:mb-14 px-2"
         >
-          Fundoria is a non-custodial capital markets protocol on HyperEVM — where{' '}
-          <span className="text-protocol-text">trader skill is verified on-chain</span>, risk is enforced by{' '}
-          <span className="text-protocol-text">smart contracts</span>, and capital allocation is fully programmable.
+          Fundoria indexes Hyperliquid wallet activity and transforms it into{' '}
+          <span className="text-protocol-text">verified reputation</span>, risk intelligence, rankings, rewards, and{' '}
+          <span className="text-protocol-text">capital eligibility</span>.
         </motion.p>
 
         {/* CTAs */}
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-16 px-4 sm:px-0">
           <button
             onClick={onOpenWhitelist}
-            className="group relative w-full sm:w-auto bg-blue hover:bg-green text-black font-mono text-[11px] sm:text-[12px] font-black uppercase tracking-[0.2em] px-8 sm:px-10 py-4 sm:py-5 rounded-sm overflow-hidden transition-all duration-300 shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_80px_rgba(16,185,129,0.5)]"
+            className="group relative w-full sm:w-auto bg-blue hover:bg-green text-black font-mono text-[11px] sm:text-[12px] font-black uppercase tracking-[0.2em] px-8 sm:px-10 py-4 sm:py-5 rounded-sm overflow-hidden transition-all duration-300 shadow-[0_0_40px_rgba(47,128,237,0.3)] hover:shadow-[0_0_80px_rgba(0,200,150,0.5)]"
           >
             <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500" />
             <span className="relative flex items-center justify-center gap-3">
-              Whitelist Now
+              Join Early Access
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </span>
           </button>
 
-          <button
-            onClick={onShowWhitepaper}
-            className="group w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border border-protocol-border hover:border-blue/50 text-protocol-text/60 hover:text-protocol-text font-mono text-[11px] sm:text-[12px] font-black uppercase tracking-[0.2em] rounded-sm transition-all relative overflow-hidden"
+          <a
+            href="#product"
+            className="group w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border border-protocol-border hover:border-blue/50 text-protocol-text-dim hover:text-protocol-text font-mono text-[11px] sm:text-[12px] font-black uppercase tracking-[0.2em] rounded-sm transition-all relative overflow-hidden flex items-center justify-center gap-2"
           >
             <div className="absolute inset-0 bg-blue/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
-            <span className="relative">Read Documentation</span>
-          </button>
+            <span className="relative">Explore the Protocol</span>
+            <ArrowRight className="w-3.5 h-3.5 relative group-hover:translate-x-1 transition-transform" />
+          </a>
+        </motion.div>
+
+        {/* Terminal block */}
+        <motion.div variants={itemVariants} className="mb-12 sm:mb-16">
+          <TerminalBlock />
         </motion.div>
 
         {/* Stats bar */}

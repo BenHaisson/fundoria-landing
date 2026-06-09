@@ -5,52 +5,36 @@ import { ChevronDown } from 'lucide-react';
 export default function FAQ() {
   const faqs = [
     {
-      q: 'How is risk enforced?',
-      a: 'Risk rules are encoded in vault contracts and enforced by the guardian oracle. Breaches trigger automated constraints on exposure, drawdown, and trading limits — with no path for manual override.'
+      q: 'What is Fundoria?',
+      a: 'Fundoria is a Hyperliquid-native trader intelligence and capital-access layer. It reads your on-chain trading history, computes a Fundoria Score across five dimensions, issues a public Trader Passport, and creates a pathway from verified reputation to capital allocation.'
     },
     {
-      q: 'What if the oracle fails?',
-      a: 'Oracle failure triggers a circuit breaker that halts new order routing. Existing positions remain in their current state until the oracle is restored. Emergency governance controls are narrowly scoped and time-limited.'
+      q: 'Does Fundoria custody funds?',
+      a: 'No. Fundoria is read-only in its current architecture. It reads your existing Hyperliquid wallet history non-custodially — no deposits, no bridging, no custody at any layer. Capital matching is introduced only after verification maturity.'
     },
     {
-      q: 'How is off-chain data verified?',
-      a: 'Off-chain indexing computes PnL and drawdown metrics, which are then attested by the oracle and written to the on-chain audit stream. Auditors can reconstruct full vault history without relying on off-chain attestations alone.'
+      q: 'Do I need to trade through Fundoria?',
+      a: 'No. You trade on Hyperliquid as you normally would. Fundoria indexes your wallet activity automatically. Your Trader Passport and Fundoria Score are built from your existing trading history — no special interface or routing required.'
     },
     {
-      q: 'Is the protocol non-custodial?',
-      a: 'Yes. Capital is held in on-chain vaults with explicit ownership and per-strategy provisioning scopes. Fundoria never takes custody — the protocol enforces constraints through smart contracts, not asset control.'
+      q: 'Why Hyperliquid?',
+      a: 'Hyperliquid provides one of the most powerful on-chain execution environments in crypto — deep liquidity, fast settlement, and full transparency. Fundoria is built as the intelligence and reputation layer around that execution environment.'
     },
     {
-      q: 'Who can become a verified trader?',
-      a: 'Any trader who passes the on-chain evaluation process. Performance is verified against protocol-defined thresholds — Sharpe ratio, max drawdown, and consistency metrics — over a defined evaluation window. There is no manual approval or subjective review.'
+      q: 'What is the Fundoria Score?',
+      a: 'The Fundoria Score is a 0–1000 proprietary trader score computed across five dimensions: Performance, Risk Control, Consistency, Discipline, and Survival. It is updated daily from on-chain Hyperliquid data. A higher score improves your leaderboard rank and capital eligibility.'
     },
     {
-      q: 'What blockchain does Fundoria run on?',
-      a: 'Fundoria is native to HyperEVM, the EVM-compatible execution layer of Hyperliquid. All vaults, risk logic, and settlement occur on-chain via HyperEVM smart contracts. This gives traders direct access to Hyperliquid\'s order book without bridging.'
+      q: 'Is there an ICO or token sale?',
+      a: 'No. Fundoria is focused first on product usage, trader intelligence, community growth, and verified reputation. Any future coordination layer will be tied to real utility and ecosystem participation — not a token sale. There is no ICO, presale, or investment opportunity.'
     },
     {
-      q: 'Are the smart contracts audited?',
-      a: 'The core vault and risk contracts are currently undergoing an independent security audit. Audit reports will be published prior to mainnet deployment. Protocol components are designed with upgradeability constraints to limit post-audit surface area.'
+      q: 'How do traders access capital?',
+      a: 'Traders build a verified Trader Passport through consistent trading activity over time. Once a minimum score threshold is met and a tournament record exists, traders become eligible to appear in the capital provider discovery layer. Capital matching is algorithmic — not discretionary.'
     },
     {
-      q: 'How do investors allocate to traders?',
-      a: 'Capital providers deposit into strategy-specific vaults. Allocation is governed by on-chain parameters — minimum capital requirements, lockup schedules, and performance-based fee structures. Withdrawals are processed at epoch boundaries defined in the vault contract.'
-    },
-    {
-      q: 'What is the $FND token and what is it used for?',
-      a: '$FND is a coordination utility token with three functions: access and tier progression for traders, governance voting on risk parameters and fee structures, and ecosystem incentive distribution tied to protocol activity. $FND is not an investment contract, security, or claim on protocol revenue.'
-    },
-    {
-      q: 'When is the mainnet launch expected?',
-      a: 'Phase 01 is currently active — core infrastructure, simulated environments, and on-chain identity logic are live. Vault markets and live capital allocation launch in Phase 02. There is no fixed calendar date; deployment is milestone-gated to ensure each layer passes independent security review before going live.'
-    },
-    {
-      q: 'What is the minimum deposit for capital providers?',
-      a: 'Minimums are defined at the vault level via on-chain parameters set by vault configurators, not by Fundoria centrally. Each strategy vault publishes its own minimum capital requirement, lockup schedule, and fee structure on-chain before accepting deposits.'
-    },
-    {
-      q: 'How does Fundoria differ from traditional prop trading firms?',
-      a: 'Traditional prop firms rely on discretionary approval, internal reporting, and manual risk oversight. Fundoria has no discretionary gatekeeping — trader evaluation is automated against on-chain thresholds, performance is publicly verifiable, capital is non-custodial, and risk constraints are enforced by smart contracts with no manual override path.'
+      q: 'How do capital providers use Fundoria?',
+      a: 'Capital providers use the allocator dashboard to filter traders by Fundoria Score, maximum drawdown, consistency period, market type, and capital eligibility status. Fundoria provides verified performance intelligence without requiring capital providers to perform their own due diligence from scratch.'
     }
   ];
 
@@ -63,16 +47,16 @@ export default function FAQ() {
           viewport={{ once: true }}
           className="mb-14"
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] mb-3.5 text-blue">Knowledge Base</div>
-          <h2 className="font-display text-[clamp(36px,5vw,60px)] uppercase tracking-wider text-protocol-text">Technical FAQ.</h2>
-          <motion.p 
+          <div className="font-mono text-[10px] uppercase tracking-[0.4em] mb-3.5 text-blue">FAQ</div>
+          <h2 className="font-display text-[clamp(36px,5vw,60px)] uppercase tracking-wider text-protocol-text">Common Questions.</h2>
+          <motion.p
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-protocol-text-dim text-[15px] mt-3 italic"
           >
-            Direct answers for protocol-native capital markets.
+            Fundoria is trader intelligence, not a token sale.
           </motion.p>
         </motion.div>
 

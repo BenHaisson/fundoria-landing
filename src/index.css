@@ -6,31 +6,19 @@
   --font-mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
   --font-display: "Bebas Neue", sans-serif;
 
-  --color-blue: #3B82F6;
-  --color-green: #10B981;
-  --color-cyan: #06B6D4;
-  --color-glow: rgba(59, 130, 246, 0.5);
+  --color-blue: #2F80ED;
+  --color-green: #00C896;
+  --color-glow: rgba(47, 128, 237, 0.5);
 }
 
-:root, .dark {
-  --color-protocol-bg: #000000;
-  --color-protocol-text: #ffffff;
-  --color-protocol-text-dim: rgba(255, 255, 255, 0.6);
-  --color-protocol-border: rgba(255, 255, 255, 0.1);
-  --color-protocol-accent-bg: rgba(255, 255, 255, 0.03);
-  --color-protocol-glow: rgba(59, 130, 246, 0.15);
-}
-
-.light {
-  --color-blue: #2563EB;
-  --color-green: #059669;
-  --color-cyan: #0891B2;
-  --color-protocol-bg: #fdfdfd;
-  --color-protocol-text: #050505;
-  --color-protocol-text-dim: rgba(0, 0, 0, 0.65);
-  --color-protocol-border: rgba(0, 0, 0, 0.08);
-  --color-protocol-accent-bg: rgba(0, 0, 0, 0.02);
-  --color-protocol-glow: rgba(37, 99, 235, 0.05);
+:root {
+  --color-protocol-bg: #02050C;
+  --color-protocol-text: #DCE8FF;
+  --color-protocol-text-dim: #4A6484;
+  --color-protocol-border: #0E1A2E;
+  --color-protocol-accent-bg: #04080F;
+  --color-protocol-glow: rgba(47, 128, 237, 0.15);
+  --color-muted: #2A3F58;
 }
 
 @layer base {
@@ -57,10 +45,10 @@
     background-size: 15px 15px;
   }
 
-  /* Scanlines effect - Hidden in light mode */
+  /* Scanlines effect */
   body::after {
     content: '';
-    @apply fixed inset-0 z-[1000] pointer-events-none hidden dark:block opacity-[0.03];
+    @apply fixed inset-0 z-[1000] pointer-events-none opacity-[0.03];
     background: linear-gradient(
       rgba(18, 16, 16, 0) 50%,
       rgba(0, 0, 0, 0.25) 50%
@@ -197,7 +185,11 @@
   transition: box-shadow 0.3s ease;
 }
 .card-glow-hover:hover {
-  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2), 0 8px 40px rgba(59, 130, 246, 0.08);
+  box-shadow: 0 0 0 1px rgba(47, 128, 237, 0.2), 0 8px 40px rgba(47, 128, 237, 0.08);
+}
+
+.gradient-brand {
+  background: linear-gradient(90deg, #2F80ED, #00C896);
 }
 
 /* Smooth section fade-in from below */
