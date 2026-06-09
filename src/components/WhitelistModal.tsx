@@ -8,10 +8,10 @@ interface WhitelistModalProps {
 }
 
 const perks = [
-  'Early access to the trading interface during evaluation phases',
-  'Priority eligibility for trader verification cohorts',
-  'Governance previews and contributor sessions',
-  'Direct ecosystem updates ahead of public release',
+  'First access to your Fundoria Score and Trader Passport',
+  'Priority placement in Tournament Season 1 leaderboard',
+  'Early notification when capital providers go live',
+  'Direct feedback sessions with the Fundoria team',
 ];
 
 export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps) {
@@ -101,7 +101,7 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                     You're In.
                   </h3>
                   <p className="font-mono text-[11px] text-protocol-text-dim uppercase tracking-widest leading-relaxed px-6 mb-8">
-                    We'll be in touch with early access details. Watch your inbox.
+                    You're on the Fundoria early access list. Connect your wallet, build reputation, and prepare for the first trader intelligence release.
                   </p>
                   <button
                     onClick={onClose}
@@ -120,11 +120,11 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                       <div className="flex-1 h-px bg-protocol-border ml-2" />
                     </div>
                     <h2 id="modal-title" className="font-display text-[clamp(36px,6vw,54px)] uppercase leading-[0.9] tracking-tight mb-4 text-protocol-text">
-                      Join the <br />
-                      <span className="text-blue">Fundoria</span> Whitelist.
+                      Get Your <br />
+                      <span className="text-blue">Trader Passport</span> Early.
                     </h2>
                     <p className="text-protocol-text-dim text-[13px] leading-relaxed font-sans font-medium">
-                      Members receive priority onboarding, early governance visibility, and standing invitations to contributor sessions.
+                      Members receive priority access to the Score Engine, early Leaderboard placement, and first-look capital matching.
                     </p>
                   </div>
 
@@ -132,7 +132,7 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                   <div className="p-4 bg-protocol-accent-bg border border-protocol-border/50 mb-7 flex gap-3">
                     <Shield className="w-4 h-4 text-blue/40 shrink-0 mt-0.5" />
                     <p className="text-[10px] text-protocol-text-dim/60 leading-relaxed font-mono">
-                      Registration is free and does not constitute a purchase, allocation, or commitment of any kind. Architectural preview — real onboarding is enforced via the HyperEVM client.
+                      Registration is free. Fundoria is a read-only intelligence layer — no deposits, no custody, no token sale. Connect your Hyperliquid wallet when the Score Engine goes live.
                     </p>
                   </div>
 
@@ -191,7 +191,7 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                         </>
                       ) : (
                         <>
-                          <span className="relative">fnd::whitelist.register</span>
+                          <span className="relative">fundoria::passport.register</span>
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative" />
                         </>
                       )}

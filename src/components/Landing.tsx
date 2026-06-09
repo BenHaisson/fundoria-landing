@@ -1,52 +1,49 @@
-import React, { useState } from 'react';
-import Navbar from './Navbar.tsx';
-import Hero from './Hero.tsx';
-import ProtocolLogic from './ProtocolLogic.tsx';
-import Vision from './Vision.tsx';
-import Architecture from './Architecture.tsx';
-import RiskControls from './RiskControls.tsx';
-import TokenEconomics from './TokenEconomics.tsx';
-import Participation from './Participation.tsx';
-import Partnerships from './Partnerships.tsx';
-import Roadmap from './Roadmap.tsx';
-import FAQ from './FAQ.tsx';
-import Footer from './Footer.tsx';
-import WhitelistModal from './WhitelistModal.tsx';
-import FloatingCTA from './FloatingCTA.tsx';
-import { motion } from 'motion/react';
-import { ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import Navbar from './Navbar';
+import Hero from './Hero';
+import Problem from './Problem';
+import Solution from './Solution';
+import ProductStack from './ProductStack';
+import TraderPassportSection from './TraderPassportSection';
+import DailyUseLoop from './DailyUseLoop';
+import Leaderboards from './Leaderboards';
+import CapitalProviderDashboard from './CapitalProviderDashboard';
+import BusinessModel from './BusinessModel';
+import ArchitectureV2 from './ArchitectureV2';
+import Roadmap from './Roadmap';
+import FAQ from './FAQ';
+import Footer from './Footer';
+import WhitelistModal from './WhitelistModal';
+import FloatingCTA from './FloatingCTA';
 
-interface LandingProps {
-  onShowWhitepaper: () => void;
-}
-
-export default function Landing({ onShowWhitepaper }: LandingProps) {
+export default function Landing() {
   const [isWhitelistOpen, setIsWhitelistOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-protocol-bg text-protocol-text transition-colors duration-300">
+    <div className="relative min-h-screen overflow-x-hidden bg-protocol-bg text-protocol-text">
       {/* Background Orbs */}
-      <div className="fixed top-[-5%] sm:top-[-10%] right-[-10%] w-[80vw] sm:w-[50vw] h-[80vw] sm:h-[50vw] bg-blue/[0.12] blur-[80px] sm:blur-[140px] rounded-full pointer-events-none z-0" />
-      <div className="fixed bottom-[-5%] sm:bottom-[-10%] left-[-10%] w-[70vw] sm:w-[40vw] h-[70vw] sm:h-[40vw] bg-green/[0.08] blur-[80px] sm:blur-[140px] rounded-full pointer-events-none z-0" />
+      <div className="fixed top-[-5%] sm:top-[-10%] right-[-10%] w-[80vw] sm:w-[50vw] h-[80vw] sm:h-[50vw] bg-blue/[0.10] blur-[80px] sm:blur-[140px] rounded-full pointer-events-none z-0" />
+      <div className="fixed bottom-[-5%] sm:bottom-[-10%] left-[-10%] w-[70vw] sm:w-[40vw] h-[70vw] sm:h-[40vw] bg-green/[0.06] blur-[80px] sm:blur-[140px] rounded-full pointer-events-none z-0" />
 
-      <Navbar onShowWhitepaper={onShowWhitepaper} onOpenWhitelist={() => setIsWhitelistOpen(true)} />
-
+      <Navbar onOpenWhitelist={() => setIsWhitelistOpen(true)} />
       <FloatingCTA onOpenWhitelist={() => setIsWhitelistOpen(true)} />
-      
+
       <main className="relative z-10">
-        <Hero onShowWhitepaper={onShowWhitepaper} onOpenWhitelist={() => setIsWhitelistOpen(true)} />
-        <ProtocolLogic />
-        <Vision onOpenWhitelist={() => setIsWhitelistOpen(true)} />
-        <Architecture />
-        <RiskControls />
-        <TokenEconomics />
-        <Participation onOpenWhitelist={() => setIsWhitelistOpen(true)} />
-        <Partnerships />
+        <Hero onOpenWhitelist={() => setIsWhitelistOpen(true)} />
+        <Problem />
+        <Solution />
+        <ProductStack />
+        <TraderPassportSection />
+        <DailyUseLoop />
+        <Leaderboards />
+        <CapitalProviderDashboard />
+        <BusinessModel />
+        <ArchitectureV2 />
         <Roadmap />
         <FAQ />
       </main>
 
-      <Footer onShowWhitepaper={onShowWhitepaper} onOpenWhitelist={() => setIsWhitelistOpen(true)} />
+      <Footer onOpenWhitelist={() => setIsWhitelistOpen(true)} />
 
       <WhitelistModal isOpen={isWhitelistOpen} onClose={() => setIsWhitelistOpen(false)} />
     </div>

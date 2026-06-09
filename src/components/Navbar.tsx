@@ -2,32 +2,27 @@ import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Logo from './Logo';
-import ThemeToggle from './ThemeToggle';
 
 interface NavbarProps {
-  onShowWhitepaper?: () => void;
   onOpenWhitelist?: () => void;
 }
 
-const navLinks = ['Vision', 'Protocol', 'Rewards', 'Token', 'FAQ'];
+const navLinks = ['Vision', 'Product', 'Intelligence', 'Capital Access', 'Roadmap', 'FAQ'];
 
-export default function Navbar({ onShowWhitepaper, onOpenWhitelist }: NavbarProps) {
+function toAnchor(item: string) {
+  return item.toLowerCase().replace(/\s+/g, '-');
+}
+
+export default function Navbar({ onOpenWhitelist }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
-  const handleShowWhitepaper = () => {
-    if (onShowWhitepaper) onShowWhitepaper();
-    setMobileMenuOpen(false);
-  };
-
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
-      // Active section detection
-      const sections = navLinks.map((l) => l.toLowerCase());
-      for (const id of [...sections].reverse()) {
+      const sectionIds = navLinks.map(toAnchor);
+      for (const id of [...sectionIds].reverse()) {
         const el = document.getElementById(id);
         if (el && window.scrollY >= el.offsetTop - 120) {
           setActiveSection(id);
@@ -35,7 +30,6 @@ export default function Navbar({ onShowWhitepaper, onOpenWhitelist }: NavbarProp
         }
       }
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -51,11 +45,12 @@ export default function Navbar({ onShowWhitepaper, onOpenWhitelist }: NavbarProp
         {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-9">
           {navLinks.map((item) => {
-            const isActive = activeSection === item.toLowerCase();
+            const anchor = toAnchor(item);
+            const isActive = activeSection === anchor;
             return (
               <li key={item}>
                 <a
-                  href={`#${item.toLowerCase()}`}
+                  href={`#${anchor}`}
                   className={`font-mono text-[10px] uppercase tracking-[0.2em] transition-colors relative group ${isActive ? 'text-protocol-text' : 'text-protocol-text-dim hover:text-protocol-text'}`}
                 >
                   {item}
@@ -64,26 +59,16 @@ export default function Navbar({ onShowWhitepaper, onOpenWhitelist }: NavbarProp
               </li>
             );
           })}
-          <li>
-            <button
-              onClick={handleShowWhitepaper}
-              className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue hover:text-protocol-text transition-colors relative group"
-            >
-              Whitepaper
-              <span className="absolute left-0 -bottom-1 w-0 h-px bg-blue transition-all duration-300 group-hover:w-full" />
-            </button>
-          </li>
         </ul>
 
         {/* Right actions */}
         <div className="flex items-center gap-4">
-          <ThemeToggle />
           <button
             onClick={onOpenWhitelist}
-            className="hidden sm:flex group items-center gap-2 bg-blue hover:bg-green text-black font-mono text-[10px] font-bold uppercase tracking-[0.2em] px-5 py-2.5 transition-all duration-300 active:scale-95 shadow-[0_4px_16px_rgba(59,130,246,0.25)] hover:shadow-[0_4px_24px_rgba(16,185,129,0.35)] overflow-hidden relative"
+            className="hidden sm:flex group items-center gap-2 bg-blue hover:bg-green text-black font-mono text-[10px] font-bold uppercase tracking-[0.2em] px-5 py-2.5 transition-all duration-300 active:scale-95 shadow-[0_4px_16px_rgba(47,128,237,0.25)] hover:shadow-[0_4px_24px_rgba(0,200,150,0.35)] overflow-hidden relative"
           >
             <div className="absolute inset-0 bg-white/15 -translate-x-full group-hover:translate-x-full transition-transform duration-500 pointer-events-none" />
-            <span className="relative">Whitelist</span>
+            <span className="relative">Join Early Access</span>
             <div className="w-1.5 h-1.5 bg-black/40 rounded-full relative" />
           </button>
 
@@ -119,31 +104,21 @@ export default function Navbar({ onShowWhitepaper, onOpenWhitelist }: NavbarProp
           >
             <div className="px-6 pt-6 pb-8">
               <ul className="flex flex-col gap-1 mb-8">
-                {[...navLinks, 'Whitepaper'].map((item, i) => (
+                {navLinks.map((item, i) => (
                   <motion.li
                     key={item}
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05, duration: 0.3 }}
                   >
-                    {item === 'Whitepaper' ? (
-                      <button
-                        onClick={handleShowWhitepaper}
-                        className="w-full text-left py-3 font-mono text-xs uppercase tracking-[0.3em] text-blue hover:text-protocol-text transition-colors border-b border-protocol-border/30 flex items-center justify-between group"
-                      >
-                        {item}
-                        <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                      </button>
-                    ) : (
-                      <a
-                        href={`#${item.toLowerCase()}`}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="py-3 font-mono text-xs uppercase tracking-[0.3em] text-protocol-text-dim hover:text-blue transition-colors border-b border-protocol-border/30 flex items-center justify-between group"
-                      >
-                        {item}
-                        <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                      </a>
-                    )}
+                    <a
+                      href={`#${toAnchor(item)}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="py-3 font-mono text-xs uppercase tracking-[0.3em] text-protocol-text-dim hover:text-blue transition-colors border-b border-protocol-border/30 flex items-center justify-between group"
+                    >
+                      {item}
+                      <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    </a>
                   </motion.li>
                 ))}
               </ul>
@@ -153,9 +128,9 @@ export default function Navbar({ onShowWhitepaper, onOpenWhitelist }: NavbarProp
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
                 onClick={() => { onOpenWhitelist?.(); setMobileMenuOpen(false); }}
-                className="w-full bg-blue text-black font-mono text-[11px] font-bold uppercase tracking-[0.3em] py-4 flex items-center justify-center gap-3 shadow-[0_4px_24px_rgba(59,130,246,0.3)]"
+                className="w-full bg-blue text-black font-mono text-[11px] font-bold uppercase tracking-[0.3em] py-4 flex items-center justify-center gap-3 shadow-[0_4px_24px_rgba(47,128,237,0.3)]"
               >
-                Apply for Whitelist
+                Join Early Access
                 <ArrowRight className="w-4 h-4" />
               </motion.button>
             </div>
@@ -168,13 +143,12 @@ export default function Navbar({ onShowWhitepaper, onOpenWhitelist }: NavbarProp
         <div className="flex gap-6 md:gap-12 whitespace-nowrap animate-ticker-pausable">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-6 md:gap-12">
-              <TickerItem text="PROTOCOL STATUS: PRE-LAUNCH" dotColor="text-blue" />
-              <TickerItem text="PHASE 1: CORE INFRASTRUCTURE" dotColor="text-blue" isHex />
-              <TickerItem text="IDENTITY LAYER: COMPLETE" dotColor="text-blue" isHex />
-              <TickerItem text="SMART CONTRACTS: IN AUDIT" dotColor="text-blue" isHex />
-              <TickerItem text="TRADER EVALUATION: IN DEV" dotColor="text-blue" isHex />
-              <TickerItem text="HYPERLIQUID NATIVE: ✓" dotColor="text-green" />
-              <TickerItem text="NON-CUSTODIAL: ✓" dotColor="text-green" />
+              <TickerItem text="FUNDORIA SCORE ENGINE: ONLINE" dotColor="text-blue" />
+              <TickerItem text="TRADER PASSPORT: ACTIVE" dotColor="text-green" />
+              <TickerItem text="DAILY UTILITY: TRADE → INDEX → SCORE → RANK → CAPITAL" dotColor="text-blue" isHex />
+              <TickerItem text="CAPITAL ELIGIBILITY: VERIFIED ON-CHAIN" dotColor="text-blue" isHex />
+              <TickerItem text="READ-ONLY FIRST: NO DEPOSITS NEEDED" dotColor="text-green" />
+              <TickerItem text="TOURNAMENT SEASON 1: COMING SOON" dotColor="text-blue" isHex />
             </div>
           ))}
         </div>

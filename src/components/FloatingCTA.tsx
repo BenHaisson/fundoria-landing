@@ -67,7 +67,7 @@ export default function FloatingCTA({ onOpenWhitelist }: FloatingCTAProps) {
               <span className="relative block w-2 h-2 rounded-full bg-black/40" />
             </span>
 
-            Whitelist Now
+            Join Early Access
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </motion.div>

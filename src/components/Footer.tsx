@@ -4,11 +4,10 @@ import { ArrowRight, ExternalLink, ChevronUp, Twitter, MessageCircle, Send } fro
 import Logo from './Logo';
 
 interface FooterProps {
-  onShowWhitepaper?: () => void;
   onOpenWhitelist?: () => void;
 }
 
-export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProps) {
+export default function Footer({ onOpenWhitelist }: FooterProps) {
   const [showTop, setShowTop] = useState(false);
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 600);
@@ -41,7 +40,7 @@ export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProp
             className="font-mono text-[10px] uppercase tracking-[0.4em] text-green mb-5 flex items-center justify-center gap-2"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-            Whitelist Open
+            Early Access Open
           </motion.div>
 
           <motion.h2
@@ -51,9 +50,9 @@ export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProp
             transition={{ delay: 0.05 }}
             className="font-display text-[clamp(36px,9vw,110px)] uppercase leading-[0.9] mb-6 tracking-tight text-protocol-text"
           >
-            Ready to Trade <br />
-            <span className="bg-linear-to-r from-green via-cyan to-blue bg-clip-text text-transparent">
-              on the Protocol.
+            Build Your Trading <br />
+            <span className="bg-linear-to-r from-green to-blue bg-clip-text text-transparent">
+              Reputation Before Capital Finds You.
             </span>
           </motion.h2>
 
@@ -64,7 +63,7 @@ export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProp
             transition={{ delay: 0.1 }}
             className="text-protocol-text-dim text-[16px] mb-14 italic"
           >
-            Position your skill as infrastructure on HyperEVM.
+            Your trading history is already data. Make it yours.
           </motion.p>
 
           <motion.div
@@ -76,20 +75,13 @@ export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProp
           >
             <button
               onClick={onOpenWhitelist}
-              className="group relative w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 bg-green text-black font-mono text-[11px] font-black uppercase tracking-widest overflow-hidden transition-all shadow-[0_0_40px_rgba(16,185,129,0.25)] hover:shadow-[0_0_60px_rgba(16,185,129,0.45)]"
+              className="group relative w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 bg-blue hover:bg-green text-black font-mono text-[11px] font-black uppercase tracking-widest overflow-hidden transition-all shadow-[0_0_40px_rgba(47,128,237,0.25)] hover:shadow-[0_0_60px_rgba(0,200,150,0.45)]"
             >
               <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
               <span className="relative flex items-center justify-center gap-3">
-                Apply for Whitelist
+                Join Early Access
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
-            </button>
-            <button
-              onClick={onShowWhitepaper}
-              className="group w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 border border-protocol-border hover:border-protocol-text/40 text-protocol-text-dim hover:text-protocol-text font-mono text-[11px] font-black uppercase tracking-widest transition-all relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-protocol-accent-bg translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <span className="relative">Read the White Paper</span>
             </button>
           </motion.div>
         </div>
@@ -130,12 +122,9 @@ export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProp
           </div>
 
           <nav className="flex flex-wrap gap-8">
-            <button
-              onClick={onShowWhitepaper}
-              className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-[0.2em] hover:text-protocol-text transition-colors"
-            >
-              Whitepaper
-            </button>
+            <a href="#vision" className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-[0.2em] hover:text-protocol-text transition-colors">Vision</a>
+            <a href="#product" className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-[0.2em] hover:text-protocol-text transition-colors">Product</a>
+            <a href="#faq" className="font-mono text-[9px] text-protocol-text-dim uppercase tracking-[0.2em] hover:text-protocol-text transition-colors">FAQ</a>
             <a
               href="https://hyperliquid.xyz"
               target="_blank"
@@ -144,22 +133,16 @@ export default function Footer({ onShowWhitepaper, onOpenWhitelist }: FooterProp
             >
               Hyperliquid <ExternalLink className="w-2.5 h-2.5" />
             </a>
-            <span className="font-mono text-[9px] text-protocol-text-dim/30 uppercase tracking-[0.2em] cursor-not-allowed">
-              Risk Framework [Soon]
-            </span>
-            <span className="font-mono text-[9px] text-protocol-text-dim/30 uppercase tracking-[0.2em] cursor-not-allowed">
-              Status [v0.1]
-            </span>
           </nav>
         </div>
 
         <div className="border-t border-protocol-border/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <p className="text-[9px] font-mono text-protocol-text-dim/35 leading-relaxed uppercase tracking-tighter max-w-md">
-              <span className="text-blue/50 font-bold">[ DISCLOSURE ]</span> · $FND is an access and coordination token. Not an investment, security, or profit-sharing instrument. Users are responsible for local regulatory compliance.
+              <span className="text-blue/50 font-bold">[ DISCLOSURE ]</span> · Fundoria is a read-only intelligence layer. No custody. No deposits. No token sale. Capital matching is algorithmic and non-discretionary.
             </p>
             <div className="font-mono text-[9px] text-protocol-text-dim/25 uppercase tracking-widest whitespace-nowrap">
-              © 2026 Fundoria · HyperEVM
+              © 2026 Fundoria · Hyperliquid Native
             </div>
           </div>
         </div>
