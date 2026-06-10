@@ -36,14 +36,14 @@ export default function Footer({ onOpenWhitelist }: FooterProps) {
           </motion.div>
 
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="font-display text-[clamp(36px,9vw,110px)] uppercase leading-[0.9] mb-6 tracking-tight text-protocol-text">
-            Build Your Trading <br />
+            Your Wallet Is<br />
             <span className="bg-linear-to-r from-green to-blue bg-clip-text text-transparent">
-              Reputation Before Capital Finds You.
+              Your Trading Resume.
             </span>
           </motion.h2>
 
-          <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-protocol-text-dim text-[16px] mb-14 italic">
-            Your trading history is already data. Make it yours.
+          <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-protocol-text-dim text-[16px] mb-14 max-w-xl mx-auto">
+            Join Fundoria early and start building the reputation layer that future capital markets can trust.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-5 px-4 sm:px-0">
@@ -52,6 +52,16 @@ export default function Footer({ onOpenWhitelist }: FooterProps) {
               className="group relative w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 bg-blue hover:bg-green text-black font-mono text-[11px] font-black uppercase tracking-widest overflow-hidden transition-all shadow-[0_0_40px_rgba(47,128,237,0.25)] hover:shadow-[0_0_60px_rgba(0,200,150,0.45)]"
             >
               <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
+              <span className="relative flex items-center justify-center gap-3">
+                Create Your Passport
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </button>
+            <button
+              onClick={onOpenWhitelist}
+              className="group relative w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 border border-protocol-border hover:border-blue/50 text-protocol-text-dim hover:text-protocol-text font-mono text-[11px] font-black uppercase tracking-widest overflow-hidden transition-all"
+            >
+              <div className="absolute inset-0 bg-blue/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
               <span className="relative flex items-center justify-center gap-3">
                 Join Early Access
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
