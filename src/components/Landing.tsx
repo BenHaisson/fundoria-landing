@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Navbar from './Navbar';
+import Navbar, { StatusTicker } from './Navbar';
 import Hero from './Hero';
 import Problem from './Problem';
 import Solution from './Solution';
@@ -29,6 +29,7 @@ export default function Landing() {
       <div className="fixed bottom-[-5%] left-[-10%] w-[40vw] h-[40vw] bg-green/[0.05] blur-[140px] rounded-full pointer-events-none z-0" />
 
       <Navbar onOpenWhitelist={openWhitelist} />
+      <StatusTicker />
       <FloatingCTA onOpenWhitelist={openWhitelist} />
 
       <main className="relative z-10">

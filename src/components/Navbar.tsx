@@ -130,31 +130,58 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
         )}
       </AnimatePresence>
 
-      {/* Ticker */}
-      <div className="ticker-glass absolute top-[72px] left-0 w-full h-[30px] overflow-hidden flex items-center">
-        <div className="flex gap-6 md:gap-12 whitespace-nowrap animate-ticker-pausable">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex gap-6 md:gap-12">
-              <TickerItem text="TRADER REPUTATION NETWORK: EARLY ACCESS" dotColor="text-blue" />
-              <TickerItem text="BUILD YOUR REPUTATION BEFORE CAPITAL FINDS YOU" dotColor="text-green" />
-              <TickerItem text="YOUR WALLET IS YOUR TRADING RESUME" dotColor="text-blue" isHex />
-              <TickerItem text="TRADER PASSPORT: CREATE YOURS EARLY" dotColor="text-green" />
-              <TickerItem text="FUNDORIA SCORE: 0–1000 REPUTATION SIGNAL" dotColor="text-blue" isHex />
-              <TickerItem text="CAPITAL WATCHLISTS: FUTURE ALLOCATOR LAYER" dotColor="text-green" />
-              <TickerItem text="FUNDORIA VAULTS: FUTURE ELIGIBILITY LAYER" dotColor="text-blue" isHex />
-              <TickerItem text="HYPERLIQUID-NATIVE TRADER NETWORK" dotColor="text-green" />
-            </div>
-          ))}
-        </div>
-      </div>
     </nav>
   );
 }
 
-function TickerItem({ text, dotColor, isHex }: { text: string; dotColor: string; isHex?: boolean }) {
+// ─── Standalone fixed ticker — sits OUTSIDE the nav stacking context ────────
+// so backdrop-filter blurs actual page content, not the nav itself.
+
+type Status = 'live' | 'done' | 'build' | 'coming' | 'mkt' | 'future';
+
+const items: { status: Status; tag: string; text: string }[] = [
+  { status: 'live',   tag: 'ALPHA',        text: 'LANDING PAGE V3: LIVE' },
+  { status: 'done',   tag: 'DONE',         text: 'TRADER REPUTATION NETWORK POSITIONING' },
+  { status: 'done',   tag: 'DONE',         text: 'TRADER PASSPORT CONCEPT' },
+  { status: 'done',   tag: 'DONE',         text: 'FUNDORIA SCORE FRAMEWORK' },
+  { status: 'build',  tag: 'IN BUILD',     text: 'EARLY ACCESS WAITLIST' },
+  { status: 'build',  tag: 'IN BUILD',     text: 'CAPITAL PROVIDER WATCHLIST DESIGN' },
+  { status: 'coming', tag: 'COMING SOON',  text: 'HYPERLIQUID WALLET INDEXING MVP' },
+  { status: 'coming', tag: 'COMING SOON',  text: 'PUBLIC TRADER PROFILES' },
+  { status: 'coming', tag: 'COMING SOON',  text: 'LEADERBOARDS & BADGES' },
+  { status: 'coming', tag: 'COMING SOON',  text: 'AI TRADING JOURNAL' },
+  { status: 'mkt',    tag: 'MARKETING',    text: 'SOCIAL LAUNCH PREPARATION' },
+  { status: 'mkt',    tag: 'COMMUNITY',    text: 'EARLY TRADER SIGNUPS OPEN' },
+  { status: 'mkt',    tag: 'COMMUNITY',    text: 'CAPITAL PROVIDER WAITLIST OPEN' },
+  { status: 'future', tag: 'FUTURE',       text: 'FUNDORIA VAULTS: ELIGIBILITY-BASED LAYER' },
+  { status: 'future', tag: 'FUTURE',       text: 'ALLOCATOR DASHBOARD' },
+  { status: 'future', tag: 'FUTURE',       text: 'MANDATE-BASED CAPITAL WORKFLOWS' },
+  { status: 'future', tag: 'FUTURE',       text: 'PROTOCOL FEE MODEL' },
+];
+
+const dotClass: Record<Status, string> = {
+  live:   's-live',
+  done:   's-done',
+  build:  's-build',
+  coming: 's-coming',
+  mkt:    's-mkt',
+  future: 's-future',
+};
+
+export function StatusTicker() {
   return (
-    <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8AACCC] flex items-center gap-2.5">
-      <span className={dotColor}>{isHex ? '⬡' : '●'}</span> {text}
+    <div className="ticker-bar" aria-hidden="true">
+      <div className="ticker-track animate-ticker-pausable">
+        {[...items, ...items].map((item, i) => (
+          <span key={i} className="ticker-item">
+            <span className={`ticker-dot ${dotClass[item.status]}`}
+              style={{ boxShadow: `0 0 6px currentColor` }}
+            />
+            <span className={`ticker-status`}>[{item.tag}]</span>
+            <span>{item.text}</span>
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

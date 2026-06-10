@@ -82,21 +82,101 @@
 }
 
 .site-header-glass {
-  background: rgba(2, 5, 12, 0.82);
-  backdrop-filter: blur(45px);
-  -webkit-backdrop-filter: blur(45px);
-  border-bottom: 1px solid rgba(14, 26, 46, 0.85);
+  background: rgba(2, 5, 12, 0.90);
+  backdrop-filter: blur(45px) saturate(140%);
+  -webkit-backdrop-filter: blur(45px) saturate(140%);
+  border-bottom: 1px solid rgba(220, 232, 255, 0.22);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  z-index: 1002;
+}
+
+/* Old alias kept for mobile menu drawer */
+.ticker-glass {
+  background: rgba(2, 5, 12, 0.90);
+  backdrop-filter: blur(45px) saturate(140%);
+  -webkit-backdrop-filter: blur(45px) saturate(140%);
+}
+
+.ticker-bar {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  height: 34px;
+  isolation: isolate;
+  overflow: hidden;
+  background: rgba(2, 5, 12, 0.94);
+  backdrop-filter: blur(45px) saturate(140%);
+  -webkit-backdrop-filter: blur(45px) saturate(140%);
+  border-top: 1px solid rgba(220, 232, 255, 0.10);
+  border-bottom: 1px solid rgba(220, 232, 255, 0.14);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
   z-index: 1001;
 }
 
-.ticker-glass {
-  background: rgba(2, 5, 12, 0.78);
-  backdrop-filter: blur(45px);
-  -webkit-backdrop-filter: blur(45px);
-  border-top: 1px solid rgba(14, 26, 46, 0.65);
-  border-bottom: 1px solid rgba(14, 26, 46, 0.85);
-  z-index: 1000;
+.ticker-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 5, 12, 0.98) 0%,
+    rgba(2, 5, 12, 0.92) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
 }
+
+.ticker-track {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: max-content;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-right: 40px;
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #DCE8FF;
+}
+
+@media (max-width: 768px) {
+  .ticker-item {
+    font-size: 8px;
+    margin-right: 28px;
+  }
+}
+
+.ticker-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ticker-status {
+  opacity: 0.6;
+  color: #8AACCC;
+}
+
+/* Status colors */
+.s-done    { color: #00C896; }
+.s-live    { color: #2F80ED; }
+.s-build   { color: #F5A524; }
+.s-coming  { color: #38BDF8; }
+.s-mkt     { color: #A78BFA; }
+.s-future  { color: #4A6484; }
 
 @keyframes ticker {
   from { transform: translateX(0); }
