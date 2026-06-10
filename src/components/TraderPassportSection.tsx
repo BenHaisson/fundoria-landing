@@ -177,7 +177,7 @@ function PassportCard() {
 
 export default function TraderPassportSection() {
   return (
-    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6 overflow-hidden">
+    <section id="passport" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           {/* Left — Text */}
