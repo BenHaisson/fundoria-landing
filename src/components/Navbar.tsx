@@ -7,11 +7,15 @@ interface NavbarProps {
   onOpenWhitelist?: () => void;
 }
 
-const navLinks = ['Vision', 'Product', 'Social', 'Capital Access', 'Roadmap', 'FAQ'];
-
-function toAnchor(item: string) {
-  return item.toLowerCase().replace(/\s+/g, '-');
-}
+const navLinks = [
+  { label: 'Why', anchor: 'vision' },
+  { label: 'Passport', anchor: 'passport' },
+  { label: 'Score', anchor: 'score' },
+  { label: 'Network', anchor: 'social' },
+  { label: 'Capital', anchor: 'capital-access' },
+  { label: 'Roadmap', anchor: 'roadmap' },
+  { label: 'FAQ', anchor: 'faq' },
+];
 
 export default function Navbar({ onOpenWhitelist }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
@@ -21,11 +25,10 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      const sectionIds = navLinks.map(toAnchor);
-      for (const id of [...sectionIds].reverse()) {
-        const el = document.getElementById(id);
+      for (const { anchor } of [...navLinks].reverse()) {
+        const el = document.getElementById(anchor);
         if (el && window.scrollY >= el.offsetTop - 120) {
-          setActiveSection(id);
+          setActiveSection(anchor);
           break;
         }
       }
@@ -42,16 +45,15 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
         </a>
 
         <ul className="hidden md:flex items-center gap-9">
-          {navLinks.map((item) => {
-            const anchor = toAnchor(item);
+          {navLinks.map(({ label, anchor }) => {
             const isActive = activeSection === anchor;
             return (
-              <li key={item}>
+              <li key={anchor}>
                 <a
                   href={`#${anchor}`}
-                  className={`font-mono text-[10px] uppercase tracking-[0.2em] transition-colors relative group ${isActive ? 'text-protocol-text' : 'text-protocol-text-dim hover:text-protocol-text'}`}
+                  className={`font-mono text-[10px] uppercase tracking-[0.2em] transition-colors relative group ${isActive ? 'text-protocol-text' : 'text-[#8AACCC] hover:text-protocol-text'}`}
                 >
-                  {item}
+                  {label}
                   <span className={`absolute left-0 -bottom-1 h-px bg-blue transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 </a>
               </li>
@@ -100,14 +102,14 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
           >
             <div className="px-6 pt-6 pb-8">
               <ul className="flex flex-col gap-1 mb-8">
-                {navLinks.map((item, i) => (
-                  <motion.li key={item} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
+                {navLinks.map(({ label, anchor }, i) => (
+                  <motion.li key={anchor} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
                     <a
-                      href={`#${toAnchor(item)}`}
+                      href={`#${anchor}`}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="py-3 font-mono text-xs uppercase tracking-[0.3em] text-protocol-text-dim hover:text-blue transition-colors border-b border-protocol-border/30 flex items-center justify-between group"
+                      className="py-3 font-mono text-xs uppercase tracking-[0.3em] text-[#8AACCC] hover:text-blue transition-colors border-b border-protocol-border/30 flex items-center justify-between group"
                     >
-                      {item}
+                      {label}
                       <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                     </a>
                   </motion.li>
@@ -133,12 +135,14 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
         <div className="flex gap-6 md:gap-12 whitespace-nowrap animate-ticker-pausable">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-6 md:gap-12">
-              <TickerItem text="TRADER REPUTATION NETWORK: LIVE" dotColor="text-blue" />
-              <TickerItem text="YOUR WALLET IS YOUR TRADING RESUME" dotColor="text-green" />
-              <TickerItem text="REPUTATION → VISIBILITY → CAPITAL → BETTER TRADERS" dotColor="text-blue" isHex />
-              <TickerItem text="BUILD REPUTATION BEFORE CAPITAL FINDS YOU" dotColor="text-green" />
+              <TickerItem text="TRADER REPUTATION NETWORK: EARLY ACCESS" dotColor="text-blue" />
+              <TickerItem text="BUILD YOUR REPUTATION BEFORE CAPITAL FINDS YOU" dotColor="text-green" />
+              <TickerItem text="YOUR WALLET IS YOUR TRADING RESUME" dotColor="text-blue" isHex />
+              <TickerItem text="TRADER PASSPORT: CREATE YOURS EARLY" dotColor="text-green" />
               <TickerItem text="FUNDORIA SCORE: 0–1000 REPUTATION SIGNAL" dotColor="text-blue" isHex />
-              <TickerItem text="TRADER PASSPORT: CREATE YOURS EARLY" dotColor="text-green" isHex />
+              <TickerItem text="CAPITAL WATCHLISTS: FUTURE ALLOCATOR LAYER" dotColor="text-green" />
+              <TickerItem text="FUNDORIA VAULTS: FUTURE ELIGIBILITY LAYER" dotColor="text-blue" isHex />
+              <TickerItem text="HYPERLIQUID-NATIVE TRADER NETWORK" dotColor="text-green" />
             </div>
           ))}
         </div>
