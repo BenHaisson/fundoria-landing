@@ -7,7 +7,7 @@ interface NavbarProps {
   onOpenWhitelist?: () => void;
 }
 
-const navLinks = ['Vision', 'Product', 'Intelligence', 'Capital Access', 'Roadmap', 'FAQ'];
+const navLinks = ['Vision', 'Product', 'Social', 'Capital Access', 'Roadmap', 'FAQ'];
 
 function toAnchor(item: string) {
   return item.toLowerCase().replace(/\s+/g, '-');
@@ -133,12 +133,12 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
         <div className="flex gap-6 md:gap-12 whitespace-nowrap animate-ticker-pausable">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-6 md:gap-12">
-              <TickerItem text="FUNDORIA SCORE ENGINE: ONLINE" dotColor="text-blue" />
-              <TickerItem text="TRADER PASSPORT: ACTIVE" dotColor="text-green" />
-              <TickerItem text="DAILY LOOP: TRADE → INDEX → SCORE → RANK → CAPITAL" dotColor="text-blue" isHex />
-              <TickerItem text="READ-ONLY FIRST: NO DEPOSITS NEEDED" dotColor="text-green" />
-              <TickerItem text="CAPITAL ELIGIBILITY: VERIFIED ON-CHAIN" dotColor="text-blue" isHex />
-              <TickerItem text="TOURNAMENT SEASON 1: COMING SOON" dotColor="text-blue" isHex />
+              <TickerItem text="TRADER REPUTATION NETWORK: LIVE" dotColor="text-blue" />
+              <TickerItem text="YOUR WALLET IS YOUR TRADING RESUME" dotColor="text-green" />
+              <TickerItem text="REPUTATION → VISIBILITY → CAPITAL → BETTER TRADERS" dotColor="text-blue" isHex />
+              <TickerItem text="BUILD REPUTATION BEFORE CAPITAL FINDS YOU" dotColor="text-green" />
+              <TickerItem text="FUNDORIA SCORE: 0–1000 REPUTATION SIGNAL" dotColor="text-blue" isHex />
+              <TickerItem text="TRADER PASSPORT: CREATE YOURS EARLY" dotColor="text-green" isHex />
             </div>
           ))}
         </div>

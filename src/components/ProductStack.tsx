@@ -70,15 +70,15 @@ export default function ProductStack() {
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center justify-center gap-2">
             <span className="w-4 h-px bg-blue/40" />
-            The Protocol Stack
+            The Fundoria Network
             <span className="w-4 h-px bg-blue/40" />
           </div>
           <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
             Six Layers.<br />
-            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">One Unified System.</span>
+            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">One Reputation Graph.</span>
           </h2>
           <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
-            From raw wallet data to verified capital access — every layer connects.
+            From wallet identity to social proof, capital discovery, and future vault eligibility.
           </p>
         </motion.div>
 

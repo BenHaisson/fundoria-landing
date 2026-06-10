@@ -5,35 +5,35 @@ import { ChevronDown, ArrowRight } from 'lucide-react';
 const faqs = [
   {
     q: 'What is Fundoria?',
-    a: "Fundoria is a Hyperliquid-native trader intelligence layer. It reads your on-chain wallet activity, structures it into a verified Trader Passport, and computes a Fundoria Score across five dimensions: Performance, Risk Control, Consistency, Discipline, and Survival. The result is a portable, tamper-proof record of your trading track record.",
+    a: "Fundoria is the Trader Reputation Network for Hyperliquid. It turns wallet activity into public Trader Passports, Fundoria Scores, social rankings, badges, AI trading reviews, and future capital eligibility. Traders build reputation. Capital providers discover verified talent.",
   },
   {
-    q: 'Does Fundoria custody funds?',
-    a: 'No. Fundoria is read-only in the MVP. There are no deposits, no wallet connections that grant trading permissions, and no custody of any kind. Your funds stay where they are — Fundoria only reads your on-chain history from Hyperliquid.',
-  },
-  {
-    q: 'Do I need to trade through Fundoria?',
-    a: 'No. You trade on Hyperliquid as you normally would. Fundoria indexes your public on-chain activity automatically. There is nothing to install, no routing to change, and no fees paid to Fundoria to be indexed.',
-  },
-  {
-    q: 'Why Hyperliquid?',
-    a: "Hyperliquid is the highest-performance on-chain perpetuals venue with fully public trade data. Every trade, liquidation, and position change is on-chain and auditable. This makes it the ideal foundation for a trust-minimized trader intelligence layer — there's nothing to self-report.",
+    q: 'What is a Trader Passport?',
+    a: 'A Trader Passport is your public trading identity on Fundoria. It includes your wallet address, Fundoria Score, risk grade, PnL curve, drawdown stats, consistency score, leverage behavior, badges, tournament history, ranking percentile, and capital eligibility status. It is shareable, verifiable, and built entirely from live Hyperliquid activity.',
   },
   {
     q: 'What is the Fundoria Score?',
-    a: 'The Fundoria Score is a composite 0–1000 score computed across five dimensions: Performance (raw returns), Risk Control (drawdown management), Consistency (return stability), Discipline (position sizing and leverage behavior), and Survival (account longevity under adverse conditions). It updates every 24 hours.',
+    a: 'The Fundoria Score is a composite 0–1000 reputation signal computed across 10 dimensions: Performance, Risk Control, Consistency, Drawdown Discipline, Position Sizing, Survival Rate, Activity Quality, Market Adaptability, Recovery Behavior, and Time-Based Reliability. Score grades: Elite (900–1000), Verified (800–899), Strong (700–799), Developing (600–699), High Variance (500–599), Unstable (below 500). The score is a reputation signal, not an investment recommendation.',
   },
   {
-    q: 'Is there an ICO or token sale?',
-    a: 'No. There is no ICO, no token sale, no presale, and no $FND token. Fundoria is a product-first protocol. Revenue comes from Pro subscriptions, tournament fees, capital provider platform fees, and the Builder API. There is no speculative token component.',
+    q: 'Does Fundoria custody funds?',
+    a: 'No. Fundoria is read-only in the MVP. There are no deposits, no wallet connections that grant trading permissions, and no custody of any kind. Your funds stay where they are — Fundoria only reads your public on-chain history from Hyperliquid.',
   },
   {
-    q: 'How do traders access capital?',
-    a: 'Capital access is a future, eligibility-based feature. Traders who meet Score thresholds, maintain verified Passports, and build consistent track records will be eligible for matching with capital providers through the Capital Access Layer. Eligibility is algorithmic — there is no discretionary gatekeeping. This feature is subject to legal, operational, and risk constraints.',
+    q: 'What social features does Fundoria have?',
+    a: 'Fundoria includes public Trader Profiles, Follow and Watchlist functionality, an achievement Badge system (Low Drawdown Trader, Consistency Streak, Tournament Finalist, Risk Controlled, and more), Social Share Cards for score updates and badge unlocks, public and private Leaderboards, Tournaments with risk-adjusted formats, reputation Streaks, and a live Trader Feed.',
   },
   {
     q: 'How do capital providers use Fundoria?',
-    a: 'Capital providers access the Allocator Dashboard to filter traders by Score, maximum drawdown, consistency, and time range. The dashboard surfaces verified traders who meet their criteria. Matching is algorithmic. Capital providers pay a platform fee for dashboard access and successful matches.',
+    a: 'Capital providers use the Allocator Dashboard to filter traders by Fundoria Score, maximum drawdown, consistency, leverage behavior, and time range. They build private watchlists, review tournament records, access AI-generated trader summaries, and manage a candidate pipeline for future capital allocation. This is a discovery and due-diligence tool, not a deployment platform.',
+  },
+  {
+    q: 'How do traders access capital?',
+    a: 'Capital access is a future, eligibility-based feature. Traders who meet Score thresholds, maintain verified Passports, and build consistent track records will enter eligibility tiers that make them visible to capital providers. This feature is subject to legal, operational, and risk constraints. There are no guaranteed returns, profit splits, or funded programs available today.',
+  },
+  {
+    q: 'Is there an ICO or token sale?',
+    a: 'No. There is no ICO, no token sale, no presale, and no $FND token. Fundoria is a product-first network. Revenue comes from Pro subscriptions, tournament fees, capital provider platform fees, and the Builder API. No speculative token component.',
   },
 ];
 

@@ -24,15 +24,15 @@ export default function DailyUseLoop() {
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center justify-center gap-2">
             <span className="w-4 h-px bg-blue/40" />
-            Daily Utility
+            The Reputation Loop
             <span className="w-4 h-px bg-blue/40" />
           </div>
           <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
-            Built to Be Open<br />
-            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Every Trading Day.</span>
+            Reputation Creates<br />
+            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Visibility. Visibility Attracts Capital.</span>
           </h2>
           <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
-            Fundoria turns your daily trading activity into a compounding reputation loop. Every trade improves your position.
+            Every trade feeds your Passport. Every score update builds your reputation. Every badge earns you visibility with capital providers.
           </p>
         </motion.div>
 

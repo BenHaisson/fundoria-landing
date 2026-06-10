@@ -3,15 +3,15 @@ import { ArrowRight } from 'lucide-react';
 
 const flow = [
   { label: 'Wallet', sub: 'Identity anchor' },
-  { label: 'History', sub: 'On-chain trades' },
-  { label: 'Score', sub: '5 dimensions' },
-  { label: 'Passport', sub: 'Verified identity' },
-  { label: 'Capital', sub: 'Eligibility layer' },
+  { label: 'Passport', sub: 'Public trader profile' },
+  { label: 'Score', sub: 'Risk-adjusted signal' },
+  { label: 'Social', sub: 'Rankings & badges' },
+  { label: 'Capital', sub: 'Future eligibility' },
 ];
 
 const stats = [
-  { value: '5', label: 'Score Dimensions' },
-  { value: '24h', label: 'Update Cycle' },
+  { value: '1000', label: 'Score Range' },
+  { value: '10', label: 'Score Dimensions' },
   { value: '$0', label: 'Min. Deposit' },
 ];
 
@@ -31,11 +31,14 @@ export default function Solution() {
               The Solution
             </div>
             <h2 className="font-display text-[clamp(34px,5vw,64px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-6">
-              Your Trading History.<br />
-              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Made Verifiable.</span>
+              A Social Reputation<br />
+              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Layer for Traders.</span>
             </h2>
-            <p className="text-protocol-text-dim text-[15px] leading-relaxed mb-8 max-w-lg">
-              Fundoria reads your Hyperliquid wallet history and structures it into a verified Trader Passport — a portable reputation that travels with you across platforms, capital providers, and tournaments.
+            <p className="text-protocol-text-dim text-[15px] leading-relaxed mb-4 max-w-lg">
+              Fundoria converts Hyperliquid wallet activity into public trader profiles, risk-adjusted scores, rankings, badges, AI reviews, and future capital-access workflows.
+            </p>
+            <p className="text-protocol-text font-mono text-[13px] italic mb-8 max-w-lg">
+              "Your wallet becomes your trading resume."
             </p>
 
             <div className="grid grid-cols-3 gap-px bg-protocol-border border border-protocol-border">
