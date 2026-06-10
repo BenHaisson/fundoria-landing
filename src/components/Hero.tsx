@@ -6,25 +6,24 @@ interface HeroProps {
   onOpenWhitelist?: () => void;
 }
 
-// No fake traction numbers — use positioning copy instead
 const stats = [
   { icon: <Activity className="w-3 h-3" />, label: 'Trader Identity', value: 'Wallet-Based', color: 'text-blue' },
-  { icon: <Database className="w-3 h-3" />, label: 'Hyperliquid Data', value: 'Live Index', color: 'text-green' },
-  { icon: <Shield className="w-3 h-3" />, label: 'Performance', value: 'Risk-Scored', color: 'text-blue' },
-  { icon: <Layers className="w-3 h-3" />, label: 'Status', value: 'Pre-Launch', color: 'text-green' },
+  { icon: <Database className="w-3 h-3" />, label: 'Performance', value: 'Risk-Scored', color: 'text-green' },
+  { icon: <Shield className="w-3 h-3" />, label: 'Trader Reputation', value: 'Social', color: 'text-blue' },
+  { icon: <Layers className="w-3 h-3" />, label: 'Capital Access', value: 'Future', color: 'text-green' },
 ];
 
 const terminalLines = [
-  { text: '[ FUNDORIA_INIT ]', color: 'text-blue', delay: 300 },
+  { text: '[ FUNDORIA_PASSPORT ]', color: 'text-blue', delay: 300 },
   { text: '', delay: 500 },
-  { text: 'source: Hyperliquid', color: 'text-protocol-text-dim', delay: 700 },
-  { text: 'mode: read-only intelligence', color: 'text-protocol-text-dim', delay: 900 },
-  { text: 'wallet: connected', color: 'text-green', delay: 1100 },
-  { text: 'risk_profile: generating...', color: 'text-protocol-text-dim', delay: 1400 },
-  { text: 'trader_passport: pending', color: 'text-protocol-text-dim', delay: 1700 },
-  { text: 'capital_access: locked until verified', color: 'text-protocol-text-dim', delay: 2000 },
-  { text: '', delay: 2200 },
-  { text: 'status: pre-launch', color: 'text-blue', delay: 2400 },
+  { text: 'wallet: 0x7a...f291', color: 'text-protocol-text-dim', delay: 700 },
+  { text: 'source: Hyperliquid', color: 'text-protocol-text-dim', delay: 900 },
+  { text: 'fundoria_score: 842 / 1000', color: 'text-green', delay: 1100 },
+  { text: 'grade: STRONG  ·  top 8.4%', color: 'text-green', delay: 1300 },
+  { text: 'badges: low_drawdown · consistency_streak', color: 'text-protocol-text-dim', delay: 1600 },
+  { text: 'watchlist_count: 47 allocators', color: 'text-protocol-text-dim', delay: 1900 },
+  { text: '', delay: 2100 },
+  { text: 'status: capital_eligible_soon', color: 'text-blue', delay: 2300 },
 ];
 
 function TerminalBlock() {
@@ -95,7 +94,7 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
             <span className="relative block w-2 h-2 rounded-full bg-blue" />
           </div>
           <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-blue font-bold">
-            HYPERLIQUID-NATIVE TRADER INTELLIGENCE
+            HYPERLIQUID TRADER REPUTATION NETWORK
           </span>
         </motion.div>
 
@@ -104,11 +103,11 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
           variants={itemVariants}
           className="font-display text-[clamp(48px,10vw,130px)] leading-[0.88] tracking-tighter uppercase mb-8 text-protocol-text"
         >
-          Turn Trading<br />
-          Performance Into<br />
+          Build Your<br />
+          Trading Reputation<br />
           <span className="relative inline-block">
             <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">
-              Verified Capital Access.
+              Before Capital Finds You.
             </span>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -119,14 +118,13 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
           </span>
         </motion.h1>
 
-        {/* Sub — "rewards" replaced with "trader incentives" */}
         <motion.p
           variants={itemVariants}
           className="max-w-[620px] mx-auto text-protocol-text-dim text-[14px] sm:text-[16px] md:text-lg leading-relaxed mb-10 sm:mb-14 px-2"
         >
-          Fundoria indexes Hyperliquid wallet activity and transforms it into{' '}
-          <span className="text-protocol-text">verified reputation</span>, risk intelligence, rankings,{' '}
-          <span className="text-protocol-text">trader incentives</span>, and future capital eligibility.
+          Fundoria turns Hyperliquid wallet activity into{' '}
+          <span className="text-protocol-text">Trader Passports</span>, Fundoria Scores, social rankings,{' '}
+          <span className="text-protocol-text">badges, AI trading reviews</span>, and future capital eligibility.
         </motion.p>
 
         {/* CTAs */}
@@ -137,19 +135,19 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
           >
             <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500" />
             <span className="relative flex items-center justify-center gap-3">
-              Join Early Access
+              Create Your Passport
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </span>
           </button>
 
-          <a
-            href="#product"
+          <button
+            onClick={onOpenWhitelist}
             className="group w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border border-protocol-border hover:border-blue/50 text-protocol-text-dim hover:text-protocol-text font-mono text-[11px] sm:text-[12px] font-black uppercase tracking-[0.2em] rounded-sm transition-all relative overflow-hidden flex items-center justify-center gap-2"
           >
             <div className="absolute inset-0 bg-blue/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
-            <span className="relative">Explore the Protocol</span>
+            <span className="relative">Join Early Access</span>
             <ArrowRight className="w-3.5 h-3.5 relative group-hover:translate-x-1 transition-transform" />
-          </a>
+          </button>
         </motion.div>
 
         {/* Terminal block */}

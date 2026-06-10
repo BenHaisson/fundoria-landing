@@ -5,6 +5,7 @@ import Problem from './Problem';
 import Solution from './Solution';
 import ProductStack from './ProductStack';
 import TraderPassportSection from './TraderPassportSection';
+import SocialFeatures from './SocialFeatures';
 import DailyUseLoop from './DailyUseLoop';
 import Leaderboards from './Leaderboards';
 import CapitalProviderDashboard from './CapitalProviderDashboard';
@@ -36,6 +37,7 @@ export default function Landing() {
         <Solution />
         <ProductStack />
         <TraderPassportSection />
+        <SocialFeatures />
         <DailyUseLoop />
         <Leaderboards />
         <CapitalProviderDashboard />

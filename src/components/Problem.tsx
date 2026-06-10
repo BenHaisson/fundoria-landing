@@ -1,35 +1,35 @@
 import { motion } from 'motion/react';
-import { EyeOff, Lock, AlertTriangle, Puzzle } from 'lucide-react';
+import { Image, BarChart2, Trophy, Search } from 'lucide-react';
 
 const problems = [
   {
-    icon: <EyeOff className="w-5 h-5" />,
-    title: 'Skill Is Invisible',
-    desc: 'There is no portable, verifiable record of trading performance. Your PnL lives in your exchange account and dies there.',
+    icon: <Image className="w-5 h-5" />,
+    title: 'Screenshots Are Not Verification',
+    desc: 'Traders prove performance with social posts, Discord calls, and leaderboard screenshots. Capital providers cannot trust what they cannot verify.',
     color: 'text-blue',
     borderColor: 'group-hover:border-blue/40',
     glowColor: 'group-hover:shadow-[0_0_40px_rgba(47,128,237,0.08)]',
   },
   {
-    icon: <Lock className="w-5 h-5" />,
-    title: 'Capital Is Gated',
-    desc: 'Access to institutional capital is determined by who you know, not how well you trade. Connections beat demonstrated skill.',
+    icon: <BarChart2 className="w-5 h-5" />,
+    title: 'PnL Does Not Explain Risk',
+    desc: 'Raw profit numbers hide leverage, drawdown, and survivorship bias. A 50% return with 80% drawdown is not a signal worth trusting.',
     color: 'text-green',
     borderColor: 'group-hover:border-green/40',
     glowColor: 'group-hover:shadow-[0_0_40px_rgba(0,200,150,0.08)]',
   },
   {
-    icon: <AlertTriangle className="w-5 h-5" />,
-    title: 'Risk Is Opaque',
-    desc: "There's no reliable way to evaluate a trader's discipline, drawdown control, or long-term consistency from the outside.",
+    icon: <Trophy className="w-5 h-5" />,
+    title: 'Leaderboards Miss Discipline',
+    desc: 'Most rankings reward short-term profit with no regard for risk management, consistency, or the behavior patterns that separate skill from luck.',
     color: 'text-blue',
     borderColor: 'group-hover:border-blue/40',
     glowColor: 'group-hover:shadow-[0_0_40px_rgba(47,128,237,0.08)]',
   },
   {
-    icon: <Puzzle className="w-5 h-5" />,
-    title: 'Tools Are Fragmented',
-    desc: 'Analytics, journals, rankings, and capital access are separate silos. Nothing connects your trading history to your financial future.',
+    icon: <Search className="w-5 h-5" />,
+    title: 'Capital Lacks a Discovery Layer',
+    desc: 'Capital providers have no structured way to find disciplined traders before they become obvious. The market has too much noise, not enough reputation.',
     color: 'text-green',
     borderColor: 'group-hover:border-green/40',
     glowColor: 'group-hover:shadow-[0_0_40px_rgba(0,200,150,0.08)]',
@@ -52,11 +52,11 @@ export default function Problem() {
             <span className="w-4 h-px bg-blue/40" />
           </div>
           <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
-            Trading Skill Has No<br />
-            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Infrastructure.</span>
+            Trading Skill Is Public,<br />
+            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">But Reputation Is Broken.</span>
           </h2>
           <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
-            The on-chain economy generates more trading data than any previous era — yet none of it is structured, portable, or actionable.
+            Crypto traders generate public activity every day, but the market still relies on screenshots, social noise, and raw PnL. Capital providers cannot separate skill from luck.
           </p>
         </motion.div>
 

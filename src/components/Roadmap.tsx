@@ -3,9 +3,9 @@ import { motion } from 'motion/react';
 const phases = [
   {
     num: '01',
-    meta: 'Pre-Launch',
-    title: 'Brand, Community & Landing',
-    desc: 'Landing page, early access community, brand positioning, and Hyperliquid partnership development.',
+    meta: 'Reputation MVP',
+    title: 'Wallet, Passport & Public Profiles',
+    desc: 'Wallet connection via Hyperliquid RPC, on-chain indexer, first-generation Trader Passport, basic analytics, and public trader profiles.',
     status: 'ACTIVE',
     statusColor: 'text-green border-green/30 bg-green/5',
     dotColor: 'bg-green',
@@ -14,9 +14,9 @@ const phases = [
   },
   {
     num: '02',
-    meta: 'MVP',
-    title: 'Wallet Connection & Basic Passport',
-    desc: 'Wallet connect via Hyperliquid RPC, on-chain indexer, first-generation Trader Passport, and base Fundoria Score.',
+    meta: 'Social Layer',
+    title: 'Follow, Badges, Leaderboards & Feed',
+    desc: 'Follow and watchlist system, achievement badges, public leaderboards, share cards, and live trader activity feed.',
     status: 'NEXT',
     statusColor: 'text-blue border-blue/30 bg-blue/5',
     dotColor: 'bg-blue',
@@ -25,9 +25,9 @@ const phases = [
   },
   {
     num: '03',
-    meta: 'Beta',
-    title: 'Fundoria Score, Profiles & Tournaments',
-    desc: 'Full 5-dimension score engine, public trader profiles, AI Trading Journal, and Tournament Season 1.',
+    meta: 'Intelligence Layer',
+    title: 'Fundoria Score, AI Journal & Risk Maps',
+    desc: 'Full 10-dimension Score engine, AI Trading Journal, risk heatmaps, strategy tags, and score history tracking.',
     status: 'PLANNED',
     statusColor: 'text-protocol-text-dim border-protocol-border',
     dotColor: 'bg-protocol-border',
@@ -36,9 +36,9 @@ const phases = [
   },
   {
     num: '04',
-    meta: 'Growth',
-    title: 'Scale, Pro Tier & Capital Dashboard',
-    desc: '100k trader acquisition milestone, Pro subscription launch, and capital provider dashboard with verified trader discovery.',
+    meta: 'Capital Provider Layer',
+    title: 'Allocator Dashboard & Trader Discovery',
+    desc: 'Capital provider dashboard, private watchlists, trader filters, verified candidate discovery pipeline, and risk intelligence reports.',
     status: 'PLANNED',
     statusColor: 'text-protocol-text-dim border-protocol-border',
     dotColor: 'bg-protocol-border',
@@ -47,9 +47,9 @@ const phases = [
   },
   {
     num: '05',
-    meta: 'Capital Access',
-    title: 'Verified Tiers & Funded Challenges',
-    desc: 'Capital eligibility tiers, funded trader challenges, allocator discovery marketplace, and institutional onboarding.',
+    meta: 'Tournament Layer',
+    title: 'Sponsored Challenges & Seasonal Competitions',
+    desc: 'Public and private tournaments, risk-adjusted challenge formats, sponsored seasonal competitions, and performance-based incentives.',
     status: 'FUTURE',
     statusColor: 'text-protocol-text-dim/50 border-protocol-border/50',
     dotColor: 'bg-protocol-border/50',
@@ -59,8 +59,8 @@ const phases = [
   {
     num: '06',
     meta: 'Vault Layer',
-    title: 'Capital Pools & Vault Mandates',
-    desc: 'Protocol-level infrastructure for capital pools, mandate-specific vault strategies, and automated algorithmic allocation.',
+    title: 'Future Capital Access Infrastructure',
+    desc: 'Eligibility tiers, mandate-based allocation workflows, protocol fee layer, vault reporting, and capital access infrastructure — subject to legal and operational constraints.',
     status: 'FUTURE',
     statusColor: 'text-protocol-text-dim/50 border-protocol-border/50',
     dotColor: 'bg-protocol-border/50',
@@ -86,10 +86,10 @@ export default function Roadmap() {
           </div>
           <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
             Six Phases.<br />
-            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">One Direction.</span>
+            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Reputation First.</span>
           </h2>
           <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
-            From pre-launch community to protocol-level capital infrastructure.
+            From Reputation MVP to Social Layer, Intelligence Engine, Capital Discovery, Tournaments, and the future Vault Layer.
           </p>
         </motion.div>
 
