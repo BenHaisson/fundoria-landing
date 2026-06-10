@@ -81,6 +81,23 @@
   }
 }
 
+.site-header-glass {
+  background: rgba(2, 5, 12, 0.82);
+  backdrop-filter: blur(45px);
+  -webkit-backdrop-filter: blur(45px);
+  border-bottom: 1px solid rgba(14, 26, 46, 0.85);
+  z-index: 1001;
+}
+
+.ticker-glass {
+  background: rgba(2, 5, 12, 0.78);
+  backdrop-filter: blur(45px);
+  -webkit-backdrop-filter: blur(45px);
+  border-top: 1px solid rgba(14, 26, 46, 0.65);
+  border-bottom: 1px solid rgba(14, 26, 46, 0.85);
+  z-index: 1000;
+}
+
 @keyframes ticker {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }

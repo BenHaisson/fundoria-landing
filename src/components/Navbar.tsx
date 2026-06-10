@@ -35,7 +35,7 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
   }, []);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 h-[72px] flex items-center border-b ${scrolled || mobileMenuOpen ? 'bg-protocol-bg/92 backdrop-blur-xl border-protocol-border' : 'bg-transparent border-transparent'}`}>
+    <nav className="site-header-glass fixed top-0 w-full transition-all duration-300 h-[72px] flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex items-center justify-between">
         <a href="#" className="flex items-center transition-opacity hover:opacity-80">
           <Logo size={32} showText={true} />
@@ -96,7 +96,7 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute top-[72px] left-0 w-full bg-protocol-bg/98 backdrop-blur-xl border-b border-protocol-border md:hidden z-40 overflow-hidden"
+            className="site-header-glass absolute top-[72px] left-0 w-full md:hidden z-[1000] overflow-hidden"
           >
             <div className="px-6 pt-6 pb-8">
               <ul className="flex flex-col gap-1 mb-8">
@@ -129,7 +129,7 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
       </AnimatePresence>
 
       {/* Ticker */}
-      <div className="absolute top-[72px] left-0 w-full h-[30px] bg-protocol-bg/85 backdrop-blur-md border-b border-protocol-border overflow-hidden flex items-center">
+      <div className="ticker-glass absolute top-[72px] left-0 w-full h-[30px] overflow-hidden flex items-center">
         <div className="flex gap-6 md:gap-12 whitespace-nowrap animate-ticker-pausable">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-6 md:gap-12">
@@ -149,7 +149,7 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
 
 function TickerItem({ text, dotColor, isHex }: { text: string; dotColor: string; isHex?: boolean }) {
   return (
-    <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-protocol-text-dim flex items-center gap-2.5">
+    <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#8AACCC] flex items-center gap-2.5">
       <span className={dotColor}>{isHex ? '⬡' : '●'}</span> {text}
     </div>
   );
