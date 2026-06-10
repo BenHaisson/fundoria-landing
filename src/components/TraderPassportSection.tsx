@@ -191,19 +191,19 @@ export default function TraderPassportSection() {
               Trader Passport
             </div>
             <h2 className="font-display text-[clamp(34px,5vw,64px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-6">
-              Your On-Chain<br />
-              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Identity Card.</span>
+              A Public Trading Identity<br />
+              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Built From Wallet Activity.</span>
             </h2>
             <p className="text-protocol-text-dim text-[15px] leading-relaxed mb-8 max-w-lg">
-              The Trader Passport is a verified, wallet-native identity built from your Hyperliquid history. It captures who you are as a trader — your edge, your risk discipline, your consistency — in a portable format that travels with you.
+              The Trader Passport is the core social object of Fundoria. It turns live Hyperliquid activity into a shareable reputation profile that traders use to prove skill, build status, and become discoverable by capital providers.
             </p>
 
             <ul className="space-y-3 mb-10">
               {[
-                'Wallet-native — no signup, no KYC required for read-only access',
-                'Score across 5 dimensions, updated every 24 hours',
-                'Tamper-proof record sourced from on-chain Hyperliquid data',
-                'Portable signal for capital providers, tournaments, and protocols',
+                'Shareable, public, and visually premium — your trading resume',
+                'Includes score, grade, PnL curve, badges, ranking percentile, and watchlist count',
+                'Updated from live Hyperliquid data — no self-reporting required',
+                'Portable across platforms, tournaments, and capital providers',
               ].map((item, i) => (
                 <motion.li
                   key={i}
@@ -226,7 +226,7 @@ export default function TraderPassportSection() {
               transition={{ delay: 0.3 }}
             >
               <div className="inline-flex items-center gap-2 font-mono text-[10px] text-blue uppercase tracking-widest border-b border-blue/30 pb-0.5 group cursor-default">
-                Passport issued at launch
+                Generate Passport at launch
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </div>
             </motion.div>

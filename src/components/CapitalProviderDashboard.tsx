@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { SlidersHorizontal, CheckCircle } from 'lucide-react';
+import { SlidersHorizontal, CheckCircle, ArrowRight } from 'lucide-react';
 
 const pipeline = [
   { step: 'Connected Wallet', sub: 'Hyperliquid identity verified', done: true },
@@ -21,28 +21,75 @@ const results = [
   { address: '0x3e...8bc4', score: 891, pnl: '+28.4%', grade: 'A' },
 ];
 
-export default function CapitalProviderDashboard() {
+const benefits = [
+  'Filter traders by Fundoria Score',
+  'Build private watchlists',
+  'Compare trader consistency and drawdown',
+  'Track tournament records and verified history',
+  'Discover emerging wallets before they become obvious',
+  'Prepare future vault mandates',
+  'Monitor trader reputation over time',
+  'AI-generated trader summaries included',
+];
+
+interface CapitalProviderDashboardProps {
+  onOpenWhitelist?: () => void;
+}
+
+export default function CapitalProviderDashboard({ onOpenWhitelist }: CapitalProviderDashboardProps) {
   return (
-    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-accent-bg px-4 sm:px-6 overflow-hidden">
+    <section id="capital-access" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-accent-bg px-4 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center justify-center gap-2">
+          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center gap-2">
             <span className="w-4 h-px bg-blue/40" />
-            Capital Providers
-            <span className="w-4 h-px bg-blue/40" />
+            For Capital Providers
           </div>
-          <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
-            Allocate to<br />
-            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Verified Skill.</span>
-          </h2>
-          <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
-            Filter, discover, and match with traders who have proven track records — verified on-chain, scored algorithmically.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div>
+              <h2 className="font-display text-[clamp(34px,5vw,64px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
+                Discover Talent<br />
+                <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Before Allocation.</span>
+              </h2>
+              <p className="text-protocol-text-dim text-[15px] leading-relaxed max-w-lg">
+                Capital providers need more than social noise and raw PnL. Fundoria provides structured risk intelligence, trader discovery, private watchlists, and future vault candidate pipelines.
+              </p>
+            </div>
+            <div>
+              <ul className="space-y-2.5 mb-8">
+                {benefits.map((item, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: 12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="flex items-start gap-3"
+                  >
+                    <CheckCircle className="w-4 h-4 text-green shrink-0 mt-0.5" />
+                    <span className="text-[14px] text-protocol-text-dim leading-relaxed">{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+              <motion.button
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                onClick={onOpenWhitelist}
+                className="group relative inline-flex items-center gap-3 border border-blue/40 hover:bg-blue text-blue hover:text-black font-mono text-[11px] font-black uppercase tracking-[0.2em] px-8 py-4 overflow-hidden transition-all duration-300"
+              >
+                <div className="absolute inset-0 bg-blue translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
+                <span className="relative">Join Allocator Waitlist</span>
+                <ArrowRight className="w-4 h-4 relative group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </div>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
@@ -53,7 +100,6 @@ export default function CapitalProviderDashboard() {
             viewport={{ once: true }}
             className="lg:col-span-3 border border-protocol-border bg-protocol-bg overflow-hidden"
           >
-            {/* Terminal header */}
             <div className="px-4 py-2.5 border-b border-protocol-border bg-protocol-accent-bg flex items-center gap-2 justify-between">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-red-500/40" />
@@ -67,7 +113,6 @@ export default function CapitalProviderDashboard() {
             </div>
 
             <div className="p-5 grid grid-cols-1 sm:grid-cols-5 gap-4">
-              {/* Filters */}
               <div className="sm:col-span-2 border border-protocol-border bg-protocol-accent-bg p-4">
                 <div className="flex items-center gap-2 mb-4">
                   <SlidersHorizontal className="w-3.5 h-3.5 text-blue" />
@@ -100,7 +145,6 @@ export default function CapitalProviderDashboard() {
                 </div>
               </div>
 
-              {/* Results */}
               <div className="sm:col-span-3 space-y-3">
                 {results.map((r, i) => (
                   <motion.div
@@ -144,7 +188,6 @@ export default function CapitalProviderDashboard() {
           >
             <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-protocol-text-dim/50 mb-5">Capital Eligibility Pipeline</div>
             <div className="space-y-0 relative">
-              {/* Vertical connector */}
               <div className="absolute left-[11px] top-3 bottom-3 w-px bg-protocol-border" />
 
               {pipeline.map((p, i) => (

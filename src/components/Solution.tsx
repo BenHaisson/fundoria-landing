@@ -3,10 +3,12 @@ import { ArrowRight } from 'lucide-react';
 
 const flow = [
   { label: 'Wallet', sub: 'Identity anchor' },
+  { label: 'Indexer', sub: 'Read-only on-chain' },
   { label: 'Passport', sub: 'Public trader profile' },
   { label: 'Score', sub: 'Risk-adjusted signal' },
-  { label: 'Social', sub: 'Rankings & badges' },
-  { label: 'Capital', sub: 'Future eligibility' },
+  { label: 'Rankings', sub: 'Social leaderboard' },
+  { label: 'Watchlist', sub: 'Allocator discovery' },
+  { label: 'Vaults', sub: 'Future eligibility' },
 ];
 
 const stats = [
