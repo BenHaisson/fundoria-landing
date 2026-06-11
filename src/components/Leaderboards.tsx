@@ -9,7 +9,7 @@ const traders = [
     pnl: '+42.1%',
     maxDD: '2.1%',
     consistency: '97%',
-    status: 'Capital Matched',
+    status: 'Elite Score',
     statusColor: 'text-green border-green/30 bg-green/5',
     dotColor: 'bg-green',
   },
@@ -20,7 +20,7 @@ const traders = [
     pnl: '+28.4%',
     maxDD: '3.4%',
     consistency: '94%',
-    status: 'Capital Eligible',
+    status: 'Verified Score',
     statusColor: 'text-blue border-blue/30 bg-blue/5',
     dotColor: 'bg-blue',
   },
@@ -31,7 +31,7 @@ const traders = [
     pnl: '+19.8%',
     maxDD: '4.8%',
     consistency: '91%',
-    status: 'Eligible Soon',
+    status: 'Future Eligibility',
     statusColor: 'text-amber-500 border-amber-500/30 bg-amber-500/5',
     dotColor: 'bg-amber-500',
   },
@@ -74,7 +74,7 @@ export default function Leaderboards() {
           <div className="bg-protocol-accent-bg border-b border-protocol-border px-4 py-2 flex items-center justify-between">
             <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-protocol-text-dim/50 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-              Live Rankings · Season 1 Preview
+              Rankings Preview · Season 1
             </div>
             <div className="font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/30">Score-Ranked</div>
           </div>

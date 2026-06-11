@@ -22,7 +22,7 @@ const terminalLines = [
   { text: 'grade: STRONG  ·  top 8.4%', color: 'text-green', delay: 1200 },
   { text: 'badges: low_drawdown · consistency_streak', color: 'text-protocol-text-dim', delay: 1500 },
   { text: 'watchlist_count: 47 allocators', color: 'text-protocol-text-dim', delay: 1800 },
-  { text: 'status: capital_eligible_soon', color: 'text-blue', delay: 2100 },
+  { text: 'status: future_eligibility_signal', color: 'text-blue', delay: 2100 },
 ];
 
 // Passport card sparkline
@@ -57,7 +57,7 @@ function HeroPassportCard() {
         </div>
         <div className="flex items-center gap-1 px-2 py-0.5 border border-amber-500/30 bg-amber-500/5">
           <div className="w-1 h-1 rounded-full bg-amber-500 animate-pulse" />
-          <span className="font-mono text-[7px] uppercase tracking-widest text-amber-500">Eligible Soon</span>
+          <span className="font-mono text-[7px] uppercase tracking-widest text-amber-500">Future Eligibility</span>
         </div>
       </div>
 
@@ -175,9 +175,9 @@ function TerminalMini() {
         <div className="w-1.5 h-1.5 rounded-full bg-red-500/40" />
         <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/40" />
         <div className="w-1.5 h-1.5 rounded-full bg-green/40" />
-        <span className="font-mono text-[7px] uppercase tracking-widest text-protocol-text-dim/40 ml-1.5">FUNDORIA_INIT</span>
+        <span className="font-mono text-[7px] uppercase tracking-widest text-protocol-text-dim/40 ml-1.5">FUNDORIA_INIT :: PASSPORT_ALPHA</span>
         <span className="ml-auto font-mono text-[7px] text-blue/50 flex items-center gap-1">
-          <span className="w-1 h-1 rounded-full bg-blue animate-pulse" />LIVE
+          <span className="w-1 h-1 rounded-full bg-blue animate-pulse" />ALPHA
         </span>
       </div>
       <div className="p-3 font-mono text-[10px] leading-[1.8]">
@@ -262,8 +262,8 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
               className="text-protocol-text-dim text-[15px] md:text-[16px] leading-relaxed mb-4 max-w-[520px]"
             >
               Fundoria turns Hyperliquid wallet activity into{' '}
-              <span className="text-protocol-text">Trader Passports</span>, Fundoria Scores, social rankings,{' '}
-              <span className="text-protocol-text">AI trading reviews</span>, capital provider watchlists, and future vault eligibility.
+              <span className="text-protocol-text">Trader Passports</span>, Fundoria Scores, social rankings, badges,{' '}
+              <span className="text-protocol-text">AI trading reviews</span>, and future capital eligibility.
             </motion.p>
 
             {/* Micro-line */}

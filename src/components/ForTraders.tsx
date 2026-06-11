@@ -41,9 +41,9 @@ function TraderProfileMockup() {
             <div className="font-mono text-[8px] uppercase tracking-[0.3em] text-protocol-text-dim/50">Trader Profile</div>
             <div className="font-mono text-[12px] font-black text-blue mt-0.5">0x9B...44E</div>
           </div>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 border border-green/30 bg-green/5">
-            <div className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-            <span className="font-mono text-[8px] uppercase tracking-widest text-green">Active</span>
+          <div className="flex items-center gap-1.5 px-2.5 py-1 border border-blue/30 bg-blue/5">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue animate-pulse" />
+            <span className="font-mono text-[8px] uppercase tracking-widest text-blue">Demo Profile</span>
           </div>
         </div>
 

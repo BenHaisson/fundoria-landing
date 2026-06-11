@@ -31,7 +31,7 @@ const pipelineSteps = [
   },
   {
     label: 'Mandate Design',
-    sub: 'Capital provider allocates',
+    sub: 'Allocation rules defined',
     color: 'text-protocol-text-dim/40 border-protocol-border/40',
     future: true,
   },
@@ -53,7 +53,7 @@ const benefits = [
   'Reputation feeds back into improved vault performance',
 ];
 
-const traditionalVault = ['Capital', '→ Trader', '→ Hope performance is real'];
+const traditionalVault = ['Capital', '→ Trader', '→ Limited pre-allocation context'];
 const fundoriaVault = ['Reputation', '→ Verification', '→ Risk Score', '→ Watchlist', '→ Eligibility', '→ Capital Access'];
 
 export default function FundoriaVaults() {

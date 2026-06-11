@@ -20,7 +20,7 @@ const phases = [
     status: 'NEXT',
     statusColor: 'text-blue border-blue/30 bg-blue/5',
     dotColor: 'bg-blue',
-    timeline: 'Q3 2026',
+    timeline: 'Next',
     active: false,
   },
   {
@@ -31,7 +31,7 @@ const phases = [
     status: 'PLANNED',
     statusColor: 'text-protocol-text-dim border-protocol-border',
     dotColor: 'bg-protocol-border',
-    timeline: 'Q4 2026',
+    timeline: 'Planned',
     active: false,
   },
   {
@@ -42,7 +42,7 @@ const phases = [
     status: 'PLANNED',
     statusColor: 'text-protocol-text-dim border-protocol-border',
     dotColor: 'bg-protocol-border',
-    timeline: 'Q1 2027',
+    timeline: 'Planned',
     active: false,
   },
   {
@@ -53,7 +53,7 @@ const phases = [
     status: 'FUTURE',
     statusColor: 'text-protocol-text-dim/50 border-protocol-border/50',
     dotColor: 'bg-protocol-border/50',
-    timeline: 'Q2–Q3 2027',
+    timeline: 'Future',
     active: false,
   },
   {
@@ -64,7 +64,7 @@ const phases = [
     status: 'FUTURE',
     statusColor: 'text-protocol-text-dim/50 border-protocol-border/50',
     dotColor: 'bg-protocol-border/50',
-    timeline: 'Q4 2027+',
+    timeline: 'Future',
     active: false,
   },
 ];
@@ -90,6 +90,9 @@ export default function Roadmap() {
           </h2>
           <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
             From Reputation MVP to Social Layer, Intelligence Engine, Capital Discovery, Tournaments, and the future Vault Layer.
+          </p>
+          <p className="font-mono text-[9px] text-protocol-text-dim/40 uppercase tracking-wider mt-3 max-w-xl mx-auto">
+            Timeline is milestone-gated and may evolve based on product, legal, security, and ecosystem readiness.
           </p>
         </motion.div>
 

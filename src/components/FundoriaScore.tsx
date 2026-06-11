@@ -177,6 +177,8 @@ export default function FundoriaScore() {
               className="font-mono text-[9px] text-protocol-text-dim/40 uppercase tracking-wider mt-4 text-center"
             >
               The Fundoria Score is a reputation signal, not investment advice or a guarantee of future results.
+              <br />
+              The exact scoring methodology will be published progressively with the MVP and refined through transparent versioned releases.
             </motion.p>
           </motion.div>
         </div>

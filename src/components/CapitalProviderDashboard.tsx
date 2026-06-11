@@ -5,9 +5,9 @@ const pipeline = [
   { step: 'Connected Wallet', sub: 'Hyperliquid identity verified', done: true },
   { step: '30 Days Activity', sub: 'Minimum history indexed', done: true },
   { step: 'Risk Score ≥ 750', sub: 'Fundoria Score threshold', done: true },
-  { step: 'Verified Passport', sub: 'Passport issued on-chain', done: false },
+  { step: 'Verified Passport', sub: 'Public profile generated', done: false },
   { step: 'Tournament Record', sub: 'Optional: season entry', done: false },
-  { step: 'Capital Eligible', sub: 'Matched with allocators', done: false, highlight: true },
+  { step: 'Capital Eligible', sub: 'Future allocator workflow', done: false, highlight: true },
 ];
 
 const filters = [
@@ -105,10 +105,10 @@ export default function CapitalProviderDashboard({ onOpenWhitelist }: CapitalPro
                 <div className="w-2 h-2 rounded-full bg-red-500/40" />
                 <div className="w-2 h-2 rounded-full bg-yellow-500/40" />
                 <div className="w-2 h-2 rounded-full bg-green/40" />
-                <span className="font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/40 ml-1">ALLOCATOR_DASHBOARD</span>
+                <span className="font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/40 ml-1">ALLOCATOR_DASHBOARD :: PREVIEW</span>
               </div>
               <span className="font-mono text-[8px] text-blue/50 flex items-center gap-1">
-                <span className="w-1 h-1 rounded-full bg-blue animate-pulse" />LIVE
+                <span className="w-1 h-1 rounded-full bg-blue animate-pulse" />ALPHA PREVIEW
               </span>
             </div>
 

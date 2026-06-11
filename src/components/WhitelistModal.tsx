@@ -9,8 +9,8 @@ interface WhitelistModalProps {
 
 const perks = [
   'Early Score access before public launch',
-  'Tournament Season 1 priority registration',
-  'Notification when capital providers go live',
+  'Priority updates for first Fundoria competitions',
+  'Notification when capital provider tools enter alpha',
   'Direct team feedback sessions during beta',
 ];
 
@@ -99,7 +99,7 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                     You're In.
                   </h3>
                   <p className="font-mono text-[11px] text-protocol-text-dim uppercase tracking-widest leading-relaxed px-6 mb-8">
-                    Your Trader Passport request is registered. We'll be in touch.
+                    You are on the Fundoria early access list. Next step: prepare to create your Trader Passport when the alpha opens.
                   </p>
                   <button
                     onClick={onClose}

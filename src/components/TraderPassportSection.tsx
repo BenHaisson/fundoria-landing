@@ -83,7 +83,7 @@ function PassportCard() {
         </div>
         <div className="flex items-center gap-1.5 px-2.5 py-1 border border-amber-500/30 bg-amber-500/5">
           <div className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-          <span className="font-mono text-[8px] uppercase tracking-widest text-amber-500">Eligible Soon</span>
+          <span className="font-mono text-[8px] uppercase tracking-widest text-amber-500">Future Eligibility</span>
         </div>
       </div>
 
@@ -202,7 +202,7 @@ export default function TraderPassportSection() {
               {[
                 'Shareable, public, and visually premium — your trading resume',
                 'Includes score, grade, PnL curve, badges, ranking percentile, and watchlist count',
-                'Updated from live Hyperliquid data — no self-reporting required',
+                'Designed to update from Hyperliquid activity — no self-reporting required',
                 'Portable across platforms, tournaments, and capital providers',
               ].map((item, i) => (
                 <motion.li
