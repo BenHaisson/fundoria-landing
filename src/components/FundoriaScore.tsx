@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import SectionHeader from './ui/SectionHeader';
 
 const dimensions = [
   { label: 'Performance', value: 88, color: '#2F80ED' },
@@ -71,25 +72,17 @@ export default function FundoriaScore() {
   return (
     <section id="score" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-accent-bg px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center justify-center gap-2">
-            <span className="w-4 h-px bg-blue/40" />
-            Fundoria Score
-            <span className="w-4 h-px bg-blue/40" />
-          </div>
-          <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
-            Rank Skill, Discipline,<br />
-            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">and Consistency — Not Just Profit.</span>
-          </h2>
-          <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
-            The Fundoria Score is a risk-adjusted reputation signal. It measures how performance was achieved, not only the final PnL.
-          </p>
-        </motion.div>
+        <SectionHeader
+          eyebrow="Fundoria Score"
+          centered
+          title={
+            <>
+              Rank Skill, Discipline,<br />
+              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">and Consistency — Not Just Profit.</span>
+            </>
+          }
+          subtitle="The Fundoria Score is a risk-adjusted reputation signal. It measures how performance was achieved, not only the final PnL."
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left — Score ring */}

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { IdCard, Star, Eye, Award, Trophy, Brain, Share2, Unlock } from 'lucide-react';
+import SectionHeader from './ui/SectionHeader';
 
 const features = [
   {
@@ -72,25 +73,17 @@ export default function SocialFeatures() {
   return (
     <section id="social" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center justify-center gap-2">
-            <span className="w-4 h-px bg-blue/40" />
-            Social Features
-            <span className="w-4 h-px bg-blue/40" />
-          </div>
-          <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
-            A Trading Network<br />
-            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Built Around Reputation.</span>
-          </h2>
-          <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
-            Traders do not only use Fundoria to analyze performance. They use Fundoria to build status.
-          </p>
-        </motion.div>
+        <SectionHeader
+          eyebrow="Social Features"
+          centered
+          title={
+            <>
+              A Trading Network<br />
+              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Built Around Reputation.</span>
+            </>
+          }
+          subtitle="Traders do not only use Fundoria to analyze performance. They use Fundoria to build status."
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {features.map((f, i) => (

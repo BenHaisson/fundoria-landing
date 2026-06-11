@@ -192,6 +192,55 @@ function TerminalMini() {
   );
 }
 
+function HeroGridDots() {
+  const dots = [
+    { x: '20%',  y: '25%',  delay: '0s',    size: 3 },
+    { x: '40%',  y: '15%',  delay: '0.8s',  size: 2 },
+    { x: '60%',  y: '30%',  delay: '1.4s',  size: 3 },
+    { x: '80%',  y: '20%',  delay: '0.4s',  size: 2 },
+    { x: '15%',  y: '60%',  delay: '1.1s',  size: 2 },
+    { x: '50%',  y: '55%',  delay: '0.2s',  size: 3 },
+    { x: '75%',  y: '65%',  delay: '1.6s',  size: 2 },
+    { x: '30%',  y: '80%',  delay: '0.6s',  size: 3 },
+    { x: '65%',  y: '78%',  delay: '1.2s',  size: 2 },
+    { x: '88%',  y: '50%',  delay: '0.9s',  size: 3 },
+  ];
+
+  return (
+    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      {dots.map((d, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full bg-blue/40"
+          style={{
+            left: d.x,
+            top: d.y,
+            width: d.size,
+            height: d.size,
+            animation: `grid-dot-pulse ${2.5 + (i % 3) * 0.8}s ease-in-out ${d.delay} infinite`,
+            boxShadow: `0 0 ${d.size * 3}px rgba(47,128,237,0.6)`,
+          }}
+        />
+      ))}
+      {/* Vertical data streams */}
+      {['25%', '50%', '75%'].map((x, i) => (
+        <div
+          key={`stream-${i}`}
+          className="absolute data-stream-line"
+          style={{
+            left: x,
+            top: 0,
+            height: '100%',
+            animationDelay: `${i * 1.3}s`,
+            animationDuration: `${4 + i}s`,
+            opacity: 0.07,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function Hero({ onOpenWhitelist }: HeroProps) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -211,6 +260,9 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
 
   return (
     <section className="relative pt-[130px] md:pt-[180px] pb-20 md:pb-32 overflow-hidden px-4 sm:px-6">
+      {/* Animated grid dots + data streams */}
+      <HeroGridDots />
+
       {/* Background orbs */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[700px] pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue/8 rounded-full blur-[140px] mix-blend-screen" />
