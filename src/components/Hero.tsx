@@ -1,38 +1,75 @@
-import { ArrowRight, Activity, Database, Shield, Layers } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { Shield, Cpu, Lock, Zap } from 'lucide-react';
+import CTAButton from './ui/CTAButton';
 
 interface HeroProps {
   onOpenWhitelist?: () => void;
 }
 
-const stats = [
-  { icon: <Activity className="w-3 h-3" />, label: 'Trader Identity', value: 'Wallet-Based', color: 'text-blue' },
-  { icon: <Database className="w-3 h-3" />, label: 'Performance', value: 'Risk-Scored', color: 'text-green' },
-  { icon: <Shield className="w-3 h-3" />, label: 'Trader Reputation', value: 'Social', color: 'text-blue' },
-  { icon: <Layers className="w-3 h-3" />, label: 'Capital Access', value: 'Future', color: 'text-green' },
+const trustIndicators = [
+  { icon: <Lock className="w-3.5 h-3.5" />,  label: 'Non-custodial',          color: 'text-green',  dot: 'bg-green' },
+  { icon: <Zap className="w-3.5 h-3.5" />,   label: 'HyperEVM native',         color: 'text-blue',   dot: 'bg-blue' },
+  { icon: <Cpu className="w-3.5 h-3.5" />,   label: 'Risk enforced by code',   color: 'text-blue',   dot: 'bg-blue' },
+  { icon: <Shield className="w-3.5 h-3.5" />,label: 'Pre-launch · Phase 01',   color: 'text-amber-500', dot: 'bg-amber-500' },
 ];
 
 const terminalLines = [
-  { text: '[ FUNDORIA_PASSPORT ]', color: 'text-blue', delay: 200 },
-  { text: '', delay: 400 },
-  { text: 'wallet: 0x7a...f291', color: 'text-protocol-text-dim', delay: 600 },
-  { text: 'source: Hyperliquid', color: 'text-protocol-text-dim', delay: 800 },
-  { text: 'fundoria_score: 842 / 1000', color: 'text-green', delay: 1000 },
-  { text: 'grade: STRONG  ·  top 8.4%', color: 'text-green', delay: 1200 },
-  { text: 'badges: low_drawdown · consistency_streak', color: 'text-protocol-text-dim', delay: 1500 },
-  { text: 'watchlist_count: 47 allocators', color: 'text-protocol-text-dim', delay: 1800 },
-  { text: 'status: future_eligibility_signal', color: 'text-blue', delay: 2100 },
+  { text: '[ FUNDORIA :: PASSPORT_ALPHA ]',        color: 'text-blue',              delay: 200 },
+  { text: '',                                       color: '',                        delay: 400 },
+  { text: 'wallet: 0x7a...f291',                   color: 'text-protocol-text-dim', delay: 600 },
+  { text: 'source: hyperliquid_chain',             color: 'text-protocol-text-dim', delay: 800 },
+  { text: 'fundoria_score: 842 / 1000',            color: 'text-green',             delay: 1000 },
+  { text: 'grade: STRONG  ·  top 8.4%',           color: 'text-green',             delay: 1200 },
+  { text: 'risk_enforced: true',                   color: 'text-protocol-text-dim', delay: 1500 },
+  { text: 'custody: none',                         color: 'text-protocol-text-dim', delay: 1700 },
+  { text: 'status: future_eligibility_signal',     color: 'text-blue',              delay: 2000 },
 ];
 
-// Passport card sparkline
 const sparkPoints = '10,36 28,26 48,30 68,14 88,19 108,9 128,16 148,7 168,13 188,4';
 
 const passportBadges = [
-  { label: 'Low Drawdown', color: 'border-green/40 text-green bg-green/5' },
+  { label: 'Low Drawdown',      color: 'border-green/40 text-green bg-green/5' },
   { label: 'Consistency Streak', color: 'border-blue/40 text-blue bg-blue/5' },
   { label: 'Capital Watchlist', color: 'border-green/40 text-green bg-green/5' },
 ];
+
+function HeroGridDots() {
+  const dots = [
+    { x: '20%', y: '25%', delay: '0s',   size: 3 },
+    { x: '40%', y: '15%', delay: '0.8s', size: 2 },
+    { x: '60%', y: '30%', delay: '1.4s', size: 3 },
+    { x: '80%', y: '20%', delay: '0.4s', size: 2 },
+    { x: '15%', y: '60%', delay: '1.1s', size: 2 },
+    { x: '50%', y: '55%', delay: '0.2s', size: 3 },
+    { x: '75%', y: '65%', delay: '1.6s', size: 2 },
+    { x: '30%', y: '80%', delay: '0.6s', size: 3 },
+    { x: '65%', y: '78%', delay: '1.2s', size: 2 },
+    { x: '88%', y: '50%', delay: '0.9s', size: 3 },
+  ];
+  return (
+    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      {dots.map((d, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full bg-blue/40"
+          style={{
+            left: d.x, top: d.y, width: d.size, height: d.size,
+            animation: `grid-dot-pulse ${2.5 + (i % 3) * 0.8}s ease-in-out ${d.delay} infinite`,
+            boxShadow: `0 0 ${d.size * 3}px rgba(47,128,237,0.6)`,
+          }}
+        />
+      ))}
+      {['25%', '50%', '75%'].map((x, i) => (
+        <div
+          key={`stream-${i}`}
+          className="absolute data-stream-line"
+          style={{ left: x, top: 0, height: '100%', animationDelay: `${i * 1.3}s`, animationDuration: `${4 + i}s`, opacity: 0.06 }}
+        />
+      ))}
+    </div>
+  );
+}
 
 function HeroPassportCard() {
   const radius = 44;
@@ -48,8 +85,6 @@ function HeroPassportCard() {
       className="relative border border-protocol-border bg-protocol-bg w-full max-w-[300px] shadow-[0_20px_60px_rgba(0,0,0,0.6)] overflow-hidden"
     >
       <div className="h-[2px] bg-linear-to-r from-blue via-green to-blue" />
-
-      {/* Header */}
       <div className="px-4 py-3 border-b border-protocol-border bg-protocol-accent-bg flex items-center justify-between">
         <div>
           <div className="font-mono text-[7px] uppercase tracking-[0.3em] text-protocol-text-dim/50">Trader Passport</div>
@@ -60,8 +95,6 @@ function HeroPassportCard() {
           <span className="font-mono text-[7px] uppercase tracking-widest text-amber-500">Future Eligibility</span>
         </div>
       </div>
-
-      {/* Score ring + stats */}
       <div className="px-4 py-4 flex items-center gap-4 border-b border-protocol-border">
         <div className="relative w-24 h-24 shrink-0 flex items-center justify-center">
           <svg width="96" height="96" viewBox="0 0 96 96" className="-rotate-90">
@@ -74,10 +107,7 @@ function HeroPassportCard() {
             </defs>
             <motion.circle
               cx="48" cy="48" r={radius}
-              fill="none"
-              stroke="url(#heroScoreGrad)"
-              strokeWidth="7"
-              strokeLinecap="round"
+              fill="none" stroke="url(#heroScoreGrad)" strokeWidth="7" strokeLinecap="round"
               strokeDasharray={circumference}
               initial={{ strokeDashoffset: circumference }}
               animate={{ strokeDashoffset: circumference * (1 - fraction) }}
@@ -96,11 +126,8 @@ function HeroPassportCard() {
             <span className="font-mono text-[8px] text-green">Top 3.2%</span>
           </div>
           <div className="font-mono text-[8px] text-protocol-text-dim/50">4.8% Max DD · 91% Consistency</div>
-          <div className="font-mono text-[8px] text-protocol-text-dim/50 mt-0.5">Watchlists: 48 allocators</div>
         </div>
       </div>
-
-      {/* Sparkline */}
       <div className="px-4 py-3 border-b border-protocol-border">
         <div className="flex items-center justify-between mb-1">
           <span className="font-mono text-[7px] uppercase tracking-widest text-protocol-text-dim/50">30D PnL</span>
@@ -117,60 +144,25 @@ function HeroPassportCard() {
           <polygon points={`10,40 ${sparkPoints} 188,40`} fill="url(#heroSparkGrad)" />
         </svg>
       </div>
-
-      {/* Badges */}
       <div className="px-4 py-3 flex flex-wrap gap-1">
         {passportBadges.map((b, i) => (
           <span key={i} className={`border font-mono text-[7px] uppercase tracking-widest px-1.5 py-0.5 ${b.color}`}>{b.label}</span>
         ))}
       </div>
-
       <div className="h-[2px] bg-linear-to-r from-transparent via-green/30 to-transparent" />
-    </motion.div>
-  );
-}
-
-function WatchlistCard() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 12 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.9 }}
-      className="border border-blue/20 bg-protocol-bg/95 backdrop-blur-md w-[200px] shadow-[0_12px_40px_rgba(0,0,0,0.4)] overflow-hidden"
-    >
-      <div className="h-[1px] bg-linear-to-r from-blue to-green" />
-      <div className="px-3 py-2.5 border-b border-protocol-border bg-protocol-accent-bg">
-        <div className="font-mono text-[7px] uppercase tracking-[0.3em] text-blue">Allocator Watchlist</div>
-      </div>
-      <div className="p-3 space-y-2">
-        {[
-          { label: 'Watching', value: '128', color: 'text-protocol-text' },
-          { label: 'Elite Score (900+)', value: '24', color: 'text-green' },
-          { label: 'Low Drawdown', value: '31', color: 'text-blue' },
-          { label: 'Tournament Verified', value: '17', color: 'text-blue' },
-          { label: 'Vault Candidates', value: 'Future', color: 'text-protocol-text-dim/40' },
-        ].map((row, i) => (
-          <div key={i} className="flex items-center justify-between">
-            <span className="font-mono text-[8px] text-protocol-text-dim/50 uppercase tracking-wider">{row.label}</span>
-            <span className={`font-mono text-[9px] font-black ${row.color}`}>{row.value}</span>
-          </div>
-        ))}
-      </div>
     </motion.div>
   );
 }
 
 function TerminalMini() {
   const [visibleLines, setVisibleLines] = useState(0);
-
   useEffect(() => {
     terminalLines.forEach((_, i) => {
       setTimeout(() => setVisibleLines(i + 1), terminalLines[i].delay);
     });
   }, []);
-
   return (
-    <div className="border border-protocol-border bg-black/40 backdrop-blur-md rounded overflow-hidden">
+    <div className="border border-protocol-border bg-black/40 backdrop-blur-md overflow-hidden">
       <div className="px-3 py-2 border-b border-protocol-border bg-protocol-accent-bg flex items-center gap-1.5">
         <div className="w-1.5 h-1.5 rounded-full bg-red-500/40" />
         <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/40" />
@@ -182,61 +174,10 @@ function TerminalMini() {
       </div>
       <div className="p-3 font-mono text-[10px] leading-[1.8]">
         {terminalLines.slice(0, visibleLines).map((line, i) => (
-          <div key={i} className={line.color || 'text-protocol-text'}>
-            {line.text || <>&nbsp;</>}
-          </div>
+          <div key={i} className={line.color || 'text-protocol-text'}>{line.text || <>&nbsp;</>}</div>
         ))}
         {visibleLines < terminalLines.length && <span className="animate-pulse text-blue">▋</span>}
       </div>
-    </div>
-  );
-}
-
-function HeroGridDots() {
-  const dots = [
-    { x: '20%',  y: '25%',  delay: '0s',    size: 3 },
-    { x: '40%',  y: '15%',  delay: '0.8s',  size: 2 },
-    { x: '60%',  y: '30%',  delay: '1.4s',  size: 3 },
-    { x: '80%',  y: '20%',  delay: '0.4s',  size: 2 },
-    { x: '15%',  y: '60%',  delay: '1.1s',  size: 2 },
-    { x: '50%',  y: '55%',  delay: '0.2s',  size: 3 },
-    { x: '75%',  y: '65%',  delay: '1.6s',  size: 2 },
-    { x: '30%',  y: '80%',  delay: '0.6s',  size: 3 },
-    { x: '65%',  y: '78%',  delay: '1.2s',  size: 2 },
-    { x: '88%',  y: '50%',  delay: '0.9s',  size: 3 },
-  ];
-
-  return (
-    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-      {dots.map((d, i) => (
-        <div
-          key={i}
-          className="absolute rounded-full bg-blue/40"
-          style={{
-            left: d.x,
-            top: d.y,
-            width: d.size,
-            height: d.size,
-            animation: `grid-dot-pulse ${2.5 + (i % 3) * 0.8}s ease-in-out ${d.delay} infinite`,
-            boxShadow: `0 0 ${d.size * 3}px rgba(47,128,237,0.6)`,
-          }}
-        />
-      ))}
-      {/* Vertical data streams */}
-      {['25%', '50%', '75%'].map((x, i) => (
-        <div
-          key={`stream-${i}`}
-          className="absolute data-stream-line"
-          style={{
-            left: x,
-            top: 0,
-            height: '100%',
-            animationDelay: `${i * 1.3}s`,
-            animationDuration: `${4 + i}s`,
-            opacity: 0.07,
-          }}
-        />
-      ))}
     </div>
   );
 }
@@ -255,7 +196,7 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
   };
   const itemVariants = {
     hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 100, damping: 20 } },
   };
 
   return (
@@ -274,30 +215,31 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
 
           {/* LEFT — Copy + CTAs */}
           <motion.div variants={containerVariants} initial="hidden" animate="visible">
+
             {/* Eyebrow */}
             <motion.div
               variants={itemVariants}
-              className="inline-flex flex-wrap items-center gap-2 px-3 py-2 rounded-full border border-blue/30 bg-blue/5 backdrop-blur-md mb-7 max-w-full"
+              className="inline-flex flex-wrap items-center gap-2 px-3 py-2 border border-blue/30 bg-blue/5 backdrop-blur-md mb-7 max-w-full"
             >
               <div className="relative w-2 h-2 shrink-0">
                 <span className="absolute inset-0 rounded-full bg-blue animate-ping-custom" />
                 <span className="relative block w-2 h-2 rounded-full bg-blue" />
               </div>
               <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-blue font-bold">
-                HYPERLIQUID TRADER REPUTATION NETWORK
+                Hyperliquid Trader Reputation Network
               </span>
             </motion.div>
 
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
-              className="font-display text-[clamp(44px,8vw,100px)] leading-[0.88] tracking-tighter uppercase mb-6 text-protocol-text"
+              className="font-display text-[clamp(44px,8vw,100px)] leading-[0.88] tracking-tighter uppercase mb-5 text-protocol-text"
             >
-              Build Your<br />
-              Trading Reputation<br />
+              Trader<br />
+              Reputation<br />
               <span className="relative inline-block">
                 <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">
-                  Before Capital Finds You.
+                  Network
                 </span>
                 <motion.div
                   initial={{ scaleX: 0 }}
@@ -306,59 +248,65 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
                   className="absolute -bottom-1 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue/50 to-transparent"
                 />
               </span>
+              <span className="block text-[clamp(16px,2.8vw,32px)] font-mono font-normal tracking-wide mt-2 text-protocol-text-dim/60 normal-case leading-tight">
+                for Programmable Capital
+              </span>
             </motion.h1>
 
             {/* Subheadline */}
             <motion.p
               variants={itemVariants}
-              className="text-protocol-text-dim text-[15px] md:text-[16px] leading-relaxed mb-4 max-w-[520px]"
+              className="text-protocol-text-dim text-[15px] md:text-[16px] leading-relaxed mb-8 max-w-[520px]"
             >
-              Fundoria turns Hyperliquid wallet activity into{' '}
-              <span className="text-protocol-text">Trader Passports</span>, Fundoria Scores, social rankings, badges,{' '}
-              <span className="text-protocol-text">AI trading reviews</span>, and future capital eligibility.
-            </motion.p>
-
-            {/* Micro-line */}
-            <motion.p
-              variants={itemVariants}
-              className="font-mono text-[11px] text-blue italic mb-8"
-            >
-              "Your wallet is your trading resume."
+              Protocol-native capital markets infrastructure where trader skill becomes{' '}
+              <span className="text-protocol-text">verifiable</span>, capital allocation becomes{' '}
+              <span className="text-protocol-text">programmable</span>, and risk is{' '}
+              <span className="text-protocol-text">enforced by code</span>.
             </motion.p>
 
             {/* CTAs */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap gap-4 mb-10">
-              <button
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap gap-3 mb-10">
+              <CTAButton
                 onClick={onOpenWhitelist}
-                className="group relative w-full sm:w-auto bg-blue hover:bg-green text-black font-mono text-[11px] font-black uppercase tracking-[0.2em] px-8 py-4 rounded-sm overflow-hidden transition-all duration-300 shadow-[0_0_40px_rgba(47,128,237,0.3)] hover:shadow-[0_0_80px_rgba(0,200,150,0.5)]"
+                variant="primary"
+                className="sm:w-auto w-full text-[11px]"
               >
-                <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500" />
-                <span className="relative flex items-center justify-center gap-3">
-                  Create Your Passport
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </span>
+                Join Whitelist
+              </CTAButton>
+
+              <button
+                onClick={() => document.getElementById('solution')?.scrollIntoView({ behavior: 'smooth' })}
+                className="group w-full sm:w-auto px-7 py-4 border border-protocol-border hover:border-blue/50 text-protocol-text-dim hover:text-protocol-text font-mono text-[11px] font-black uppercase tracking-[0.2em] transition-all relative overflow-hidden flex items-center justify-center gap-2"
+              >
+                <div className="absolute inset-0 bg-blue/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
+                <span className="relative">Read Protocol</span>
               </button>
 
               <button
-                onClick={onOpenWhitelist}
-                className="group w-full sm:w-auto px-8 py-4 border border-protocol-border hover:border-blue/50 text-protocol-text-dim hover:text-protocol-text font-mono text-[11px] font-black uppercase tracking-[0.2em] rounded-sm transition-all relative overflow-hidden flex items-center justify-center gap-2"
+                onClick={() => document.getElementById('roadmap')?.scrollIntoView({ behavior: 'smooth' })}
+                className="group w-full sm:w-auto px-7 py-4 border border-blue/20 hover:border-blue/50 text-blue/70 hover:text-blue font-mono text-[11px] font-black uppercase tracking-[0.2em] transition-all relative overflow-hidden flex items-center justify-center gap-2"
               >
-                <div className="absolute inset-0 bg-blue/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
-                <span className="relative">Join Early Access</span>
-                <ArrowRight className="w-3.5 h-3.5 relative group-hover:translate-x-1 transition-transform" />
+                <span className="relative">View Roadmap</span>
               </button>
             </motion.div>
 
-            {/* Stats bar */}
+            {/* Trust indicators */}
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-2 md:grid-cols-4 gap-px bg-protocol-border border border-protocol-border"
+              className="grid grid-cols-2 md:grid-cols-4 gap-2"
             >
-              {stats.map((s, i) => (
-                <div key={i} className="bg-protocol-bg px-4 py-4 flex flex-col items-center gap-1.5 group hover:bg-protocol-accent-bg transition-colors">
-                  <div className={`${s.color} opacity-60 group-hover:opacity-100 transition-opacity`}>{s.icon}</div>
-                  <div className={`font-mono text-[11px] font-black ${s.color} text-center leading-tight`}>{s.value}</div>
-                  <div className="font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/50 text-center">{s.label}</div>
+              {trustIndicators.map((t, i) => (
+                <div
+                  key={i}
+                  className="border border-protocol-border bg-protocol-accent-bg/80 px-3 py-3 flex flex-col items-center gap-1.5 group hover:border-blue/30 hover:bg-protocol-accent-bg transition-all duration-300"
+                >
+                  <div className={`${t.color} opacity-60 group-hover:opacity-100 transition-opacity flex items-center gap-1.5`}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${t.dot} flex-shrink-0`} />
+                    {t.icon}
+                  </div>
+                  <div className="font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/60 text-center leading-tight">
+                    {t.label}
+                  </div>
                 </div>
               ))}
             </motion.div>
@@ -366,15 +314,7 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
 
           {/* RIGHT — Visual cards */}
           <div className="relative flex flex-col items-center lg:items-end gap-5 lg:pl-4">
-            {/* Passport card */}
             <HeroPassportCard />
-
-            {/* Watchlist card — offset bottom */}
-            <div className="self-start lg:self-auto lg:absolute lg:bottom-0 lg:-left-4">
-              <WatchlistCard />
-            </div>
-
-            {/* Terminal — stacked below on mobile, absolute on desktop */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
