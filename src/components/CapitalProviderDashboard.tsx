@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { SlidersHorizontal, CheckCircle, ArrowRight } from 'lucide-react';
+import SectionHeader from './ui/SectionHeader';
 
 const pipeline = [
   { step: 'Connected Wallet', sub: 'Hyperliquid identity verified', done: true },
@@ -40,57 +41,46 @@ export default function CapitalProviderDashboard({ onOpenWhitelist }: CapitalPro
   return (
     <section id="capital-access" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-accent-bg px-4 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center gap-2">
-            <span className="w-4 h-px bg-blue/40" />
-            For Capital Providers
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <div>
-              <h2 className="font-display text-[clamp(34px,5vw,64px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
+        <div className="mb-8">
+          <SectionHeader
+            eyebrow="For Capital Providers"
+            title={
+              <>
                 Discover Talent<br />
                 <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Before Allocation.</span>
-              </h2>
-              <p className="text-protocol-text-dim text-[15px] leading-relaxed max-w-lg">
-                Capital providers need more than social noise and raw PnL. Fundoria provides structured risk intelligence, trader discovery, private watchlists, and future vault candidate pipelines.
-              </p>
-            </div>
-            <div>
-              <ul className="space-y-2.5 mb-8">
-                {benefits.map((item, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: 12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
-                    className="flex items-start gap-3"
-                  >
-                    <CheckCircle className="w-4 h-4 text-green shrink-0 mt-0.5" />
-                    <span className="text-[14px] text-protocol-text-dim leading-relaxed">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-              <motion.button
-                initial={{ opacity: 0, y: 8 }}
+              </>
+            }
+            subtitle="Capital providers need more than social noise and raw PnL. Fundoria provides structured risk intelligence, trader discovery, private watchlists, and future vault candidate pipelines."
+            className="mb-0"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mb-8">
+            {benefits.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                onClick={onOpenWhitelist}
-                className="group relative inline-flex items-center gap-3 border border-blue/40 hover:bg-blue text-blue hover:text-black font-mono text-[11px] font-black uppercase tracking-[0.2em] px-8 py-4 overflow-hidden transition-all duration-300"
+                transition={{ delay: i * 0.05 }}
+                className="flex items-start gap-2.5 p-3 border border-protocol-border bg-protocol-bg hover:border-blue/30 transition-colors"
               >
-                <div className="absolute inset-0 bg-blue translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
-                <span className="relative">Join Allocator Waitlist</span>
-                <ArrowRight className="w-4 h-4 relative group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </div>
+                <CheckCircle className="w-3.5 h-3.5 text-green shrink-0 mt-0.5" />
+                <span className="text-[12px] text-protocol-text-dim leading-relaxed">{item}</span>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+          <motion.button
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            onClick={onOpenWhitelist}
+            className="group relative inline-flex items-center gap-3 border border-blue/40 hover:bg-blue text-blue hover:text-black font-mono text-[11px] font-black uppercase tracking-[0.2em] px-8 py-4 overflow-hidden transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-blue translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
+            <span className="relative">Join Allocator Waitlist</span>
+            <ArrowRight className="w-4 h-4 relative group-hover:translate-x-1 transition-transform" />
+          </motion.button>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           {/* Dashboard mockup */}

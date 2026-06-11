@@ -82,11 +82,11 @@
 }
 
 .site-header-glass {
-  background: rgba(2, 5, 12, 0.90);
-  backdrop-filter: blur(45px) saturate(140%);
-  -webkit-backdrop-filter: blur(45px) saturate(140%);
-  border-bottom: 1px solid rgba(220, 232, 255, 0.22);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  background: rgba(2, 5, 12, 0.75);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-bottom: 1px solid rgba(47, 128, 237, 0.12);
+  box-shadow: 0 1px 0 rgba(47, 128, 237, 0.05), 0 16px 48px rgba(0, 0, 0, 0.45);
   z-index: 1002;
 }
 
@@ -300,4 +300,79 @@
   .hide-mobile-overflow {
     overflow: hidden;
   }
+}
+
+/* ── Reduce-motion: disable all Framer Motion + CSS animations ─────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-ticker,
+  .animate-ticker-pausable {
+    animation: none !important;
+  }
+}
+
+/* ── Animated grid-dots overlay for hero ───────────────────────────── */
+@keyframes grid-dot-pulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%       { opacity: 0.5;  transform: scale(1.5); }
+}
+
+.hero-grid-dot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #2F80ED;
+  animation: grid-dot-pulse 3s ease-in-out infinite;
+}
+
+/* ── Data stream line ───────────────────────────────────────────────── */
+@keyframes data-stream {
+  0%   { opacity: 0; transform: translateY(-100%); }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(100%); }
+}
+
+.data-stream-line {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 0%, #2F80ED 50%, transparent 100%);
+  animation: data-stream 4s linear infinite;
+}
+
+/* ── Protocol node connection line ─────────────────────────────────── */
+@keyframes flow-pulse {
+  0%   { stroke-dashoffset: 100; opacity: 0.3; }
+  50%  { opacity: 0.8; }
+  100% { stroke-dashoffset: 0;   opacity: 0.3; }
+}
+
+.flow-path {
+  stroke-dasharray: 6 4;
+  animation: flow-pulse 2s linear infinite;
+}
+
+/* ── Section entry animation ────────────────────────────────────────── */
+@keyframes section-reveal {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Focus ring ─────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #2F80ED;
+  outline-offset: 3px;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #2F80ED;
+  outline-offset: 3px;
 }

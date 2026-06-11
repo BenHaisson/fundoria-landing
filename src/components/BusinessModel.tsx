@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { UserCheck, Zap, Trophy, Building2, Code2, Vault } from 'lucide-react';
+import SectionHeader from './ui/SectionHeader';
 
 const tiers = [
   {
@@ -69,25 +70,17 @@ export default function BusinessModel() {
   return (
     <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center justify-center gap-2">
-            <span className="w-4 h-px bg-blue/40" />
-            Business Model
-            <span className="w-4 h-px bg-blue/40" />
-          </div>
-          <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
-            Built for<br />
-            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Sustainable Growth.</span>
-          </h2>
-          <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
-            Multiple revenue layers aligned with value creation. No token emissions. No speculation. Pure product.
-          </p>
-        </motion.div>
+        <SectionHeader
+          eyebrow="Business Model"
+          centered
+          title={
+            <>
+              Built for<br />
+              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Sustainable Growth.</span>
+            </>
+          }
+          subtitle="Multiple revenue layers aligned with value creation. No token emissions. No speculation. Pure product."
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {tiers.map((t, i) => (

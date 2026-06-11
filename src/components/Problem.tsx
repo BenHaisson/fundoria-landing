@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Image, BarChart2, Trophy, Search } from 'lucide-react';
+import SectionHeader from './ui/SectionHeader';
 
 const problems = [
   {
@@ -40,25 +41,17 @@ export default function Problem() {
   return (
     <section id="vision" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-blue mb-4 flex items-center justify-center gap-2">
-            <span className="w-4 h-px bg-blue/40" />
-            The Problem
-            <span className="w-4 h-px bg-blue/40" />
-          </div>
-          <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
-            Trading Skill Is Public,<br />
-            <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">But Reputation Is Broken.</span>
-          </h2>
-          <p className="text-protocol-text-dim text-[15px] max-w-xl mx-auto leading-relaxed">
-            Crypto traders generate public activity every day, but the market still relies on screenshots, social noise, and raw PnL. Capital providers cannot separate skill from luck.
-          </p>
-        </motion.div>
+        <SectionHeader
+          eyebrow="The Problem"
+          centered
+          title={
+            <>
+              Trading Skill Is Public,<br />
+              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">But Reputation Is Broken.</span>
+            </>
+          }
+          subtitle="Crypto traders generate public activity every day, but the market still relies on screenshots, social noise, and raw PnL. Capital providers cannot separate skill from luck."
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {problems.map((p, i) => (
