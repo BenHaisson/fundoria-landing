@@ -7,7 +7,9 @@ type StatusVariant =
   | 'alpha'
   | 'preview'
   | 'planned'
-  | 'research';
+  | 'research'
+  | 'in-audit'
+  | 'phased';
 
 interface StyleDef {
   dot: string;
@@ -26,6 +28,8 @@ const styles: Record<StatusVariant, StyleDef> = {
   preview:       { dot: 'bg-purple-400',      text: 'text-purple-400',       border: 'border-purple-400/30',    bg: 'bg-purple-400/5' },
   planned:       { dot: 'bg-[#4A6484]',       text: 'text-protocol-text-dim/50', border: 'border-protocol-border', bg: '' },
   research:      { dot: 'bg-violet-400',      text: 'text-violet-400',       border: 'border-violet-400/30',    bg: 'bg-violet-400/5' },
+  'in-audit':    { dot: 'bg-orange-400',      text: 'text-orange-400',       border: 'border-orange-400/30',    bg: 'bg-orange-400/5' },
+  phased:        { dot: 'bg-purple-400',      text: 'text-purple-400',       border: 'border-purple-400/30',    bg: 'bg-purple-400/5' },
 };
 
 interface StatusTagProps {

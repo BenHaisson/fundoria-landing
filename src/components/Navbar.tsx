@@ -137,27 +137,27 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
 // ─── Standalone fixed ticker — sits OUTSIDE the nav stacking context ────────
 // so backdrop-filter blurs actual page content, not the nav itself.
 
-type Status = 'live' | 'done' | 'build' | 'coming' | 'mkt' | 'future';
+type Status = 'live' | 'done' | 'build' | 'coming' | 'mkt' | 'future' | 'audit' | 'phased';
 
 const items: { status: Status; tag: string; text: string }[] = [
-  { status: 'live',   tag: 'ALPHA',        text: 'LANDING PAGE V3: LIVE' },
+  { status: 'live',   tag: 'LIVE',         text: 'LANDING PAGE V0.1' },
+  { status: 'done',   tag: 'DONE',         text: 'PROTOCOL ARCHITECTURE DRAFT' },
   { status: 'done',   tag: 'DONE',         text: 'TRADER REPUTATION NETWORK POSITIONING' },
-  { status: 'done',   tag: 'DONE',         text: 'TRADER PASSPORT CONCEPT' },
   { status: 'done',   tag: 'DONE',         text: 'FUNDORIA SCORE FRAMEWORK' },
-  { status: 'live',   tag: 'ALPHA',        text: 'EARLY ACCESS FORM OPEN' },
-  { status: 'build',  tag: 'IN BUILD',     text: 'CAPITAL PROVIDER WATCHLIST DESIGN' },
+  { status: 'live',   tag: 'LIVE',         text: 'EARLY ACCESS FORM OPEN' },
+  { status: 'build',  tag: 'IN BUILD',     text: 'TRADER EVALUATION INTERFACE' },
+  { status: 'build',  tag: 'IN BUILD',     text: 'TRADER REPUTATION PASSPORT' },
+  { status: 'audit',  tag: 'IN AUDIT',     text: 'SMART VAULT RISK MODEL' },
   { status: 'coming', tag: 'COMING SOON',  text: 'HYPERLIQUID WALLET INDEXING MVP' },
+  { status: 'coming', tag: 'COMING SOON',  text: 'RISK ENGINE SIMULATOR' },
+  { status: 'coming', tag: 'COMING SOON',  text: 'CAPITAL PROVIDER DASHBOARD' },
   { status: 'coming', tag: 'COMING SOON',  text: 'PUBLIC TRADER PROFILES' },
   { status: 'coming', tag: 'COMING SOON',  text: 'LEADERBOARDS & BADGES' },
-  { status: 'coming', tag: 'COMING SOON',  text: 'AI TRADING JOURNAL' },
-  { status: 'mkt',    tag: 'MARKETING',    text: 'SOCIAL LAUNCH PREPARATION' },
-  { status: 'mkt',    tag: 'MARKETING',    text: 'COMMUNITY BUILDING PHASE' },
   { status: 'mkt',    tag: 'COMMUNITY',    text: 'EARLY TRADER SIGNUPS OPEN' },
   { status: 'mkt',    tag: 'COMMUNITY',    text: 'CAPITAL PROVIDER WAITLIST OPEN' },
   { status: 'future', tag: 'FUTURE',       text: 'FUNDORIA VAULTS: ELIGIBILITY-BASED LAYER' },
-  { status: 'future', tag: 'FUTURE',       text: 'ALLOCATOR DASHBOARD' },
   { status: 'future', tag: 'FUTURE',       text: 'MANDATE-BASED CAPITAL WORKFLOWS' },
-  { status: 'future', tag: 'FUTURE',       text: 'PROTOCOL FEE MODEL' },
+  { status: 'phased', tag: 'PHASED',       text: 'DAO GOVERNANCE' },
 ];
 
 const dotClass: Record<Status, string> = {
@@ -167,6 +167,8 @@ const dotClass: Record<Status, string> = {
   coming: 's-coming',
   mkt:    's-mkt',
   future: 's-future',
+  audit:  's-audit',
+  phased: 's-phased',
 };
 
 export function StatusTicker() {

@@ -82,11 +82,11 @@
 }
 
 .site-header-glass {
-  background: rgba(2, 5, 12, 0.75);
+  background: rgba(2, 5, 12, 0.55);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border-bottom: 1px solid rgba(47, 128, 237, 0.12);
-  box-shadow: 0 1px 0 rgba(47, 128, 237, 0.05), 0 16px 48px rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid rgba(14, 26, 46, 0.8);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
   z-index: 1002;
 }
 
@@ -177,6 +177,8 @@
 .s-coming  { color: #38BDF8; }
 .s-mkt     { color: #A78BFA; }
 .s-future  { color: #4A6484; }
+.s-audit   { color: #FB923C; }
+.s-phased  { color: #A78BFA; }
 
 @keyframes ticker {
   from { transform: translateX(0); }

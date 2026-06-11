@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Navbar, { StatusTicker } from './Navbar';
 import Hero from './Hero';
+import AudienceSection from './AudienceSection';
 import Problem from './Problem';
 import Solution from './Solution';
+import HowItWorks from './HowItWorks';
 import ForTraders from './ForTraders';
 import CapitalProviderDashboard from './CapitalProviderDashboard';
 import TraderPassportSection from './TraderPassportSection';
@@ -24,7 +26,7 @@ export default function Landing() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-protocol-bg text-protocol-text">
-      {/* Background orbs */}
+      {/* Background orbs — fixed, behind everything */}
       <div className="fixed top-[-5%] right-[-10%] w-[50vw] h-[50vw] bg-blue/[0.07] blur-[140px] rounded-full pointer-events-none z-0" />
       <div className="fixed bottom-[-5%] left-[-10%] w-[40vw] h-[40vw] bg-green/[0.05] blur-[140px] rounded-full pointer-events-none z-0" />
 
@@ -35,33 +37,37 @@ export default function Landing() {
       <main className="relative z-10">
         {/* 1. Hero */}
         <Hero onOpenWhitelist={openWhitelist} />
-        {/* 2. Problem */}
+        {/* 2. Audience cards — quick audience identification */}
+        <AudienceSection onOpenWhitelist={openWhitelist} />
+        {/* 3. Problem */}
         <Problem />
-        {/* 3. Solution */}
+        {/* 4. Solution + Architecture Flow */}
         <Solution />
-        {/* 4. For Traders */}
+        {/* 5. How It Works — 8-step journey */}
+        <HowItWorks />
+        {/* 6. For Traders — deep dive */}
         <ForTraders onOpenWhitelist={openWhitelist} />
-        {/* 5. For Capital Providers */}
+        {/* 7. For Capital Providers — deep dive */}
         <CapitalProviderDashboard onOpenWhitelist={openWhitelist} />
-        {/* 6. Trader Passport */}
+        {/* 8. Trader Passport */}
         <TraderPassportSection />
-        {/* 7. Fundoria Score */}
+        {/* 9. Fundoria Score */}
         <FundoriaScore />
-        {/* 8. Social Features */}
+        {/* 10. Social Features */}
         <SocialFeatures />
-        {/* 9. Fundoria Vaults */}
+        {/* 11. Fundoria Vaults */}
         <FundoriaVaults />
-        {/* 10. Leaderboards */}
+        {/* 12. Leaderboards */}
         <Leaderboards />
-        {/* 11. Business Model */}
+        {/* 13. Business Model */}
         <BusinessModel />
-        {/* 12. Roadmap */}
+        {/* 14. Roadmap */}
         <Roadmap />
-        {/* 13. FAQ */}
+        {/* 15. FAQ */}
         <FAQ />
       </main>
 
-      {/* 14. Footer (includes final CTA) */}
+      {/* 16. Footer (includes final CTA) */}
       <Footer onOpenWhitelist={openWhitelist} />
       <WhitelistModal isOpen={isWhitelistOpen} onClose={closeWhitelist} />
     </div>
