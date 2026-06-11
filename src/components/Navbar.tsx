@@ -38,7 +38,7 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
   }, []);
 
   return (
-    <nav className="site-header-glass fixed top-0 w-full transition-all duration-300 h-[72px] flex items-center">
+    <nav aria-label="Main navigation" className="site-header-glass fixed top-0 w-full transition-all duration-300 h-[72px] flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex items-center justify-between">
         <a href="#" className="flex items-center transition-opacity hover:opacity-80">
           <Logo size={32} showText={true} />
@@ -74,7 +74,9 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
           <button
             className="md:hidden p-2 text-protocol-text-dim hover:text-protocol-text transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-menu"
           >
             <AnimatePresence mode="wait">
               {mobileMenuOpen ? (
@@ -98,6 +100,8 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            id="mobile-nav-menu"
+            aria-label="Mobile navigation"
             className="site-header-glass absolute top-[72px] left-0 w-full md:hidden z-[1000] overflow-hidden"
           >
             <div className="px-6 pt-6 pb-8">

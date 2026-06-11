@@ -86,7 +86,7 @@ const phases: {
     meta: 'Risk Engine + Proof Layer',
     title: 'Risk Enforcement · On-chain Proof',
     desc: 'Drawdown enforcement, risk limit monitoring, signed performance attestations, and on-chain checkpoint infrastructure.',
-    status: 'in-audit',
+    status: 'research',
     statusLabel: 'In Design',
     timeline: 'Future',
     active: false,

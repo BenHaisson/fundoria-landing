@@ -150,6 +150,11 @@ function HeroPassportCard() {
         ))}
       </div>
       <div className="h-[2px] bg-linear-to-r from-transparent via-green/30 to-transparent" />
+      <div className="px-4 py-2 flex items-center justify-center">
+        <span className="font-mono text-[7px] uppercase tracking-widest text-protocol-text-dim/30">
+          Illustrative · Sample Data
+        </span>
+      </div>
     </motion.div>
   );
 }

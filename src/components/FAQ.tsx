@@ -41,13 +41,18 @@ const faqs = [
   },
 ];
 
-function FAQItem({ q, a, isFirst }: { q: string; a: string; isFirst?: boolean }) {
+function FAQItem({ q, a, isFirst, idx }: { q: string; a: string; isFirst?: boolean; idx: number }) {
   const [open, setOpen] = useState(isFirst || false);
+  const panelId = `faq-panel-${idx}`;
+  const btnId = `faq-btn-${idx}`;
 
   return (
     <div className={`border-b border-protocol-border transition-all duration-300 ${open ? 'bg-protocol-accent-bg/60' : 'hover:bg-protocol-accent-bg/40'}`}>
       <button
+        id={btnId}
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-controls={panelId}
         className="w-full py-5 sm:py-6 flex justify-between items-center text-left group px-4 sm:px-5 relative overflow-hidden"
       >
         {open && (
@@ -70,6 +75,9 @@ function FAQItem({ q, a, isFirst }: { q: string; a: string; isFirst?: boolean })
       <AnimatePresence>
         {open && (
           <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={btnId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -77,7 +85,7 @@ function FAQItem({ q, a, isFirst }: { q: string; a: string; isFirst?: boolean })
             className="overflow-hidden"
           >
             <div className="px-5 sm:px-14 pb-7 relative">
-              <div className="absolute left-4 top-0 bottom-6 w-px bg-linear-to-b from-blue/30 to-transparent" />
+              <div className="absolute left-4 top-0 bottom-6 w-px bg-linear-to-b from-blue/30 to-transparent" aria-hidden="true" />
               <p className="text-[14px] text-protocol-text-dim leading-[1.75]">{a}</p>
             </div>
           </motion.div>
@@ -89,7 +97,7 @@ function FAQItem({ q, a, isFirst }: { q: string; a: string; isFirst?: boolean })
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
+    <section id="faq" aria-labelledby="faq-heading" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -102,7 +110,7 @@ export default function FAQ() {
             FAQ
             <span className="w-4 h-px bg-blue/40" />
           </div>
-          <h2 className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
+          <h2 id="faq-heading" className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5">
             Common<br />
             <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Questions.</span>
           </h2>
@@ -120,7 +128,7 @@ export default function FAQ() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
             >
-              <FAQItem q={faq.q} a={faq.a} isFirst={i === 0} />
+              <FAQItem q={faq.q} a={faq.a} isFirst={i === 0} idx={i} />
             </motion.div>
           ))}
         </div>

@@ -368,13 +368,58 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Skip-to-content ────────────────────────────────────────────────── */
+.skip-to-content {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 10px 20px;
+  background: #2F80ED;
+  color: #000;
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: top 0.2s;
+}
+.skip-to-content:focus {
+  top: 8px;
+  outline: 2px solid #00C896;
+  outline-offset: 2px;
+}
+
+/* ── Screen reader only ─────────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* ── Focus ring ─────────────────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid #2F80ED;
   outline-offset: 3px;
+  border-radius: 1px;
 }
 button:focus-visible,
 a:focus-visible {
   outline: 2px solid #2F80ED;
   outline-offset: 3px;
+}
+[role="tab"]:focus-visible {
+  outline: 2px solid #2F80ED;
+  outline-offset: 2px;
+  z-index: 1;
+  position: relative;
 }

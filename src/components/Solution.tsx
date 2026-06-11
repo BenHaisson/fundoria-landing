@@ -136,13 +136,16 @@ export default function Solution() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-3">
             <div className="h-px flex-1 bg-protocol-border" />
             <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-protocol-text-dim/40">
-              Protocol Architecture
+              Future Protocol Architecture
             </span>
             <div className="h-px flex-1 bg-protocol-border" />
           </div>
+          <p className="font-mono text-[8px] text-protocol-text-dim/30 uppercase tracking-wider text-center mb-5">
+            Full capital layer — subject to legal, security, and technical review · not yet deployed
+          </p>
 
           {/* Desktop: horizontal flow with arrows */}
           <div className="hidden lg:flex items-stretch gap-0 mb-4">

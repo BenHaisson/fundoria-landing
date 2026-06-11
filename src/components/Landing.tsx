@@ -5,6 +5,7 @@ import AudienceSection from './AudienceSection';
 import Problem from './Problem';
 import Solution from './Solution';
 import HowItWorks from './HowItWorks';
+import ArchitectureV2 from './ArchitectureV2';
 import ForTraders from './ForTraders';
 import CapitalProviderDashboard from './CapitalProviderDashboard';
 import TraderPassportSection from './TraderPassportSection';
@@ -26,6 +27,7 @@ export default function Landing() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-protocol-bg text-protocol-text">
+      <a href="#main-content" className="skip-to-content">Skip to content</a>
       {/* Background orbs — fixed, behind everything */}
       <div className="fixed top-[-5%] right-[-10%] w-[50vw] h-[50vw] bg-blue/[0.07] blur-[140px] rounded-full pointer-events-none z-0" />
       <div className="fixed bottom-[-5%] left-[-10%] w-[40vw] h-[40vw] bg-green/[0.05] blur-[140px] rounded-full pointer-events-none z-0" />
@@ -34,7 +36,7 @@ export default function Landing() {
       <StatusTicker />
       <FloatingCTA onOpenWhitelist={openWhitelist} />
 
-      <main className="relative z-10">
+      <main id="main-content" className="relative z-10" tabIndex={-1}>
         {/* 1. Hero */}
         <Hero onOpenWhitelist={openWhitelist} />
         {/* 2. Audience cards — quick audience identification */}
@@ -43,27 +45,29 @@ export default function Landing() {
         <Problem />
         {/* 4. Solution + Architecture Flow */}
         <Solution />
-        {/* 5. How It Works — 8-step journey */}
+        {/* 5. MVP Intelligence Architecture */}
+        <ArchitectureV2 />
+        {/* 6. How It Works — 8-step journey */}
         <HowItWorks />
-        {/* 6. For Traders — deep dive */}
+        {/* 7. For Traders — deep dive */}
         <ForTraders onOpenWhitelist={openWhitelist} />
-        {/* 7. For Capital Providers — deep dive */}
+        {/* 8. For Capital Providers — deep dive */}
         <CapitalProviderDashboard onOpenWhitelist={openWhitelist} />
-        {/* 8. Trader Passport */}
+        {/* 9. Trader Passport */}
         <TraderPassportSection />
-        {/* 9. Fundoria Score */}
+        {/* 10. Fundoria Score */}
         <FundoriaScore />
-        {/* 10. Social Features */}
+        {/* 11. Social Features */}
         <SocialFeatures />
-        {/* 11. Fundoria Vaults */}
+        {/* 12. Fundoria Vaults */}
         <FundoriaVaults />
-        {/* 12. Leaderboards */}
+        {/* 13. Leaderboards */}
         <Leaderboards />
-        {/* 13. Business Model */}
+        {/* 14. Business Model */}
         <BusinessModel />
-        {/* 14. Roadmap */}
+        {/* 15. Roadmap */}
         <Roadmap />
-        {/* 15. FAQ */}
+        {/* 16. FAQ */}
         <FAQ />
       </main>
 
