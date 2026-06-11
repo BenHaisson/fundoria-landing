@@ -1,20 +1,39 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Fundoria Landing
 
-# Run and deploy your AI Studio app
+Fundoria is the Trader Reputation Network for Hyperliquid.
 
-This contains everything you need to run your app locally.
+This repository contains the public landing page for Fundoria, focused on Trader Passports, Fundoria Scores, social trader reputation, capital provider discovery, and future vault eligibility.
 
-View your app in AI Studio: https://ai.studio/apps/43dadbf0-10ad-4746-8ff2-d132cdb344ee
+## Product Positioning
 
-## Run Locally
+Fundoria turns Hyperliquid wallet activity into:
 
-**Prerequisites:**  Node.js
+- Trader Passports
+- Fundoria Scores
+- Social rankings
+- AI trading reviews
+- Capital provider watchlists
+- Future vault eligibility
 
+## Stack
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Vercel
+
+## Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+## Production
+
+The production site is deployed on Vercel: https://fundoria-landing.vercel.app/
+
+## Compliance Note
+
+Fundoria is a trader intelligence and reputation layer. The MVP is read-only and does not custody user funds, accept deposits, execute trades, or provide investment advice. Capital access and vault-related features are future, eligibility-based, and subject to legal, technical, operational, and risk constraints.

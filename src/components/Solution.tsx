@@ -14,7 +14,7 @@ const flow = [
 const stats = [
   { value: '1000', label: 'Score Range' },
   { value: '10', label: 'Score Dimensions' },
-  { value: '$0', label: 'Min. Deposit' },
+  { value: '0', label: 'Custody · Read-Only MVP' },
 ];
 
 export default function Solution() {
@@ -33,8 +33,8 @@ export default function Solution() {
               The Solution
             </div>
             <h2 className="font-display text-[clamp(34px,5vw,64px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-6">
-              A Social Reputation<br />
-              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Layer for Traders.</span>
+              A Social Reputation Layer<br />
+              <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">for Traders and Capital.</span>
             </h2>
             <p className="text-protocol-text-dim text-[15px] leading-relaxed mb-4 max-w-lg">
               Fundoria converts Hyperliquid wallet activity into public trader profiles, risk-adjusted scores, rankings, badges, AI reviews, and future capital-access workflows.

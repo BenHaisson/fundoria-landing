@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: 'What is a Trader Passport?',
-    a: 'A Trader Passport is your public trading identity on Fundoria. It includes your wallet address, Fundoria Score, risk grade, PnL curve, drawdown stats, consistency score, leverage behavior, badges, tournament history, ranking percentile, and capital eligibility status. It is shareable, verifiable, and built entirely from live Hyperliquid activity.',
+    a: 'A Trader Passport is your public trading identity on Fundoria. It includes your wallet address, Fundoria Score, risk grade, PnL curve, drawdown stats, consistency score, leverage behavior, badges, tournament history, ranking percentile, and future eligibility signals. It is shareable, verifiable, and designed to be generated from Hyperliquid activity.',
   },
   {
     q: 'What is the Fundoria Score?',
@@ -33,7 +33,11 @@ const faqs = [
   },
   {
     q: 'Is there an ICO or token sale?',
-    a: 'No. There is no ICO, no token sale, no presale, and no $FND token. Fundoria is a product-first network. Revenue comes from Pro subscriptions, tournament fees, capital provider platform fees, and the Builder API. No speculative token component.',
+    a: 'No. There is no ICO, no token sale, no presale, and no $FND token. Fundoria is a product-first network. Revenue may come from Pro subscriptions, partner competitions, capital provider platform access, and Builder API usage. No speculative token component.',
+  },
+  {
+    q: 'Are Fundoria Vaults live?',
+    a: 'No. Fundoria Vaults are a future layer. The MVP focuses on read-only reputation, analytics, scores, profiles, and discovery. Vault features are future, eligibility-based, and subject to legal, technical, operational, and risk constraints.',
   },
 ];
 

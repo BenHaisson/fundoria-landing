@@ -114,7 +114,7 @@ export default function Footer({ onOpenWhitelist }: FooterProps) {
         <div className="border-t border-protocol-border/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col gap-3">
             <p className="text-[9px] font-mono text-protocol-text-dim/40 leading-relaxed uppercase tracking-tighter max-w-3xl">
-              <span className="text-blue/50 font-bold">[ DISCLOSURE ]</span> · Fundoria does not custody user funds in the MVP and does not offer guaranteed returns, investment products, or profit-sharing claims. Capital access features are future, eligibility-based, and subject to risk, legal, and operational constraints. Fundoria is a read-only intelligence layer. No deposits. No token sale.
+              <span className="text-blue/50 font-bold">[ DISCLOSURE ]</span> · Fundoria is a trader intelligence and reputation layer. The MVP is read-only and does not custody user funds, accept deposits, execute trades, or provide investment advice. Fundoria does not offer guaranteed returns, investment products, or profit-sharing claims. Capital access and vault-related features are future, eligibility-based, and subject to legal, technical, operational, and risk constraints.
             </p>
             <div className="font-mono text-[9px] text-protocol-text-dim/25 uppercase tracking-widest">
               © 2026 Fundoria · Hyperliquid Native

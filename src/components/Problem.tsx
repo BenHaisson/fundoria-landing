@@ -13,7 +13,7 @@ const problems = [
   {
     icon: <BarChart2 className="w-5 h-5" />,
     title: 'PnL Does Not Explain Risk',
-    desc: 'Raw profit numbers hide leverage, drawdown, and survivorship bias. A 50% return with 80% drawdown is not a signal worth trusting.',
+    desc: 'Raw profit numbers hide leverage, drawdown, and survivorship bias. A high return with extreme drawdown is not enough to establish repeatable skill.',
     color: 'text-green',
     borderColor: 'group-hover:border-green/40',
     glowColor: 'group-hover:shadow-[0_0_40px_rgba(0,200,150,0.08)]',
