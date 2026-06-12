@@ -31,81 +31,111 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const onResize = () => { if (window.innerWidth >= 768) setMobileMenuOpen(false); };
+    window.addEventListener('resize', onResize, { passive: true });
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   return (
-    <nav aria-label="Main navigation" className={`site-header-glass${scrolled ? ' scrolled' : ''} fixed top-0 w-full h-[72px] flex items-center`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex items-center justify-between">
-        <a href="#" className="flex items-center transition-opacity hover:opacity-80" aria-label="Fundoria — home">
-          <BrandLogo variant="full" height={30} className="nav-brand-logo" />
-        </a>
+    <>
+      {/* ── Main nav bar ───────────────────────────────────────────────── */}
+      <nav
+        aria-label="Main navigation"
+        className={`site-header-glass${scrolled ? ' scrolled' : ''} fixed top-0 w-full h-[72px] flex items-center`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex items-center justify-between">
+          <a href="#" className="flex items-center transition-opacity hover:opacity-80" aria-label="Fundoria — home">
+            <BrandLogo variant="full" height={30} className="nav-brand-logo" />
+          </a>
 
-        <ul className="hidden md:flex items-center gap-9">
-          {navLinks.map(({ label, anchor }) => {
-            const isActive = activeSection === anchor;
-            return (
-              <li key={anchor}>
-                <a
-                  href={`#${anchor}`}
-                  onClick={e => {
-                    e.preventDefault();
-                    document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
-                  className={`font-mono text-[10px] uppercase tracking-[0.2em] transition-colors relative group ${isActive ? 'text-protocol-text' : 'text-[#8AACCC] hover:text-protocol-text'}`}
-                >
-                  {label}
-                  <span className={`absolute left-0 -bottom-1 h-px bg-blue transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+          {/* Desktop links */}
+          <ul className="hidden md:flex items-center gap-9">
+            {navLinks.map(({ label, anchor }) => {
+              const isActive = activeSection === anchor;
+              return (
+                <li key={anchor}>
+                  <a
+                    href={`#${anchor}`}
+                    onClick={e => {
+                      e.preventDefault();
+                      document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    className={`font-mono text-[10px] uppercase tracking-[0.2em] transition-colors relative group ${isActive ? 'text-protocol-text' : 'text-[#8AACCC] hover:text-protocol-text'}`}
+                  >
+                    {label}
+                    <span className={`absolute left-0 -bottom-1 h-px bg-blue transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
 
-        <div className="flex items-center gap-4">
-          <button
-            onClick={onOpenWhitelist}
-            className="hidden sm:flex group items-center gap-2 bg-blue hover:bg-green text-black font-mono text-[10px] font-bold uppercase tracking-[0.2em] px-5 py-2.5 transition-all duration-300 active:scale-95 shadow-[0_4px_16px_rgba(47,128,237,0.25)] hover:shadow-[0_4px_24px_rgba(0,200,150,0.35)] overflow-hidden relative"
-          >
-            <div className="absolute inset-0 bg-white/15 -translate-x-full group-hover:translate-x-full transition-transform duration-500 pointer-events-none" />
-            <span className="relative">Join Early Access</span>
-            <div className="w-1.5 h-1.5 bg-black/40 rounded-full relative" />
-          </button>
+          <div className="flex items-center gap-4">
+            {/* Desktop CTA */}
+            <button
+              onClick={onOpenWhitelist}
+              className="hidden sm:flex group items-center gap-2 bg-blue hover:bg-green text-black font-mono text-[10px] font-bold uppercase tracking-[0.2em] px-5 py-2.5 transition-all duration-300 active:scale-95 shadow-[0_4px_16px_rgba(47,128,237,0.25)] hover:shadow-[0_4px_24px_rgba(0,200,150,0.35)] overflow-hidden relative"
+            >
+              <div className="absolute inset-0 bg-white/15 -translate-x-full group-hover:translate-x-full transition-transform duration-500 pointer-events-none" />
+              <span className="relative">Join Early Access</span>
+              <div className="w-1.5 h-1.5 bg-black/40 rounded-full relative" />
+            </button>
 
-          <button
-            className="md:hidden p-2 text-protocol-text-dim hover:text-protocol-text transition-colors"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-nav-menu"
-          >
-            <AnimatePresence mode="wait">
-              {mobileMenuOpen ? (
-                <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <X size={22} />
-                </motion.div>
-              ) : (
-                <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <Menu size={22} />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </button>
+            {/* Hamburger — mobile only */}
+            <button
+              className="md:hidden p-2 text-protocol-text-dim hover:text-protocol-text transition-colors"
+              onClick={() => setMobileMenuOpen(prev => !prev)}
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-menu"
+            >
+              <AnimatePresence mode="wait">
+                {mobileMenuOpen ? (
+                  <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                    <X size={22} />
+                  </motion.div>
+                ) : (
+                  <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                    <Menu size={22} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
         </div>
-      </div>
+      </nav>
 
+      {/*
+        ── Mobile menu panel ─────────────────────────────────────────────
+        Rendered OUTSIDE the <nav> so it is never clipped by the nav's
+        overflow:hidden. Uses position:fixed so it escapes any parent
+        stacking/overflow context.
+      */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            key="mobile-menu"
             id="mobile-nav-menu"
+            role="dialog"
             aria-label="Mobile navigation"
-            className="site-header-glass absolute top-[72px] left-0 w-full md:hidden z-[1000] overflow-hidden"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed left-0 right-0 md:hidden"
+            style={{ top: 72, zIndex: 1003 }}
           >
-            <div className="px-6 pt-6 pb-8">
-              <ul className="flex flex-col gap-1 mb-8">
+            <div className="mobile-menu-panel px-5 pt-5 pb-7">
+              <ul className="flex flex-col gap-1 mb-5">
                 {navLinks.map(({ label, anchor }, i) => (
-                  <motion.li key={anchor} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
+                  <motion.li
+                    key={anchor}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.04, duration: 0.25 }}
+                  >
                     <a
                       href={`#${anchor}`}
                       onClick={e => {
@@ -115,7 +145,7 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
                           document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }, 150);
                       }}
-                      className="py-3 font-mono text-xs uppercase tracking-[0.3em] text-[#8AACCC] hover:text-blue transition-colors border-b border-protocol-border/30 flex items-center justify-between group"
+                      className="flex items-center justify-between py-3.5 px-4 font-mono text-[11px] uppercase tracking-[0.18em] text-[#8AACCC] hover:text-blue border border-[rgba(26,45,70,0.65)] hover:border-blue/30 transition-all group"
                     >
                       {label}
                       <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
@@ -123,12 +153,13 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
                   </motion.li>
                 ))}
               </ul>
+
               <motion.button
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
+                transition={{ delay: 0.3 }}
                 onClick={() => { onOpenWhitelist?.(); setMobileMenuOpen(false); }}
-                className="w-full bg-blue text-black font-mono text-[11px] font-bold uppercase tracking-[0.3em] py-4 flex items-center justify-center gap-3 shadow-[0_4px_24px_rgba(47,128,237,0.3)]"
+                className="w-full bg-blue hover:bg-green text-black font-mono text-[11px] font-bold uppercase tracking-[0.25em] py-4 flex items-center justify-center gap-3 transition-colors shadow-[0_4px_24px_rgba(47,128,237,0.3)]"
               >
                 Join Early Access
                 <ArrowRight className="w-4 h-4" />
@@ -137,8 +168,7 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
           </motion.div>
         )}
       </AnimatePresence>
-
-    </nav>
+    </>
   );
 }
 

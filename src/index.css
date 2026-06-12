@@ -145,7 +145,17 @@ main > section[id] {
   }
 }
 
-/* Old alias kept for mobile menu drawer */
+/* ── Mobile nav dropdown panel ──────────────────────────────────────── */
+/* Rendered outside <nav> so it escapes nav's overflow:hidden */
+.mobile-menu-panel {
+  background: rgba(2, 5, 12, 0.98);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-bottom: 1px solid rgba(14, 26, 46, 0.95);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Old alias kept for legacy references */
 .ticker-glass {
   background: rgba(2, 5, 12, 0.90);
   backdrop-filter: blur(45px) saturate(140%);
@@ -241,7 +251,7 @@ main > section[id] {
 }
 
 .animate-ticker {
-  animation: ticker 40s linear infinite;
+  animation: ticker 70s linear infinite;
 }
 
 @keyframes scanline {
@@ -327,11 +337,17 @@ main > section[id] {
 }
 
 .animate-ticker-pausable {
-  animation: ticker 40s linear infinite;
+  animation: ticker 70s linear infinite;
 }
 
 .animate-ticker-pausable:hover {
   animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .animate-ticker-pausable {
+    animation-duration: 90s;
+  }
 }
 
 /* Card glow on hover — reusable */
