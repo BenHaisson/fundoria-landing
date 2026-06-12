@@ -9,13 +9,12 @@ interface NavbarProps {
 }
 
 const navLinks = [
-  { label: 'Why', anchor: 'vision' },
   { label: 'Passport', anchor: 'passport' },
-  { label: 'Score', anchor: 'score' },
-  { label: 'Network', anchor: 'social' },
-  { label: 'Capital', anchor: 'capital-access' },
-  { label: 'Roadmap', anchor: 'roadmap' },
-  { label: 'FAQ', anchor: 'faq' },
+  { label: 'Traders',  anchor: 'traders' },
+  { label: 'Capital',  anchor: 'capital' },
+  { label: 'Protocol', anchor: 'protocol' },
+  { label: 'Roadmap',  anchor: 'roadmap' },
+  { label: 'FAQ',      anchor: 'faq' },
 ];
 
 const navSections = navLinks.map(l => ({ id: l.anchor, label: l.label }));

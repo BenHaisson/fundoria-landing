@@ -337,7 +337,7 @@ main > section[id] {
 }
 
 .animate-ticker-pausable {
-  animation: ticker 70s linear infinite;
+  animation: ticker 75s linear infinite;
 }
 
 .animate-ticker-pausable:hover {
@@ -346,7 +346,7 @@ main > section[id] {
 
 @media (max-width: 768px) {
   .animate-ticker-pausable {
-    animation-duration: 90s;
+    animation-duration: 95s;
   }
 }
 
