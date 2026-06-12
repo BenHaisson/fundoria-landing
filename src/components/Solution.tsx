@@ -156,21 +156,25 @@ export default function Solution() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + i * 0.09, ease: [0.16, 1, 0.3, 1] }}
-                  className="group relative border border-protocol-border bg-protocol-bg hover:border-blue/30 transition-colors duration-300 p-4 flex flex-col gap-2 overflow-hidden w-[160px] shrink-0"
-                  style={{ minHeight: '140px' }}
+                  className="group relative border border-protocol-border card-surface card-lift hover:border-blue/30 p-4 flex flex-col gap-2.5 overflow-hidden w-[164px] shrink-0"
+                  style={{ minHeight: '148px' }}
                 >
                   <div
-                    className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{ background: `linear-gradient(90deg, transparent, ${node.color}, transparent)` }}
+                    aria-hidden="true"
                   />
-                  <div className="font-mono text-[18px] leading-none" style={{ color: node.color, opacity: 0.6 }}>
+                  <div
+                    className="font-mono text-[20px] leading-none group-hover:scale-110 origin-left transition-transform duration-500"
+                    style={{ color: node.color, opacity: 0.7 }}
+                  >
                     {node.icon}
                   </div>
                   <div>
-                    <div className="font-mono text-[10px] font-black uppercase tracking-wide text-protocol-text group-hover:text-blue transition-colors leading-tight mb-1">
+                    <div className="font-mono text-[11px] font-black uppercase tracking-wide text-protocol-text group-hover:text-blue transition-colors duration-400 leading-tight mb-1">
                       {node.label}
                     </div>
-                    <div className="font-mono text-[8px] text-protocol-text-dim/40 leading-relaxed">
+                    <div className="font-mono text-[9px] text-protocol-text-dim/50 leading-relaxed">
                       {node.sub}
                     </div>
                   </div>
@@ -194,14 +198,14 @@ export default function Solution() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex items-start gap-4 border border-protocol-border bg-protocol-bg p-4 hover:border-blue/30 transition-colors group"
+                  className="flex items-start gap-4 border border-protocol-border card-surface p-5 hover:border-blue/30 transition-colors group"
                 >
-                  <div className="font-mono text-[20px] leading-none shrink-0 pt-0.5" style={{ color: node.color, opacity: 0.7 }}>
+                  <div className="font-mono text-[22px] leading-none shrink-0 pt-0.5" style={{ color: node.color, opacity: 0.75 }}>
                     {node.icon}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="font-mono text-[11px] font-black uppercase text-protocol-text mb-0.5">{node.label}</div>
-                    <div className="font-mono text-[9px] text-protocol-text-dim/50 mb-2">{node.sub}</div>
+                    <div className="font-mono text-[12px] font-black uppercase text-protocol-text mb-1">{node.label}</div>
+                    <div className="font-mono text-[10px] text-protocol-text-dim/55 mb-2.5">{node.sub}</div>
                     <StatusTag
                       variant={node.tagVariant}
                       label={node.tagLabel}

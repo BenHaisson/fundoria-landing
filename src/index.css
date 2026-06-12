@@ -180,9 +180,9 @@ main > section[id] {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  margin-right: 40px;
+  margin-right: 44px;
   font-family: "Space Mono", monospace;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -191,8 +191,8 @@ main > section[id] {
 
 @media (max-width: 768px) {
   .ticker-item {
-    font-size: 8px;
-    margin-right: 28px;
+    font-size: 9px;
+    margin-right: 32px;
   }
 }
 
@@ -323,6 +323,37 @@ main > section[id] {
 }
 .card-glow-hover:hover {
   box-shadow: 0 0 0 1px rgba(47, 128, 237, 0.2), 0 8px 40px rgba(47, 128, 237, 0.08);
+}
+
+/* ── Premium card lift — subtle rise + glow, GPU-accelerated ───────── */
+.card-lift {
+  transition:
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s ease;
+  will-change: transform;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px rgba(47, 128, 237, 0.18),
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 4px 24px rgba(47, 128, 237, 0.10);
+}
+
+/* Inner-glow surface treatment for premium card depth */
+.card-surface {
+  background:
+    linear-gradient(180deg, rgba(220, 232, 255, 0.018) 0%, transparent 30%),
+    var(--color-protocol-accent-bg);
+  box-shadow: inset 0 1px 0 rgba(220, 232, 255, 0.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-lift:hover {
+    transform: none;
+  }
 }
 
 .gradient-brand {

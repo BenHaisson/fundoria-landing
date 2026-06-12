@@ -92,38 +92,42 @@ export default function HowItWorks() {
           {steps.map((step, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative border border-protocol-border bg-protocol-bg hover:border-blue/30 transition-colors duration-300 p-5 overflow-hidden"
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: (i % 4) * 0.09 + Math.floor(i / 4) * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative border border-protocol-border card-surface card-lift hover:border-blue/30 p-5 sm:p-6 overflow-hidden"
             >
               {/* Step number watermark */}
-              <div className="absolute -bottom-1 -right-1 font-display text-[52px] leading-none text-protocol-border select-none pointer-events-none">
+              <div className="absolute -bottom-1 -right-1 font-display text-[56px] leading-none text-protocol-border select-none pointer-events-none group-hover:text-protocol-border/80 transition-colors duration-500">
                 {step.num}
               </div>
 
               {/* Icon */}
-              <div className="text-[20px] leading-none mb-3" style={{ color: step.color, opacity: 0.7 }}>
+              <div
+                className="text-[22px] leading-none mb-3.5 group-hover:scale-110 origin-left transition-transform duration-500"
+                style={{ color: step.color, opacity: 0.75 }}
+              >
                 {step.icon}
               </div>
 
               {/* Tag */}
-              <div className="font-mono text-[7px] uppercase tracking-[0.3em] mb-2" style={{ color: step.color, opacity: 0.6 }}>
+              <div className="font-mono text-[9px] uppercase tracking-[0.3em] mb-2.5" style={{ color: step.color, opacity: 0.7 }}>
                 {step.tag}
               </div>
 
-              <h3 className="font-mono text-[11px] font-black uppercase tracking-wide text-protocol-text group-hover:text-blue transition-colors mb-2 leading-tight">
+              <h3 className="font-mono text-[12px] font-black uppercase tracking-wide text-protocol-text group-hover:text-blue transition-colors duration-400 mb-2.5 leading-snug">
                 {step.title}
               </h3>
-              <p className="text-[12px] text-protocol-text-dim leading-relaxed relative z-10">
+              <p className="text-[13px] text-protocol-text-dim leading-[1.65] relative z-10">
                 {step.desc}
               </p>
 
               {/* Top line on hover */}
               <div
-                className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: `linear-gradient(90deg, transparent, ${step.color}60, transparent)` }}
+                aria-hidden="true"
               />
 
               {/* Step connector arrow */}
@@ -147,25 +151,25 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-start gap-4 border border-protocol-border bg-protocol-bg p-4"
+              className="flex items-start gap-4 border border-protocol-border card-surface p-5"
             >
               <div
-                className="font-display text-[24px] leading-none shrink-0 pt-0.5"
-                style={{ color: step.color, opacity: 0.4 }}
+                className="font-display text-[28px] leading-none shrink-0 pt-0.5"
+                style={{ color: step.color, opacity: 0.45 }}
               >
                 {step.num}
               </div>
               <div>
                 <div
-                  className="font-mono text-[7px] uppercase tracking-[0.3em] mb-1"
-                  style={{ color: step.color, opacity: 0.6 }}
+                  className="font-mono text-[9px] uppercase tracking-[0.3em] mb-1.5"
+                  style={{ color: step.color, opacity: 0.7 }}
                 >
                   {step.tag}
                 </div>
-                <h3 className="font-mono text-[11px] font-black uppercase tracking-wide text-protocol-text mb-1">
+                <h3 className="font-mono text-[12px] font-black uppercase tracking-wide text-protocol-text mb-1.5">
                   {step.title}
                 </h3>
-                <p className="text-[12px] text-protocol-text-dim leading-relaxed">{step.desc}</p>
+                <p className="text-[13px] text-protocol-text-dim leading-[1.65]">{step.desc}</p>
               </div>
             </motion.div>
           ))}

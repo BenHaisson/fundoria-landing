@@ -262,7 +262,7 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
             {/* Subheadline */}
             <motion.p
               variants={itemVariants}
-              className="text-protocol-text-dim text-[15px] md:text-[16px] leading-relaxed mb-8 max-w-[520px]"
+              className="text-protocol-text-dim text-[16px] md:text-[17px] leading-[1.75] mb-8 max-w-[540px]"
             >
               Protocol-native capital markets infrastructure where trader skill becomes{' '}
               <span className="text-protocol-text">verifiable</span>, capital allocation becomes{' '}
@@ -304,13 +304,13 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
               {trustIndicators.map((t, i) => (
                 <div
                   key={i}
-                  className="border border-protocol-border bg-protocol-accent-bg/80 px-3 py-3 flex flex-col items-center gap-1.5 group hover:border-blue/30 hover:bg-protocol-accent-bg transition-all duration-300"
+                  className="border border-protocol-border card-surface px-3 py-3.5 flex flex-col items-center gap-2 group hover:border-blue/30 transition-all duration-400 hover:-translate-y-0.5"
                 >
-                  <div className={`${t.color} opacity-60 group-hover:opacity-100 transition-opacity flex items-center gap-1.5`}>
-                    <span className={`w-1.5 h-1.5 rounded-full ${t.dot} flex-shrink-0`} />
+                  <div className={`${t.color} opacity-70 group-hover:opacity-100 transition-opacity duration-400 flex items-center gap-1.5`}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${t.dot} flex-shrink-0`} aria-hidden="true" />
                     {t.icon}
                   </div>
-                  <div className="font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/60 text-center leading-tight">
+                  <div className="font-mono text-[9px] uppercase tracking-widest text-protocol-text-dim/70 text-center leading-snug">
                     {t.label}
                   </div>
                 </div>

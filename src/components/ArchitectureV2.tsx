@@ -157,12 +157,12 @@ export default function ArchitectureV2() {
                 {node.icon}
               </div>
               <div>
-                <div className={`font-mono text-[10px] font-black uppercase tracking-widest transition-colors ${activeNode === i ? 'text-protocol-text' : 'text-protocol-text-dim/60'}`}>
+                <div className={`font-mono text-[11px] font-black uppercase tracking-widest transition-colors ${activeNode === i ? 'text-protocol-text' : 'text-protocol-text-dim/60'}`}>
                   {node.title}
                 </div>
-                <div className="font-mono text-[8px] text-protocol-text-dim/40 uppercase tracking-wider mt-0.5">{node.sub}</div>
+                <div className="font-mono text-[9px] text-protocol-text-dim/50 uppercase tracking-wider mt-1">{node.sub}</div>
               </div>
-              <span className={`font-mono text-[7px] uppercase tracking-widest border px-1.5 py-0.5 ${node.statusColor}`}>
+              <span className={`font-mono text-[8px] uppercase tracking-widest border px-2 py-0.5 ${node.statusColor}`}>
                 {node.status}
               </span>
             </button>
@@ -207,7 +207,7 @@ export default function ArchitectureV2() {
               <span className="w-1 h-1 rounded-full bg-amber-500/60" aria-hidden="true" />SAMPLE DATA
             </span>
           </div>
-          <div className="p-5 font-mono text-[11px] leading-[2] bg-black/20 overflow-x-auto">
+          <div className="p-5 font-mono text-[12px] leading-[2] bg-black/20 overflow-x-auto">
             {codeLines.map((line, i) => (
               <div key={i} className={line.color || 'text-protocol-text'}>
                 {line.text || <>&nbsp;</>}
@@ -226,10 +226,10 @@ export default function ArchitectureV2() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06 }}
-              className="border border-protocol-border bg-protocol-bg p-4 group hover:border-blue/30 transition-colors"
+              className="border border-protocol-border card-surface card-lift p-4 sm:p-5 group hover:border-blue/30"
             >
               <div className={`w-1.5 h-1.5 rounded-full ${claim.color} mb-3`} aria-hidden="true" />
-              <p className="font-mono text-[10px] text-protocol-text-dim leading-relaxed group-hover:text-protocol-text transition-colors">
+              <p className="font-mono text-[11px] text-protocol-text-dim leading-[1.7] group-hover:text-protocol-text transition-colors duration-400">
                 {claim.text}
               </p>
             </motion.div>

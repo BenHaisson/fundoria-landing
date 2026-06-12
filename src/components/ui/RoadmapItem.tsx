@@ -53,37 +53,37 @@ export default function RoadmapItem({
 
       {/* Card */}
       <div
-        className={`flex-1 border p-5 sm:p-6 group-hover:border-blue/30 transition-colors duration-300 relative overflow-hidden ${
-          active ? 'border-green/30 bg-green/[0.02]' : 'border-protocol-border bg-protocol-accent-bg'
+        className={`flex-1 border p-5 sm:p-7 card-lift group-hover:border-blue/30 relative overflow-hidden ${
+          active ? 'border-green/30 bg-green/[0.02]' : 'border-protocol-border card-surface'
         }`}
       >
-        <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-protocol-border to-transparent group-hover:via-blue/20 transition-colors" />
+        <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-protocol-border to-transparent group-hover:via-blue/20 transition-colors" aria-hidden="true" />
 
-        <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-          <div className="flex items-center gap-3">
-            <span className="font-display text-[20px] text-protocol-text-dim/25">{phase}</span>
+        <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+          <div className="flex items-center gap-4">
+            <span className="font-display text-[24px] text-protocol-text-dim/30">{phase}</span>
             <div>
-              <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-protocol-text-dim/50">{meta}</div>
-              <h3 className="font-mono text-[13px] font-black uppercase tracking-wide text-protocol-text group-hover:text-blue transition-colors">
+              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-protocol-text-dim/50 mb-0.5">{meta}</div>
+              <h3 className="font-mono text-[14px] font-black uppercase tracking-wide text-protocol-text group-hover:text-blue transition-colors duration-400">
                 {title}
               </h3>
             </div>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
             <StatusTag variant={status} label={statusLabel} pulse={active} />
-            <span className="border border-protocol-border px-2.5 py-1 font-mono text-[8px] uppercase tracking-widest text-protocol-text-dim/40">
+            <span className="border border-protocol-border px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-protocol-text-dim/50">
               {timeline}
             </span>
           </div>
         </div>
 
-        <p className="text-[13px] text-protocol-text-dim leading-relaxed mb-4">{desc}</p>
+        <p className="text-[14px] text-protocol-text-dim leading-[1.7] mb-5">{desc}</p>
 
-        <div className="grid grid-cols-2 gap-1.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {milestones.map((m, j) => (
-            <div key={j} className="flex items-center gap-2">
-              <div className="w-1 h-1 rounded-full bg-protocol-border shrink-0" />
-              <span className="font-mono text-[8px] text-protocol-text-dim/40 uppercase tracking-wider">{m}</span>
+            <div key={j} className="flex items-center gap-2.5">
+              <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${active ? 'bg-green/50' : 'bg-protocol-border'}`} aria-hidden="true" />
+              <span className="font-mono text-[10px] text-protocol-text-dim/60 uppercase tracking-wider leading-relaxed">{m}</span>
             </div>
           ))}
         </div>

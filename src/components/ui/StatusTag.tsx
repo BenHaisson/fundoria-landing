@@ -43,9 +43,9 @@ export default function StatusTag({ variant, label, pulse = false, className = '
   const s = styles[variant];
   return (
     <span
-      className={`inline-flex items-center gap-1.5 border px-2.5 py-1 font-mono text-[8px] uppercase tracking-widest ${s.text} ${s.border} ${s.bg} ${className}`}
+      className={`inline-flex items-center gap-1.5 border px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest ${s.text} ${s.border} ${s.bg} ${className}`}
     >
-      <span className={`w-1 h-1 rounded-full flex-shrink-0 ${s.dot} ${pulse ? 'animate-pulse' : ''}`} />
+      <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${s.dot} ${pulse ? 'animate-pulse' : ''}`} />
       {label}
     </span>
   );

@@ -21,7 +21,7 @@ export default function DisclosureBox({
 
   return (
     <div className={`border px-5 py-4 ${border} ${className}`}>
-      <p className="font-mono text-[9px] text-protocol-text-dim/40 uppercase tracking-wider leading-relaxed">
+      <p className="font-mono text-[10px] text-protocol-text-dim/55 uppercase tracking-wider leading-[1.8]">
         {label && (
           <span className={`font-bold ${labelColor}`}>[{label}]</span>
         )}
