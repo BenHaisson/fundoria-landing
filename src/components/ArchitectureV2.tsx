@@ -110,7 +110,7 @@ export default function ArchitectureV2() {
           </div>
           <h2
             id="intelligence-heading"
-            className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5"
+            className="font-display text-[clamp(36px,6vw,72px)] uppercase leading-[1.05] tracking-[-0.02em] text-protocol-text mb-5"
           >
             The Intelligence<br />
             <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Stack.</span>

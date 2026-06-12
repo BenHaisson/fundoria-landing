@@ -44,7 +44,7 @@ export default function SectionHeader({
           hidden: { opacity: 0, y: 22 },
           visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
         }}
-        className={`font-display text-[clamp(34px,5.5vw,70px)] uppercase leading-[0.92] tracking-tight text-protocol-text mb-5 ${
+        className={`font-display text-[clamp(34px,5.5vw,70px)] uppercase leading-[1.05] tracking-[-0.02em] text-protocol-text mb-5 ${
           centered ? 'mx-auto' : ''
         }`}
       >

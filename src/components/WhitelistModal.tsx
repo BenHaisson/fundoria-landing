@@ -95,7 +95,7 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                     />
                     <CheckCircle2 className="w-9 h-9 text-green relative z-10" />
                   </motion.div>
-                  <h3 id="modal-title" className="font-display text-[clamp(36px,8vw,54px)] uppercase mb-3 tracking-tight text-protocol-text">
+                  <h3 id="modal-title" className="font-display text-[clamp(36px,8vw,54px)] uppercase mb-3 tracking-[-0.02em] leading-[1.0] text-protocol-text">
                     You're In.
                   </h3>
                   <p className="font-mono text-[11px] text-protocol-text-dim uppercase tracking-widest leading-relaxed px-6 mb-8">
@@ -116,7 +116,7 @@ export default function WhitelistModal({ isOpen, onClose }: WhitelistModalProps)
                       <span className="font-mono text-[10px] text-blue font-black uppercase tracking-[0.3em]">Early Access</span>
                       <div className="flex-1 h-px bg-protocol-border ml-2" />
                     </div>
-                    <h2 id="modal-title" className="font-display text-[clamp(32px,6vw,50px)] uppercase leading-[0.9] tracking-tight mb-4 text-protocol-text">
+                    <h2 id="modal-title" className="font-display text-[clamp(32px,6vw,50px)] uppercase leading-[1.0] tracking-[-0.02em] mb-4 text-protocol-text">
                       Get Your Trader<br />
                       <span className="bg-linear-to-r from-blue to-green bg-clip-text text-transparent">Passport Early.</span>
                     </h2>

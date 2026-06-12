@@ -239,7 +239,7 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
-              className="font-display text-[clamp(44px,8vw,100px)] leading-[0.88] tracking-tighter uppercase mb-5 text-protocol-text"
+              className="font-display text-[clamp(44px,8vw,100px)] leading-[0.95] tracking-[-0.03em] uppercase mb-5 text-protocol-text"
             >
               Trader<br />
               Reputation<br />

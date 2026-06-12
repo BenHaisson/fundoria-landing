@@ -35,7 +35,7 @@ export default function Footer({ onOpenWhitelist }: FooterProps) {
             Early Access Open
           </motion.div>
 
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="font-display text-[clamp(36px,9vw,110px)] uppercase leading-[0.9] mb-6 tracking-tight text-protocol-text">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="font-display text-[clamp(36px,9vw,110px)] uppercase leading-[0.95] mb-6 tracking-[-0.03em] text-protocol-text">
             Your Wallet Is<br />
             <span className="bg-linear-to-r from-green to-blue bg-clip-text text-transparent">
               Your Trading Resume.

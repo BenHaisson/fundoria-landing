@@ -175,7 +175,7 @@ export default function Architecture() {
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.4em] mb-3.5 text-blue">Architecture</div>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-display text-[clamp(36px,5vw,60px)] uppercase leading-[0.95] text-protocol-text">
+            <h2 className="font-display text-[clamp(36px,5vw,60px)] uppercase leading-[1.05] tracking-[-0.02em] text-protocol-text">
               Protocol <br />
               Components & <br />
               <em className="text-blue not-italic">Execution Flow.</em>
