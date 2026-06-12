@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Logo from './Logo';
+import { useActiveSection } from '../hooks/useActiveSection';
 
 interface NavbarProps {
   onOpenWhitelist?: () => void;
@@ -17,22 +18,15 @@ const navLinks = [
   { label: 'FAQ', anchor: 'faq' },
 ];
 
+const navSections = navLinks.map(l => ({ id: l.anchor, label: l.label }));
+
 export default function Navbar({ onOpenWhitelist }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const activeSection = useActiveSection(navSections, 110);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      for (const { anchor } of [...navLinks].reverse()) {
-        const el = document.getElementById(anchor);
-        if (el && window.scrollY >= el.offsetTop - 120) {
-          setActiveSection(anchor);
-          break;
-        }
-      }
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -51,6 +45,10 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
               <li key={anchor}>
                 <a
                   href={`#${anchor}`}
+                  onClick={e => {
+                    e.preventDefault();
+                    document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
                   className={`font-mono text-[10px] uppercase tracking-[0.2em] transition-colors relative group ${isActive ? 'text-protocol-text' : 'text-[#8AACCC] hover:text-protocol-text'}`}
                 >
                   {label}
@@ -110,7 +108,13 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
                   <motion.li key={anchor} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
                     <a
                       href={`#${anchor}`}
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={e => {
+                        e.preventDefault();
+                        setMobileMenuOpen(false);
+                        setTimeout(() => {
+                          document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 150);
+                      }}
                       className="py-3 font-mono text-xs uppercase tracking-[0.3em] text-[#8AACCC] hover:text-blue transition-colors border-b border-protocol-border/30 flex items-center justify-between group"
                     >
                       {label}

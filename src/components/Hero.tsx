@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Shield, Cpu, Lock, Zap } from 'lucide-react';
 import CTAButton from './ui/CTAButton';
+import ScrollCue from './ScrollCue';
 
 interface HeroProps {
   onOpenWhitelist?: () => void;
@@ -205,7 +206,7 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
   };
 
   return (
-    <section className="relative pt-[130px] md:pt-[180px] pb-20 md:pb-32 overflow-hidden px-4 sm:px-6">
+    <section id="hero" className="relative pt-[130px] md:pt-[180px] pb-20 md:pb-32 overflow-hidden px-4 sm:px-6">
       {/* Animated grid dots + data streams */}
       <HeroGridDots />
 
@@ -332,17 +333,14 @@ export default function Hero({ onOpenWhitelist }: HeroProps) {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: scrolled ? 0 : 1 }}
         transition={{ duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-auto"
       >
-        <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-protocol-text-dim/30">Scroll</span>
-        <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}>
-          <div className="w-4 h-4 text-protocol-text-dim/20 flex items-center justify-center">↓</div>
-        </motion.div>
+        <ScrollCue nextId="audiences" nextLabel="Who It's For" />
       </motion.div>
     </section>
   );

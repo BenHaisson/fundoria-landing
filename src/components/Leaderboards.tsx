@@ -42,7 +42,7 @@ const cols = ['#', 'Trader', 'Score', '30D PnL', 'Max DD', 'Consistency', 'Statu
 
 export default function Leaderboards() {
   return (
-    <section id="capital-access" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
+    <section id="leaderboards" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           eyebrow="Leaderboards"

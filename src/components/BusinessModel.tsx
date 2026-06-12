@@ -68,7 +68,7 @@ const tiers = [
 
 export default function BusinessModel() {
   return (
-    <section className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
+    <section id="business-model" className="py-28 md:py-36 border-t border-protocol-border bg-protocol-bg px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           eyebrow="Business Model"

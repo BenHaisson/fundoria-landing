@@ -19,6 +19,11 @@
   --color-protocol-accent-bg: #04080F;
   --color-protocol-glow: rgba(47, 128, 237, 0.15);
   --color-muted: #2A3F58;
+
+  /* Header offsets for scroll anchoring */
+  --nav-height: 72px;
+  --ticker-height: 34px;
+  --header-offset: calc(var(--nav-height) + var(--ticker-height));
 }
 
 @layer base {
@@ -73,11 +78,44 @@
     @apply bg-blue rounded-lg;
   }
 
-  /* Firefox scrollbar */
+  /* Firefox scrollbar + scroll behavior */
   html {
     scrollbar-width: thin;
     scrollbar-color: var(--color-blue) var(--color-protocol-bg);
     overflow-x: hidden;
+
+    /* Smooth scrolling for anchor navigation */
+    scroll-behavior: smooth;
+
+    /* Scroll padding so fixed nav+ticker never covers section headings */
+    scroll-padding-top: var(--header-offset);
+  }
+}
+
+/* ── Section scroll anchoring ───────────────────────────────────────── */
+
+/* Ensure every identified section is offset correctly when scrolled to */
+main > section[id] {
+  scroll-margin-top: var(--header-offset);
+}
+
+/* Proximity snap — gentle, not mandatory. Only kicks in when scroll
+   comes to rest near a snap point. Does NOT trap users mid-scroll. */
+html {
+  scroll-snap-type: y proximity;
+}
+
+main > section[id] {
+  scroll-snap-align: start;
+}
+
+/* ── Section content rhythm ─────────────────────────────────────────── */
+
+/* Prevent any section content from touching the sides on very small screens */
+@media (max-width: 360px) {
+  main > section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 }
 
