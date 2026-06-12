@@ -5,7 +5,7 @@ const problems = [
   {
     Icon: FileX2,
     title: 'Screenshots are not reputation',
-    body: "JPEGs don't prove discipline, risk management, or consistency. They prove nothing.",
+    body: "Screenshots can show outcomes, but they rarely prove discipline, risk management, or consistency.",
   },
   {
     Icon: BarChart2,

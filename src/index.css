@@ -99,15 +99,7 @@ main > section[id] {
   scroll-margin-top: var(--header-offset);
 }
 
-/* Proximity snap — gentle, not mandatory. Only kicks in when scroll
-   comes to rest near a snap point. Does NOT trap users mid-scroll. */
-html {
-  scroll-snap-type: y proximity;
-}
-
-main > section[id] {
-  scroll-snap-align: start;
-}
+/* Scroll snap removed — natural scroll preferred on long-form pages */
 
 /* ── Section content rhythm ─────────────────────────────────────────── */
 
@@ -142,6 +134,18 @@ main > section[id] {
     background: rgba(2, 5, 12, 0.96);
     backdrop-filter: blur(20px) saturate(150%);
     -webkit-backdrop-filter: blur(20px) saturate(150%);
+  }
+}
+
+/* ── Mobile: reduce background noise for cleaner feel ──────────────── */
+@media (max-width: 768px) {
+  /* Hide CRT scanlines on mobile — too noisy */
+  body::after {
+    display: none;
+  }
+  /* Soften grid overlay */
+  body::before {
+    opacity: 0.45;
   }
 }
 
@@ -236,14 +240,15 @@ main > section[id] {
 }
 
 /* Status colors */
-.s-done    { color: #00C896; }
-.s-live    { color: #2F80ED; }
-.s-build   { color: #F5A524; }
-.s-coming  { color: #38BDF8; }
-.s-mkt     { color: #A78BFA; }
-.s-future  { color: #4A6484; }
-.s-audit   { color: #FB923C; }
-.s-phased  { color: #A78BFA; }
+.s-done      { color: #00C896; }
+.s-live      { color: #2F80ED; }
+.s-build     { color: #F5A524; }
+.s-coming    { color: #38BDF8; }
+.s-mkt       { color: #A78BFA; }
+.s-future    { color: #4A6484; }
+.s-audit     { color: #FB923C; }
+.s-phased    { color: #A78BFA; }
+.s-prelaunch { color: #00C896; }
 
 @keyframes ticker {
   from { transform: translateX(0); }
