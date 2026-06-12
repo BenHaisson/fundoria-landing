@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ExternalLink, ChevronUp, Twitter, MessageCircle, Send } from 'lucide-react';
-import Logo from './Logo';
+import BrandLogo from './BrandLogo';
 
 interface FooterProps {
   onOpenWhitelist?: () => void;
@@ -88,7 +88,7 @@ export default function Footer({ onOpenWhitelist }: FooterProps) {
       {/* Footer bar */}
       <footer className="border-t border-protocol-border bg-protocol-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-wrap items-center justify-between gap-6">
-          <Logo size={28} showText={true} />
+          <BrandLogo variant="full" height={32} className="footer-brand-logo" />
           <div className="flex items-center gap-4">
             <a href="#" aria-label="Twitter / X" className="w-7 h-7 border border-protocol-border flex items-center justify-center text-protocol-text-dim hover:text-protocol-text hover:border-protocol-text/40 transition-all">
               <Twitter className="w-3 h-3" />

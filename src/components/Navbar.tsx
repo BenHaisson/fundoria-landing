@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import Logo from './Logo';
+import BrandLogo from './BrandLogo';
 import { useActiveSection } from '../hooks/useActiveSection';
 
 interface NavbarProps {
@@ -34,8 +34,8 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
   return (
     <nav aria-label="Main navigation" className="site-header-glass fixed top-0 w-full transition-all duration-300 h-[72px] flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex items-center justify-between">
-        <a href="#" className="flex items-center transition-opacity hover:opacity-80">
-          <Logo size={32} showText={true} />
+        <a href="#" className="flex items-center transition-opacity hover:opacity-80" aria-label="Fundoria — home">
+          <BrandLogo variant="full" height={30} className="nav-brand-logo" />
         </a>
 
         <ul className="hidden md:flex items-center gap-9">
