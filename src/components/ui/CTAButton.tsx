@@ -1,58 +1,77 @@
-import { ArrowRight } from 'lucide-react';
-import { ReactNode } from 'react';
-
-type CTAVariant = 'primary' | 'secondary' | 'ghost';
+import React from 'react';
+import { motion } from 'motion/react';
 
 interface CTAButtonProps {
   onClick?: () => void;
-  variant?: CTAVariant;
-  children: ReactNode;
-  arrow?: boolean;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  children: React.ReactNode;
   className?: string;
-  type?: 'button' | 'submit';
-  disabled?: boolean;
   fullWidth?: boolean;
+  size?: 'sm' | 'md' | 'lg';
 }
-
-const base =
-  'group relative font-mono font-black uppercase tracking-[0.2em] px-8 py-4 flex items-center justify-center gap-3 overflow-hidden transition-all duration-300 active:scale-[0.98]';
-
-const variants: Record<CTAVariant, string> = {
-  primary:
-    'bg-blue hover:bg-green text-black text-[11px] shadow-[0_0_40px_rgba(47,128,237,0.3)] hover:shadow-[0_0_80px_rgba(0,200,150,0.5)]',
-  secondary:
-    'border border-protocol-border hover:border-blue/50 text-protocol-text-dim hover:text-protocol-text text-[11px]',
-  ghost:
-    'border border-blue/30 hover:border-blue text-blue text-[10px]',
-};
 
 export default function CTAButton({
   onClick,
   variant = 'primary',
   children,
-  arrow = true,
   className = '',
-  type = 'button',
-  disabled = false,
   fullWidth = false,
+  size = 'md',
 }: CTAButtonProps) {
+  const sizeClasses: Record<string, string> = {
+    sm: 'px-4 py-2 text-[9px]',
+    md: 'px-6 py-3 text-[10px]',
+    lg: 'px-8 py-4 text-[11px]',
+  };
+
+  const baseClasses = [
+    'relative inline-flex items-center justify-center',
+    'font-mono uppercase tracking-widest',
+    'transition-all duration-200 cursor-pointer',
+    'active:scale-[0.97] select-none',
+    'overflow-hidden',
+    sizeClasses[size],
+    fullWidth ? 'w-full' : '',
+  ].join(' ');
+
+  if (variant === 'primary') {
+    return (
+      <motion.button
+        onClick={onClick}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.97 }}
+        className={`${baseClasses} bg-blue text-black font-semibold hover:bg-green group ${className}`}
+      >
+        <span
+          className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent"
+          aria-hidden="true"
+        />
+        <span className="relative z-10">{children}</span>
+      </motion.button>
+    );
+  }
+
+  if (variant === 'secondary') {
+    return (
+      <motion.button
+        onClick={onClick}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.97 }}
+        className={`${baseClasses} bg-transparent border border-blue text-blue hover:bg-blue/10 ${className}`}
+      >
+        {children}
+      </motion.button>
+    );
+  }
+
   return (
-    <button
-      type={type}
+    <motion.button
       onClick={onClick}
-      disabled={disabled}
-      className={`${base} ${variants[variant]} ${fullWidth ? 'w-full' : 'w-auto'} ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.97 }}
+      className={`${baseClasses} bg-transparent text-protocol-text-dim hover:text-protocol-text ${className}`}
     >
-      {variant === 'primary' && (
-        <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-500 pointer-events-none" />
-      )}
-      {variant === 'secondary' && (
-        <div className="absolute inset-0 bg-blue/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 pointer-events-none" />
-      )}
-      <span className="relative">{children}</span>
-      {arrow && (
-        <ArrowRight className="w-4 h-4 relative group-hover:translate-x-1 transition-transform" />
-      )}
-    </button>
+      {children}
+    </motion.button>
   );
 }
