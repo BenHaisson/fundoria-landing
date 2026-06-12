@@ -32,7 +32,7 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
   }, []);
 
   return (
-    <nav aria-label="Main navigation" className="site-header-glass fixed top-0 w-full transition-all duration-300 h-[72px] flex items-center">
+    <nav aria-label="Main navigation" className={`site-header-glass${scrolled ? ' scrolled' : ''} fixed top-0 w-full h-[72px] flex items-center`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex items-center justify-between">
         <a href="#" className="flex items-center transition-opacity hover:opacity-80" aria-label="Fundoria — home">
           <BrandLogo variant="full" height={30} className="nav-brand-logo" />
