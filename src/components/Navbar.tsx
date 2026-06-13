@@ -174,7 +174,7 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
 // ─── Standalone fixed ticker — sits OUTSIDE the nav stacking context ────────
 // so backdrop-filter blurs actual page content, not the nav itself.
 
-type Status = 'live' | 'build' | 'coming' | 'future' | 'prelaunch';
+type Status = 'live' | 'build' | 'coming' | 'future' | 'prelaunch' | 'phased';
 
 const items: { status: Status; tag: string; text: string }[] = [
   { status: 'live',      tag: 'LIVE',        text: 'EARLY ACCESS OPEN' },

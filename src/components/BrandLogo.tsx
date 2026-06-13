@@ -1,8 +1,10 @@
+import type { CSSProperties } from 'react';
+
 interface BrandLogoProps {
   variant?: 'full' | 'icon';
   height?: number;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
 
 export default function BrandLogo({

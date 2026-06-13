@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2 } from 'lucide-react';
 import CTAButton from './ui/CTAButton';
@@ -15,7 +15,7 @@ export default function WhitelistSection({ onOpenWhitelist: _onOpenWhitelist }: 
   const [role, setRole] = useState<Role>('Trader');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
     setSubmitted(true);

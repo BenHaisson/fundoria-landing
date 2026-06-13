@@ -6,6 +6,7 @@ type StatusVariant =
   | 'alpha' | 'preview' | 'planned' | 'research' | 'in-audit' | 'phased';
 
 interface RoadmapItemProps {
+  key?: string | number | null;
   phase: string;
   meta: string;
   title: string;

@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import CTAButton from './ui/CTAButton';
-import PassportCard from './ui/PassportCard';
+import HeroNetworkPreview from './ui/HeroNetworkPreview';
 
 interface HeroV2Props {
   onOpenWhitelist?: () => void;
@@ -21,19 +20,6 @@ const itemVariants = {
 };
 
 export default function HeroV2({ onOpenWhitelist }: HeroV2Props) {
-  const [shouldFloat, setShouldFloat] = useState(false);
-
-  useEffect(() => {
-    const check = () => {
-      const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const mobile = window.innerWidth < 768;
-      setShouldFloat(!noMotion && !mobile);
-    };
-    check();
-    window.addEventListener('resize', check, { passive: true });
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -100,11 +86,7 @@ export default function HeroV2({ onOpenWhitelist }: HeroV2Props) {
               variants={itemVariants}
               className="flex flex-col sm:flex-row flex-wrap gap-3 mb-4"
             >
-              <CTAButton
-                variant="primary"
-                size="lg"
-                onClick={onOpenWhitelist}
-              >
+              <CTAButton variant="primary" size="lg" onClick={onOpenWhitelist}>
                 Join Early Access
               </CTAButton>
 
@@ -134,16 +116,15 @@ export default function HeroV2({ onOpenWhitelist }: HeroV2Props) {
             </motion.p>
           </motion.div>
 
-          {/* Right column — PassportCard, float only on desktop */}
-          <div className="flex justify-center lg:justify-end">
-            <motion.div
-              animate={shouldFloat ? { y: [0, -8, 0] } : undefined}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              className="w-full max-w-sm"
-            >
-              <PassportCard />
-            </motion.div>
-          </div>
+          {/* Right column — product loop preview */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+            className="flex justify-center lg:justify-end"
+          >
+            <HeroNetworkPreview className="w-full max-w-sm" />
+          </motion.div>
         </div>
       </div>
     </section>

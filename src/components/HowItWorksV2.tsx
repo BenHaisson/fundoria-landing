@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Wallet, Cpu, IdCard, TrendingUp } from 'lucide-react';
+import ScoreBreakdownCard from './ui/ScoreBreakdownCard';
 
 const steps = [
   {
@@ -56,7 +57,7 @@ export default function HowItWorksV2() {
         </motion.div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-20">
           {steps.map(({ number, title, body, Icon }, i) => (
             <motion.div
               key={number}
@@ -92,6 +93,40 @@ export default function HowItWorksV2() {
             </motion.div>
           ))}
         </div>
+
+        {/* ── Score Model ──────────────────────────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+        >
+          {/* Left — explanation */}
+          <div>
+            <p className="font-mono text-[9px] tracking-[0.4em] text-blue uppercase mb-4">
+              The Score Model
+            </p>
+            <h3
+              className="font-display uppercase tracking-[-0.02em] text-protocol-text mb-5"
+              style={{ fontSize: 'clamp(22px, 3.5vw, 36px)' }}
+            >
+              HOW FUNDORIA CONVERTS ACTIVITY INTO REPUTATION
+            </h3>
+            <p className="font-sans text-[14px] text-protocol-text-dim leading-[1.75] mb-4">
+              The Fundoria Score is built across five core dimensions — each derived entirely
+              from verified on-chain behavior to produce a 1–1000 reputation signal.
+            </p>
+            <p className="font-sans text-[13px] text-protocol-text-dim/60 leading-[1.75]">
+              No self-reporting. No cherry-picked timeframes. No manual overrides.
+            </p>
+          </div>
+
+          {/* Right — ScoreBreakdownCard */}
+          <div className="flex justify-center lg:justify-end">
+            <ScoreBreakdownCard className="w-full max-w-sm" />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
