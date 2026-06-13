@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Landing from './components/Landing';
+import LandingV2 from './components/LandingV2';
 
 export default function App() {
-  return <Landing />;
+  return <LandingV2 />;
 }

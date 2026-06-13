@@ -9,13 +9,12 @@ interface NavbarProps {
 }
 
 const navLinks = [
-  { label: 'Why', anchor: 'vision' },
   { label: 'Passport', anchor: 'passport' },
-  { label: 'Score', anchor: 'score' },
-  { label: 'Network', anchor: 'social' },
-  { label: 'Capital', anchor: 'capital-access' },
-  { label: 'Roadmap', anchor: 'roadmap' },
-  { label: 'FAQ', anchor: 'faq' },
+  { label: 'Traders',  anchor: 'traders' },
+  { label: 'Capital',  anchor: 'capital' },
+  { label: 'Protocol', anchor: 'protocol' },
+  { label: 'Roadmap',  anchor: 'roadmap' },
+  { label: 'FAQ',      anchor: 'faq' },
 ];
 
 const navSections = navLinks.map(l => ({ id: l.anchor, label: l.label }));
@@ -175,37 +174,24 @@ export default function Navbar({ onOpenWhitelist }: NavbarProps) {
 // ─── Standalone fixed ticker — sits OUTSIDE the nav stacking context ────────
 // so backdrop-filter blurs actual page content, not the nav itself.
 
-type Status = 'live' | 'done' | 'build' | 'coming' | 'mkt' | 'future' | 'audit' | 'phased';
+type Status = 'live' | 'build' | 'coming' | 'future' | 'prelaunch';
 
 const items: { status: Status; tag: string; text: string }[] = [
-  { status: 'live',   tag: 'LIVE',         text: 'LANDING PAGE V0.1' },
-  { status: 'done',   tag: 'DONE',         text: 'PROTOCOL ARCHITECTURE DRAFT' },
-  { status: 'done',   tag: 'DONE',         text: 'TRADER REPUTATION NETWORK POSITIONING' },
-  { status: 'done',   tag: 'DONE',         text: 'FUNDORIA SCORE FRAMEWORK' },
-  { status: 'live',   tag: 'LIVE',         text: 'EARLY ACCESS FORM OPEN' },
-  { status: 'build',  tag: 'IN BUILD',     text: 'TRADER EVALUATION INTERFACE' },
-  { status: 'build',  tag: 'IN BUILD',     text: 'TRADER REPUTATION PASSPORT' },
-  { status: 'audit',  tag: 'IN AUDIT',     text: 'SMART VAULT RISK MODEL' },
-  { status: 'coming', tag: 'COMING SOON',  text: 'HYPERLIQUID WALLET INDEXING MVP' },
-  { status: 'coming', tag: 'COMING SOON',  text: 'RISK ENGINE SIMULATOR' },
-  { status: 'coming', tag: 'COMING SOON',  text: 'CAPITAL PROVIDER DASHBOARD' },
-  { status: 'coming', tag: 'COMING SOON',  text: 'PUBLIC TRADER PROFILES' },
-  { status: 'coming', tag: 'COMING SOON',  text: 'LEADERBOARDS & BADGES' },
-  { status: 'mkt',    tag: 'COMMUNITY',    text: 'EARLY TRADER SIGNUPS OPEN' },
-  { status: 'mkt',    tag: 'COMMUNITY',    text: 'CAPITAL PROVIDER WAITLIST OPEN' },
-  { status: 'future', tag: 'FUTURE',       text: 'FUNDORIA VAULTS: ELIGIBILITY-BASED LAYER' },
-  { status: 'future', tag: 'FUTURE',       text: 'MANDATE-BASED CAPITAL WORKFLOWS' },
-  { status: 'phased', tag: 'PHASED',       text: 'DAO GOVERNANCE' },
+  { status: 'live',      tag: 'LIVE',        text: 'EARLY ACCESS OPEN' },
+  { status: 'build',     tag: 'IN BUILD',    text: 'TRADER PASSPORT' },
+  { status: 'build',     tag: 'IN BUILD',    text: 'FUNDORIA SCORE' },
+  { status: 'coming',    tag: 'COMING SOON', text: 'PUBLIC TRADER PROFILES' },
+  { status: 'coming',    tag: 'COMING SOON', text: 'CAPITAL PROVIDER WATCHLISTS' },
+  { status: 'future',    tag: 'FUTURE',      text: 'SMART VAULT ELIGIBILITY' },
+  { status: 'prelaunch', tag: 'PRE-LAUNCH',  text: 'HYPERLIQUID REPUTATION NETWORK' },
 ];
 
 const dotClass: Record<Status, string> = {
-  live:   's-live',
-  done:   's-done',
-  build:  's-build',
-  coming: 's-coming',
-  mkt:    's-mkt',
-  future: 's-future',
-  audit:  's-audit',
+  live:      's-live',
+  build:     's-build',
+  coming:    's-coming',
+  future:    's-future',
+  prelaunch: 's-prelaunch',
   phased: 's-phased',
 };
 
