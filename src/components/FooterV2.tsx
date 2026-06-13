@@ -7,11 +7,12 @@ interface FooterV2Props {
 }
 
 const navLinks = [
-  { label: 'Vision', href: '#hero' },
+  { label: 'Passport', href: '#passport' },
   { label: 'Roadmap', href: '#roadmap' },
   { label: 'FAQ', href: '#faq' },
-  { label: 'Whitepaper', href: '#protocol' },
+  { label: 'Protocol', href: '#protocol' },
   { label: 'Hyperliquid', href: 'https://hyperliquid.xyz', external: true },
+  { label: 'Contact', href: 'mailto:hello@fundoria.xyz' },
 ];
 
 const socialLinks = [
@@ -62,7 +63,7 @@ export default function FooterV2({ onOpenWhitelist }: FooterV2Props) {
               </a>
             ))}
             <CTAButton variant="secondary" size="sm" onClick={onOpenWhitelist}>
-              Join Whitelist
+              Join Early Access
             </CTAButton>
           </div>
         </div>
@@ -70,9 +71,9 @@ export default function FooterV2({ onOpenWhitelist }: FooterV2Props) {
         {/* Compliance row */}
         <div className="border-t border-protocol-border/30 pt-5">
           <p className="font-mono text-[8px] text-protocol-text-dim/35 leading-[1.7] mb-2 max-w-4xl">
-            [DISCLOSURE] · Fundoria is pre-launch software infrastructure. Information on
-            this site is for product communication only and does not constitute investment
-            advice, a securities offering, or a guarantee of capital allocation.
+            [DISCLOSURE] · Fundoria is pre-launch infrastructure. Nothing on this site
+            constitutes investment advice, a securities offering, financial advice, or a
+            guarantee of capital allocation. Read-only MVP — no custody, no deposits.
           </p>
           <p className="font-mono text-[8px] text-protocol-text-dim/25">
             © 2026 Fundoria · Hyperliquid Native · Pre-Launch

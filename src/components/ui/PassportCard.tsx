@@ -46,7 +46,7 @@ export default function PassportCard({ className = '' }: PassportCardProps) {
             </span>
           </div>
           <span className="font-mono text-[8px] tracking-widest text-protocol-text-dim/30 uppercase">
-            SAMPLE
+            SAMPLE PROFILE
           </span>
         </div>
 
@@ -56,7 +56,7 @@ export default function PassportCard({ className = '' }: PassportCardProps) {
             0x7A3d...93F
           </span>
           <span className="w-[6px] h-[6px] rounded-full bg-green flex-shrink-0" title="Verified" />
-          <span className="font-mono text-[8px] text-green/70 tracking-wider">VERIFIED</span>
+          <span className="font-mono text-[8px] text-green/70 tracking-wider">HYPERLIQUID VERIFIED</span>
         </div>
 
         {/* Grade + Score */}

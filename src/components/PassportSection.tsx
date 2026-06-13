@@ -9,6 +9,7 @@ const features = [
   'Ranking percentile and watchlist count',
   'Public profile for capital discovery',
   'No self-reporting — on-chain only',
+  'Future eligibility for non-custodial capital routes',
 ];
 
 export default function PassportSection() {
@@ -45,9 +46,14 @@ export default function PassportSection() {
               </span>
             </h2>
 
-            <p className="font-sans text-[15px] text-protocol-text-dim leading-[1.75] mb-8">
+            <p className="font-sans text-[15px] text-protocol-text-dim leading-[1.75] mb-4">
               A public reputation profile built entirely from live Hyperliquid on-chain
-              activity. No self-reporting. No manipulation. Just verified performance.
+              activity. No self-reporting. No screenshots. No manipulation — just verified
+              performance converted into a structured public record.
+            </p>
+            <p className="font-sans text-[13px] text-protocol-text-dim/70 leading-[1.75] mb-8">
+              Every metric is derived from wallet-verified on-chain activity. No human
+              curation, no platform bias, no ability to cherry-pick results.
             </p>
 
             {/* Feature bullets */}

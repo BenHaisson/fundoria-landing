@@ -10,25 +10,25 @@ const features = [
   {
     Icon: SlidersHorizontal,
     title: 'Score-Based Filtering',
-    body: 'Filter traders by grade, score, drawdown profile, and strategy behavior — not just PnL.',
+    body: 'Filter and compare traders using reputation scores, grades, drawdown profiles, and multi-dimension behavioral signals — not just raw returns.',
     future: false,
   },
   {
     Icon: Bookmark,
     title: 'Watchlist Traders',
-    body: "Save and monitor traders you're evaluating. Track their reputation over time.",
+    body: "Save traders to watchlists and monitor how their Fundoria Score and public performance history evolve over time.",
     future: false,
   },
   {
     Icon: History,
     title: 'Public Performance History',
-    body: 'Review verified on-chain performance history before considering any allocation.',
+    body: 'Review on-chain verified performance history — including drawdown behavior, consistency periods, and PnL curve — before making any decisions.',
     future: false,
   },
   {
     Icon: Lock,
     title: 'Future Non-Custodial Allocation',
-    body: 'Prepare for future protocol phases where capital routes to verified traders through mandate-enforced smart vaults.',
+    body: 'Future protocol phases will route capital to score-eligible traders through mandate-enforced smart vaults. Non-custodial. No guarantees. Eligibility-based only.',
     future: true,
   },
 ];
@@ -55,12 +55,13 @@ export default function ForCapitalV2({ onOpenWhitelist }: ForCapitalV2Props) {
             className="font-display uppercase tracking-[-0.02em] text-protocol-text mb-5"
             style={{ fontSize: 'clamp(32px, 5vw, 58px)' }}
           >
-            DISCOVER VERIFIED TRADING TALENT.
+            <span className="block">DISCOVER VERIFIED</span>
+            <span className="block text-protocol-text-dim/70">TRADING TALENT.</span>
           </h2>
           <p className="font-sans text-[15px] text-protocol-text-dim leading-[1.75] max-w-2xl">
-            Capital providers need more than screenshots and private referrals. Fundoria
-            creates a structured discovery layer for evaluating trader skill, consistency,
-            and risk behavior.
+            Move beyond screenshots and referral networks. Fundoria creates a structured
+            discovery layer for evaluating verified Hyperliquid trader skill, consistency,
+            and risk behavior before considering any allocation.
           </p>
         </motion.div>
 
@@ -103,7 +104,7 @@ export default function ForCapitalV2({ onOpenWhitelist }: ForCapitalV2Props) {
             Pre-Register Capital Interest
           </CTAButton>
           <p className="font-mono text-[9px] text-protocol-text-dim/40">
-            No custody. No deposits. Eligibility-based allocation only. · Future protocol layer.
+            No custody. No deposits. Discovery and watchlisting only. Future allocation routes are non-custodial and not yet live.
           </p>
         </motion.div>
       </div>

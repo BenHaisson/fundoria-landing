@@ -5,39 +5,51 @@ import { ChevronDown } from 'lucide-react';
 const faqs = [
   {
     q: 'What is Fundoria?',
-    a: 'Fundoria is a Hyperliquid Trader Reputation Network. It indexes live on-chain trading activity and converts it into a public Trader Passport with a score, grade, badges, PnL curve, and ranking.',
-  },
-  {
-    q: 'Is Fundoria a prop firm?',
-    a: 'No. Fundoria does not deploy capital, run prop trading operations, or profit from trader losses. It is a reputation and discovery infrastructure layer.',
+    a: 'Fundoria is a Hyperliquid Trader Reputation Network. It turns live Hyperliquid trading activity into a public Trader Passport with a reputation score, grade, PnL curve, badges, ranking, and future capital eligibility.',
   },
   {
     q: 'What is a Trader Passport?',
-    a: 'A Trader Passport is a public reputation profile generated from your Hyperliquid on-chain activity. It includes your score, grade, performance history, badges, and ranking.',
+    a: 'A Trader Passport is a public reputation profile generated from Hyperliquid trading activity. It helps traders prove performance, show discipline, build ranking, and become discoverable by capital providers.',
+  },
+  {
+    q: 'Is Fundoria a prop firm?',
+    a: 'No. Fundoria is not a prop firm and does not run trader challenges, custody capital, or profit from trader losses. Fundoria is a reputation and discovery infrastructure layer.',
   },
   {
     q: 'Does Fundoria custody funds?',
-    a: 'No. The MVP is read-only and does not custody funds, accept deposits, or execute trades. The smart vault layer is a future protocol phase.',
+    a: 'No. The current MVP is read-only. Fundoria does not custody funds, accept deposits, execute trades, or manage user assets.',
   },
   {
-    q: 'Is this only for Hyperliquid traders?',
-    a: 'Yes, in the initial phase. Fundoria is built natively on Hyperliquid and HyperEVM. Support for other chains may be explored in future phases.',
+    q: 'Is Fundoria only for Hyperliquid traders?',
+    a: 'The first phase is focused on Hyperliquid traders because Hyperliquid provides the activity data needed for verified trader reputation. Future integrations may expand beyond Hyperliquid.',
   },
   {
     q: 'How is performance verified?',
-    a: 'Performance is indexed directly from Hyperliquid on-chain data — no self-reporting, no screenshots, no manual submissions. Verification is automatic and tamper-proof.',
+    a: 'Fundoria indexes public Hyperliquid trading activity and converts it into structured reputation signals. The goal is to reduce reliance on screenshots, manual claims, and private referrals.',
   },
   {
-    q: 'When can I create a passport?',
-    a: 'Trader Passport creation is planned for an upcoming alpha release. Join the whitelist to be notified when it opens.',
+    q: 'What is the Fundoria Score?',
+    a: 'The Fundoria Score is a planned 1–1000 reputation score based on performance, consistency, drawdown behavior, risk discipline, and other trader reputation signals.',
   },
   {
-    q: 'What can capital providers do?',
-    a: 'Capital providers can discover verified traders through public profiles, score-based filtering, and watchlists. Direct vault allocation is a future protocol phase.',
+    q: 'Can capital providers allocate funds now?',
+    a: 'No. Capital allocation is not live. Capital providers can join the waitlist to follow product updates and future discovery tools.',
+  },
+  {
+    q: 'Are smart vaults live?',
+    a: 'No. Smart vaults are a future protocol layer. The current phase focuses on trader reputation, public profiles, scoring, and discovery infrastructure.',
   },
   {
     q: 'Is there a token sale or ICO?',
-    a: 'No token sale or ICO is being promoted on this landing page. Fundoria is focused on product development, trader reputation, and whitelist onboarding.',
+    a: 'No token sale or ICO is being promoted on this landing page. Fundoria is focused on product development, trader reputation, whitelist onboarding, and protocol infrastructure.',
+  },
+  {
+    q: 'When can I create a Trader Passport?',
+    a: 'Trader Passport creation is planned for an upcoming alpha release. Join the whitelist to receive early access updates.',
+  },
+  {
+    q: 'Who should join the whitelist?',
+    a: 'Hyperliquid traders, capital providers, builders, researchers, and ecosystem contributors who want early access to Fundoria\'s reputation and discovery tools.',
   },
 ];
 
@@ -81,7 +93,7 @@ export default function FAQV2() {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
+              transition={{ duration: 0.4, delay: Math.min(i * 0.04, 0.3) }}
               className="border-b border-protocol-border/40"
             >
               <button

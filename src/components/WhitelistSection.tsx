@@ -50,8 +50,8 @@ export default function WhitelistSection({ onOpenWhitelist: _onOpenWhitelist }: 
             JOIN THE FUNDORIA WHITELIST
           </h2>
           <p className="font-sans text-[15px] text-protocol-text-dim leading-[1.75] mb-10">
-            Get early access to Trader Passport updates, reputation features, and future
-            capital discovery tools.
+            Be among the first to receive early access to Fundoria's Trader Passport,
+            reputation scoring, and capital discovery tools — when they launch.
           </p>
 
           {submitted ? (
@@ -66,7 +66,7 @@ export default function WhitelistSection({ onOpenWhitelist: _onOpenWhitelist }: 
                 You're on the list.
               </p>
               <p className="font-mono text-[10px] text-protocol-text-dim/50">
-                We'll notify you when access opens.
+                We'll notify you when early access opens.
               </p>
             </motion.div>
           ) : (
@@ -109,7 +109,7 @@ export default function WhitelistSection({ onOpenWhitelist: _onOpenWhitelist }: 
               {/* Microcopy */}
               <p className="font-mono text-[9px] text-protocol-text-dim/35 mt-2">
                 Registration is free and does not constitute a purchase, investment, token
-                allocation, or financial commitment.
+                allocation, financial commitment, or guarantee of capital allocation.
               </p>
             </form>
           )}
