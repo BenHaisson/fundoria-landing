@@ -9,13 +9,13 @@ const problems = [
   },
   {
     Icon: BarChart2,
-    title: "PnL alone doesn't prove discipline",
-    body: 'Raw profits without context hide catastrophic drawdowns, leverage abuse, and survivorship bias.',
+    title: "PnL alone does not prove skill",
+    body: 'Raw profits hide leverage abuse, lucky streaks, and catastrophic drawdowns. Risk-adjusted behavior separates skilled traders from survivorship.',
   },
   {
     Icon: Search,
     title: 'Capital discovery is still private',
-    body: 'Skilled traders are invisible to capital. Discovery happens through personal networks — inefficient and unfair.',
+    body: 'Skilled traders remain invisible to capital. Allocation decisions happen through private networks — inefficient, biased, and closed to most traders.',
   },
 ];
 
@@ -44,9 +44,9 @@ export default function ProblemV2() {
             </span>
           </h2>
           <p className="font-sans text-[15px] text-protocol-text-dim leading-[1.75] max-w-2xl">
-            Today, trader performance is fragmented across exchanges, screenshots, private
-            groups, and unverifiable claims. Fundoria turns live trading activity into a
-            portable reputation layer that capital providers can understand and trust.
+            Performance is fragmented across screenshots, private groups, and unverifiable
+            claims. Fundoria turns live Hyperliquid activity into a portable, verified
+            reputation layer that capital providers can understand and act on.
           </p>
         </motion.div>
 

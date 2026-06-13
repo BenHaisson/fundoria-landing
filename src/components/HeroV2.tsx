@@ -76,8 +76,9 @@ export default function HeroV2({ onOpenWhitelist }: HeroV2Props) {
               variants={itemVariants}
               className="font-sans text-[15px] text-protocol-text-dim leading-[1.75] max-w-[480px] mb-8"
             >
-              Fundoria turns live Hyperliquid activity into a public trader passport — with
-              score, grade, PnL curve, badges, ranking, and capital eligibility.
+              Fundoria turns live Hyperliquid trading activity into a public Trader Passport —
+              giving traders a verified reputation score, grade, PnL curve, badges, and
+              ranking, and giving capital providers a structured way to discover skill.
             </motion.p>
 
             {/* CTAs */}
@@ -90,7 +91,7 @@ export default function HeroV2({ onOpenWhitelist }: HeroV2Props) {
                 size="lg"
                 onClick={onOpenWhitelist}
               >
-                Join Whitelist
+                Join Early Access
               </CTAButton>
 
               <CTAButton
@@ -115,7 +116,7 @@ export default function HeroV2({ onOpenWhitelist }: HeroV2Props) {
               variants={itemVariants}
               className="font-mono text-[9px] text-protocol-text-dim/40"
             >
-              Read-only · No custody · Pre-launch alpha
+              Read-only MVP · No custody · No deposits · Pre-launch alpha
             </motion.p>
           </motion.div>
 

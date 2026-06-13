@@ -21,6 +21,7 @@ const phases: Phase[] = [
       'Hyperliquid activity indexing',
       'Score and badge model',
       'Whitelist onboarding',
+      'Public product alpha',
     ],
   },
   {
@@ -34,6 +35,7 @@ const phases: Phase[] = [
       'Watchlists and following',
       'Rankings and leaderboards',
       'Capital provider dashboard',
+      'Trader discovery filters',
     ],
   },
   {
@@ -47,6 +49,7 @@ const phases: Phase[] = [
       'Risk-gated allocation',
       'Non-custodial capital routes',
       'Protocol governance path',
+      'Mandate-based capital workflows',
     ],
   },
 ];
@@ -94,7 +97,8 @@ export default function RoadmapV2() {
             className="font-display uppercase tracking-[-0.02em] text-protocol-text"
             style={{ fontSize: 'clamp(32px, 5vw, 58px)' }}
           >
-            THE PATH TO PROTOCOL.
+            <span className="block">THE PATH</span>
+            <span className="block text-protocol-text-dim/70">TO PROTOCOL.</span>
           </h2>
         </motion.div>
 

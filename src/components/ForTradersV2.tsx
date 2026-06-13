@@ -10,32 +10,32 @@ const features = [
   {
     Icon: User,
     title: 'Public Trader Resume',
-    body: 'Your wallet becomes your trading resume — visible to capital providers worldwide.',
+    body: 'Your on-chain Hyperliquid wallet activity becomes a public, verifiable trading resume — no screenshots required.',
   },
   {
     Icon: Star,
     title: 'Reputation Score',
-    body: 'A 1-1000 score built from 10 performance dimensions — not just PnL.',
+    body: 'A 1–1000 reputation score built across 10 performance dimensions including drawdown, consistency, and discipline — not just raw PnL.',
   },
   {
     Icon: Award,
     title: 'Performance Badges',
-    body: 'Earn verified badges for consistency, drawdown control, momentum, and survival rate.',
+    body: 'Earn verified badges for consistency, drawdown control, momentum, and risk discipline — automatically awarded from on-chain data.',
   },
   {
     Icon: BarChart2,
     title: 'Leaderboard Visibility',
-    body: 'Rank among Hyperliquid traders and get discovered by capital looking for skill.',
+    body: 'Rank among verified Hyperliquid traders on a public leaderboard and become discoverable by capital providers looking for verified skill.',
   },
   {
     Icon: Zap,
     title: 'Future Capital Eligibility',
-    body: 'High-scoring traders become eligible for non-custodial vault allocation in future protocol phases.',
+    body: 'High-scoring traders may become eligible for non-custodial vault routes in future protocol phases. No deposits, no guarantees — eligibility-based access only.',
   },
   {
     Icon: Globe,
     title: 'Portable Identity',
-    body: 'Your passport travels with you across campaigns, competitions, and future protocol integrations.',
+    body: 'Your Trader Passport follows your on-chain activity across future protocol phases, campaigns, and ecosystem integrations.',
   },
 ];
 
@@ -61,11 +61,13 @@ export default function ForTradersV2({ onOpenWhitelist }: ForTradersV2Props) {
             className="font-display uppercase tracking-[-0.02em] text-protocol-text mb-5"
             style={{ fontSize: 'clamp(32px, 5vw, 58px)' }}
           >
-            BUILD STATUS BEFORE CAPITAL.
+            <span className="block">BUILD STATUS</span>
+            <span className="block text-protocol-text-dim/70">BEFORE CAPITAL.</span>
           </h2>
           <p className="font-sans text-[15px] text-protocol-text-dim leading-[1.75] max-w-2xl">
-            Fundoria helps traders turn skill into a visible, portable track record. No
-            gatekeepers. No self-reporting. Just verifiable performance.
+            Fundoria helps traders turn verified Hyperliquid performance into a portable
+            public record — discoverable by capital without gatekeepers, referrals, or
+            manual applications.
           </p>
         </motion.div>
 
@@ -101,7 +103,7 @@ export default function ForTradersV2({ onOpenWhitelist }: ForTradersV2Props) {
             Create Your Passport at Launch
           </CTAButton>
           <p className="font-mono text-[9px] text-protocol-text-dim/40">
-            Pre-launch · Join whitelist for early access
+            Pre-launch · Join whitelist to receive early access notification
           </p>
         </motion.div>
       </div>

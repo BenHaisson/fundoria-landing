@@ -16,7 +16,7 @@ const blocks: ProtocolBlock[] = [
     dotColor: '#2F80ED',
     status: 'In Build',
     statusVariant: 'build',
-    body: 'Wallet-verified trader identity mapped from Hyperliquid on-chain activity.',
+    body: 'Wallet-verified trader identity anchored to live Hyperliquid on-chain activity — no manual claims, no self-reporting.',
   },
   {
     number: '02',
@@ -24,7 +24,7 @@ const blocks: ProtocolBlock[] = [
     dotColor: '#2F80ED',
     status: 'In Build',
     statusVariant: 'build',
-    body: '10-dimension scoring engine computing performance, risk, consistency, and discipline signals.',
+    body: '10-dimension scoring engine computing performance, consistency, drawdown, discipline, and risk-adjusted signals from on-chain data.',
   },
   {
     number: '03',
@@ -32,7 +32,7 @@ const blocks: ProtocolBlock[] = [
     dotColor: '#F59E0B',
     status: 'In Design',
     statusVariant: 'design',
-    body: 'Protocol-level risk limits and mandate enforcement for future vault allocation.',
+    body: 'Protocol-level risk parameters and mandate enforcement designed for future non-custodial allocation — in early design phase.',
   },
   {
     number: '04',
@@ -40,7 +40,7 @@ const blocks: ProtocolBlock[] = [
     dotColor: '#A78BFA',
     status: 'Future',
     statusVariant: 'future',
-    body: 'Non-custodial capital routing through HyperEVM-native smart vaults with on-chain settlement.',
+    body: 'Future HyperEVM-native vaults for non-custodial capital routing with on-chain settlement. Not yet live. No deposits accepted.',
   },
 ];
 
@@ -86,10 +86,14 @@ export default function ProtocolSection() {
               CAPITAL LATER.
             </span>
           </h2>
-          <p className="font-sans text-[15px] text-protocol-text-dim leading-[1.75] max-w-2xl">
-            Fundoria begins with public trader reputation and expands into programmable
-            capital markets infrastructure through smart vaults, deterministic risk limits,
-            and HyperEVM-native settlement.
+          <p className="font-sans text-[15px] text-protocol-text-dim leading-[1.75] max-w-2xl mb-3">
+            Fundoria starts with public trader reputation and expands toward a programmable
+            capital layer — built on Hyperliquid and HyperEVM, with deterministic risk
+            limits and mandate-enforced allocation.
+          </p>
+          <p className="font-sans text-[13px] text-protocol-text-dim/60 leading-[1.75] max-w-2xl">
+            Smart vaults and capital routing are future research phases. The current MVP is
+            read-only — no custody, no deposits, no active capital flows.
           </p>
         </motion.div>
 
@@ -133,8 +137,8 @@ export default function ProtocolSection() {
           className="border border-protocol-border/30 bg-blue/[0.02] px-4 py-3"
         >
           <p className="font-mono text-[10px] text-protocol-text-dim/50">
-            [READ-ONLY MVP] · Fundoria does not custody funds or accept deposits. Smart
-            vaults are a future research phase not yet deployed.
+            [READ-ONLY MVP] · Fundoria does not custody funds, accept deposits, or execute
+            trades. Smart vaults are a future research phase and are not deployed.
           </p>
         </motion.div>
       </div>
