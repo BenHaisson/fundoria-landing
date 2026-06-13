@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import PassportCard from './ui/PassportCard';
+import ScoreBreakdownCard from './ui/ScoreBreakdownCard';
 import CTAButton from './ui/CTAButton';
 
 const features = [
@@ -83,9 +84,10 @@ export default function PassportSection() {
             </CTAButton>
           </motion.div>
 
-          {/* Right column */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Right column — stacked prototype cards */}
+          <div className="flex flex-col items-center lg:items-end gap-4">
             <PassportCard className="w-full max-w-sm" />
+            <ScoreBreakdownCard className="w-full max-w-sm" />
           </div>
         </div>
       </div>
