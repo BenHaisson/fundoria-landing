@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { SlidersHorizontal, Bookmark, History, Lock } from 'lucide-react';
 import CTAButton from './ui/CTAButton';
+import CapitalDiscoveryCard from './ui/CapitalDiscoveryCard';
 
 interface ForCapitalV2Props {
   onOpenWhitelist?: () => void;
@@ -16,7 +17,7 @@ const features = [
   {
     Icon: Bookmark,
     title: 'Watchlist Traders',
-    body: "Save traders to watchlists and monitor how their Fundoria Score and public performance history evolve over time.",
+    body: 'Save traders to watchlists and monitor how their Fundoria Score and public performance history evolve over time.',
     future: false,
   },
   {
@@ -40,13 +41,13 @@ export default function ForCapitalV2({ onOpenWhitelist }: ForCapitalV2Props) {
       className="bg-protocol-accent-bg border-t border-protocol-border py-20 md:py-28"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* Section header — full width */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-14"
+          className="mb-12"
         >
           <p className="font-mono text-[9px] tracking-[0.4em] text-blue uppercase mb-4">
             For Capital Providers
@@ -65,48 +66,63 @@ export default function ForCapitalV2({ onOpenWhitelist }: ForCapitalV2Props) {
           </p>
         </motion.div>
 
-        {/* Feature grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-          {features.map(({ Icon, title, body, future }, i) => (
+        {/* Two-column layout: features left, dashboard mockup right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          {/* Left — feature cards + CTA */}
+          <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+              {features.map(({ Icon, title, body, future }, i) => (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.09 }}
+                  className="border border-protocol-border bg-protocol-accent-bg p-5 hover:border-blue/20 transition-all duration-300"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <Icon size={16} className="text-blue" />
+                    {future && (
+                      <span className="font-mono text-[8px] border border-amber-400/30 bg-amber-400/5 text-amber-400 px-2 py-0.5 uppercase tracking-widest">
+                        Future Layer
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="font-display text-[15px] tracking-[-0.01em] text-protocol-text mb-1.5">
+                    {title}
+                  </h3>
+                  <p className="text-[12px] text-protocol-text-dim leading-[1.7]">{body}</p>
+                </motion.div>
+              ))}
+            </div>
+
             <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="border border-protocol-border bg-protocol-accent-bg p-5 hover:border-blue/20 transition-all duration-300"
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col gap-3"
             >
-              <div className="flex items-start justify-between mb-3">
-                <Icon size={16} className="text-blue" />
-                {future && (
-                  <span className="font-mono text-[8px] border border-amber-400/30 bg-amber-400/5 text-amber-400 px-2 py-0.5 uppercase tracking-widest">
-                    Future Layer
-                  </span>
-                )}
-              </div>
-              <h3 className="font-display text-[15px] tracking-[-0.01em] text-protocol-text mb-1.5">
-                {title}
-              </h3>
-              <p className="text-[12px] text-protocol-text-dim leading-[1.7]">{body}</p>
+              <CTAButton variant="secondary" size="lg" onClick={onOpenWhitelist}>
+                Pre-Register Capital Interest
+              </CTAButton>
+              <p className="font-mono text-[9px] text-protocol-text-dim/40">
+                No custody. No deposits. Discovery and watchlisting only. Future allocation
+                routes are non-custodial and not yet live.
+              </p>
             </motion.div>
-          ))}
-        </div>
+          </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col items-center gap-3 text-center"
-        >
-          <CTAButton variant="secondary" size="lg" onClick={onOpenWhitelist}>
-            Pre-Register Capital Interest
-          </CTAButton>
-          <p className="font-mono text-[9px] text-protocol-text-dim/40">
-            No custody. No deposits. Discovery and watchlisting only. Future allocation routes are non-custodial and not yet live.
-          </p>
-        </motion.div>
+          {/* Right — Capital Discovery dashboard mockup */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <CapitalDiscoveryCard />
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import CTAButton from './ui/CTAButton';
@@ -20,6 +21,19 @@ const itemVariants = {
 };
 
 export default function HeroV2({ onOpenWhitelist }: HeroV2Props) {
+  const [shouldFloat, setShouldFloat] = useState(false);
+
+  useEffect(() => {
+    const check = () => {
+      const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const mobile = window.innerWidth < 768;
+      setShouldFloat(!noMotion && !mobile);
+    };
+    check();
+    window.addEventListener('resize', check, { passive: true });
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -120,10 +134,10 @@ export default function HeroV2({ onOpenWhitelist }: HeroV2Props) {
             </motion.p>
           </motion.div>
 
-          {/* Right column — PassportCard with float animation */}
+          {/* Right column — PassportCard, float only on desktop */}
           <div className="flex justify-center lg:justify-end">
             <motion.div
-              animate={{ y: [0, -8, 0] }}
+              animate={shouldFloat ? { y: [0, -8, 0] } : undefined}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
               className="w-full max-w-sm"
             >
